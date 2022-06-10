@@ -1,0 +1,27 @@
+{
+  "comments": false,
+  "env": {
+    "main": {
+      "presets": [
+        ["@babel/preset-env", {
+          "targets": { "node": 14 }
+        }]
+      ]
+    },
+    "renderer": {
+      "presets": [
+        ["@babel/preset-env", {
+          "modules": false
+        }]
+      ]
+    },
+    "web": {
+      "presets": [
+        ["@babel/preset-env", {
+          "modules": false
+        }]
+      ]
+    }
+  },
+  "plugins": ["@vue/babel-plugin-jsx", "@babel/plugin-transform-runtime"]
+}

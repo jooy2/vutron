@@ -1,0 +1,127 @@
+{
+  "name": "vutron",
+  "version": "1.0.0",
+  "description": "Quick Start Templates for Vue 3 + Electron",
+  "main": "./dist/electron/main.js",
+  "scripts": {
+    "build:dir": "node --experimental-json-modules _runner/build/build.mjs && electron-builder --dir",
+    "build": "node --experimental-json-modules _runner/build/build.mjs && electron-builder",
+    "build:mac": "node --experimental-json-modules _runner/build/build.mjs && electron-builder --mac",
+    "build:linux": "node --experimental-json-modules _runner/build/build.mjs && electron-builder --linux",
+    "build:win": "node --experimental-json-modules _runner/build/build.mjs && electron-builder --windows",
+    "build:win:appx": "node --experimental-json-modules _runner/build/build.mjs && electron-builder --windows appx",
+    "build:win-portable": "node --experimental-json-modules _runner/build/build.mjs && electron-builder --win nsis:ia32 portable",
+    "dev": "node --experimental-json-modules _runner/dev.mjs --ignore-gpu-blacklist",
+    "pack": "npm run pack:main && npm run pack:renderer",
+    "pack:main": "node -r dotenv/config webpack --progress --colors --config _runner/webpack.main.mjs dotenv_config_path=.env.pack",
+    "pack:renderer": "node -r dotenv/config webpack --progress --colors --config _runner/webpack.renderer.mjs dotenv_config_path=.env.pack",
+    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "postinstall": "npm run lint:fix && electron-builder install-app-deps"
+  },
+  "author": "jooy2 <jootc.help@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "vue": "^3.2.37",
+    "vue-i18n": "^9.1.10",
+    "vue-router": "^4.0.15",
+    "vuetify": "^3.0.0-beta.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/eslint-parser": "^7.18.2",
+    "@babel/plugin-transform-runtime": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@vue/babel-plugin-jsx": "^1.1.1",
+    "@vue/runtime-dom": "^3.2.37",
+    "babel-loader": "^8.2.5",
+    "chalk": "^5.0.1",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "dotenv": "^16.0.1",
+    "electron": "^19.0.4",
+    "electron-builder": "^23.0.3",
+    "electron-devtools-installer": "^3.2.0",
+    "eslint": "^8.17.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-vue": "^9.1.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "fsman": "^1.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "listr": "^0.14.3",
+    "mini-css-extract-plugin": "^2.6.0",
+    "node-loader": "^2.0.0",
+    "qsu": "^1.0.3",
+    "terser-webpack-plugin": "^5.3.3",
+    "vue-eslint-parser": "^9.0.2",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^17.0.0",
+    "vue-style-loader": "^4.1.3",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.73.0",
+    "webpack-dev-server": "^4.9.2",
+    "webpack-hot-middleware": "^2.25.1"
+  },
+  "build": {
+    "productName": "Vutron",
+    "appId": "com.vutron.vutron",
+    "compression": "maximum",
+    "directories": {
+      "output": "dist",
+      "buildResources": "buildRes"
+    },
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "mac": {
+      "bundleVersion": "1.0",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "icon": "buildRes/icon.icns",
+      "type": "distribution",
+      "target": {
+        "target": "dmg",
+        "arch": [
+          "x64"
+        ]
+      },
+      "artifactName": "${productName} ${version}.${ext}"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ],
+      "sign": false
+    },
+    "win": {
+      "artifactName": "${productName} ${version}.${ext}",
+      "icon": "buildRes/icons/icon.ico",
+      "target": [
+        "appx",
+        "nsis"
+      ]
+    },
+    "linux": {
+      "executableName": "vutron",
+      "icon": "buildRes/icons",
+      "target": [
+        "snap",
+        "deb",
+        "rpm"
+      ]
+    }
+  }
+}
