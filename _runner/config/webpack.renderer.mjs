@@ -1,5 +1,5 @@
 import path from 'path'
-import packageJson from '../../package.json'
+import packageJson from '../../package.json' assert { type: 'json' }
 import webpack from 'webpack'
 
 import TerserPlugin from 'terser-webpack-plugin'
