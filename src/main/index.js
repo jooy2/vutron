@@ -3,7 +3,7 @@ import path from 'path'
 import MainRunner from './MainRunner'
 import { fileURLToPath } from 'url'
 import Constants from './utils/Constants'
-import electronRemote from '@electron/remote/main'
+import * as electronRemote from '@electron/remote/main'
 
 let mainWindow
 let crashWindow
