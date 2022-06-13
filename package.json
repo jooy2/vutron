@@ -19,6 +19,9 @@
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "postinstall": "npm run lint:fix && electron-builder install-app-deps"
   },
+  "engines": {
+    "node": ">=17.0.0"
+  },
   "author": "jooy2 <jootc.help@gmail.com>",
   "license": "MIT",
   "dependencies": {
