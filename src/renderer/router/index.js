@@ -9,7 +9,7 @@ const router = createRouter({
       component: MainScreen
     },
     {
-      path: '/crash',
+      path: '/error',
       component: ErrorScreen
     },
     {

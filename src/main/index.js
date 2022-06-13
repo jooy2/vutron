@@ -6,7 +6,7 @@ import Constants from './utils/Constants'
 import * as electronRemote from '@electron/remote/main'
 
 let mainWindow
-let crashWindow
+let errorWindow
 
 if (!Constants.IS_DEV_ENV) {
   global.__static = path.join(path.dirname(fileURLToPath(import.meta.url)), '/static')
@@ -27,6 +27,7 @@ app.on('activate', () => {
 
 app.on('window-all-closed', () => {
   mainWindow = null
+  errorWindow = null
 
   if (!Constants.IS_MAC) {
     app.quit()
@@ -34,5 +35,5 @@ app.on('window-all-closed', () => {
 })
 
 app.on('render-process-gone', (ev, webContents, details) => {
-  crashWindow = MainRunner.createCrashWindow(crashWindow, mainWindow, details)
+  errorWindow = MainRunner.createErrorWindow(errorWindow, mainWindow, details)
 })

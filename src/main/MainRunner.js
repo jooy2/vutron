@@ -15,6 +15,7 @@ export default class MainRunner {
     })
 
     mainWindow.setMenu(null)
+
     mainWindow.on('close', (event) => {
       event.preventDefault()
       MainRunner.exitApp(mainWindow)
@@ -41,34 +42,37 @@ export default class MainRunner {
     return mainWindow
   }
 
-  static createCrashWindow (crashWindow, mainWindow, details) {
+  static createErrorWindow (errorWindow, mainWindow, details) {
     if (!Constants.IS_DEV_ENV) {
       mainWindow?.hide()
     }
 
-    crashWindow = new BrowserWindow({
+    errorWindow = new BrowserWindow({
       show: false,
       title: Constants.APP_NAME,
       icon: path.join(__static, Constants.APP_ICON),
       resizable: Constants.IS_DEV_ENV,
       webPreferences: Constants.DEFAULT_WEB_PREFERENCES
     })
-    crashWindow.setMenu(null)
-    crashWindow.loadURL(`${Constants.APP_INDEX_URL}#/crash`).then(() => true)
-    crashWindow.on('ready-to-show', () => {
+
+    errorWindow.setMenu(null)
+    errorWindow.loadURL(`${Constants.APP_INDEX_URL}#/error`).then(() => true)
+
+    errorWindow.on('ready-to-show', () => {
       if (!Constants.IS_DEV_ENV && mainWindow && !mainWindow.isDestroyed()) {
         mainWindow.destroy()
       }
-      crashWindow.show()
-      crashWindow.focus()
+      errorWindow.show()
+      errorWindow.focus()
     })
-    crashWindow.webContents.on('did-frame-finish-load', () => {
+
+    errorWindow.webContents.on('did-frame-finish-load', () => {
       if (Constants.IS_DEV_ENV) {
-        crashWindow.webContents.openDevTools()
+        errorWindow.webContents.openDevTools()
       }
     })
 
-    return crashWindow
+    return errorWindow
   }
 
   static exitApp (mainWindow) {
