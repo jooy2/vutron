@@ -6,6 +6,8 @@
 
 <script>
 export default {
-  name: 'ErrorScreen'
+  setup () {
+
+  }
 }
 </script>

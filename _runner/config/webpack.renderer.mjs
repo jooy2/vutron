@@ -125,12 +125,12 @@ export default {
     new webpack.DefinePlugin(IS_DEV_ENV
       ? {
           __static: `"${path.join(__dirname, '../../static').replace(/\\/g, '\\\\')}"`,
-          __VUE_OPTIONS_API__: true,
+          __VUE_OPTIONS_API__: false,
           __VUE_PROD_DEVTOOLS__: false
         }
       : {
           'process.env.NODE_ENV': '"production"',
-          __VUE_OPTIONS_API__: true,
+          __VUE_OPTIONS_API__: false,
           __VUE_PROD_DEVTOOLS__: false
         }
     ),
