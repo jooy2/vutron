@@ -3,7 +3,6 @@ Quick Start Templates for **[Vue.js 3](https://vuejs.org/)** + **[Electron.js](h
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE)
 ![Programming Language Usage](https://img.shields.io/github/languages/top/jooy2/vutron)
-![minified size](https://img.shields.io/bundlephobia/min/vutron)
 ![github repo size](https://img.shields.io/github/repo-size/jooy2/vutron)
 ![Stars](https://img.shields.io/github/stars/jooy2/vutron?style=social)
 ![Commit Count](https://img.shields.io/github/commit-activity/y/jooy2/vutron)
@@ -31,6 +30,11 @@ Quick Start Templates for **[Vue.js 3](https://vuejs.org/)** + **[Electron.js](h
 - ESLint 8.x
 
 ## Installation
+To configure this project, the `NodeJS` version must be at least **17.x** or higher.
+
+It's also experimental and relies on newer modules, with a lot of code made up of `ESM`, so it's worth checking for compatibility when using third-party modules.
+
+After cloning the project, run the following command in the terminal:
 
 ```shell
 $ npm i
