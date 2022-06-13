@@ -20,7 +20,7 @@
     "postinstall": "npm run lint:fix && electron-builder install-app-deps"
   },
   "engines": {
-    "node": ">=17.0.0"
+    "node": ">=17.1.0"
   },
   "author": "jooy2 <jootc.help@gmail.com>",
   "license": "MIT",

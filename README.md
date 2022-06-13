@@ -30,7 +30,7 @@ Quick Start Templates for **[Vue.js 3](https://vuejs.org/)** + **[Electron.js](h
 - ESLint 8.x
 
 ## Installation
-To configure this project, the `NodeJS` version must be at least **17.x** or higher.
+To configure this project, the `NodeJS` version must be at least **17.1** or higher.
 
 It's also experimental and relies on newer modules, with a lot of code made up of `ESM`, so it's worth checking for compatibility when using third-party modules.
 
