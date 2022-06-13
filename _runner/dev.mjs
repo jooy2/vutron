@@ -22,15 +22,14 @@ function log (processName, data, color = 'yellow') {
 
   if (typeof data === 'object') {
     data.toString().split(/\r?\n/).forEach(line => {
-      strLog += '  ' + line + '\n'
+      strLog += ' ' + line + '\n'
     })
   } else {
-    strLog += `  ${data}\n`
+    strLog += ` ${data}\n`
   }
 
   if (/[\dA-z]+/.test(strLog)) {
-    console.log(`${chalk[color].bold(`[${processName}]---------------`)}\n`)
-    console.log(`${strLog}${chalk[color].bold(`[${processName}]---------------`)}\n`)
+    console.log(`${chalk[color].bold(`[${processName}] >`)}${strLog}`)
   }
 }
 
