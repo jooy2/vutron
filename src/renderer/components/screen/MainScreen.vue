@@ -1,19 +1,14 @@
+<script setup>
+import { ref } from 'vue'
+import { useTempStore } from '../../store/temp'
+
+const test = ref(1)
+const temp = useTempStore()
+</script>
+
 <template>
   <div>
     Main Screen {{ test }}
+    {{ temp.text }}
   </div>
 </template>
-
-<script>
-import { ref } from 'vue'
-
-export default {
-  setup () {
-    const test = ref(1)
-
-    return {
-      test
-    }
-  }
-}
-</script>
