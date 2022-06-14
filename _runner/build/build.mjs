@@ -9,7 +9,7 @@ import mainConfig from '../config/webpack.main.mjs'
 import rendererConfig from '../config/webpack.renderer.mjs'
 
 const TAG_ERROR = `${chalk.bgRed.white(' ERROR ')} `
-const TAG_SUCCESS = `${chalk.bgGreen.white(' SUCCESS ')} `
+const TAG_SUCCESS = `${chalk.bgGreen.black(' SUCCESS ')} `
 
 async function build () {
   FsMan.empty('dist/electron')
