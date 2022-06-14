@@ -19,18 +19,19 @@ Quick Start Templates for **[Vue.js 3](https://vuejs.org/)** + **[Electron.js](h
 
 ## Pre-configured components
 
-- Electron 19.x.x
-- Electron Builder 23.x
-- Vue 3.2.x
-- Vue-i18n 9.x
-- Vue-router 4.x
-- Vuetify 3.x (Beta)
-- Babel 7.x
-- Webpack 5.x
-- ESLint 8.x
+- [Electron 19.x.x](https://www.electronjs.org)
+- [Electron Builder 23.x](https://www.electron.build)
+- [Vue 3.2.x](https://vuejs.org)
+- [Vue-i18n 9.x](https://kazupon.github.io/vue-i18n)
+- [Vue-router 4.x](https://router.vuejs.org)
+- [Pinia 2.x](https://pinia.vuejs.org)
+- [Vuetify 3.x (Beta)](https://next.vuetifyjs.com)
+- [BabelJS 7.x](https://babeljs.io)
+- [Webpack 5.x](https://webpack.js.org)
+- [ESLint 8.x](https://eslint.org)
 
 ## Installation
-To configure this project, the `NodeJS` version must be at least **17.1** or higher.
+To configure this project, the `NodeJS` version must be at least **17.1.x** or higher.
 
 It's also experimental and relies on newer modules, with a lot of code made up of `ESM`, so it's worth checking for compatibility when using third-party modules.
 
