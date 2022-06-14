@@ -4,7 +4,6 @@ import webpack from 'webpack'
 
 import TerserPlugin from 'terser-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { VueLoaderPlugin } from 'vue-loader'
 import eslintFriendlyFormatter from 'eslint-friendly-formatter'
@@ -87,7 +86,6 @@ export default {
   plugins: [
     new TerserPlugin(),
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({ filename: 'styles.css' }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '../../src/index.ejs'),
