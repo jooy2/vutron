@@ -26,6 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "@electron/remote": "^2.0.8",
+    "pinia": "^2.0.14",
     "vue": "^3.2.37",
     "vue-i18n": "^9.1.10",
     "vue-router": "^4.0.16",
