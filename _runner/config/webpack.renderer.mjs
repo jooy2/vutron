@@ -84,7 +84,6 @@ export default {
     __filename: IS_DEV_ENV
   },
   plugins: [
-    new TerserPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',

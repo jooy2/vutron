@@ -41,13 +41,16 @@ export default {
     libraryTarget: 'commonjs2',
     path: path.join(__dirname, '../../dist/electron')
   },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()]
+  },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new ESLintPlugin({
       extensions: ['js'],
       formatter: eslintFriendlyFormatter()
     }),
-    new TerserPlugin(),
     new webpack.DefinePlugin({
       ...IS_DEV_ENV
         ? {
