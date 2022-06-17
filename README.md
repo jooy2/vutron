@@ -1,4 +1,7 @@
-# Vutron
+<div align="center">
+
+![vutron-logo](static/vutron-logo.png)
+
 Quick Start Templates for **[Vue.js 3](https://vuejs.org/)** + **[Electron.js](https://www.electronjs.org/)**
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE)
@@ -10,6 +13,8 @@ Quick Start Templates for **[Vue.js 3](https://vuejs.org/)** + **[Electron.js](h
 [![Followers](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
 
 `Vutron` is a preconfigured template for developing `Electron` cross-platform desktop apps. It uses `Vue 3` and allows you to build a fast development environment with little effort.
+
+</div>
 
 ## Advantages of use
 - ✅ You can build immediately without any presets, so you can develop quickly.
