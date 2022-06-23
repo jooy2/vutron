@@ -1,9 +1,7 @@
 import { createVuetify } from 'vuetify/dist/vuetify'
 
-const vuetify = createVuetify({
+export default createVuetify({
   icons: {
     iconfont: 'mdi'
   }
 })
-
-export default vuetify
