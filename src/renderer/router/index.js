@@ -6,11 +6,17 @@ export default createRouter({
   routes: [
     {
       path: '/',
-      component: MainScreen
+      component: MainScreen,
+      meta: {
+        title: 'Main'
+      }
     },
     {
       path: '/error',
-      component: ErrorScreen
+      component: ErrorScreen,
+      meta: {
+        title: 'Unknown error occurred'
+      }
     },
     {
       path: '/:pathMatch(.*)*',

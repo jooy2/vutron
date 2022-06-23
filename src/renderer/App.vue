@@ -1,5 +1,11 @@
+<script setup>
+import { DefaultLayout } from './components/layout'
+</script>
+
 <template>
-  <router-view />
+  <DefaultLayout>
+    <router-view />
+  </DefaultLayout>
 </template>
 
 <style>

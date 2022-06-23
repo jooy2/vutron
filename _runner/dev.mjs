@@ -61,7 +61,7 @@ function startRenderer () {
           setupMiddlewares (middlewares, devServer) {
             devServer.app.use(webpackHotMiddleware(compiler, {
               log: false,
-              heartbeat: 2500
+              heartbeat: 5000
             }))
             devServer.middleware.waitUntilValid(() => {
               resolve()

@@ -1,14 +1,22 @@
 <script setup>
-import { ref } from 'vue'
-import { useTempStore } from '../../store/temp'
-
-const test = ref(1)
-const temp = useTempStore()
 </script>
 
 <template>
-  <div>
-    Main Screen {{ test }}
-    {{ temp.text }}
-  </div>
+  <v-container>
+    <v-row
+      align="center"
+      class="text-center"
+    >
+      <v-col cols="12">
+        <v-img
+          class="ma-auto"
+          src="/static/vutron-logo.png"
+          width="600"
+        />
+      </v-col>
+      <v-col cols="12">
+        {{ $t('desc.welcome') }}
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
