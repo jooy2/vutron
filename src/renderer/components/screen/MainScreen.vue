@@ -8,11 +8,12 @@
       class="text-center"
     >
       <v-col cols="12">
-        <v-img
+        <img
+          alt="logo"
           class="ma-auto"
-          src="/static/vutron-logo.png"
+          src="~@/assets/img/vutron-logo.png"
           width="600"
-        />
+        >
       </v-col>
       <v-col cols="12">
         {{ $t('desc.welcome') }}
