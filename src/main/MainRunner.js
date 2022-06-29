@@ -1,16 +1,12 @@
 import { app, BrowserWindow } from 'electron'
-import path from 'path'
 import Constants from './utils/Constants'
-
-const BROWSER_WINDOW_DEFAULT = {
-  title: Constants.APP_NAME,
-  icon: path.join(__static, Constants.APP_ICON)
-}
+import Utils from './utils'
 
 export default class MainRunner {
   static async createMainWindow (mainWindow) {
     mainWindow = new BrowserWindow({
-      ...BROWSER_WINDOW_DEFAULT,
+      title: Constants.APP_NAME,
+      icon: Utils.getAppIcon(),
       show: false,
       width: Constants.IS_DEV_ENV ? 1500 : 1200,
       height: 650,
@@ -52,6 +48,8 @@ export default class MainRunner {
     }
 
     errorWindow = new BrowserWindow({
+      title: Constants.APP_NAME,
+      icon: Utils.getAppIcon(),
       show: false,
       resizable: Constants.IS_DEV_ENV,
       webPreferences: Constants.DEFAULT_WEB_PREFERENCES

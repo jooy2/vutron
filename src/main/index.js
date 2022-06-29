@@ -8,13 +8,13 @@ import * as electronRemote from '@electron/remote/main'
 let mainWindow
 let errorWindow
 
-if (!Constants.IS_DEV_ENV) {
-  global.__static = path.join(path.dirname(fileURLToPath(import.meta.url)), '/static')
-    .replace(/\\/g, '\\\\')
-}
-
 app.on('ready', () => {
   electronRemote.initialize()
+
+  if (!Constants.IS_DEV_ENV) {
+    global.__static = path.join(path.dirname(fileURLToPath(import.meta.url)), '/static')
+      .replace(/\\/g, '\\\\')
+  }
 
   mainWindow = MainRunner.createMainWindow(mainWindow)
 })
