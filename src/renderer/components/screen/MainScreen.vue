@@ -10,9 +10,8 @@
       <v-col cols="12">
         <img
           alt="logo"
-          class="ma-auto"
+          class="ma-auto h-auto w-75"
           src="~@/assets/img/vutron-logo.png"
-          width="600"
         >
       </v-col>
       <v-col cols="12">
