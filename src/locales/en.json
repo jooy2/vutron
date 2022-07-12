@@ -1,5 +1,10 @@
 {
   "desc": {
     "welcome": "Thank you for using Vutron. This cool template makes it easy to create a variety of cross-platform applications."
+  },
+  "menu": {
+    "change-theme": "Change Theme",
+    "change-language": "Change Language",
+    "about": "About Vutron"
   }
 }
