@@ -1,5 +1,5 @@
-import path from 'path'
-import os from 'os'
+import { join } from 'path'
+import { platform } from 'os'
 import { app } from 'electron'
 
 export default class Constants {
@@ -8,7 +8,7 @@ export default class Constants {
 
   static IS_DEV_ENV = process.env.NODE_ENV === 'development'
 
-  static IS_MAC = os.platform() === 'darwin'
+  static IS_MAC = platform() === 'darwin'
 
   static DEFAULT_WEB_PREFERENCES = {
     nodeIntegration: true,
@@ -19,5 +19,5 @@ export default class Constants {
 
   static APP_INDEX_URL = process.env.NODE_ENV === 'development'
     ? 'http://localhost:9080/index.html'
-    : path.join('file://', app.getAppPath(), '/dist/electron/index.html')
+    : join('file://', app.getAppPath(), '/dist/electron/index.html')
 }
