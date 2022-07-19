@@ -1,3 +1,4 @@
+import 'v8-compile-cache'
 import { app } from 'electron'
 import path from 'path'
 import MainRunner from './MainRunner'
