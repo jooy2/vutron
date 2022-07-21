@@ -41,14 +41,14 @@ export const createMainWindow = async (mainWindow) => {
     if (Constants.IS_DEV_ENV) {
       mainWindow.webContents.openDevTools()
     }
-
-    electronRemote.initialize()
   })
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.setAlwaysOnTop(true)
     mainWindow.show()
     mainWindow.setAlwaysOnTop(false)
+
+    electronRemote.initialize()
   })
 
   await mainWindow.loadURL(`${Constants.APP_INDEX_URL}`)
