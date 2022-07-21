@@ -105,8 +105,8 @@ export default {
         removeAttributeQuotes: true,
         removeComments: true
       },
-      isBrowser: false,
       isDevelopment: IS_DEV_ENV,
+      staticPath: path.join(__dirname, '/static').replace(/\\/g, '\\\\'),
       nodeModules: IS_DEV_ENV
         ? path.resolve(__dirname, '../../node_modules')
         : false
