@@ -1,4 +1,4 @@
-import path from 'path'
+import { join, dirname, resolve } from 'path'
 import packageJson from '../../package.json' assert { type: 'json' }
 import webpack from 'webpack'
 
@@ -12,7 +12,7 @@ import externalsWhiteList from './webpack.renderer.externals.whitelist.mjs'
 import { fileURLToPath } from 'url'
 
 const IS_DEV_ENV = process.env.NODE_ENV !== 'production'
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 process.env.BABEL_ENV = 'renderer'
 
@@ -23,7 +23,7 @@ export default {
     minimizer: [new TerserPlugin()]
   },
   entry: {
-    renderer: path.join(__dirname, '../../src/renderer/main.js')
+    renderer: join(__dirname, '../../src/renderer/main.js')
   },
   externals: [
     ...Object.keys(packageJson.dependencies || {}).filter(d => !externalsWhiteList.includes(d))
@@ -87,7 +87,7 @@ export default {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, '../../src/index.ejs'),
+      template: resolve(__dirname, '../../src/index.ejs'),
       templateParameters (compilation, assets, options) {
         return {
           compilation,
@@ -106,9 +106,9 @@ export default {
         removeComments: true
       },
       isDevelopment: IS_DEV_ENV,
-      staticPath: path.join(__dirname, '/static').replace(/\\/g, '\\\\'),
+      staticPath: join(__dirname, '/static').replace(/\\/g, '\\\\'),
       nodeModules: IS_DEV_ENV
-        ? path.resolve(__dirname, '../../node_modules')
+        ? resolve(__dirname, '../../node_modules')
         : false
     }),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -121,7 +121,7 @@ export default {
     }),
     new webpack.DefinePlugin(IS_DEV_ENV
       ? {
-          __static: `"${path.join(__dirname, '../../static').replace(/\\/g, '\\\\')}"`,
+          __static: `"${join(__dirname, '../../static').replace(/\\/g, '\\\\')}"`,
           __VUE_OPTIONS_API__: false,
           __VUE_PROD_DEVTOOLS__: false
         }
@@ -136,8 +136,8 @@ export default {
       : [new CopyWebpackPlugin({
           patterns: [
             {
-              from: path.join(__dirname, '../../static'),
-              to: path.join(__dirname, '../../dist/electron/static')
+              from: join(__dirname, '../../static'),
+              to: join(__dirname, '../../dist/electron/static')
             }
           ]
         })],
@@ -151,11 +151,11 @@ export default {
   output: {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../../dist/electron')
+    path: join(__dirname, '../../dist/electron')
   },
   resolve: {
     alias: {
-      '@': path.join(__dirname, '../../src/renderer'),
+      '@': join(__dirname, '../../src/renderer'),
       vue$: `vue/dist/vue.esm-browser${IS_DEV_ENV ? '' : '.prod'}`
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node']

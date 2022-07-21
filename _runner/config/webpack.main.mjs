@@ -1,4 +1,4 @@
-import path from 'path'
+import { join, dirname } from 'path'
 import packageJson from '../../package.json' assert { type: 'json' }
 import webpack from 'webpack'
 
@@ -10,11 +10,11 @@ import { fileURLToPath } from 'url'
 process.env.BABEL_ENV = 'main'
 
 const IS_DEV_ENV = process.env.NODE_ENV !== 'production'
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default {
   entry: {
-    main: path.join(__dirname, '../../src/main/index.js')
+    main: join(__dirname, '../../src/main/index.js')
   },
   externals: [
     ...Object.keys(packageJson.dependencies || {})
@@ -39,7 +39,7 @@ export default {
   output: {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../../dist/electron')
+    path: join(__dirname, '../../dist/electron')
   },
   optimization: {
     minimize: true,
@@ -54,7 +54,7 @@ export default {
     new webpack.DefinePlugin({
       ...IS_DEV_ENV
         ? {
-            __static: `"${path.join(__dirname, '../../static').replace(/\\/g, '\\\\')}"`
+            __static: `"${join(__dirname, '../../static').replace(/\\/g, '\\\\')}"`
           }
         : {},
       ...IS_DEV_ENV

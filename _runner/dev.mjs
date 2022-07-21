@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 import electron from 'electron'
-import path from 'path'
+import { dirname, join } from 'path'
 import { spawn } from 'child_process'
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url'
 
 dotenv.config({ path: '.env.dev' })
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url))
 let electronProcess = null
 let manualRestart = false
 
@@ -36,7 +36,7 @@ function log (processName, data, color = 'yellow') {
 function startRenderer () {
   return new Promise(resolve => {
     (async () => {
-      rendererConfig.entry.renderer = [path.join(__dirname, 'devClient.mjs'), rendererConfig.entry.renderer]
+      rendererConfig.entry.renderer = [join(__dirname, 'devClient.mjs'), rendererConfig.entry.renderer]
 
       const compiler = webpack({
         mode: 'development',
@@ -52,7 +52,7 @@ function startRenderer () {
           port: 9080,
           liveReload: true,
           static: {
-            directory: path.join(__dirname, '../'),
+            directory: join(__dirname, '../'),
             watch: {
               usePolling: true,
               ignored: /node_modules/
@@ -80,7 +80,7 @@ function startRenderer () {
 
 function startMain () {
   return new Promise(resolve => {
-    mainConfig.entry.main = [path.join(__dirname, '../src/main/index.dev.js'), mainConfig.entry.main]
+    mainConfig.entry.main = [join(__dirname, '../src/main/index.dev.js'), mainConfig.entry.main]
 
     const compiler = webpack({
       mode: 'development',
@@ -120,7 +120,7 @@ function startElectron () {
   electronProcess = spawn(electron, [
     ...[
       '--inspect=5858',
-      path.join(__dirname, '/../dist/electron/main.js')
+      join(__dirname, '/../dist/electron/main.js')
     ],
     ...process.argv.slice(2)
   ])
