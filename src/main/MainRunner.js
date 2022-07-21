@@ -1,85 +1,90 @@
 import { app, BrowserWindow } from 'electron'
 import Constants from './utils/Constants'
-import Utils from './utils'
+import { join } from 'path'
+import * as electronRemote from '@electron/remote/main'
 
-export default class MainRunner {
-  static async createMainWindow (mainWindow) {
-    mainWindow = new BrowserWindow({
-      title: Constants.APP_NAME,
-      icon: Utils.getAppIcon(),
-      show: false,
-      width: Constants.IS_DEV_ENV ? 1500 : 1200,
-      height: 650,
-      useContentSize: true,
-      webPreferences: Constants.DEFAULT_WEB_PREFERENCES
-    })
+const getAppIcon = () => {
+  return join(__static, Constants.APP_ICON)
+}
 
-    mainWindow.setMenu(null)
-
-    mainWindow.on('close', (event) => {
-      event.preventDefault()
-      MainRunner.exitApp(mainWindow)
-    })
-
-    mainWindow.on('show', () => {
-      mainWindow.focus()
-    })
-
-    mainWindow.webContents.on('did-frame-finish-load', () => {
-      if (Constants.IS_DEV_ENV) {
-        mainWindow.webContents.openDevTools()
-      }
-    })
-
-    mainWindow.once('ready-to-show', () => {
-      mainWindow.setAlwaysOnTop(true)
-      mainWindow.show()
-      mainWindow.setAlwaysOnTop(false)
-    })
-
-    await mainWindow.loadURL(`${Constants.APP_INDEX_URL}`)
-
-    return mainWindow
+const exitApp = (mainWindow) => {
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.hide()
   }
+  mainWindow = null
+  app.exit()
+}
 
-  static createErrorWindow (errorWindow, mainWindow, details) {
-    if (!Constants.IS_DEV_ENV) {
-      mainWindow?.hide()
+export const createMainWindow = async (mainWindow) => {
+  mainWindow = new BrowserWindow({
+    title: Constants.APP_NAME,
+    icon: getAppIcon(),
+    show: false,
+    width: Constants.IS_DEV_ENV ? 1500 : 1200,
+    height: 650,
+    useContentSize: true,
+    webPreferences: Constants.DEFAULT_WEB_PREFERENCES
+  })
+
+  mainWindow.setMenu(null)
+
+  mainWindow.on('close', (event) => {
+    event.preventDefault()
+    exitApp(mainWindow)
+  })
+
+  mainWindow.on('show', () => {
+    mainWindow.focus()
+  })
+
+  mainWindow.webContents.on('did-frame-finish-load', () => {
+    if (Constants.IS_DEV_ENV) {
+      mainWindow.webContents.openDevTools()
     }
 
-    errorWindow = new BrowserWindow({
-      title: Constants.APP_NAME,
-      icon: Utils.getAppIcon(),
-      show: false,
-      resizable: Constants.IS_DEV_ENV,
-      webPreferences: Constants.DEFAULT_WEB_PREFERENCES
-    })
+    electronRemote.initialize()
+  })
 
-    errorWindow.setMenu(null)
-    errorWindow.loadURL(`${Constants.APP_INDEX_URL}#/error`).then(() => true)
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.setAlwaysOnTop(true)
+    mainWindow.show()
+    mainWindow.setAlwaysOnTop(false)
+  })
 
-    errorWindow.on('ready-to-show', () => {
-      if (!Constants.IS_DEV_ENV && mainWindow && !mainWindow.isDestroyed()) {
-        mainWindow.destroy()
-      }
-      errorWindow.show()
-      errorWindow.focus()
-    })
+  await mainWindow.loadURL(`${Constants.APP_INDEX_URL}`)
 
-    errorWindow.webContents.on('did-frame-finish-load', () => {
-      if (Constants.IS_DEV_ENV) {
-        errorWindow.webContents.openDevTools()
-      }
-    })
+  return mainWindow
+}
 
-    return errorWindow
+export const createErrorWindow = (errorWindow, mainWindow, details) => {
+  if (!Constants.IS_DEV_ENV) {
+    mainWindow?.hide()
   }
 
-  static exitApp (mainWindow) {
-    if (mainWindow && !mainWindow.isDestroyed()) {
-      mainWindow.hide()
+  errorWindow = new BrowserWindow({
+    title: Constants.APP_NAME,
+    icon: getAppIcon(),
+    show: false,
+    resizable: Constants.IS_DEV_ENV,
+    webPreferences: Constants.DEFAULT_WEB_PREFERENCES
+  })
+
+  errorWindow.setMenu(null)
+  errorWindow.loadURL(`${Constants.APP_INDEX_URL}#/error`).then(() => true)
+
+  errorWindow.on('ready-to-show', () => {
+    if (!Constants.IS_DEV_ENV && mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.destroy()
     }
-    mainWindow = null
-    app.exit()
-  }
+    errorWindow.show()
+    errorWindow.focus()
+  })
+
+  errorWindow.webContents.on('did-frame-finish-load', () => {
+    if (Constants.IS_DEV_ENV) {
+      errorWindow.webContents.openDevTools()
+    }
+  })
+
+  return errorWindow
 }
