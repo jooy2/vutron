@@ -6,7 +6,7 @@
   "scripts": {
     "build:dir": "node _runner/build/build.mjs && electron-builder --dir",
     "build": "node _runner/build/build.mjs && electron-builder",
-    "build:mac": "node _runner/build/build.mjs && electron-builder --mac",
+    "build:mac": "node _runner/build/build.mjs && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
     "build:linux": "node _runner/build/build.mjs && electron-builder --linux",
     "build:win": "node _runner/build/build.mjs && electron-builder --windows",
     "build:win:appx": "node _runner/build/build.mjs && electron-builder --windows appx",
