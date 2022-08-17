@@ -84,7 +84,7 @@
       "bundleVersion": "1.0",
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
-      "icon": "buildRes/icon.icns",
+      "icon": "buildRes/icons/icon.icns",
       "type": "distribution",
       "target": {
         "target": "dmg",
