@@ -89,7 +89,7 @@
       "target": {
         "target": "dmg",
         "arch": [
-          "x64"
+          "x64", "arm64", "universal"
         ]
       },
       "artifactName": "${productName} ${version}.${ext}"
