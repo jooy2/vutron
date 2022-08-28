@@ -26,15 +26,15 @@
   "license": "MIT",
   "dependencies": {
     "@electron/remote": "^2.0.8",
-    "pinia": "^2.0.18",
+    "pinia": "^2.0.21",
     "v8-compile-cache": "^2.3.0",
     "vue": "^3.2.37",
     "vue-i18n": "^9.2.2",
-    "vue-router": "^4.1.3",
-    "vuetify": "^3.0.0-beta.8"
+    "vue-router": "^4.1.5",
+    "vuetify": "^3.0.0-beta.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.10",
+    "@babel/core": "^7.18.13",
     "@babel/eslint-parser": "^7.18.9",
     "@babel/plugin-syntax-import-assertions": "^7.18.6",
     "@babel/plugin-transform-runtime": "^7.18.10",
@@ -45,16 +45,16 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.1",
-    "electron": "^20.0.2",
+    "electron": "^20.1.0",
     "electron-builder": "^23.3.3",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.22.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-html": "^7.1.0",
-    "eslint-plugin-vue": "^9.3.0",
+    "eslint-plugin-vue": "^9.4.0",
     "eslint-webpack-plugin": "^3.2.0",
-    "fsman": "^1.3.0",
+    "fsman": "^1.4.0",
     "html-webpack-plugin": "^5.5.0",
     "listr": "^0.14.3",
     "node-loader": "^2.0.0",
@@ -64,7 +64,7 @@
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^17.0.0",
     "vue-style-loader": "^4.1.3",
-    "vue-template-compiler": "^2.7.8",
+    "vue-template-compiler": "^2.7.10",
     "webpack": "^5.74.0",
     "webpack-dev-server": "^4.10.0",
     "webpack-hot-middleware": "^2.25.2"
@@ -89,7 +89,9 @@
       "target": {
         "target": "dmg",
         "arch": [
-          "x64", "arm64", "universal"
+          "x64",
+          "arm64",
+          "universal"
         ]
       },
       "artifactName": "${productName} ${version}.${ext}"
