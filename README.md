@@ -24,7 +24,7 @@ Quick Start Templates for **[Vue.js 3](https://vuejs.org/)** + **[Electron.js](h
 
 ## Pre-configured components
 
-- [Electron 19.x.x](https://www.electronjs.org)
+- [Electron 20.x.x](https://www.electronjs.org)
 - [Electron Builder 23.x](https://www.electron.build)
 - [Vue 3.2.x](https://vuejs.org)
 - [Vue-i18n 9.x](https://kazupon.github.io/vue-i18n)
