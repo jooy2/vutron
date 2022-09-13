@@ -1,4 +1,4 @@
-import dotenv from 'dotenv'
+import { config } from 'dotenv'
 import chalk from 'chalk'
 import electron from 'electron'
 import { dirname, join } from 'path'
@@ -11,7 +11,7 @@ import mainConfig from './config/webpack.main.mjs'
 import rendererConfig from './config/webpack.renderer.mjs'
 import { fileURLToPath } from 'url'
 
-dotenv.config({ path: '.env.dev' })
+config({ path: '.env.dev' })
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 let electronProcess = null
