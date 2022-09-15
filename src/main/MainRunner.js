@@ -33,10 +33,6 @@ export const createMainWindow = async (mainWindow) => {
     exitApp(mainWindow)
   })
 
-  mainWindow.on('show', () => {
-    mainWindow.focus()
-  })
-
   mainWindow.webContents.on('did-frame-finish-load', () => {
     if (Constants.IS_DEV_ENV) {
       mainWindow.webContents.openDevTools()
@@ -46,6 +42,7 @@ export const createMainWindow = async (mainWindow) => {
   mainWindow.once('ready-to-show', () => {
     mainWindow.setAlwaysOnTop(true)
     mainWindow.show()
+    mainWindow.focus()
     mainWindow.setAlwaysOnTop(false)
 
     electronRemote.initialize()
