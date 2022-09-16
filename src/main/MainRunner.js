@@ -48,12 +48,16 @@ export const createMainWindow = async (mainWindow) => {
     electronRemote.initialize()
   })
 
-  await mainWindow.loadURL(`${Constants.APP_INDEX_URL}`)
+  if (Constants.IS_DEV_ENV) {
+    await mainWindow.loadURL(Constants.APP_INDEX_URL_DEV)
+  } else {
+    await mainWindow.loadFile(Constants.APP_INDEX_URL_PROD)
+  }
 
   return mainWindow
 }
 
-export const createErrorWindow = (errorWindow, mainWindow, details) => {
+export const createErrorWindow = async (errorWindow, mainWindow, details) => {
   if (!Constants.IS_DEV_ENV) {
     mainWindow?.hide()
   }
@@ -67,7 +71,12 @@ export const createErrorWindow = (errorWindow, mainWindow, details) => {
   })
 
   errorWindow.setMenu(null)
-  errorWindow.loadURL(`${Constants.APP_INDEX_URL}#/error`).then(() => true)
+
+  if (Constants.IS_DEV_ENV) {
+    await errorWindow.loadURL(`${Constants.APP_INDEX_URL_DEV}#/error`)
+  } else {
+    await errorWindow.loadFile(Constants.APP_INDEX_URL_PROD, { hash: 'error' })
+  }
 
   errorWindow.on('ready-to-show', () => {
     if (!Constants.IS_DEV_ENV && mainWindow && !mainWindow.isDestroyed()) {
