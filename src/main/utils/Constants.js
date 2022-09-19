@@ -1,6 +1,4 @@
-import { join } from 'path'
 import { platform } from 'os'
-import { app } from 'electron'
 
 export default class Constants {
   static APP_NAME = 'Vutron'
@@ -17,7 +15,6 @@ export default class Constants {
     enableRemoteModule: true
   }
 
-  static APP_INDEX_URL = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:9080/index.html'
-    : join('file://', app.getAppPath(), '/dist/electron/index.html')
+  static APP_INDEX_URL_DEV = 'http://localhost:9080/index.html'
+  static APP_INDEX_URL_PROD = './dist/electron/index.html'
 }
