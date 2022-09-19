@@ -87,14 +87,16 @@
       "gatekeeperAssess": false,
       "icon": "buildRes/icons/icon.icns",
       "type": "distribution",
-      "target": {
-        "target": "dmg",
-        "arch": [
-          "x64",
-          "arm64",
-          "universal"
-        ]
-      }
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64",
+            "universal"
+          ]
+        }
+      ]
     },
     "dmg": {
       "contents": [
@@ -115,17 +117,32 @@
     "win": {
       "icon": "buildRes/icons/icon.ico",
       "target": [
-        "appx",
-        "nsis"
+        {
+          "target": "appx",
+          "arch": "x64"
+        },
+        {
+          "target": "nsis",
+          "arch": "x64"
+        }
       ]
     },
     "linux": {
       "executableName": "vutron",
       "icon": "buildRes/icons",
       "target": [
-        "snap",
-        "deb",
-        "rpm"
+        {
+          "target": "snap",
+          "arch": "x64"
+        },
+        {
+          "target": "deb",
+          "arch": "x64"
+        },
+        {
+          "target": "rpm",
+          "arch": "x64"
+        }
       ]
     }
   }
