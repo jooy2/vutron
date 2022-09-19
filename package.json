@@ -80,6 +80,7 @@
     "files": [
       "dist/electron/**/*"
     ],
+    "artifactName": "${productName} ${version}.${ext}",
     "mac": {
       "bundleVersion": "1.0",
       "hardenedRuntime": true,
@@ -93,8 +94,7 @@
           "arm64",
           "universal"
         ]
-      },
-      "artifactName": "${productName} ${version}.${ext}"
+      }
     },
     "dmg": {
       "contents": [
@@ -113,7 +113,6 @@
       "sign": false
     },
     "win": {
-      "artifactName": "${productName} ${version}.${ext}",
       "icon": "buildRes/icons/icon.ico",
       "target": [
         "appx",
