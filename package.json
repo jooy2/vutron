@@ -9,8 +9,6 @@
     "build:mac": "node .runner/build/build.mjs && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
     "build:linux": "node .runner/build/build.mjs && electron-builder --linux",
     "build:win": "node .runner/build/build.mjs && electron-builder --windows",
-    "build:win:appx": "node .runner/build/build.mjs && electron-builder --windows appx",
-    "build:win-portable": "node .runner/build/build.mjs && electron-builder --win nsis:ia32 portable",
     "dev": "node .runner/dev.mjs --ignore-gpu-blacklist",
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "node -r dotenv/config webpack --progress --colors --config .runner/webpack.main.mjs dotenv_config_path=.env.pack",
@@ -119,6 +117,14 @@
       "target": [
         {
           "target": "appx",
+          "arch": "x64"
+        },
+        {
+          "target": "zip",
+          "arch": "x64"
+        },
+        {
+          "target": "portable",
           "arch": "x64"
         },
         {
