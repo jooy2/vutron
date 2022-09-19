@@ -130,6 +130,7 @@
     "linux": {
       "executableName": "vutron",
       "icon": "buildRes/icons",
+      "category": "Utility",
       "target": [
         {
           "target": "snap",
