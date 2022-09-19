@@ -4,6 +4,7 @@ import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
+import Menus from './utils/Menus'
 
 let mainWindow
 let errorWindow
@@ -13,6 +14,8 @@ app.on('ready', () => {
     global.__static = join(dirname(fileURLToPath(import.meta.url)), '/static')
       .replace(/\\/g, '\\\\')
   }
+
+  Menus.macOSDisableDefaultMenuItem()
 
   mainWindow = createMainWindow(mainWindow)
 })
