@@ -133,6 +133,9 @@
         }
       ]
     },
+    "portable": {
+      "artifactName": "${productName} ${version} Portable.${ext}"
+    },
     "linux": {
       "executableName": "vutron",
       "icon": "buildRes/icons",
