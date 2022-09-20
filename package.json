@@ -136,6 +136,9 @@
     "portable": {
       "artifactName": "${productName} ${version} Portable.${ext}"
     },
+    "nsis": {
+      "oneClick": true
+    },
     "linux": {
       "executableName": "vutron",
       "icon": "buildRes/icons",
