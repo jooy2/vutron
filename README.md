@@ -33,7 +33,7 @@ Quick Start Templates for **[Vue 3](https://vuejs.org/)** + **[Electron.js](http
 
 ## Pre-configured components
 
-- [Electron 20.x.x](https://www.electronjs.org)
+- [Electron 21.x.x](https://www.electronjs.org)
 - [Electron Builder 23.x](https://www.electron.build)
 - [Vue 3.2.x](https://vuejs.org)
 - [Vue-i18n 9.x](https://kazupon.github.io/vue-i18n)
