@@ -54,8 +54,6 @@ https://github.com/jooy2/vutron-webpack
 
 ## Installation
 
-To configure this project, the `NodeJS` version must be at least **17.1.x** or higher. (Verified and stable version is 17.1 or higher, but there doesn't seem to be any issues with NodeJS 16.16 either.)
-
 Click **[Use this template](https://github.com/jooy2/vutron/generate)** to instantly create your own project.
 
 OR, Clone this repo using below command.
