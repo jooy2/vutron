@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import electron from 'vite-plugin-electron'
 import vue from '@vitejs/plugin-vue'
 import { resolve, join } from 'path'
+import { builtinModules } from 'module'
 
 export default defineConfig({
   resolve: {
@@ -32,7 +33,14 @@ export default defineConfig({
           publicDir: resolve('./src/main'),
           build: {
             emptyOutDir: true,
-            outDir: 'dist/main'
+            assetsDir: '.',
+            outDir: 'dist/main',
+            rollupOptions: {
+              external: [
+                'electron',
+                ...builtinModules
+              ]
+            }
           }
         }
       },
