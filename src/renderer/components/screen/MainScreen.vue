@@ -1,9 +1,9 @@
 <script setup>
-// import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
-import Utils from '../../assets/js/utils'
+import Utils from '../../utils'
 
-// const { locale } = useI18n()
+const { locale } = useI18n()
 const theme = useTheme()
 
 const handleChangeTheme = () => {
@@ -11,7 +11,11 @@ const handleChangeTheme = () => {
 }
 
 const handleChangeLanguage = () => {
-  // locale.value = 'en' // TODO
+  if (locale.value === 'en') {
+    locale.value = 'ko'
+  } else {
+    locale.value = 'en'
+  }
 }
 
 const handleAbout = async () => {
@@ -29,7 +33,7 @@ const handleAbout = async () => {
         <img
           alt="logo"
           class="ma-auto h-auto w-75"
-          src="~@/assets/img/vutron-logo.png"
+          src="/images/vutron-logo.png"
         >
       </v-col>
       <v-col cols="12">
@@ -47,7 +51,6 @@ const handleAbout = async () => {
       <v-col cols="4">
         <v-btn
           block
-          disabled
           color="primary"
           @click="handleChangeLanguage"
         >

@@ -1,11 +1,6 @@
 import { app, BrowserWindow } from 'electron'
 import Constants from './utils/Constants'
-import { join } from 'path'
 import * as electronRemote from '@electron/remote/main'
-
-const getAppIcon = () => {
-  return join(__static, Constants.APP_ICON)
-}
 
 const exitApp = (mainWindow) => {
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -18,7 +13,6 @@ const exitApp = (mainWindow) => {
 export const createMainWindow = async (mainWindow) => {
   mainWindow = new BrowserWindow({
     title: Constants.APP_NAME,
-    icon: getAppIcon(),
     show: false,
     width: Constants.IS_DEV_ENV ? 1500 : 1200,
     height: 650,
@@ -64,7 +58,6 @@ export const createErrorWindow = async (errorWindow, mainWindow, details) => {
 
   errorWindow = new BrowserWindow({
     title: Constants.APP_NAME,
-    icon: getAppIcon(),
     show: false,
     resizable: Constants.IS_DEV_ENV,
     webPreferences: Constants.DEFAULT_WEB_PREFERENCES

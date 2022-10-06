@@ -1,8 +1,8 @@
 <div align="center">
 
-![vutron-logo](src/renderer/assets/img/vutron-logo.png)
+![vutron-logo](src/renderer/public/images/vutron-logo.png)
 
-Quick Start Templates for **[Vue 3](https://vuejs.org/)** + **[Electron.js](https://www.electronjs.org/)**
+Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vuejs.org)** + **[Electron](https://www.electronjs.org)**
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE)
 ![Programming Language Usage](https://img.shields.io/github/languages/top/jooy2/vutron)
@@ -15,6 +15,14 @@ Quick Start Templates for **[Vue 3](https://vuejs.org/)** + **[Electron.js](http
 **Vutron** is a preconfigured template for developing `Electron` cross-platform desktop apps. It uses `Vue 3` and allows you to build a fast development environment with little effort.
 
 </div>
+
+## ⚠️ NOTE: Vutron now uses the Vite compiler!!!
+
+By using the Vite compiler, we achieved our goals of reducing project and bundle size, and improving development environment and build speed.
+
+The old Vutron using the Webpack5 compiler has been split into the repositories below and will end support soon.
+
+https://github.com/jooy2/vutron-webpack
 
 ## Advantages of use
 
@@ -33,6 +41,7 @@ Quick Start Templates for **[Vue 3](https://vuejs.org/)** + **[Electron.js](http
 
 ## Pre-configured components
 
+- [Vite 3.x.x](https://vitejs.dev)
 - [Electron 21.x.x](https://www.electronjs.org)
 - [Electron Builder 23.x](https://www.electron.build)
 - [Vue 3.2.x](https://vuejs.org)
@@ -41,7 +50,6 @@ Quick Start Templates for **[Vue 3](https://vuejs.org/)** + **[Electron.js](http
 - [Pinia 2.x](https://pinia.vuejs.org)
 - [Vuetify 3.x (Beta)](https://next.vuetifyjs.com)
 - [BabelJS 7.x](https://babeljs.io)
-- [Webpack 5.x](https://webpack.js.org)
 - [ESLint 8.x](https://eslint.org)
 
 ## Installation
@@ -93,7 +101,7 @@ You can perform multi-platform builds at once with the following command. Altern
 $ npm run build
 ```
 
-`Multipass` configuration may be required for Linux builds. Learn more about `Multipass` through the following link: https://multipass.run/
+`Multipass` configuration may be required for Linux builds. Learn more about `Multipass` through the following link: https://multipass.run
 
 ## Looking for Electron templates made with React?
 
@@ -107,5 +115,3 @@ You can report issues on [Github Issue](https://github.com/jooy2/vutron/issues).
 
 ## License
 Copyright © 2022 Jooy2 Released under the MIT license.
-
-The structure and some code of this project was inspired by **[electron-vue](https://github.com/SimulatedGREG/electron-vue)**.
