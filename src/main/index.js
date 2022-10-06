@@ -30,3 +30,7 @@ app.on('window-all-closed', () => {
 app.on('render-process-gone', (ev, webContents, details) => {
   errorWindow = createErrorWindow(errorWindow, mainWindow, details)
 })
+
+process.on('uncaughtException', () => {
+  errorWindow = createErrorWindow(errorWindow, mainWindow)
+})
