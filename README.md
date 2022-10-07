@@ -16,6 +16,8 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 
 </div>
 
+---
+
 ## ⚠️ NOTE: Vutron now uses the Vite compiler!!!
 
 By using the Vite compiler, we achieved our goals of reducing project and bundle size, and improving development environment and build speed.
@@ -23,6 +25,8 @@ By using the Vite compiler, we achieved our goals of reducing project and bundle
 The old Vutron using the Webpack5 compiler has been split into the repositories below and will end support soon.
 
 https://github.com/jooy2/vutron-webpack
+
+---
 
 ## Advantages of use
 
@@ -54,7 +58,13 @@ https://github.com/jooy2/vutron-webpack
 
 ## Installation
 
-Click **[Use this template](https://github.com/jooy2/vutron/generate)** to instantly create your own project.
+You can easily clone a repository with just the npm command.
+
+```shell
+$ npm init vutron
+```
+
+OR, Click **[Use this template](https://github.com/jooy2/vutron/generate)** to instantly create your own project.
 
 OR, Clone this repo using below command.
 
@@ -65,7 +75,14 @@ $ git clone https://github.com/jooy2/vutron <PROJECT_NAME>
 After cloning the project, run the following command in the terminal:
 
 ```shell
+# via npm
 $ npm i
+
+# via yarn
+$ yarn install
+
+# via pnpm
+$ pnpm i
 ```
 
 ## Run in development environment
@@ -88,6 +105,8 @@ $ npm run build:mac
 # For Linux (.rpm, .deb, .snap)
 $ npm run build:linux
 ```
+
+The built packages can be found in `dist/release/{version}` location.
 
 ### What do I need to do for a multi-platform build?
 
