@@ -1,7 +1,11 @@
 {
   "productName": "Vutron",
   "appId": "com.vutron.vutron",
+  "asar": true,
+  "extends": null,
   "compression": "maximum",
+  "copyright": "ⓒ 2022 ${author}",
+  "artifactName": "${productName} ${version}_${arch}.${ext}",
   "directories": {
     "buildResources": "buildRes",
     "output": "./dist/release/${version}"
@@ -10,7 +14,6 @@
     "dist/**/*",
     "!dist/release/**/*"
   ],
-  "artifactName": "${productName} ${version}.${ext}",
   "mac": {
     "bundleVersion": "1.0",
     "hardenedRuntime": true,
