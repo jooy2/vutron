@@ -1,6 +1,6 @@
 <div align="center">
 
-![vutron-logo](src/renderer/public/images/vutron-logo.png)
+![vutron-logo](src/renderer/public/images/vutron-logo.webp)
 
 Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vuejs.org)** + **[Electron](https://www.electronjs.org)**
 

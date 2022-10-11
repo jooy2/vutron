@@ -33,7 +33,7 @@ const handleAbout = async () => {
         <img
           alt="logo"
           class="ma-auto h-auto w-75"
-          src="/images/vutron-logo.png"
+          src="/images/vutron-logo.webp"
         >
       </v-col>
       <v-col cols="12">
