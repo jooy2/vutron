@@ -1,7 +1,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
-import Utils from '../utils'
+import Utils from '@/renderer/utils'
 
 const { locale } = useI18n()
 const theme = useTheme()

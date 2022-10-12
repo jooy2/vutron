@@ -1,5 +1,5 @@
 <script setup>
-import { DefaultLayout } from './components/layout'
+import { DefaultLayout } from '@/renderer/components/layout'
 </script>
 
 <template>

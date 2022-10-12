@@ -1,5 +1,5 @@
 <script setup>
-import HeaderLayout from './HeaderLayout'
+import HeaderLayout from '@/renderer/components/layout/HeaderLayout'
 </script>
 
 <template>
