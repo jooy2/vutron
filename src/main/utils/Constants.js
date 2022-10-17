@@ -1,4 +1,3 @@
-import { platform } from 'os'
 import { join } from 'path'
 
 export default class Constants {
@@ -6,7 +5,7 @@ export default class Constants {
 
   static IS_DEV_ENV = process.env.NODE_ENV === 'development'
 
-  static IS_MAC = platform() === 'darwin'
+  static IS_MAC = process.platform === 'darwin'
 
   static DEFAULT_WEB_PREFERENCES = {
     nodeIntegration: true,
