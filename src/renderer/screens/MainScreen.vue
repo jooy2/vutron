@@ -6,6 +6,10 @@ import Utils from '@/renderer/utils'
 const { locale } = useI18n()
 const theme = useTheme()
 
+const jsxNode = () => {
+  return <div> text </div>
+}
+
 const handleChangeTheme = () => {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 }
@@ -29,6 +33,7 @@ const handleAbout = async () => {
       align="center"
       class="text-center"
     >
+      <jsxNode />
       <v-col cols="12">
         <img
           alt="logo"

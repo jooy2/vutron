@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import electron from 'vite-plugin-electron'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
 import { resolve, join } from 'path'
 import { builtinModules } from 'module'
@@ -31,6 +32,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    vueJsx(),
     electron({
       main: {
         entry: 'src/main/index.js',

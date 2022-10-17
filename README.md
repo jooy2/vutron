@@ -53,7 +53,6 @@ https://github.com/jooy2/vutron-webpack
 - [Vue-router 4.x](https://router.vuejs.org)
 - [Pinia 2.x](https://pinia.vuejs.org)
 - [Vuetify 3.x (Beta)](https://next.vuetifyjs.com)
-- [BabelJS 7.x](https://babeljs.io)
 - [ESLint 8.x](https://eslint.org)
 
 ## Installation
