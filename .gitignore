@@ -44,5 +44,6 @@ Thumbs.db
 
 npm-debug.log
 npm-debug.log.*
+vite-plugin-electron.log
 thumbs.db
 .env
