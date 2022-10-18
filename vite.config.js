@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
-import electron from 'vite-plugin-electron'
+import electronPlugin from 'vite-plugin-electron'
+import eslintPlugin from 'vite-plugin-eslint'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
 import { resolve, dirname } from 'path'
@@ -34,7 +35,8 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    electron({
+    eslintPlugin(),
+    electronPlugin({
       main: {
         entry: 'src/main/index.ts',
         vite: {
