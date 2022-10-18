@@ -50,6 +50,7 @@ https://github.com/jooy2/vutron-webpack
 - [Vuetify 3.x (Beta)](https://next.vuetifyjs.com)
 - [Pinia 2.x](https://pinia.vuejs.org)
 - [ESLint 8.x](https://eslint.org)
+- [Prettier 2.x.x](https://prettier.io)
 
 ## Installation
 
