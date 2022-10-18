@@ -42,6 +42,7 @@ https://github.com/jooy2/vutron-webpack
 - ⚡️ Support for themes (dark & light)
 - ⚡️ Basic layout manager
 - ⚡️ Global state management through the Pinia store
+- ⚡️ TypeScript support
 
 ## Pre-configured components
 
@@ -58,7 +59,7 @@ https://github.com/jooy2/vutron-webpack
 
 ## Installation
 
-You can easily clone a repository with just the npm command.
+You can easily clone a repository with just the npm command. (Recommend)
 
 ```shell
 $ npm init vutron
@@ -131,4 +132,5 @@ https://github.com/jooy2/retron
 You can report issues on [Github Issue](https://github.com/jooy2/vutron/issues). You can also request a pull to fix bugs and add frequently used features.
 
 ## License
+
 Copyright © 2022 Jooy2 Released under the MIT license.
