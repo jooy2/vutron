@@ -6,11 +6,11 @@ import Utils from '@/renderer/utils'
 const { locale } = useI18n()
 const theme = useTheme()
 
-const handleChangeTheme = () => {
+const handleChangeTheme = () : void => {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 }
 
-const handleChangeLanguage = () => {
+const handleChangeLanguage = () : void => {
   if (locale.value === 'en') {
     locale.value = 'ko'
   } else {
@@ -18,7 +18,7 @@ const handleChangeLanguage = () => {
   }
 }
 
-const handleAbout = async () => {
+const handleAbout = async () : Promise<void> => {
   await Utils.openExternal('https://github.com/jooy2/vutron')
 }
 </script>
