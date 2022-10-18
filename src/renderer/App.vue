@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="tsx">
 import { DefaultLayout } from '@/renderer/components/layout'
 </script>
 

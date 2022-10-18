@@ -1,5 +1,5 @@
-<script setup>
-import HeaderLayout from '@/renderer/components/layout/HeaderLayout'
+<script setup lang="tsx">
+import HeaderLayout from '@/renderer/components/layout/HeaderLayout.vue'
 </script>
 
 <template>

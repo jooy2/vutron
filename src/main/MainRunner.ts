@@ -1,16 +1,16 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import * as electronRemote from '@electron/remote/main'
 
-const exitApp = (mainWindow) => {
+const exitApp = (mainWindow: BrowserWindow) : void => {
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.hide()
   }
-  mainWindow = null
+  mainWindow.destroy()
   app.exit()
 }
 
-export const createMainWindow = async (mainWindow) => {
+export const createMainWindow = async (mainWindow: BrowserWindow) : Promise<BrowserWindow> => {
   mainWindow = new BrowserWindow({
     title: Constants.APP_NAME,
     show: false,
@@ -22,7 +22,7 @@ export const createMainWindow = async (mainWindow) => {
 
   mainWindow.setMenu(null)
 
-  mainWindow.on('close', (event) => {
+  mainWindow.on('close', (event: Event) => {
     event.preventDefault()
     exitApp(mainWindow)
   })
@@ -51,7 +51,7 @@ export const createMainWindow = async (mainWindow) => {
   return mainWindow
 }
 
-export const createErrorWindow = async (errorWindow, mainWindow, details) => {
+export const createErrorWindow = async (errorWindow: BrowserWindow, mainWindow: BrowserWindow, details?: RenderProcessGoneDetails) : Promise<BrowserWindow> => {
   if (!Constants.IS_DEV_ENV) {
     mainWindow?.hide()
   }

@@ -17,6 +17,7 @@
     */
     "dist/**/*",
     "!dist/release/**/*",
+    "!dist/main/index.ts",
     "!**/.*",
     /*
       (Optional) Please review the list below based on your project preferences, as you may need to include them as needed.

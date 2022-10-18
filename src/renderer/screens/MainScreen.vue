@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="tsx">
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
 import Utils from '@/renderer/utils'

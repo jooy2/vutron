@@ -1,4 +1,4 @@
-import { app } from 'electron'
+import { app, WebContents, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
 import Menus from './utils/Menus'
@@ -27,7 +27,7 @@ app.on('window-all-closed', () => {
   }
 })
 
-app.on('render-process-gone', (ev, webContents, details) => {
+app.on('render-process-gone', (event: Event, webContents: WebContents, details: RenderProcessGoneDetails) => {
   errorWindow = createErrorWindow(errorWindow, mainWindow, details)
 })
 

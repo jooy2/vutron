@@ -1,8 +1,9 @@
+import { fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import electron from 'vite-plugin-electron'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
-import { resolve, join } from 'path'
+import { resolve, dirname } from 'path'
 import { builtinModules } from 'module'
 
 export default defineConfig({
@@ -21,7 +22,7 @@ export default defineConfig({
       '.scss'
     ],
     alias: {
-      '@': join(__dirname, 'src')
+      '@': resolve(dirname(fileURLToPath(import.meta.url)), 'src')
     }
   },
   base: './',
@@ -35,7 +36,7 @@ export default defineConfig({
     vueJsx(),
     electron({
       main: {
-        entry: 'src/main/index.js',
+        entry: 'src/main/index.ts',
         vite: {
           publicDir: resolve('./src/main'),
           build: {
