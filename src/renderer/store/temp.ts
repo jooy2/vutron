@@ -8,7 +8,7 @@ export const useTempStore = defineStore('temp', {
     getText: (state) => state.text
   },
   actions: {
-    setText (text) {
+    setText(text) {
       this.text = text
     }
   }

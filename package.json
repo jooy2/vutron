@@ -5,14 +5,16 @@
   "main": "dist/main/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vite",
-    "build": "vue-tsc --noEmit && npm run build:pre && electron-builder -wml",
-    "build:pre": "cross-env NODE_ENV=production vite build",
+    "build": "npm run build:pre && electron-builder -wml",
+    "build:pre": "npm run format:fix && vue-tsc --noEmit && cross-env NODE_ENV=production vite build",
     "build:dir": "npm run build:pre && electron-builder --dir",
     "build:mac": "npm run build:pre && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
     "build:linux": "npm run build:pre && electron-builder --linux",
     "build:win": "npm run build:pre && electron-builder --windows",
-    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
-    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "lint": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "format": "prettier .",
+    "format:fix": "prettier . --write",
     "postinstall": "npm run lint:fix && electron-builder install-app-deps"
   },
   "engines": {
@@ -29,6 +31,7 @@
     "vuetify": "^3.0.0-beta.13"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
@@ -36,10 +39,12 @@
     "electron": "^21.0.0",
     "electron-builder": "^23.3.3",
     "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-vue": "^9.5.1",
+    "prettier": "^2.7.1",
     "typescript": "^4.8.4",
     "vite": "^3.1.4",
     "vite-plugin-electron": "^0.9.3",

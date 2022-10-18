@@ -14,14 +14,7 @@ export default defineConfig({
     __INTLIFY_PROD_DEVTOOLS__: false
   },
   resolve: {
-    extensions: [
-      '.mjs',
-      '.js',
-      '.ts',
-      '.vue',
-      '.json',
-      '.scss'
-    ],
+    extensions: ['.mjs', '.js', '.ts', '.vue', '.json', '.scss'],
     alias: {
       '@': resolve(dirname(fileURLToPath(import.meta.url)), 'src')
     }
@@ -46,10 +39,7 @@ export default defineConfig({
             assetsDir: '.',
             outDir: 'dist/main',
             rollupOptions: {
-              external: [
-                'electron',
-                ...builtinModules
-              ]
+              external: ['electron', ...builtinModules]
             }
           }
         }

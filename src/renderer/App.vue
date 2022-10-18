@@ -9,15 +9,16 @@ import { DefaultLayout } from '@/renderer/components/layout'
 </template>
 
 <style>
-  html {
-    overflow-y: auto !important
-  }
-  html, body {
-    width: 100%;
-    height: 100%
-  }
-  /* Do not force capitalization of button text */
-  .v-btn {
-    text-transform: unset !important
-  }
+html {
+  overflow-y: auto !important;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+/* Do not force capitalization of button text */
+.v-btn {
+  text-transform: unset !important;
+}
 </style>

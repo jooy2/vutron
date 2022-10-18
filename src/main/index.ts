@@ -27,9 +27,12 @@ app.on('window-all-closed', () => {
   }
 })
 
-app.on('render-process-gone', (event: Event, webContents: WebContents, details: RenderProcessGoneDetails) => {
-  errorWindow = createErrorWindow(errorWindow, mainWindow, details)
-})
+app.on(
+  'render-process-gone',
+  (event: Event, webContents: WebContents, details: RenderProcessGoneDetails) => {
+    errorWindow = createErrorWindow(errorWindow, mainWindow, details)
+  }
+)
 
 process.on('uncaughtException', () => {
   errorWindow = createErrorWindow(errorWindow, mainWindow)
