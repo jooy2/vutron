@@ -1,4 +1,8 @@
+buildRes/
 dist/
-.idea/
 
-package-lock.json
+*-lock.json
+
+.idea/
+.vscode/
+.github/
