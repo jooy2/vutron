@@ -5,11 +5,12 @@
   "main": "dist/main/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vite",
-    "build": "cross-env NODE_ENV=production vite build && electron-builder -wml",
-    "build:dir": "cross-env NODE_ENV=production vite build && electron-builder --dir",
-    "build:mac": "cross-env NODE_ENV=production vite build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
-    "build:linux": "cross-env NODE_ENV=production vite build && electron-builder --linux",
-    "build:win": "cross-env NODE_ENV=production vite build && electron-builder --windows",
+    "build": "npm run build:pre && electron-builder -wml",
+    "build:pre": "cross-env NODE_ENV=production vite build",
+    "build:dir": "npm run build:pre && electron-builder --dir",
+    "build:mac": "npm run build:pre && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
+    "build:linux": "npm run build:pre && electron-builder --linux",
+    "build:win": "npm run build:pre && electron-builder --windows",
     "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "postinstall": "npm run lint:fix && electron-builder install-app-deps"
