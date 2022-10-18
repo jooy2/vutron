@@ -1,16 +1,21 @@
 import { createVuetify } from 'vuetify/dist/vuetify'
 import { ko, en } from 'vuetify/locale'
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
 
 import colors from 'vuetify/lib/util/colors.mjs'
 
 export default createVuetify({
-  icons: {
-    iconfont: 'mdi'
-  },
   locale: {
     messages: { ko, en },
     defaultLocale: 'en',
     fallbackLocale: 'en'
+  },
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi
+    }
   },
   theme: {
     themes: {
