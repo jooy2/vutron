@@ -2,14 +2,14 @@ import { defineStore } from 'pinia'
 
 export const useTempStore = defineStore('temp', {
   state: () => ({
-    text: 'Sample Text'
+    counter: 0
   }),
   getters: {
-    getText: (state) => state.text
+    getCounter: (state): number => state.counter
   },
   actions: {
-    setText(text) {
-      this.text = text
+    counterIncrease(amount: number) {
+      this.counter += amount
     }
   }
 })

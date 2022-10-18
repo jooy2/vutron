@@ -2,9 +2,13 @@
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
 import Utils from '@/renderer/utils'
+import { useTempStore } from '@/renderer/store/temp'
+import { storeToRefs } from 'pinia'
 
 const { locale } = useI18n()
 const theme = useTheme()
+const { counterIncrease } = useTempStore()
+const { counter } = storeToRefs(useTempStore())
 
 const handleChangeTheme = (): void => {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
@@ -21,6 +25,10 @@ const handleChangeLanguage = (): void => {
 const handleAbout = async (): Promise<void> => {
   await Utils.openExternal('https://github.com/jooy2/vutron')
 }
+
+const handleCountIncrease = (): void => {
+  counterIncrease(1)
+}
 </script>
 
 <template>
@@ -32,20 +40,24 @@ const handleAbout = async (): Promise<void> => {
       <v-col cols="12">
         {{ $t('desc.welcome') }}
       </v-col>
-      <v-col cols="4">
+      <v-col cols="12"> Counter: {{ counter }} </v-col>
+      <v-col cols="33">
         <v-btn block color="primary" @click="handleChangeTheme">
           {{ $t('menu.change-theme') }}
         </v-btn>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="3">
         <v-btn block color="primary" @click="handleChangeLanguage">
           {{ $t('menu.change-language') }}
         </v-btn>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="3">
         <v-btn block color="primary" @click="handleAbout">
           {{ $t('menu.about') }}
         </v-btn>
+      </v-col>
+      <v-col cols="3">
+        <v-btn block color="primary" @click="handleCountIncrease">Count + 1</v-btn>
       </v-col>
     </v-row>
   </v-container>
