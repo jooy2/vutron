@@ -2,6 +2,9 @@
   "name": "vutron",
   "version": "1.0.0",
   "description": "Quick Start Templates for Vite + Vue 3 + Electron",
+  "homepage": "https://github.com/jooy2/vutron",
+  "author": "jooy2 <jootc.help@gmail.com>",
+  "license": "MIT",
   "main": "dist/main/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vite",
@@ -20,8 +23,6 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "author": "jooy2 <jootc.help@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "@electron/remote": "^2.0.8",
     "pinia": "^2.0.22",
