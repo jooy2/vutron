@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
-import Utils from '@/renderer/utils'
+import { openExternal } from '@/renderer/utils'
 import { useTempStore } from '@/renderer/store/temp'
 import { storeToRefs } from 'pinia'
 
@@ -23,7 +23,7 @@ const handleChangeLanguage = (): void => {
 }
 
 const handleAbout = async (): Promise<void> => {
-  await Utils.openExternal('https://github.com/jooy2/vutron')
+  await openExternal('https://github.com/jooy2/vutron')
 }
 
 const handleCountIncrease = (): void => {
