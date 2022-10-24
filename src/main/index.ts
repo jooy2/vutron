@@ -1,13 +1,13 @@
 import { app, WebContents, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
-import Menus from './utils/Menus'
+import { macOSDisableDefaultMenuItem } from './utils/Menus'
 
 let mainWindow
 let errorWindow
 
 app.on('ready', () => {
-  Menus.macOSDisableDefaultMenuItem()
+  macOSDisableDefaultMenuItem()
 
   mainWindow = createMainWindow(mainWindow)
 })

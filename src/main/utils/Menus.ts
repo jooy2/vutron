@@ -9,3 +9,5 @@ export default class Menus {
     }
   }
 }
+
+export const { macOSDisableDefaultMenuItem } = Menus
