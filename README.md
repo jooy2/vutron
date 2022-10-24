@@ -10,18 +10,6 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 
 </div>
 
----
-
-## ⚠️ NOTE: Vutron now uses the Vite compiler!!!
-
-By using the Vite compiler, we achieved our goals of reducing project and bundle size, and improving development environment and build speed.
-
-The old Vutron using the Webpack5 compiler has been split into the repositories below and will end support soon.
-
-https://github.com/jooy2/vutron-webpack
-
----
-
 ## Advantages of use
 
 - ✅ You can build immediately without any presets, so you can develop quickly.
@@ -38,106 +26,11 @@ https://github.com/jooy2/vutron-webpack
 - ⚡️ Global state management through the Pinia store
 - ⚡️ TypeScript support
 
-## Pre-configured components
+## [Getting Started & Documentation](https://github.com/jooy2/vutron/tree/master/docs)
 
-- [Vite 3.x.x](https://vitejs.dev)
-- [Electron 21.x.x](https://www.electronjs.org)
-- [Electron Builder 23.x](https://www.electron.build)
-- [TypeScript 4.x](https://www.typescriptlang.org)
-- [Vue 3.2.x](https://vuejs.org)
-- [Vue-i18n 9.x](https://kazupon.github.io/vue-i18n)
-- [Vue-router 4.x](https://router.vuejs.org)
-- [Vuetify 3.x (Beta)](https://next.vuetifyjs.com)
-- [Pinia 2.x](https://pinia.vuejs.org)
-- [ESLint 8.x](https://eslint.org)
-- [Prettier 2.x.x](https://prettier.io)
+For complete documentation including installation instructions and basic usage, please refer to each item in the link below:
 
-## Installation
-
-You can easily clone a repository with just the npm command. (Recommend)
-
-```shell
-$ npm init vutron
-```
-
-OR, Click **[Use this template](https://github.com/jooy2/vutron/generate)** to instantly create your own project.
-
-OR, Clone this repo using below command.
-
-```shell
-$ git clone https://github.com/jooy2/vutron <PROJECT_NAME>
-```
-
-After cloning the project, run the following command in the terminal:
-
-```shell
-# via npm
-$ npm i
-
-# via yarn (https://yarnpkg.com)
-$ yarn install
-
-# via pnpm (https://pnpm.io)
-$ pnpm i
-
-# via cnpm (https://github.com/cnpm/cnpm)
-$ cnpm i
-```
-
-## Run in development environment
-
-```shell
-$ npm run dev
-```
-
-## Build
-
-Once the module installation is complete, you can simply build the platform package with the command below.
-
-```shell
-# For Windows (.exe, .appx)
-$ npm run build:win
-
-# For macOS (.dmg)
-$ npm run build:mac
-
-# For Linux (.rpm, .deb, .snap)
-$ npm run build:linux
-```
-
-The built packages can be found in `dist/release/{version}` location.
-
-### Build settings for projects that use Native Node modules
-
-For projects that use the **Native Node Module**, add the following script to your package.json: When installing dependencies, electron-builder will take care of any modules that require rebuilding.
-
-```json
-{
-  "scripts": {
-    "postinstall": "electron-builder install-app-deps"
-  }
-}
-```
-
-For more information, please refer to the following article: https://webpack.electron.build/dependency-management#installing-native-node-modules
-
-### What do I need to do for a multi-platform build?
-
-**macOS** is recommended if you want to build multiple platforms simultaneously on one platform. Because it can be configured with just a few very simple settings.
-
-You can perform multi-platform builds at once with the following command. Alternatively, you can just do it for the OS you want via the individual build commands above.
-
-```shell
-$ npm run build
-```
-
-`Multipass` configuration may be required for Linux builds. Learn more about `Multipass` through the following link: https://multipass.run
-
-## Looking for Electron templates made with React?
-
-Also check out the `Retron` project, which consists of Vite + React + Material-UI + Electron.
-
-https://github.com/jooy2/retron
+https://github.com/jooy2/vutron/tree/master/docs
 
 ## Contribute
 
