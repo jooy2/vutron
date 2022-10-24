@@ -41,7 +41,7 @@ const handleCountIncrease = (): void => {
         {{ $t('desc.welcome') }}
       </v-col>
       <v-col cols="12"> Counter: {{ counter }} </v-col>
-      <v-col cols="33">
+      <v-col cols="3">
         <v-btn block color="primary" @click="handleChangeTheme">
           {{ $t('menu.change-theme') }}
         </v-btn>
