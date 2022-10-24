@@ -16,6 +16,7 @@
       (Recommended) The files and folders listed below should not be included in the build.
     */
     'dist/**/*',
+    '!docs/**/*',
     '!dist/release/**/*',
     '!dist/main/index.ts',
     '!**/.*',
