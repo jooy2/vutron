@@ -74,11 +74,14 @@ After cloning the project, run the following command in the terminal:
 # via npm
 $ npm i
 
-# via yarn
+# via yarn (https://yarnpkg.com)
 $ yarn install
 
-# via pnpm
+# via pnpm (https://pnpm.io)
 $ pnpm i
+
+# via cnpm (https://github.com/cnpm/cnpm)
+$ cnpm i
 ```
 
 ## Run in development environment
@@ -103,6 +106,20 @@ $ npm run build:linux
 ```
 
 The built packages can be found in `dist/release/{version}` location.
+
+### Build settings for projects that use Native Node modules
+
+For projects that use the **Native Node Module**, add the following script to your package.json: When installing dependencies, electron-builder will take care of any modules that require rebuilding.
+
+```json
+{
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps"
+  }
+}
+```
+
+For more information, please refer to the following article: https://webpack.electron.build/dependency-management#installing-native-node-modules
 
 ### What do I need to do for a multi-platform build?
 

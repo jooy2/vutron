@@ -17,8 +17,7 @@
     "lint": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "format": "prettier .",
-    "format:fix": "prettier . --write",
-    "postinstall": "npm run lint:fix && electron-builder install-app-deps"
+    "format:fix": "prettier . --write"
   },
   "engines": {
     "node": ">=16.0.0"
