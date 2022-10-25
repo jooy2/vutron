@@ -18,6 +18,7 @@
     "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "format": "prettier .",
     "format:fix": "prettier . --write",
+    "docs:install": "npm i --no-save vitepress vitepress-sidebar",
     "docs:dev": "vitepress dev docs",
     "docs:build": "npm run format:fix && vitepress build docs",
     "docs:serve": "npm run docs:build && vitepress serve docs"
@@ -54,8 +55,6 @@
     "vite": "^3.1.4",
     "vite-plugin-electron": "^0.9.3",
     "vite-plugin-eslint": "^1.8.1",
-    "vitepress": "^1.0.0-alpha.22",
-    "vitepress-sidebar": "^1.0.4",
     "vue-eslint-parser": "^9.1.0",
     "vue-tsc": "^1.0.9"
   }

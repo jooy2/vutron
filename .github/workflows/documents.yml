@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  docs:
+  documents:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,6 +37,10 @@ jobs:
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm i
+
+      # install for document build
+      - name: Install for document dependencies
+        run: npm run docs:install
 
       # run build script
       - name: Build VitePress site
