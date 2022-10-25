@@ -39,10 +39,6 @@ jobs:
         run: npm i
 
       # run build script
-      - name: Copy index.md from root path
-        run: cp README.md docs/index.md
-
-      # run build script
       - name: Build VitePress site
         run: npm run docs:build
 
