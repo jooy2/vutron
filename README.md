@@ -26,11 +26,9 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 - ⚡️ Global state management through the Pinia store
 - ⚡️ TypeScript support
 
-## [Getting Started & Documentation](https://github.com/jooy2/vutron/tree/master/docs)
+## [Getting Started & Documentation](https://til.jooy2.com)
 
-For complete documentation including installation instructions and basic usage, please refer to each item in the link below:
-
-https://github.com/jooy2/vutron/tree/master/docs
+For complete documentation including installation instructions and basic usage, please refer to each item in the link below: https://til.jooy2.com
 
 ## Contribute
 

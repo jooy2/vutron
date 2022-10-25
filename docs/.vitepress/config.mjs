@@ -11,8 +11,6 @@ export default {
       underscoreToSpace: true,
       hyphenToSpace: true
     }),
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/jooy2/vutron' }
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/jooy2/vutron' }]
   }
 }
