@@ -2,7 +2,7 @@
 	"name": "vutron",
 	"version": "1.0.0",
 	"description": "Quick Start Templates for Vite + Vue 3 + Electron",
-	"homepage": "https://github.com/jooy2/vutron",
+	"homepage": "https://vutron.jooy2.com",
 	"author": "jooy2 <jootc.help@gmail.com>",
 	"license": "MIT",
 	"main": "dist/main/index.js",
