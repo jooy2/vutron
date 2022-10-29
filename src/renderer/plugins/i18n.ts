@@ -4,12 +4,12 @@ import ko from '@/renderer/locales/ko.json'
 import { getCurrentLocale } from '@/renderer/utils'
 
 export default createI18n({
-  legacy: false,
-  locale: getCurrentLocale(),
-  fallbackLocale: 'en',
-  globalInjection: true,
-  messages: {
-    en,
-    ko
-  }
+	legacy: false,
+	locale: getCurrentLocale(),
+	fallbackLocale: 'en',
+	globalInjection: true,
+	messages: {
+		en,
+		ko
+	}
 })

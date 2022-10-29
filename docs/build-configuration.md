@@ -21,9 +21,9 @@ For projects that use the **Native Node Module**, add the following script to yo
 
 ```json
 {
-  "scripts": {
-    "postinstall": "electron-builder install-app-deps"
-  }
+	"scripts": {
+		"postinstall": "electron-builder install-app-deps"
+	}
 }
 ```
 
@@ -49,23 +49,23 @@ Below is an unnecessary `node_modules` file pattern that can further save bundle
 
 ```json
 [
-  "!**/.*",
-  "!**/node_modules/**/{CONTRIBUTORS,CNAME,AUTHOR,TODO,CONTRIBUTING,COPYING,INSTALL,NEWS,PORTING,Makefile,htdocs,CHANGELOG,ChangeLog,changelog,README,Readme,readme,test,sample,example,demo,composer.json,tsconfig.json,jsdoc.json,tslint.json,typings.json,gulpfile,bower.json,package-lock,Gruntfile,CMakeLists,karma.conf,yarn.lock}*",
-  "!**/node_modules/**/{man,benchmark,node_modules,spec,cmake,browser,vagrant,doxy*,bin,obj,obj.target,example,examples,test,tests,doc,docs,msvc,Xcode,CVS,RCS,SCCS}{,/**/*}",
-  "!**/node_modules/**/*.{conf,png,pc,coffee,txt,spec.js,ts,js.flow,html,def,jst,xml,ico,in,ac,sln,dsp,dsw,cmd,vcproj,vcxproj,vcxproj.filters,pdb,exp,obj,lib,map,md,sh,gypi,gyp,h,cpp,yml,log,tlog,Makefile,mk,c,cc,rc,xcodeproj,xcconfig,d.ts,yaml,hpp}",
-  "!**/node_modules/**/node-v*-x64{,/**/*}",
-  "!**/node_modules/bluebird/js/browser{,/**/*}",
-  "!**/node_modules/bluebird/js/browser{,/**/*}",
-  "!**/node_modules/source-map/dist{,/**/*}",
-  "!**/node_modules/lodash/fp{,/**/*}",
-  "!**/node_modules/async/!(dist|package.json)",
-  "!**/node_modules/async/internal{,/**/*}",
-  "!**/node_modules/ajv/dist{,/**/*}",
-  "!**/node_modules/ajv/scripts{,/**/*}",
-  "!**/node_modules/node-pre-gyp/!(lib|package.json)",
-  "!**/node_modules/node-pre-gyp/lib/!(util|pre-binding.js|node-pre-gyp.js)",
-  "!**/node_modules/node-pre-gyp/lib/util/!(versioning.js|abi_crosswalk.json)",
-  "!**/node_modules/source-map-support/browser-source-map-support.js",
-  "!**/node_modules/json-schema/!(package.json|lib)"
+	"!**/.*",
+	"!**/node_modules/**/{CONTRIBUTORS,CNAME,AUTHOR,TODO,CONTRIBUTING,COPYING,INSTALL,NEWS,PORTING,Makefile,htdocs,CHANGELOG,ChangeLog,changelog,README,Readme,readme,test,sample,example,demo,composer.json,tsconfig.json,jsdoc.json,tslint.json,typings.json,gulpfile,bower.json,package-lock,Gruntfile,CMakeLists,karma.conf,yarn.lock}*",
+	"!**/node_modules/**/{man,benchmark,node_modules,spec,cmake,browser,vagrant,doxy*,bin,obj,obj.target,example,examples,test,tests,doc,docs,msvc,Xcode,CVS,RCS,SCCS}{,/**/*}",
+	"!**/node_modules/**/*.{conf,png,pc,coffee,txt,spec.js,ts,js.flow,html,def,jst,xml,ico,in,ac,sln,dsp,dsw,cmd,vcproj,vcxproj,vcxproj.filters,pdb,exp,obj,lib,map,md,sh,gypi,gyp,h,cpp,yml,log,tlog,Makefile,mk,c,cc,rc,xcodeproj,xcconfig,d.ts,yaml,hpp}",
+	"!**/node_modules/**/node-v*-x64{,/**/*}",
+	"!**/node_modules/bluebird/js/browser{,/**/*}",
+	"!**/node_modules/bluebird/js/browser{,/**/*}",
+	"!**/node_modules/source-map/dist{,/**/*}",
+	"!**/node_modules/lodash/fp{,/**/*}",
+	"!**/node_modules/async/!(dist|package.json)",
+	"!**/node_modules/async/internal{,/**/*}",
+	"!**/node_modules/ajv/dist{,/**/*}",
+	"!**/node_modules/ajv/scripts{,/**/*}",
+	"!**/node_modules/node-pre-gyp/!(lib|package.json)",
+	"!**/node_modules/node-pre-gyp/lib/!(util|pre-binding.js|node-pre-gyp.js)",
+	"!**/node_modules/node-pre-gyp/lib/util/!(versioning.js|abi_crosswalk.json)",
+	"!**/node_modules/source-map-support/browser-source-map-support.js",
+	"!**/node_modules/json-schema/!(package.json|lib)"
 ]
 ```

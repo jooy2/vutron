@@ -2,25 +2,25 @@ import { createRouter, createWebHashHistory } from 'vue-router/dist/vue-router.e
 import { MainScreen, ErrorScreen } from '@/renderer/screens'
 
 export default createRouter({
-  history: createWebHashHistory(),
-  routes: [
-    {
-      path: '/',
-      component: MainScreen,
-      meta: {
-        title: 'Main'
-      }
-    },
-    {
-      path: '/error',
-      component: ErrorScreen,
-      meta: {
-        title: 'Unknown error occurred'
-      }
-    },
-    {
-      path: '/:pathMatch(.*)*',
-      redirect: '/'
-    }
-  ]
+	history: createWebHashHistory(),
+	routes: [
+		{
+			path: '/',
+			component: MainScreen,
+			meta: {
+				title: 'Main'
+			}
+		},
+		{
+			path: '/error',
+			component: ErrorScreen,
+			meta: {
+				title: 'Unknown error occurred'
+			}
+		},
+		{
+			path: '/:pathMatch(.*)*',
+			redirect: '/'
+		}
+	]
 })
