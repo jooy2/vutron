@@ -1,10 +1,13 @@
 {
 	"desc": {
-		"welcome": "Thank you for using Vutron. This cool template makes it easy to create a variety of cross-platform applications."
+		"welcome-title": "Hello Vutron! Everything is ready.",
+		"welcome-desc": "You can now write cross-platform web applications. See changes in real time and build to multiple platforms with one command. If you're not already familiar with it, you can get help from the documentation page below, or run some pre-written example code."
 	},
 	"menu": {
 		"change-theme": "Change Theme",
 		"change-language": "Change Language",
-		"about": "About Vutron"
+		"increase-count": "Count 1 increment",
+		"documentation": "Documentation",
+		"github": "Source Code"
 	}
 }
