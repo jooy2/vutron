@@ -1,6 +1,7 @@
 buildRes/
 dist/
 node_modules/
+docs/
 
 .idea/
 .vscode/

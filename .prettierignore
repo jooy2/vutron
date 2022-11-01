@@ -9,3 +9,4 @@
 .github/
 buildRes/
 dist/
+docs/.vitepress/dist/
