@@ -17,7 +17,7 @@ The built packages can be found in `dist/release/{version}` location.
 
 ## Build settings for projects that use Native Node modules
 
-For projects that use the **Native Node Module**, add the following script to your package.json: When installing dependencies, electron-builder will take care of any modules that require rebuilding.
+For projects that use the **Native Node Module**, add the following script to your `package.json`: When installing dependencies, `electron-builder` will take care of any modules that require rebuilding.
 
 ```json
 {
@@ -43,7 +43,7 @@ $ npm run build
 
 ## Reduce bundle size by excluding development files
 
-You can exclude files you don't need at build time by adding a file pattern to the files property of electron-builder.json5. This will save bundle capacity.
+You can exclude files you don't need at build time by adding a file pattern to the files property of `electron-builder.json5`. This will save bundle capacity.
 
 Below is an unnecessary `node_modules` file pattern that can further save bundles. Depending on the project, using the rules below may cause problems, so please review it before using.
 
