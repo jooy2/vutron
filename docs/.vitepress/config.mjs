@@ -8,8 +8,7 @@ export default {
 			root: 'docs',
 			collapsible: false,
 			collapsed: false,
-			underscoreToSpace: true,
-			hyphenToSpace: true
+			useTitleFromFileHeading: true
 		}),
 		socialLinks: [{ icon: 'github', link: 'https://github.com/jooy2/vutron' }]
 	}
