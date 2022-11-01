@@ -1,4 +1,4 @@
-# Other projects
+# Other Projects
 
 ## Looking for Electron templates made with React?
 

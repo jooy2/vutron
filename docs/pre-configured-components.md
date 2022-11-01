@@ -1,4 +1,4 @@
-# Pre-configured components
+# Pre-configured Components
 
 - [Vite 3.x.x](https://vitejs.dev)
 - [Electron 21.x.x](https://www.electronjs.org)

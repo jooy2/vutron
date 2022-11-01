@@ -29,9 +29,6 @@ $ yarn install
 
 # via pnpm (https://pnpm.io)
 $ pnpm i
-
-# via cnpm (https://github.com/cnpm/cnpm)
-$ cnpm i
 ```
 
 ## Run in development environment
