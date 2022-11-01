@@ -1,9 +1,12 @@
 import { fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import electronPlugin from 'vite-plugin-electron'
+import rendererPlugin from 'vite-plugin-electron-renderer'
 import eslintPlugin from 'vite-plugin-eslint'
+import vuetifyPlugin from 'vite-plugin-vuetify'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
+import pkg from './package.json'
 import { resolve, dirname } from 'path'
 import { builtinModules } from 'module'
 
@@ -23,15 +26,27 @@ export default defineConfig({
 	root: resolve('./src/renderer'),
 	publicDir: resolve('./src/renderer/public'),
 	build: {
-		outDir: resolve('./dist')
+		outDir: resolve('./dist'),
+		rollupOptions: {
+			external: Object.keys(pkg.dependencies)
+		}
 	},
 	plugins: [
 		vue(),
 		vueJsx(),
+		// Docs: https://github.com/vuetifyjs/vuetify-loader
+		vuetifyPlugin({
+			autoImport: true
+		}),
+		// Docs: https://github.com/gxmari007/vite-plugin-eslint
 		eslintPlugin(),
-		electronPlugin({
-			main: {
-				entry: 'src/main/index.ts',
+		// Docs: https://github.com/electron-vite/vite-plugin-electron
+		electronPlugin([
+			{
+				entry: ['src/main/index.ts'],
+				onstart: (options) => {
+					options.startup(['.', '--no-sandbox'])
+				},
 				vite: {
 					publicDir: resolve('./src/main'),
 					build: {
@@ -43,8 +58,10 @@ export default defineConfig({
 						}
 					}
 				}
-			},
-			renderer: {}
+			}
+		]),
+		rendererPlugin({
+			nodeIntegration: true
 		})
 	]
 })
