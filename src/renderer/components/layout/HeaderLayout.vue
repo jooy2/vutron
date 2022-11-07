@@ -14,7 +14,7 @@ const isCurrentRoute = (path: string): boolean => {
 </script>
 <template>
 	<v-app-bar color="primary" density="compact">
-		<v-app-bar-title>{{ $route.meta.title }}</v-app-bar-title>
+		<v-app-bar-title>{{ $t($route.meta.titleKey || 'title.main') }}</v-app-bar-title>
 		<template #append>
 			<v-btn
 				prepend-icon="mdi-home"
