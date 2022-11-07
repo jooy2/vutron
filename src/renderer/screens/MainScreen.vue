@@ -38,10 +38,15 @@ const handleCountIncrease = (): void => {
 <template>
 	<v-container>
 		<v-row no-gutters align="center" class="text-center">
-			<v-col cols="5">
-				<img alt="logo" class="ma-auto h-auto w-75" src="/images/vutron-logo.webp" />
+			<v-col cols="12" md="5">
+				<img
+					alt="logo"
+					draggable="false"
+					class="ma-auto h-auto w-75"
+					src="/images/vutron-logo.webp"
+				/>
 			</v-col>
-			<v-col cols="7">
+			<v-col cols="12" md="7">
 				<h2 class="my-4">{{ $t('desc.welcome-title') }}</h2>
 				<p>{{ $t('desc.welcome-desc') }}</p>
 				<v-row class="my-4">
