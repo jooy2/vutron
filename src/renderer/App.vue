@@ -11,6 +11,7 @@ import { DefaultLayout } from '@/renderer/components/layout'
 <style>
 html {
 	overflow-y: auto !important;
+	user-select: none;
 }
 html,
 body {
