@@ -7,7 +7,7 @@
 	copyright: 'ⓒ 2022 ${author}',
 	artifactName: '${productName} ${version}_${arch}.${ext}',
 	directories: {
-		buildResources: 'buildRes',
+		buildResources: 'buildAssets',
 		output: './dist/release/${version}'
 	},
 	/* A list of files not to be included in the build. */
@@ -24,7 +24,7 @@
 		bundleVersion: '1.0',
 		hardenedRuntime: true,
 		gatekeeperAssess: false,
-		icon: 'buildRes/icons/icon.icns',
+		icon: 'buildAssets/icons/icon.icns',
 		type: 'distribution',
 		target: [
 			{
@@ -50,7 +50,7 @@
 		sign: false
 	},
 	win: {
-		icon: 'buildRes/icons/icon.ico',
+		icon: 'buildAssets/icons/icon.ico',
 		target: [
 			{
 				target: 'appx',
@@ -78,7 +78,7 @@
 	},
 	linux: {
 		executableName: 'vutron',
-		icon: 'buildRes/icons',
+		icon: 'buildAssets/icons',
 		category: 'Utility',
 		target: [
 			{

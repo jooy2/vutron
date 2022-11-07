@@ -1,4 +1,4 @@
-buildRes/
+buildAssets/
 dist/
 node_modules/
 docs/

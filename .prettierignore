@@ -7,6 +7,6 @@
 
 # Project files
 .github/
-buildRes/
+buildAssets/
 dist/
 docs/.vitepress/dist/
