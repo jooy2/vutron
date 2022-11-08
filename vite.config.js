@@ -6,7 +6,6 @@ import eslintPlugin from 'vite-plugin-eslint'
 import vuetifyPlugin from 'vite-plugin-vuetify'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
-import pkg from './package.json'
 import { resolve, dirname } from 'path'
 import { builtinModules } from 'module'
 
@@ -26,10 +25,8 @@ export default defineConfig({
 	root: resolve('./src/renderer'),
 	publicDir: resolve('./src/renderer/public'),
 	build: {
-		outDir: resolve('./dist'),
-		rollupOptions: {
-			external: Object.keys(pkg.dependencies)
-		}
+		assetsDir: '', // See: https://github.com/electron-vite/electron-vite-vue/issues/287
+		outDir: resolve('./dist')
 	},
 	plugins: [
 		vue(),
