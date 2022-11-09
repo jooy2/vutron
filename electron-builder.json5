@@ -17,8 +17,7 @@
     */
 		'dist/**/*',
 		'!docs/**/*',
-		'!dist/release/**/*',
-		'!dist/main/index.ts'
+		'!dist/release/**/*'
 	],
 	mac: {
 		bundleVersion: '1.0',

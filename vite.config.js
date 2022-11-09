@@ -40,14 +40,20 @@ export default defineConfig({
 		// Docs: https://github.com/electron-vite/vite-plugin-electron
 		electronPlugin([
 			{
+				entry: ['src/preload/index.js'],
+				vite: {
+					build: {
+						outDir: 'dist/preload'
+					}
+				}
+			},
+			{
 				entry: ['src/main/index.ts'],
 				onstart: (options) => {
 					options.startup(['.', '--no-sandbox'])
 				},
 				vite: {
-					publicDir: resolve('./src/main'),
 					build: {
-						emptyOutDir: true,
 						assetsDir: '.',
 						outDir: 'dist/main',
 						rollupOptions: {
