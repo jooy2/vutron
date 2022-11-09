@@ -10,7 +10,8 @@ export default class Constants {
 	static DEFAULT_WEB_PREFERENCES = {
 		nodeIntegration: true,
 		contextIsolation: false,
-		nodeIntegrationInWorker: true
+		nodeIntegrationInWorker: true,
+		preload: join(__dirname, '../preload/index.js')
 	}
 
 	static APP_INDEX_URL_DEV = 'http://localhost:5173/index.html'

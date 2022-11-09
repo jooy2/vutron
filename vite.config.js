@@ -40,7 +40,7 @@ export default defineConfig({
 		// Docs: https://github.com/electron-vite/vite-plugin-electron
 		electronPlugin([
 			{
-				entry: ['src/preload/index.js'],
+				entry: ['src/preload/index.ts'],
 				vite: {
 					build: {
 						outDir: 'dist/preload'
