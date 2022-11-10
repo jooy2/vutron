@@ -13,7 +13,7 @@ $ npm run build:mac
 $ npm run build:linux
 ```
 
-The built packages can be found in `dist/release/{version}` location.
+The built packages can be found in `release/{version}` location.
 
 ## Build settings for projects that use Native Node modules
 

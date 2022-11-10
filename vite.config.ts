@@ -6,8 +6,11 @@ import eslintPlugin from 'vite-plugin-eslint'
 import vuetifyPlugin from 'vite-plugin-vuetify'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
+import { rmSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { builtinModules } from 'module'
+
+rmSync('dist', { recursive: true, force: true })
 
 export default defineConfig({
 	define: {
@@ -24,6 +27,7 @@ export default defineConfig({
 	base: './',
 	root: resolve('./src/renderer'),
 	publicDir: resolve('./src/renderer/public'),
+	clearScreen: false,
 	build: {
 		assetsDir: '', // See: https://github.com/electron-vite/electron-vite-vue/issues/287
 		outDir: resolve('./dist')

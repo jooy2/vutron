@@ -1,6 +1,5 @@
 # Node artifact files
 node_modules/
-dist/
 
 # Compiled Java class files
 *.class
@@ -50,6 +49,9 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Project Files
+dist/
+release/
 npm-debug.log
 npm-debug.log.*
 vite-plugin-electron.log

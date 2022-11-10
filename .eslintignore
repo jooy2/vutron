@@ -1,6 +1,7 @@
+node_modules/
 buildAssets/
 dist/
-node_modules/
+release/
 docs/
 
 .idea/

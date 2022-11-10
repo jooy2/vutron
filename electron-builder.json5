@@ -8,7 +8,7 @@
 	artifactName: '${productName} ${version}_${arch}.${ext}',
 	directories: {
 		buildResources: 'buildAssets',
-		output: './dist/release/${version}'
+		output: './release/${version}'
 	},
 	/* A list of files not to be included in the build. */
 	files: [
@@ -17,7 +17,7 @@
     */
 		'dist/**/*',
 		'!docs/**/*',
-		'!dist/release/**/*'
+		'!release/**/*'
 	],
 	mac: {
 		bundleVersion: '1.0',

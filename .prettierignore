@@ -9,4 +9,5 @@
 .github/
 buildAssets/
 dist/
+release/
 docs/.vitepress/dist/
