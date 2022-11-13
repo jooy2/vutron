@@ -7,33 +7,33 @@ let mainWindow
 let errorWindow
 
 app.on('ready', () => {
-	macOSDisableDefaultMenuItem()
+  macOSDisableDefaultMenuItem()
 
-	mainWindow = createMainWindow(mainWindow)
+  mainWindow = createMainWindow(mainWindow)
 })
 
 app.on('activate', () => {
-	if (!mainWindow) {
-		mainWindow = createMainWindow(mainWindow)
-	}
+  if (!mainWindow) {
+    mainWindow = createMainWindow(mainWindow)
+  }
 })
 
 app.on('window-all-closed', () => {
-	mainWindow = null
-	errorWindow = null
+  mainWindow = null
+  errorWindow = null
 
-	if (!Constants.IS_MAC) {
-		app.quit()
-	}
+  if (!Constants.IS_MAC) {
+    app.quit()
+  }
 })
 
 app.on(
-	'render-process-gone',
-	(event: Event, webContents: WebContents, details: RenderProcessGoneDetails) => {
-		errorWindow = createErrorWindow(errorWindow, mainWindow, details)
-	}
+  'render-process-gone',
+  (event: Event, webContents: WebContents, details: RenderProcessGoneDetails) => {
+    errorWindow = createErrorWindow(errorWindow, mainWindow, details)
+  }
 )
 
 process.on('uncaughtException', () => {
-	errorWindow = createErrorWindow(errorWindow, mainWindow)
+  errorWindow = createErrorWindow(errorWindow, mainWindow)
 })

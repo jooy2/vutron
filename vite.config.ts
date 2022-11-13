@@ -13,62 +13,62 @@ import { builtinModules } from 'module'
 rmSync('dist', { recursive: true, force: true })
 
 export default defineConfig({
-	define: {
-		__VUE_I18N_FULL_INSTALL__: true,
-		__VUE_I18N_LEGACY_API__: false,
-		__INTLIFY_PROD_DEVTOOLS__: false
-	},
-	resolve: {
-		extensions: ['.mjs', '.js', '.ts', '.vue', '.json', '.scss'],
-		alias: {
-			'@': resolve(dirname(fileURLToPath(import.meta.url)), 'src')
-		}
-	},
-	base: './',
-	root: resolve('./src/renderer'),
-	publicDir: resolve('./src/renderer/public'),
-	clearScreen: false,
-	build: {
-		assetsDir: '', // See: https://github.com/electron-vite/electron-vite-vue/issues/287
-		outDir: resolve('./dist')
-	},
-	plugins: [
-		vue(),
-		vueJsx(),
-		// Docs: https://github.com/vuetifyjs/vuetify-loader
-		vuetifyPlugin({
-			autoImport: true
-		}),
-		// Docs: https://github.com/gxmari007/vite-plugin-eslint
-		eslintPlugin(),
-		// Docs: https://github.com/electron-vite/vite-plugin-electron
-		electronPlugin([
-			{
-				entry: ['src/preload/index.ts'],
-				vite: {
-					build: {
-						outDir: 'dist/preload'
-					}
-				}
-			},
-			{
-				entry: ['src/main/index.ts'],
-				onstart: (options) => {
-					options.startup(['.', '--no-sandbox'])
-				},
-				vite: {
-					build: {
-						assetsDir: '.',
-						outDir: 'dist/main',
-						rollupOptions: {
-							external: ['electron', ...builtinModules]
-						}
-					}
-				}
-			}
-		]),
-		rendererPlugin({
-			nodeIntegration: true
-		})
-	]
+  define: {
+    __VUE_I18N_FULL_INSTALL__: true,
+    __VUE_I18N_LEGACY_API__: false,
+    __INTLIFY_PROD_DEVTOOLS__: false
+  },
+  resolve: {
+    extensions: ['.mjs', '.js', '.ts', '.vue', '.json', '.scss'],
+    alias: {
+      '@': resolve(dirname(fileURLToPath(import.meta.url)), 'src')
+    }
+  },
+  base: './',
+  root: resolve('./src/renderer'),
+  publicDir: resolve('./src/renderer/public'),
+  clearScreen: false,
+  build: {
+    assetsDir: '', // See: https://github.com/electron-vite/electron-vite-vue/issues/287
+    outDir: resolve('./dist')
+  },
+  plugins: [
+    vue(),
+    vueJsx(),
+    // Docs: https://github.com/vuetifyjs/vuetify-loader
+    vuetifyPlugin({
+      autoImport: true
+    }),
+    // Docs: https://github.com/gxmari007/vite-plugin-eslint
+    eslintPlugin(),
+    // Docs: https://github.com/electron-vite/vite-plugin-electron
+    electronPlugin([
+      {
+        entry: ['src/preload/index.ts'],
+        vite: {
+          build: {
+            outDir: 'dist/preload'
+          }
+        }
+      },
+      {
+        entry: ['src/main/index.ts'],
+        onstart: (options) => {
+          options.startup(['.', '--no-sandbox'])
+        },
+        vite: {
+          build: {
+            assetsDir: '.',
+            outDir: 'dist/main',
+            rollupOptions: {
+              external: ['electron', ...builtinModules]
+            }
+          }
+        }
+      }
+    ]),
+    rendererPlugin({
+      nodeIntegration: true
+    })
+  ]
 })

@@ -1,12 +1,12 @@
 {
-	"compilerOptions": {
-		"target": "esnext",
-		"module": "esnext",
-		"jsx": "preserve",
-		"moduleResolution": "node",
-		"composite": true,
-		"resolveJsonModule": true,
-		"allowSyntheticDefaultImports": true
-	},
-	"include": ["package.json"]
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "composite": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["package.json"]
 }

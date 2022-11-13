@@ -1,19 +1,19 @@
 {
-	"desc": {
-		"welcome-title": "你好武特龙！ 一切都准备好了。",
-		"welcome-desc": "您现在可以编写跨平台的 Web 应用程序。 实时查看更改并使用一个命令构建到多个平台。 如果您还不熟悉它，可以从下面的文档页面获得帮助，或者运行一些预先编写的示例代码。",
-		"second-desc": "您已移至第二个屏幕！ 这里什么都没有！"
-	},
-	"title": {
-		"main": "主屏幕",
-		"second": "第二屏",
-		"error": "未知错误"
-	},
-	"menu": {
-		"change-theme": "改变主题",
-		"change-language": "改变语言",
-		"increase-count": "计数 1 个增量",
-		"documentation": "文档",
-		"github": "源代码"
-	}
+  "desc": {
+    "welcome-title": "你好武特龙！ 一切都准备好了。",
+    "welcome-desc": "您现在可以编写跨平台的 Web 应用程序。 实时查看更改并使用一个命令构建到多个平台。 如果您还不熟悉它，可以从下面的文档页面获得帮助，或者运行一些预先编写的示例代码。",
+    "second-desc": "您已移至第二个屏幕！ 这里什么都没有！"
+  },
+  "title": {
+    "main": "主屏幕",
+    "second": "第二屏",
+    "error": "未知错误"
+  },
+  "menu": {
+    "change-theme": "改变主题",
+    "change-language": "改变语言",
+    "increase-count": "计数 1 个增量",
+    "documentation": "文档",
+    "github": "源代码"
+  }
 }

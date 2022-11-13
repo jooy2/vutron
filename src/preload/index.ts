@@ -1,5 +1,5 @@
 const main = (): void => {
-	console.log('[Preload] Script loaded.')
+  console.log('[Preload] Script loaded.')
 }
 
 main()

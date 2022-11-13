@@ -6,14 +6,14 @@ import zhHant from '@/renderer/locales/zh-hant.json'
 import { getCurrentLocale } from '@/renderer/utils'
 
 export default createI18n({
-	legacy: false,
-	locale: getCurrentLocale(),
-	fallbackLocale: 'en',
-	globalInjection: true,
-	messages: {
-		en,
-		ko,
-		zhHans,
-		zhHant
-	}
+  legacy: false,
+  locale: getCurrentLocale(),
+  fallbackLocale: 'en',
+  globalInjection: true,
+  messages: {
+    en,
+    ko,
+    zhHans,
+    zhHant
+  }
 })

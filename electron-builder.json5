@@ -1,97 +1,97 @@
 {
-	productName: 'Vutron',
-	appId: 'com.vutron.vutron',
-	asar: true,
-	extends: null,
-	compression: 'maximum',
-	copyright: 'ⓒ 2022 ${author}',
-	artifactName: '${productName} ${version}_${arch}.${ext}',
-	directories: {
-		buildResources: 'buildAssets',
-		output: './release/${version}'
-	},
-	/* A list of files not to be included in the build. */
-	files: [
-		/*
+  productName: 'Vutron',
+  appId: 'com.vutron.vutron',
+  asar: true,
+  extends: null,
+  compression: 'maximum',
+  copyright: 'ⓒ 2022 ${author}',
+  artifactName: '${productName} ${version}_${arch}.${ext}',
+  directories: {
+    buildResources: 'buildAssets',
+    output: './release/${version}'
+  },
+  /* A list of files not to be included in the build. */
+  files: [
+    /*
       (Required) The files and folders listed below should not be included in the build.
     */
-		'dist/**/*',
-		'!docs/**/*',
-		'!release/**/*'
-	],
-	mac: {
-		bundleVersion: '1.0',
-		hardenedRuntime: true,
-		gatekeeperAssess: false,
-		icon: 'buildAssets/icons/icon.icns',
-		type: 'distribution',
-		target: [
-			{
-				target: 'dmg',
-				arch: ['x64', 'arm64', 'universal']
-			}
-		]
-	},
-	dmg: {
-		contents: [
-			{
-				x: 410,
-				y: 150,
-				type: 'link',
-				path: '/Applications'
-			},
-			{
-				x: 130,
-				y: 150,
-				type: 'file'
-			}
-		],
-		sign: false
-	},
-	win: {
-		icon: 'buildAssets/icons/icon.ico',
-		target: [
-			{
-				target: 'appx',
-				arch: 'x64'
-			},
-			{
-				target: 'zip',
-				arch: 'x64'
-			},
-			{
-				target: 'portable',
-				arch: 'x64'
-			},
-			{
-				target: 'nsis',
-				arch: 'x64'
-			}
-		]
-	},
-	portable: {
-		artifactName: '${productName} ${version}_${arch} Portable.${ext}'
-	},
-	nsis: {
-		oneClick: true
-	},
-	linux: {
-		executableName: 'vutron',
-		icon: 'buildAssets/icons',
-		category: 'Utility',
-		target: [
-			{
-				target: 'snap',
-				arch: 'x64'
-			},
-			{
-				target: 'deb',
-				arch: 'x64'
-			},
-			{
-				target: 'rpm',
-				arch: 'x64'
-			}
-		]
-	}
+    'dist/**/*',
+    '!docs/**/*',
+    '!release/**/*'
+  ],
+  mac: {
+    bundleVersion: '1.0',
+    hardenedRuntime: true,
+    gatekeeperAssess: false,
+    icon: 'buildAssets/icons/icon.icns',
+    type: 'distribution',
+    target: [
+      {
+        target: 'dmg',
+        arch: ['x64', 'arm64', 'universal']
+      }
+    ]
+  },
+  dmg: {
+    contents: [
+      {
+        x: 410,
+        y: 150,
+        type: 'link',
+        path: '/Applications'
+      },
+      {
+        x: 130,
+        y: 150,
+        type: 'file'
+      }
+    ],
+    sign: false
+  },
+  win: {
+    icon: 'buildAssets/icons/icon.ico',
+    target: [
+      {
+        target: 'appx',
+        arch: 'x64'
+      },
+      {
+        target: 'zip',
+        arch: 'x64'
+      },
+      {
+        target: 'portable',
+        arch: 'x64'
+      },
+      {
+        target: 'nsis',
+        arch: 'x64'
+      }
+    ]
+  },
+  portable: {
+    artifactName: '${productName} ${version}_${arch} Portable.${ext}'
+  },
+  nsis: {
+    oneClick: true
+  },
+  linux: {
+    executableName: 'vutron',
+    icon: 'buildAssets/icons',
+    category: 'Utility',
+    target: [
+      {
+        target: 'snap',
+        arch: 'x64'
+      },
+      {
+        target: 'deb',
+        arch: 'x64'
+      },
+      {
+        target: 'rpm',
+        arch: 'x64'
+      }
+    ]
+  }
 }
