@@ -1,3 +1,4 @@
+// @ts-ignore
 import { generateSidebar } from 'vitepress-sidebar'
 
 export default {
