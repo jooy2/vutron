@@ -1,5 +1,3 @@
-<script setup lang="tsx"></script>
-
 <template>
   <v-container>
     <v-row no-gutters align="center" class="text-center">
