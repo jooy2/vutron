@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Quick Start Templates for Vite + Vue 3 + Electron",
   "homepage": "https://vutron.jooy2.com",
-  "author": "jooy2 <jootc.help@gmail.com>",
+  "author": "jooy2 <jooy2.contact@gmail.com>",
   "license": "MIT",
   "main": "dist/main/index.js",
   "scripts": {
@@ -28,29 +28,29 @@
   },
   "dependencies": {
     "@electron/remote": "^2.0.8",
-    "pinia": "^2.0.26",
+    "pinia": "^2.0.27",
     "vue": "^3.2.45",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6",
-    "vuetify": "^3.0.2"
+    "vuetify": "^3.0.3"
   },
   "devDependencies": {
     "@mdi/font": "^7.0.96",
-    "@typescript-eslint/eslint-plugin": "^5.44.0",
-    "@typescript-eslint/parser": "^5.44.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "cross-env": "^7.0.3",
-    "electron": "^21.3.1",
+    "electron": "^22.0.0",
     "electron-builder": "^23.3.3",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.5.1",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-vue": "^9.7.0",
+    "eslint-plugin-vue": "^9.8.0",
     "prettier": "^2.8.0",
     "typescript": "^4.9.3",
     "vite": "^3.2.4",
@@ -59,6 +59,6 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-vuetify": "^1.0.0",
     "vue-eslint-parser": "^9.1.0",
-    "vue-tsc": "^1.0.9"
+    "vue-tsc": "^1.0.11"
   }
 }
