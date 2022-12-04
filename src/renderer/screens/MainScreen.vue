@@ -4,15 +4,17 @@ import { useTheme } from 'vuetify'
 import { openExternal } from '@/renderer/utils'
 import { useTempStore } from '@/renderer/store/temp'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const { locale, availableLocales } = useI18n()
-const theme = useTheme()
 const { counterIncrease } = useTempStore()
 const { counter } = storeToRefs(useTempStore())
+const theme = useTheme()
 const languages = ref(['en'])
 
-languages.value = availableLocales
+onMounted(() => {
+  languages.value = availableLocales
+})
 
 const handleChangeTheme = (): void => {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
