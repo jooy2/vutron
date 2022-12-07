@@ -5,6 +5,7 @@ import zhHans from '@/renderer/locales/zh-hans.json'
 import zhHant from '@/renderer/locales/zh-hant.json'
 import de from '@/renderer/locales/de.json'
 import es from '@/renderer/locales/es.json'
+import ja from '@/renderer/locales/ja.json'
 import { getCurrentLocale } from '@/renderer/utils'
 
 export default createI18n({
@@ -18,6 +19,7 @@ export default createI18n({
     zhHans,
     zhHant,
     de,
-    es
+    es,
+    ja
   }
 })
