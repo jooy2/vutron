@@ -4,6 +4,7 @@ import ko from '@/renderer/locales/ko.json'
 import zhHans from '@/renderer/locales/zh-hans.json'
 import zhHant from '@/renderer/locales/zh-hant.json'
 import de from '@/renderer/locales/de.json'
+import es from '@/renderer/locales/es.json'
 import { getCurrentLocale } from '@/renderer/utils'
 
 export default createI18n({
@@ -16,6 +17,7 @@ export default createI18n({
     ko,
     zhHans,
     zhHant,
-    de
+    de,
+    es
   }
 })
