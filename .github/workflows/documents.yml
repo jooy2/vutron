@@ -54,7 +54,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: "src/renderer/public/images/vutron-logo.webp"
-          replace: "vutron-logo.webp"
+          replace: "/vutron-logo.webp"
           regex: false
 
       # run build script
