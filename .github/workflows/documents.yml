@@ -42,6 +42,21 @@ jobs:
       - name: Install for document dependencies
         run: npm run docs:install
 
+      # copy and replace string index.md file
+      - name: Copy and replace string index.md file
+        run: cp README.md docs/index.md
+      - name: Copy image asset (logo)
+        run: cp src/renderer/public/images/vutron-logo.webp docs/public
+      - name: Copy image asset (sample)
+        run: cp vutron-sample.webp docs/public
+
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "src/renderer/public/images/vutron-logo.webp"
+          replace: "vutron-logo.webp"
+          regex: false
+
       # run build script
       - name: Build VitePress site
         run: npm run docs:build
