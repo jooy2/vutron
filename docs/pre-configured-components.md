@@ -1,6 +1,6 @@
 # Pre-configured Components
 
-- [Vite 3.x.x](https://vitejs.dev)
+- [Vite 4.x.x](https://vitejs.dev)
 - [Electron 22.x.x](https://www.electronjs.org)
 - [Electron Builder 23.x](https://www.electron.build)
 - [TypeScript 4.x](https://www.typescriptlang.org)
