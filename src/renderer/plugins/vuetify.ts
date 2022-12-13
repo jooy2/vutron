@@ -1,5 +1,5 @@
 import { createVuetify } from 'vuetify'
-import { ko, en, zhHans, zhHant, de, es, ja, fr } from 'vuetify/locale'
+import { ko, en, zhHans, zhHant, de, es, ja, fr, ru } from 'vuetify/locale'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.min.css'
@@ -8,7 +8,7 @@ import colors from 'vuetify/lib/util/colors.mjs'
 
 export default createVuetify({
   locale: {
-    messages: { ko, en, zhHans, zhHant, de, es, ja, fr },
+    messages: { ko, en, zhHans, zhHant, de, es, ja, fr, ru },
     locale: 'en',
     fallback: 'en'
   },
