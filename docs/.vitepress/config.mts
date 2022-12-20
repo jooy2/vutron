@@ -1,9 +1,12 @@
 // @ts-ignore
 import { generateSidebar } from 'vitepress-sidebar'
+import { name, description } from '../../package.json'
+
+const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
 export default {
-  title: 'Vutron',
-  description: 'Quick Start Templates for Vite + Vue 3 + Electron',
+  title: capitalizeFirst(name),
+  description,
   themeConfig: {
     sidebar: generateSidebar({
       root: 'docs',
