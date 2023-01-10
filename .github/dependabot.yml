@@ -4,5 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    assignees:
+      - "jooy2"
+    reviewers:
+      - "jooy2"
     open-pull-requests-limit: 10
     versioning-strategy: increase
