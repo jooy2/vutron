@@ -62,7 +62,7 @@
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vite-plugin-electron": "^0.11.1",
-    "vite-plugin-electron-renderer": "^0.11.3",
+    "vite-plugin-electron-renderer": "^0.11.4",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-vuetify": "^1.0.1",
     "vue-eslint-parser": "^9.1.0",
