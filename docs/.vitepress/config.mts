@@ -1,6 +1,6 @@
 // @ts-ignore
 import { generateSidebar } from 'vitepress-sidebar'
-import { name, description } from '../../package.json'
+import { name, description, repository } from '../../package.json'
 
 const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
@@ -19,6 +19,6 @@ export default {
       useTitleFromFileHeading: true,
       sortByFileName: ['getting-started.md', 'build-configuration.md', 'npm-scripts.md']
     }),
-    socialLinks: [{ icon: 'github', link: 'https://github.com/jooy2/vutron' }]
+    socialLinks: [{ icon: 'github', link: repository.url.replace('.git', '') }]
   }
 }
