@@ -7,6 +7,7 @@ const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 export default {
   title: capitalizeFirst(name),
   description,
+  outDir: '../distDocs',
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]

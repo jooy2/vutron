@@ -29,8 +29,8 @@ TEST*.xml
 Thumbs.db
 
 # VitePress files
-/docs/.vitepress/dist
-/docs/.vitepress/dist/*
+/distDocs
+/distDocs/*
 /docs/.vitepress/.temp
 /docs/.vitepress/.temp/*
 /docs/.vitepress/.cache

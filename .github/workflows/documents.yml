@@ -76,7 +76,7 @@ jobs:
           # deploy to gh-pages branch
           target_branch: gh-pages
           # deploy the default output dir of VitePress
-          build_dir: docs/.vitepress/dist
+          build_dir: distDocs
           jekyll: false
           fqdn: 'vutron.jooy2.com'
         env:
