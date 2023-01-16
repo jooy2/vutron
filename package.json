@@ -54,7 +54,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-friendly-formatter": "^4.0.1",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-n": "^15.6.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.8.0",
