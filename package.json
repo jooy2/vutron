@@ -57,7 +57,7 @@
     "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-n": "^15.6.0",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-vue": "^9.8.0",
+    "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.2",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
