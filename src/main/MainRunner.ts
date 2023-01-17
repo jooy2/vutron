@@ -22,18 +22,18 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
 
   mainWindow.setMenu(null)
 
-  mainWindow.on('close', (event: Event) => {
+  mainWindow.on('close', (event: Event): void => {
     event.preventDefault()
     exitApp(mainWindow)
   })
 
-  mainWindow.webContents.on('did-frame-finish-load', () => {
+  mainWindow.webContents.on('did-frame-finish-load', (): void => {
     if (Constants.IS_DEV_ENV) {
       mainWindow.webContents.openDevTools()
     }
   })
 
-  mainWindow.once('ready-to-show', () => {
+  mainWindow.once('ready-to-show', (): void => {
     mainWindow.setAlwaysOnTop(true)
     mainWindow.show()
     mainWindow.focus()
@@ -75,7 +75,7 @@ export const createErrorWindow = async (
     await errorWindow.loadFile(Constants.APP_INDEX_URL_PROD, { hash: 'error' })
   }
 
-  errorWindow.on('ready-to-show', () => {
+  errorWindow.on('ready-to-show', (): void => {
     if (!Constants.IS_DEV_ENV && mainWindow && !mainWindow.isDestroyed()) {
       mainWindow.destroy()
     }
@@ -83,7 +83,7 @@ export const createErrorWindow = async (
     errorWindow.focus()
   })
 
-  errorWindow.webContents.on('did-frame-finish-load', () => {
+  errorWindow.webContents.on('did-frame-finish-load', (): void => {
     if (Constants.IS_DEV_ENV) {
       errorWindow.webContents.openDevTools()
     }
