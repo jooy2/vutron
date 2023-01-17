@@ -12,7 +12,7 @@ const { counter } = storeToRefs(useTempStore())
 const theme = useTheme()
 const languages = ref(['en'])
 
-onMounted(() => {
+onMounted((): void => {
   languages.value = availableLocales
 })
 
