@@ -4,7 +4,7 @@
   asar: true,
   extends: null,
   compression: 'maximum',
-  copyright: 'ⓒ 2022 ${author}',
+  copyright: 'ⓒ 2023 ${author}',
   artifactName: '${productName} ${version}_${arch}.${ext}',
   directories: {
     buildResources: 'buildAssets',
