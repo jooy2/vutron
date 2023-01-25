@@ -5,6 +5,8 @@
 | Script Name | Description |
 | --- | --- |
 | `dev` | Start Electron as a development environment |
+| `dev:debug` | Start Electron as a development environment (with vite debug) |
+| `dev:debug:force` | Start Electron as a development environment (with vite debug + clean vite cache) |
 | `build` | Build a specified package for the entire operating system (Requires cross-platform build configuration) |
 | `build:pre` | Commands commonly run at build time. This script does not need to be run separately. |
 | `build:dir` | `electron-builder` directory build |
