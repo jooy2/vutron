@@ -48,7 +48,7 @@ jobs:
       - name: Copy image asset (logo)
         run: cp src/renderer/public/images/vutron-logo.webp docs/public
       - name: Copy image asset (sample)
-        run: cp vutron-sample.webp docs/public
+        run: cp .github/resources/vutron-sample.webp docs/public
 
       - name: Find and Replace (logo)
         uses: jacobtomlinson/gha-find-replace@v2
