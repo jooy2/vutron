@@ -60,7 +60,7 @@ jobs:
       - name: Find and Replace (sample)
         uses: jacobtomlinson/gha-find-replace@v2
         with:
-          find: ".github/resources/public/vutron-sample.webp"
+          find: ".github/resources/vutron-sample.webp"
           replace: "public/vutron-sample.webp"
           regex: false
 
