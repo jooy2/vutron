@@ -18,7 +18,12 @@ export default {
       collapsible: false,
       collapsed: false,
       useTitleFromFileHeading: true,
-      sortByFileName: ['getting-started.md', 'build-configuration.md', 'npm-scripts.md']
+      sortByFileName: [
+        'getting-started.md',
+        'build-configuration.md',
+        'project-structure.md',
+        'npm-scripts.md'
+      ]
     }),
     socialLinks: [{ icon: 'github', link: repository.url.replace('.git', '') }]
   }
