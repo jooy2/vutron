@@ -11,9 +11,16 @@ const { counterIncrease } = useTempStore()
 const { counter } = storeToRefs(useTempStore())
 const theme = useTheme()
 const languages = ref(['en'])
+const appVersion = ref('Unknown')
 
 onMounted((): void => {
   languages.value = availableLocales
+
+  // Get application version from package.json version string (Using IPC communication)
+  window.mainApi.receive('msgReceivedVersion', (version: string) => {
+    appVersion.value = version
+  })
+  window.mainApi.send('msgRequestGetVersion')
 })
 
 const handleChangeTheme = (): void => {
@@ -51,6 +58,9 @@ const handleCountIncrease = (): void => {
       <v-col cols="12" md="7">
         <h2 class="my-4">{{ $t('desc.welcome-title') }}</h2>
         <p>{{ $t('desc.welcome-desc') }}</p>
+        <p class="my-4"
+          >App Version: <strong>{{ appVersion }}</strong></p
+        >
         <v-row class="my-4">
           <v-col cols="3">
             <v-btn icon color="primary" @click="handleChangeTheme">

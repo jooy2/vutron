@@ -22,6 +22,7 @@
 │  │  │  └─ Constants.ts - Main global definition
 │  │  │  └─ Menus.ts - Main global menu definition
 │  │  └─ index.ts - Main process entry point
+│  │  └─ IPCs.ts - Main process ipc handlers definition
 │  │  └─ MainRunner.ts - Main process main window processing
 │  ├─ preload/ - Preload (Electron-Vue communication bridge) process source code
 │  │  └─ index.ts

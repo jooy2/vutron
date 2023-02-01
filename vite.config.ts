@@ -68,7 +68,6 @@ export default defineConfig({
       }
     ]),
     rendererPlugin({
-      nodeIntegration: true,
       optimizeDeps: {
         include: ['path']
       }

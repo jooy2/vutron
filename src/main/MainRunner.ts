@@ -1,6 +1,7 @@
 import { app, BrowserWindow, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import * as electronRemote from '@electron/remote/main'
+import IPCs from './IPCs'
 
 const exitApp = (mainWindow: BrowserWindow): void => {
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -47,6 +48,9 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
   } else {
     await mainWindow.loadFile(Constants.APP_INDEX_URL_PROD)
   }
+
+  // Initialize IPC Communication
+  IPCs.initialize(mainWindow)
 
   return mainWindow
 }
