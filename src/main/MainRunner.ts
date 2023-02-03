@@ -1,6 +1,5 @@
 import { app, BrowserWindow, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
-import * as electronRemote from '@electron/remote/main'
 import IPCs from './IPCs'
 
 const exitApp = (mainWindow: BrowserWindow): void => {
@@ -39,8 +38,6 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
     mainWindow.show()
     mainWindow.focus()
     mainWindow.setAlwaysOnTop(false)
-
-    electronRemote.initialize()
   })
 
   if (Constants.IS_DEV_ENV) {

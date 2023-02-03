@@ -36,7 +36,6 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@electron/remote": "^2.0.9",
     "pinia": "^2.0.29",
     "vue": "^3.2.45",
     "vue-i18n": "^9.2.2",
