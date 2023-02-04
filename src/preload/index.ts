@@ -1,11 +1,10 @@
-import { contextBridge, ipcRenderer, shell } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 
 // Whitelist of valid channels used for IPC communication (Send message from Renderer to Main)
-const mainAvailChannels = ['msgRequestGetVersion']
+const mainAvailChannels = ['msgRequestGetVersion', 'msgOpenExternalLink']
 const rendererAvailChannels = ['msgReceivedVersion']
 
 contextBridge.exposeInMainWorld('mainApi', {
-  openExternal: async (url) => await shell.openExternal(url),
   send: (channel, data) => {
     if (mainAvailChannels.includes(channel)) {
       ipcRenderer.send(channel, data)
