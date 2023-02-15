@@ -67,10 +67,6 @@ export default defineConfig({
         }
       }
     ]),
-    rendererPlugin({
-      optimizeDeps: {
-        include: ['path']
-      }
-    })
+    rendererPlugin()
   ]
 })
