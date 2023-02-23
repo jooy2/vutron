@@ -1,9 +1,11 @@
 name: documents
 
 on:
-  # trigger deployment on every push to main branch
+  # run every time a push occurs in the docs folder
   push:
     branches: [master]
+    paths:
+      - docs
   # trigger deployment manually
   workflow_dispatch:
 
@@ -20,7 +22,6 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          # choose node.js version to use
           node-version: '18'
 
       # cache node_modules
