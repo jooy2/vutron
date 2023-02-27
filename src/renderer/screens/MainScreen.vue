@@ -2,13 +2,13 @@
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
 import { openExternal } from '@/renderer/utils'
-import { useTempStore } from '@/renderer/store/temp'
+import { useCounterStore } from '@/renderer/store/counter'
 import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 
 const { locale, availableLocales } = useI18n()
-const { counterIncrease } = useTempStore()
-const { counter } = storeToRefs(useTempStore())
+const { counterIncrease } = useCounterStore()
+const { counter } = storeToRefs(useCounterStore())
 const theme = useTheme()
 const languages = ref(['en'])
 const appVersion = ref('Unknown')
