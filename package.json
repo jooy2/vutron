@@ -50,7 +50,7 @@
     "@vitejs/plugin-vue-jsx": "^3.0.0",
     "electron": "^23.1.1",
     "electron-builder": "^23.3.3",
-    "eslint": "^8.33.0",
+    "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-friendly-formatter": "^4.0.1",
