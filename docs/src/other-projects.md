@@ -6,7 +6,7 @@ Also check out the `Retron` project, which consists of Vite + React + Material-U
 
 https://github.com/jooy2/retron
 
-## (Deprecated) Looking for Vutron with webpack5 compiler?
+## (Deprecated) Looking for Vutron with Webpack 5 compiler?
 
 By using the Vite compiler, we achieved our goals of reducing project and bundle size, and improving development environment and build speed.
 
