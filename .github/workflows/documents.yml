@@ -17,13 +17,13 @@ jobs:
         working-directory: ./docs
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           # fetch all commits to get last updated time or other git log info
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
@@ -37,7 +37,7 @@ jobs:
 
       # cache node_modules
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: npm-cache
         with:
           path: |
@@ -52,14 +52,14 @@ jobs:
         run: npm install
 
       - name: Find and Replace (logo)
-        uses: jacobtomlinson/gha-find-replace@v2
+        uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "src/renderer/public/images/vutron-logo.webp"
           replace: "public/vutron-logo.webp"
           regex: false
 
       - name: Find and Replace (sample)
-        uses: jacobtomlinson/gha-find-replace@v2
+        uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: ".github/resources/vutron-sample.webp"
           replace: "public/vutron-sample.webp"
