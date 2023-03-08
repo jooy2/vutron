@@ -37,6 +37,7 @@ jobs:
           regex: false
 
   build-documentation-pages:
+    needs: find-and-replace-index-file
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -63,10 +64,11 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
+
       # install dependencies if the cache did not hit
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm i
+        run: npm install
 
       # run build script
       - name: Build VitePress site
