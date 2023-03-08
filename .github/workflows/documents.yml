@@ -15,21 +15,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        working_directory: ./docs
+        working-directory: ./docs
         with:
           # fetch all commits to get last updated time or other git log info
           fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
-        working_directory: ./docs
+        working-directory: ./docs
         with:
           node-version: '18'
 
       # cache node_modules
       - name: Cache dependencies
         uses: actions/cache@v2
-        working_directory: ./docs
+        working-directory: ./docs
         id: npm-cache
         with:
           path: |
@@ -40,7 +40,7 @@ jobs:
       # install dependencies if the cache did not hit
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        working_directory: ./docs
+        working-directory: ./docs
         run: npm i
 
       # copy and replace string index.md file
@@ -67,7 +67,7 @@ jobs:
 
       # run build script
       - name: Build VitePress site
-        working_directory: ./docs
+        working-directory: ./docs
         run: npm run build
 
       # please check out the docs of the workflow for more details
