@@ -5,7 +5,7 @@ on:
   push:
     branches: [master]
     paths:
-      - docs
+      - docs/**
   # trigger deployment manually
   workflow_dispatch:
 
