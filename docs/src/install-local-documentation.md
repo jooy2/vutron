@@ -6,6 +6,12 @@ This function works only when the entire project is cloned. If you created the p
 
 ## Installation
 
+Everything in the instructions below should be done in the `docs` folder.
+
+```shell
+$ cd docs
+```
+
 Install the relevant packages using the following commands:
 
 ```shell
