@@ -10,7 +10,7 @@ You can easily clone a repository with just the npm command.
 $ npm init vutron
 ```
 
-The above method will not create unnecessary documentation and .github related files for your project.
+The above method will not create unnecessary documentation and `.github` related files for your project.
 
 ### Method 2: Use this template
 
