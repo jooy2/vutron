@@ -1,6 +1,8 @@
 # Npm Scripts
 
-> npm run {SCRIPT_NAME}
+> $ npm run %SCRIPT_NAME%
+
+## General
 
 | Script Name | Description |
 | --- | --- |
@@ -17,7 +19,14 @@
 | `lint:fix` | ESLint code inspection. Use auto-fix to fix your code. |
 | `format` | Prettier code inspection. It does not modify the code. |
 | `format:fix` | Prettier code inspection. Use auto-fix to fix your code. |
-| `docs:install` | Install VitePress and related plugins for your local documentation environment. |
-| `docs:dev` | Start the local document server. (For development) |
-| `docs:build` | Build a local document server. Used only for GitHub page builders. |
-| `docs:serve` | Start the local document server. |
+
+## For Documentation
+
+Used only for contributing to project documentation. Must be run from the `docs` directory location.
+
+| Script Name | Description                                                                     |
+| ----------- | ------------------------------------------------------------------------------- |
+| `install`   | Install VitePress and related plugins for your local documentation environment. |
+| `dev`       | Start the local document server. (For development)                              |
+| `build`     | Build a local document server. Used only for GitHub page builders.              |
+| `serve`     | Start the local document server.                                                |
