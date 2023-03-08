@@ -12,7 +12,7 @@ For secure script execution, it is recommended that the main process executes th
 
 For more information on this, see the following articles: https://www.electronjs.org/docs/latest/tutorial/ipc
 
-### How to run NodeJS on a renderer
+### How to run NodeJS on a renderer?
 
 If you want to skip the security issues and use NodeJS scripts in your renderer, you need to set `nodeIntegration` to `true` in your `vite.config.ts` file.
 
