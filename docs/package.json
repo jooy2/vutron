@@ -2,7 +2,6 @@
   "name": "docs",
   "version": "1.0.0",
   "scripts": {
-    "install": "npm i --no-save vitepress vitepress-sidebar",
     "dev": "vitepress dev src",
     "build": "vitepress build src",
     "serve": "vitepress serve src"
