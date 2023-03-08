@@ -27,11 +27,7 @@
     "lint": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "format": "prettier .",
-    "format:fix": "prettier . --write",
-    "docs:install": "npm i --no-save vitepress vitepress-sidebar",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "npm run format:fix && vitepress build docs",
-    "docs:serve": "npm run docs:build && vitepress serve docs"
+    "format:fix": "prettier . --write"
   },
   "engines": {
     "node": ">=16.0.0"

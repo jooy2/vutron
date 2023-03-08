@@ -1,0 +1,17 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "scripts": {
+    "install": "npm i --no-save vitepress vitepress-sidebar",
+    "dev": "vitepress dev src",
+    "build": "vitepress build src",
+    "serve": "vitepress serve src"
+  },
+  "author": "jooy2 <jooy2.contact@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vitepress": "^1.0.0-alpha.50",
+    "vitepress-sidebar": "^1.2.0",
+    "vue": "^3.2.47"
+  }
+}

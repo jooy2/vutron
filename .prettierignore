@@ -9,5 +9,5 @@
 .github/
 buildAssets/
 dist/
-distDocs/
+docs/dist/
 release/

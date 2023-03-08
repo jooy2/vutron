@@ -15,18 +15,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        working_directory: ./docs
         with:
           # fetch all commits to get last updated time or other git log info
           fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
+        working_directory: ./docs
         with:
           node-version: '18'
 
       # cache node_modules
       - name: Cache dependencies
         uses: actions/cache@v2
+        working_directory: ./docs
         id: npm-cache
         with:
           path: |
@@ -37,19 +40,16 @@ jobs:
       # install dependencies if the cache did not hit
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
+        working_directory: ./docs
         run: npm i
-
-      # install for document build
-      - name: Install for document dependencies
-        run: npm run docs:install
 
       # copy and replace string index.md file
       - name: Copy and replace string index.md file
-        run: cp README.md docs/index.md
+        run: cp README.md docs/src/index.md
       - name: Copy image asset (logo)
-        run: cp src/renderer/public/images/vutron-logo.webp docs/public
+        run: cp src/renderer/public/images/vutron-logo.webp docs/src/public
       - name: Copy image asset (sample)
-        run: cp .github/resources/vutron-sample.webp docs/public
+        run: cp .github/resources/vutron-sample.webp docs/src/public
 
       - name: Find and Replace (logo)
         uses: jacobtomlinson/gha-find-replace@v2
@@ -67,7 +67,8 @@ jobs:
 
       # run build script
       - name: Build VitePress site
-        run: npm run docs:build
+        working_directory: ./docs
+        run: npm run build
 
       # please check out the docs of the workflow for more details
       # @see https://github.com/crazy-max/ghaction-github-pages
@@ -77,7 +78,7 @@ jobs:
           # deploy to gh-pages branch
           target_branch: gh-pages
           # deploy the default output dir of VitePress
-          build_dir: distDocs
+          build_dir: docs/dist
           jekyll: false
           fqdn: 'vutron.jooy2.com'
         env:

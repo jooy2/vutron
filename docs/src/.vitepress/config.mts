@@ -1,21 +1,20 @@
 // @ts-ignore
 import { generateSidebar } from 'vitepress-sidebar'
-import { name, description, repository } from '../../package.json'
+import { name, description, repository } from '../../../package.json'
 
 const capitalizeFirst = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
 
 export default {
   title: capitalizeFirst(name),
   description,
-  outDir: '../distDocs',
+  outDir: '../dist',
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
   ],
   themeConfig: {
     sidebar: generateSidebar({
-      root: 'docs',
-      collapsible: false,
+      root: 'src',
       collapsed: false,
       useTitleFromFileHeading: true,
       sortByFileName: [
