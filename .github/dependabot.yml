@@ -8,5 +8,5 @@ updates:
       - "jooy2"
     reviewers:
       - "jooy2"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 20
     versioning-strategy: increase
