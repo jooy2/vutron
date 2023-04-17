@@ -31,11 +31,11 @@ const handleChangeLanguage = (val): void => {
   locale.value = val
 }
 
-const handleDocument = async (): Promise<void> => {
+const handleOpenDocument = async (): Promise<void> => {
   await openExternal('https://vutron.jooy2.com')
 }
 
-const handleGitHub = async (): Promise<void> => {
+const handleOpenGitHub = async (): Promise<void> => {
   await openExternal('https://github.com/jooy2/vutron')
 }
 
@@ -81,7 +81,7 @@ const handleCountIncrease = (): void => {
             </v-badge>
           </v-col>
           <v-col cols="3">
-            <v-btn icon color="primary" @click="handleDocument">
+            <v-btn icon color="primary" @click="handleOpenDocument">
               <v-icon icon="mdi-file-document" />
               <v-tooltip activator="parent" location="bottom">
                 {{ $t('menu.documentation') }}
@@ -89,7 +89,7 @@ const handleCountIncrease = (): void => {
             </v-btn>
           </v-col>
           <v-col cols="3">
-            <v-btn icon color="primary" @click="handleGitHub">
+            <v-btn icon color="primary" @click="handleOpenGitHub">
               <v-icon icon="mdi-github" />
               <v-tooltip activator="parent" location="bottom">
                 {{ $t('menu.github') }}
