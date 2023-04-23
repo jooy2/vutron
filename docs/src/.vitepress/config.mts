@@ -12,10 +12,10 @@ export default {
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
   ],
-  search: {
-    provider: 'local'
-  },
   themeConfig: {
+    search: {
+      provider: 'local'
+    },
     sidebar: generateSidebar({
       root: 'src',
       collapsed: false,
