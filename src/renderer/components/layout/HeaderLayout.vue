@@ -2,7 +2,7 @@
 import { useRoute, useRouter } from 'vue-router'
 
 const router = useRouter()
-const route = useRoute()
+const route: any = useRoute()
 const titleKey: string = (route?.meta?.titleKey || 'title.main') as string
 
 const handleRoute = (path: string): void => {

@@ -8,5 +8,5 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["package.json"]
+  "include": ["src/main", "src/preload", "package.json", "vite.config.ts"]
 }

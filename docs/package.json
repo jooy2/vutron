@@ -9,7 +9,7 @@
   "author": "jooy2 <jooy2.contact@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "vitepress": "^1.0.0-alpha.73",
+    "vitepress": "^1.0.0-alpha.75",
     "vitepress-sidebar": "^1.3.1",
     "vue": "^3.2.47"
   }
