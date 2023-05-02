@@ -56,7 +56,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.10.0",
     "prettier": "^2.8.8",
-    "typescript": "4.9.5",
+    "typescript": "5.0.4",
     "vite": "^4.3.4",
     "vite-plugin-electron": "^0.11.1",
     "vite-plugin-electron-renderer": "^0.13.14",
