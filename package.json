@@ -15,7 +15,7 @@
     "url": "https://github.com/jooy2/vutron/issues"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "ELECTRON_ENABLE_LOGGING=true vite",
     "dev:debug": "vite -d",
     "dev:debug:force": "vite -d --force",
     "build": "npm run build:pre && electron-builder -wml",
