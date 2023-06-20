@@ -16,7 +16,7 @@ export default {
       provider: 'local'
     },
     sidebar: generateSidebar({
-      root: 'src',
+      documentRootPath: 'src',
       collapsed: false,
       useTitleFromFileHeading: true,
       sortByFileName: [
