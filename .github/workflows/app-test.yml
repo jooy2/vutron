@@ -8,6 +8,8 @@ on:
       - '!README.md'
       - '!LICENSE'
       - '!CODE_OF_CONDUCT.md'
+      - '!docs/**'
+      - '!.github/**'
   workflow_dispatch:
 
 jobs:
