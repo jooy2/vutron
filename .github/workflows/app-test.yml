@@ -3,6 +3,11 @@ name: app-test
 on:
   push:
     branches: [master]
+    paths:
+      - '**'
+      - '!README.md'
+      - '!LICENSE'
+      - '!CODE_OF_CONDUCT.md'
   workflow_dispatch:
 
 jobs:
