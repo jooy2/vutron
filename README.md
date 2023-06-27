@@ -30,9 +30,9 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 - ⚡️ Global state management through the Pinia store
 - ⚡️ Quick support through the GitHub community and official documentation
 
-## [Getting Started & Documentation](https://vutron.jooy2.com)
+## [Getting Started & Documentation](https://vutron.jooy2.com/getting-started)
 
-For complete documentation including installation instructions and basic usage, please refer to each item in the link below: https://vutron.jooy2.com
+For complete documentation including installation instructions and basic usage, please refer to each item in the link below: https://vutron.jooy2.com/getting-started
 
 ## Contribute
 
