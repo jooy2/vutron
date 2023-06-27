@@ -21,6 +21,7 @@
   ],
   mac: {
     bundleVersion: '1.0',
+    identity: null,
     hardenedRuntime: true,
     gatekeeperAssess: false,
     icon: 'buildAssets/icons/icon.icns',
