@@ -22,11 +22,13 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 
 - ⚡️ Rapid development through hot-reload
 - ⚡️ Cross-platform development and build support
+- ⚡️ Support for automated application testing
+- ⚡️ TypeScript support
 - ⚡️ Multilingual support
 - ⚡️ Support for themes (dark & light)
 - ⚡️ Basic layout manager
 - ⚡️ Global state management through the Pinia store
-- ⚡️ TypeScript support
+- ⚡️ Quick support through the GitHub community and official documentation
 
 ## [Getting Started & Documentation](https://vutron.jooy2.com)
 
