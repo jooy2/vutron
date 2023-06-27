@@ -27,7 +27,8 @@
     "lint": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "format": "prettier .",
-    "format:fix": "prettier . --write"
+    "format:fix": "prettier . --write",
+    "test": "npm run build:dir && playwright test"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^7.2.96",
+    "@playwright/test": "^1.35.1",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
     "@vitejs/plugin-vue": "^4.2.3",
@@ -55,6 +57,7 @@
     "eslint-plugin-n": "^16.0.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.14.1",
+    "playwright": "^1.35.1",
     "prettier": "^2.8.8",
     "typescript": "^5.0.4",
     "vite": "^4.3.9",
