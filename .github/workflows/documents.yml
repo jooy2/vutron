@@ -6,6 +6,7 @@ on:
     branches: [master]
     paths:
       - docs/**
+      - README.md
   # trigger deployment manually
   workflow_dispatch:
 
