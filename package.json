@@ -28,7 +28,7 @@
     "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
     "format": "prettier .",
     "format:fix": "prettier . --write",
-    "test": "npm run build:dir && playwright test"
+    "test": "npm run build:dir && xvfb-maybe -- playwright test"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -66,6 +66,7 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-vuetify": "^1.0.2",
     "vue-eslint-parser": "^9.3.0",
-    "vue-tsc": "^1.6.5"
+    "vue-tsc": "^1.6.5",
+    "xvfb-maybe": "^0.2.1"
   }
 }
