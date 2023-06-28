@@ -19,6 +19,7 @@
 | `lint:fix` | ESLint code inspection. Use auto-fix to fix your code. |
 | `format` | Prettier code inspection. It does not modify the code. |
 | `format:fix` | Prettier code inspection. Use auto-fix to fix your code. |
+| `test` | Build a package for testing and run tests against the test specification file. |
 
 ## For Documentation
 

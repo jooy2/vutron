@@ -8,7 +8,7 @@
 │  └─ workflows/ - GitHub workflows definition
 │  └─ dependabot.yml
 │  └─ FUNDING.yml
-├─ buildAssets - Package resource (icon, logo, etc.) file used for Electron build
+├─ buildAssets/ - Package resource (icon, logo, etc.) file used for Electron build
 │  └─ icons/
 ├─ dist/ - Output directory used to build the package
 ├─ docs/ - Project documents (optionally enabled)
@@ -43,6 +43,8 @@
 │  │  ├─ App.vue - Vue app's root component
 │  │  ├─ index.html - Root static index loaded by Electron renderer process
 │  └─ └─ main.ts - Renderer process entry point
+├─ tests/ - Application test configuration
+│  └─ app.spec.ts - Test file specification
 ├─ .editorconfig - Editor recommended configuration file for IDE
 ├─ .eslintignore - List of files to be ignored by ESLint
 ├─ .eslintrc.json - ESLint rule configurations
@@ -54,6 +56,7 @@
 ├─ LICENSE - Project license file
 ├─ package.json - NodeJS package configurations
 ├─ package-lock.json
+├─ playwright.config.ts - Playwright test rules configurations
 ├─ tsconfig.json - TypeScript configurations
 ├─ tsconfig.node.json - TypeScript configurations
 ├─ vite.config.ts - Vite compiler build configurations
