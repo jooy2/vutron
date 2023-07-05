@@ -44,7 +44,7 @@
     "@mdi/font": "^7.2.96",
     "@playwright/test": "^1.35.1",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.0",
+    "@typescript-eslint/parser": "^5.61.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "electron": "^25.2.0",
