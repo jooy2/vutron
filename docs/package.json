@@ -9,8 +9,8 @@
   "author": "jooy2 <jooy2.contact@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "vitepress": "^1.0.0-beta.3",
-    "vitepress-sidebar": "^1.8.1",
+    "vitepress": "^1.0.0-beta.7",
+    "vitepress-sidebar": "^1.10.0",
     "vue": "^3.3.4"
   }
 }
