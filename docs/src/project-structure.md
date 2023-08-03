@@ -8,6 +8,8 @@
 │  └─ workflows/ - GitHub workflows definition
 │  └─ dependabot.yml
 │  └─ FUNDING.yml
+├─ .idea - Common project configuration files used by IntelliJ IDEs
+├─ .vscode - Common project configuration files used by Visual Studio Code IDE
 ├─ buildAssets/ - Package resource (icon, logo, etc.) file used for Electron build
 │  └─ icons/
 ├─ dist/ - Output directory used to build the package
