@@ -2,11 +2,15 @@
 
 ![vutron-logo](src/renderer/public/images/vutron-logo.webp)
 
+---
+
 Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vuejs.org)** + **[Electron](https://www.electronjs.org)**
 
 [![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE) ![Programming Language Usage](https://img.shields.io/github/languages/top/jooy2/vutron) ![github repo size](https://img.shields.io/github/repo-size/jooy2/vutron) ![Stars](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![Commit Count](https://img.shields.io/github/commit-activity/y/jooy2/vutron) ![Line Count](https://img.shields.io/tokei/lines/github/jooy2/vutron) [![Followers](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
 
 ![vutron-logo](.github/resources/vutron-sample.webp)
+
+**English** · [简体中文](https://github.com/jooy2/vutron/blob/master/README,zh-CN.md)
 
 **Vutron** is a preconfigured template for developing `Electron` cross-platform desktop apps. It uses `Vue 3` and allows you to build a fast development environment with little effort.
 
