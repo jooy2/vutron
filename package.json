@@ -15,7 +15,7 @@
     "url": "https://github.com/jooy2/vutron/issues"
   },
   "scripts": {
-    "dev": "ELECTRON_ENABLE_LOGGING=true vite",
+    "dev": "cross-env ELECTRON_ENABLE_LOGGING=true vite",
     "dev:debug": "vite -d",
     "dev:debug:force": "vite -d --force",
     "build": "npm run build:pre && electron-builder -wml",
@@ -47,6 +47,7 @@
     "@typescript-eslint/parser": "^6.2.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "cross-env": "^7.0.3",
     "electron": "^25.4.0",
     "electron-builder": "^24.6.3",
     "eslint": "^8.46.0",
