@@ -10,7 +10,7 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 
 ![vutron-logo](.github/resources/vutron-sample.webp)
 
-**English** · [简体中文](https://github.com/jooy2/vutron/blob/master/README.zh-CN.md)
+**English** · [한국어](https://github.com/jooy2/vutron/blob/master/README.ko-KR.md) · [简体中文](https://github.com/jooy2/vutron/blob/master/README.zh-CN.md)
 
 **Vutron** is a preconfigured template for developing `Electron` cross-platform desktop apps. It uses `Vue 3` and allows you to build a fast development environment with little effort.
 

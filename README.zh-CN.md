@@ -10,7 +10,7 @@
 
 ![vutron-logo](.github/resources/vutron-sample.webp)
 
-[English](https://github.com/jooy2/vutron/blob/master/README.md) · **简体中文**
+[English](https://github.com/jooy2/vutron/blob/master/README.md) · [한국어](https://github.com/jooy2/vutron/blob/master/README.ko-KR.md) · **简体中文**
 
 **Vutron** 是一个预配置的模板，用于开发 `Electron` 跨平台桌面应用。它使用 `Vue 3`，使您能够轻松构建快速的开发环境。
 
