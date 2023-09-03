@@ -45,7 +45,7 @@
     "@playwright/test": "^1.36.2",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.2.1",
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue": "^4.3.4",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "cross-env": "^7.0.3",
     "electron": "^25.4.0",
