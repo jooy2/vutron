@@ -50,6 +50,7 @@
     "cross-env": "^7.0.3",
     "electron": "^26.1.0",
     "electron-builder": "^24.6.3",
+    "electron-extension-installer": "^1.2.0",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
