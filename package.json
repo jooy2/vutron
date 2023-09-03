@@ -60,7 +60,7 @@
     "eslint-plugin-vue": "^9.16.1",
     "playwright": "^1.36.2",
     "prettier": "^3.0.0",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-electron": "^0.14.0",
     "vite-plugin-electron-renderer": "^0.14.5",
