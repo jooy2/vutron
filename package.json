@@ -50,7 +50,7 @@
     "cross-env": "^7.0.3",
     "electron": "^25.4.0",
     "electron-builder": "^24.6.3",
-    "eslint": "^8.46.0",
+    "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-friendly-formatter": "^4.0.1",
