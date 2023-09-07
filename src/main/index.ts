@@ -7,9 +7,9 @@ import { installExtension, VUEJS_DEVTOOLS } from 'electron-extension-installer'
 let mainWindow
 let errorWindow
 
-app.on('ready', () => {
+app.on('ready', async () => {
   if (Constants.IS_DEV_ENV) {
-    installExtension(VUEJS_DEVTOOLS, {
+    await installExtension(VUEJS_DEVTOOLS, {
       loadExtensionOptions: {
         allowFileAccess: true
       }
