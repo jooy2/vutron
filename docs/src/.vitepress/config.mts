@@ -20,7 +20,7 @@ export default {
       documentRootPath: 'src',
       collapsed: false,
       useTitleFromFileHeading: true,
-      sortByFileName: [
+      sortMenusByName: [
         'getting-started.md',
         'build-configuration.md',
         'project-structure.md',
