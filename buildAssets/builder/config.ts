@@ -9,7 +9,6 @@ const baseConfig: any = {
   compression: 'maximum',
   artifactName: '${productName} ${version}_${arch}.${ext}',
   directories: {
-    buildResources: 'buildAssets',
     output: './release/${version}'
   },
   mac: {
