@@ -6,6 +6,11 @@
     "eslint.validate": [
         "javascript"
     ],
+    "eslint.workingDirectories": [
+      {
+        "mode": "auto"
+      }
+    ],
     "emmet.syntaxProfiles": {},
     "files.autoSave": "afterDelay",
     "editor.wordWrap": "on",

@@ -1,30 +1,22 @@
-{
+/* eslint-disable no-template-curly-in-string */
+import dotenv from 'dotenv'
+
+const baseConfig: any = {
   productName: 'Vutron',
   appId: 'com.vutron.vutron',
   asar: true,
   extends: null,
   compression: 'maximum',
-  copyright: 'ⓒ 2023 ${author}',
   artifactName: '${productName} ${version}_${arch}.${ext}',
   directories: {
     buildResources: 'buildAssets',
     output: './release/${version}'
   },
-  /* A list of files not to be included in the build. */
-  files: [
-    /*
-      (Required) The files and folders listed below should not be included in the build.
-    */
-    'dist/**/*',
-    '!docs/**/*',
-    '!tests/**/*',
-    '!release/**/*'
-  ],
   mac: {
     bundleVersion: '1.0',
-    identity: null,
     hardenedRuntime: true,
     gatekeeperAssess: false,
+    notarize: false,
     icon: 'buildAssets/icons/icon.icns',
     type: 'distribution',
     target: [
@@ -96,4 +88,30 @@
       }
     ]
   }
+}
+
+dotenv.config()
+
+baseConfig.copyright = `ⓒ ${new Date().getFullYear()} $\{author}`
+baseConfig.files = [
+  /* A list of files not to be included in the build. */
+  /*
+    (Required) The files and folders listed below should not be included in the build.
+  */
+  'dist/**/*',
+  '!docs/**/*',
+  '!tests/**/*',
+  '!release/**/*'
+]
+
+// TODO: Notarize for macOS
+baseConfig.mac.identity = null
+/* if (process.env.MAC_NOTARIZE === 'true') {
+  baseConfig.afterSign = './buildAssets/builder/notarize.ts'
+} else {
+  baseConfig.mac.identity = null
+} */
+
+export default {
+  ...baseConfig
 }

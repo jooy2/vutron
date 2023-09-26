@@ -7,6 +7,6 @@
 
 # Project files
 .github/
-buildAssets/
+buildAssets/icons/
 dist/
 release/

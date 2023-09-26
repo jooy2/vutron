@@ -43,7 +43,7 @@ $ npm run build
 
 ## Reduce bundle size by excluding development files
 
-You can exclude files you don't need at build time by adding a file pattern to the files property of `electron-builder.json5`. This will save bundle capacity.
+You can exclude files you don't need at build time by adding a file pattern to the files property of `buildAssets/builder/config.ts`. This will save bundle capacity.
 
 Below is an unnecessary `node_modules` file pattern that can further save bundles. Depending on the project, using the rules below may cause problems, so please review it before using.
 

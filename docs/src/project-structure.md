@@ -10,6 +10,8 @@
 │  └─ FUNDING.yml
 ├─ .vscode - Common project configuration files used by Visual Studio Code IDE
 ├─ buildAssets/ - Package resource (icon, logo, etc.) file used for Electron build
+│  └─ builder/
+│  │  │  └─ config.ts - `electron-builder` dynamic configuration file
 │  └─ icons/
 ├─ dist/ - Output directory used to build the package
 ├─ docs/ - Project documents (optionally enabled)
@@ -53,7 +55,6 @@
 ├─ .prettierignore - List of files to disable Prettier file formatting
 ├─ .prettierrc - Prettier rule configurations
 ├─ CODE_OF_CONDUCT.md - Files used only on GitHub
-├─ electron-builder.json5
 ├─ LICENSE - Project license file
 ├─ package.json - NodeJS package configurations
 ├─ package-lock.json
