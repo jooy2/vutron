@@ -36,7 +36,7 @@ For more information, please refer to the following article: https://webpack.ele
 You can perform multi-platform builds at once with the following command. Alternatively, you can just do it for the OS you want via the individual build commands above.
 
 ```shell
-$ npm run build
+$ npm run build:all
 ```
 
 `Multipass` configuration may be required for Linux builds. Learn more about `Multipass` through the following link: https://multipass.run
