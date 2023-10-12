@@ -9,22 +9,23 @@ order: 3
 
 ## General
 
-| Script Name | Description |
-| --- | --- |
-| `dev` | Start Electron as a development environment |
-| `dev:debug` | Start Electron as a development environment (with vite debug) |
-| `dev:debug:force` | Start Electron as a development environment (with vite debug + clean vite cache) |
-| `build` | Build a specified package for the entire operating system (Requires cross-platform build configuration) |
-| `build:pre` | Commands commonly run at build time. This script does not need to be run separately. |
-| `build:dir` | `electron-builder` directory build |
-| `build:mac` | Build preconfigured packages for macOS |
-| `build:linux` | Build preconfigured packages for Linux |
-| `build:win` | Build preconfigured packages for Windows |
-| `lint` | ESLint code inspection. It does not modify the code. |
-| `lint:fix` | ESLint code inspection. Use auto-fix to fix your code. |
-| `format` | Prettier code inspection. It does not modify the code. |
-| `format:fix` | Prettier code inspection. Use auto-fix to fix your code. |
-| `test` | Build a package for testing and run tests against the test specification file. |
+| Script Name       | Description                                                                                             |
+|-------------------|---------------------------------------------------------------------------------------------------------|
+| `dev`             | Start Electron as a development environment                                                             |
+| `dev:debug`       | Start Electron as a development environment (with vite debug)                                           |
+| `dev:debug:force` | Start Electron as a development environment (with vite debug + clean vite cache)                        |
+| `build:pre`       | Commands commonly run at build time. This script does not need to be run separately.                    |
+| `build`           | Build the package for the current operating system.                                                                                 |
+| `build:all`       | Build a specified package for the entire operating system (Requires cross-platform build configuration) |
+| `build:dir`       | `electron-builder` directory build                                                                      |
+| `build:mac`       | Build preconfigured packages for macOS                                                                  |
+| `build:linux`     | Build preconfigured packages for Linux                                                                  |
+| `build:win`       | Build preconfigured packages for Windows                                                                |
+| `lint`            | ESLint code inspection. It does not modify the code.                                                    |
+| `lint:fix`        | ESLint code inspection. Use auto-fix to fix your code.                                                  |
+| `format`          | Prettier code inspection. It does not modify the code.                                                  |
+| `format:fix`      | Prettier code inspection. Use auto-fix to fix your code.                                                |
+| `test`            | Build a package for testing and run tests against the test specification file.                          |
 
 ## For Documentation
 
