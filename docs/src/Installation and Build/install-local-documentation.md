@@ -1,3 +1,7 @@
+---
+order: 5
+---
+
 # Manage Local Documentation
 
 Documents from `Vutron` can be viewed in the local environment through the `VitePress` viewer.

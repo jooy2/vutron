@@ -1,3 +1,7 @@
+---
+order: 4
+---
+
 # Automated Testing
 
 **Vutron** includes automated testing. The testing framework uses Microsoft's **[Playwright](https://playwright.dev)**.

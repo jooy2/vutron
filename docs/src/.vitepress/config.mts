@@ -21,6 +21,8 @@ export default {
       documentRootPath: 'src',
       collapsed: false,
       useTitleFromFileHeading: true,
+      useTitleFromFrontmatter: true,
+      sortMenusByFrontmatterOrder: true,
       manualSortFileNameByPriority: [
         'Installation and Build',
         'Project Structures',

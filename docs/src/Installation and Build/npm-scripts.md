@@ -1,3 +1,8 @@
+---
+title: NPM Scripts
+order: 3
+---
+
 # Npm Scripts
 
 > $ npm run %SCRIPT_NAME%

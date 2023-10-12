@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # Build Configurations
 
 Once the module installation is complete, you can simply build the platform package with the command below.
