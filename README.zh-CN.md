@@ -34,9 +34,9 @@
 - ⚡️ 通过 Pinia 存储进行全局状态管理
 - ⚡️ 通过 GitHub 社区和官方文档提供快速支持
 
-## [文档（入门指南）](https://vutron.jooy2.com/getting-started)
+## [文档（入门指南）](https://vutron.jooy2.com/Installation%20and%20Build/getting-started)
 
-完整的文档，包括安装说明和基本使用方法，请参阅以下链接的每个项目：https://vutron.jooy2.com/getting-started
+完整的文档，包括安装说明和基本使用方法，请参阅以下链接的每个项目：https://vutron.jooy2.com/Installation%20and%20Build/getting-started
 
 ## 贡献
 

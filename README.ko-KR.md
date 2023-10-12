@@ -34,9 +34,9 @@
 - ⚡️ Pinia 스토어를 활용한 글로벌 상태 관리
 - ⚡️ GitHub 커뮤니티와 공식 문서를 통한 프로젝트 기술지원
 
-## [문서 (설치 및 시작하기)](https://vutron.jooy2.com/getting-started)
+## [문서 (설치 및 시작하기)](https://vutron.jooy2.com/Installation%20and%20Build/getting-started)
 
-자세한 설치 방법이나 기본적인 템플릿 사용 방법에 대한 전체 문서를 참고하려면 다음 문서 페이지를 방문하세요: https://vutron.jooy2.com/getting-started
+자세한 설치 방법이나 기본적인 템플릿 사용 방법에 대한 전체 문서를 참고하려면 다음 문서 페이지를 방문하세요: https://vutron.jooy2.com/Installation%20and%20Build/getting-started
 
 ## 기여
 
