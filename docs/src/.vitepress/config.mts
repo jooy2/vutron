@@ -22,10 +22,9 @@ export default {
       collapsed: false,
       useTitleFromFileHeading: true,
       manualSortFileNameByPriority: [
-        'getting-started.md',
-        'build-configuration.md',
-        'project-structure.md',
-        'npm-scripts.md'
+        'Installation and Build',
+        'Project Structures',
+        'Electron How To'
       ]
     }),
     socialLinks: [{ icon: 'github', link: repository.url.replace('.git', '') }]

@@ -11,25 +11,20 @@ $ npm run build:mac
 
 # For Linux (.rpm, .deb, .snap)
 $ npm run build:linux
+
+# All platform (.exe, .appx, .dmg, .rpm, .deb, .snap) - see below description
+$ npm run build:all
 ```
 
 The built packages can be found in `release/{version}` location.
 
-## Build settings for projects that use Native Node modules
-
-For projects that use the **Native Node Module**, add the following script to your `package.json`: When installing dependencies, `electron-builder` will take care of any modules that require rebuilding.
-
-```json
-{
-  "scripts": {
-    "postinstall": "electron-builder install-app-deps"
-  }
-}
-```
-
 For more information, please refer to the following article: https://webpack.electron.build/dependency-management#installing-native-node-modules
 
 ## What do I need to do for a multi-platform build?
+
+To create a package for each OS, you must build it on the same OS. For example, a package for macOS must be built on a macOS machine.
+
+However, you can build packages for Windows, macOS, and Linux all at once on one OS. However, this might require some preparation.
 
 **macOS** is recommended if you want to build multiple platforms simultaneously on one platform. Because it can be configured with just a few very simple settings.
 
@@ -40,6 +35,8 @@ $ npm run build:all
 ```
 
 `Multipass` configuration may be required for Linux builds. Learn more about `Multipass` through the following link: https://multipass.run
+
+To learn more about multiplatform builds, see the following articles: https://www.electron.build/multi-platform-build
 
 ## Reduce bundle size by excluding development files
 
@@ -68,4 +65,16 @@ Below is an unnecessary `node_modules` file pattern that can further save bundle
   "!**/node_modules/source-map-support/browser-source-map-support.js",
   "!**/node_modules/json-schema/!(package.json|lib)"
 ]
+```
+
+## Build settings for projects that use Native Node modules
+
+For projects that use the **Native Node Module**, add the following script to your `package.json`: When installing dependencies, `electron-builder` will take care of any modules that require rebuilding.
+
+```json
+{
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps"
+  }
+}
 ```
