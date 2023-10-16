@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory } from 'vue-router/dist/vue-router.esm-bundler'
 import { MainScreen, ErrorScreen, SecondScreen } from '@/renderer/screens'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 export default createRouter({
   history: createWebHashHistory(),
