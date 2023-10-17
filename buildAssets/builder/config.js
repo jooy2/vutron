@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 
 const baseConfig = {
   productName: 'Vutron',
@@ -111,6 +111,6 @@ baseConfig.mac.identity = null
   baseConfig.mac.identity = null
 } */
 
-export default {
+module.exports = {
   ...baseConfig
 }
