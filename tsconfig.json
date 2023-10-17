@@ -20,7 +20,6 @@
     "lib": ["esnext", "dom"]
   },
   "include": ["src/*.ts", "src/*.d.ts", "src/renderer"],
-  "exclude": ["./dist/**/*"],
   "references": [
     {
       "path": "./tsconfig.node.json"

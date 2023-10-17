@@ -1,7 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 import dotenv from 'dotenv'
 
-const baseConfig: any = {
+const baseConfig = {
   productName: 'Vutron',
   appId: 'com.vutron.vutron',
   asar: true,
