@@ -35,7 +35,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "pinia": "^2.1.6",
+    "pinia": "^2.1.7",
     "vue": "^3.3.4",
     "vue-i18n": "^9.5.0",
     "vue-router": "^4.2.5",
@@ -44,8 +44,8 @@
   "devDependencies": {
     "@mdi/font": "^7.3.67",
     "@playwright/test": "^1.39.0",
-    "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "@typescript-eslint/parser": "^6.7.5",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "cross-env": "^7.0.3",

@@ -12,7 +12,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "vitepress": "^1.0.0-rc.20",
+    "vitepress": "^1.0.0-rc.22",
     "vitepress-sidebar": "^1.18.0",
     "vue": "^3.3.4"
   }
