@@ -24,9 +24,9 @@ export default {
       useTitleFromFrontmatter: true,
       sortMenusByFrontmatterOrder: true,
       manualSortFileNameByPriority: [
-        'Installation and Build',
-        'Project Structures',
-        'Electron How To'
+        'installation-and-build',
+        'project-structures',
+        'electron-how-to'
       ]
     }),
     socialLinks: [{ icon: 'github', link: repository.url.replace('.git', '') }]
