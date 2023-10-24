@@ -45,7 +45,7 @@ export default defineConfig(() => {
       // Docs: https://github.com/electron-vite/vite-plugin-electron
       ElectronPlugin([
         {
-          entry: ['src/main/index.ts'],
+          entry: ['src/main/index.ts', 'src/main/index.dev.ts'],
           onstart: (options) => {
             options.startup()
           },

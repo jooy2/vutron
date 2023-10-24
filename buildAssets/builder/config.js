@@ -98,6 +98,7 @@ baseConfig.files = [
     (Required) The files and folders listed below should not be included in the build.
   */
   'dist/**/*',
+  '!dist/main/index.dev.js',
   '!docs/**/*',
   '!tests/**/*',
   '!release/**/*'

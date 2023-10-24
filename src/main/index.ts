@@ -2,18 +2,13 @@ import { app, WebContents, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
 import { macOSDisableDefaultMenuItem } from './utils/Menus'
-import { installExtension, VUEJS_DEVTOOLS } from 'electron-extension-installer'
 
 let mainWindow
 let errorWindow
 
 app.on('ready', async () => {
   if (Constants.IS_DEV_ENV) {
-    await installExtension(VUEJS_DEVTOOLS, {
-      loadExtensionOptions: {
-        allowFileAccess: true
-      }
-    })
+    import('./index.dev')
   }
   macOSDisableDefaultMenuItem()
 
