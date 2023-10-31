@@ -72,8 +72,8 @@ const handleCountIncrease = (): void => {
             </v-btn>
           </v-col>
           <v-col cols="3">
-            <v-badge id="counter-badge" color="blue" :content="counter">
-              <v-btn id="btn-counter" icon color="primary" @click="handleCountIncrease">
+            <v-badge data-testid="counter-badge" color="blue" :content="counter">
+              <v-btn data-testid="btn-counter" icon color="primary" @click="handleCountIncrease">
                 <v-icon icon="mdi-plus-circle" />
                 <v-tooltip activator="parent" location="bottom">
                   {{ $t('menu.increase-count') }}

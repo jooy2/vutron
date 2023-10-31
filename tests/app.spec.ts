@@ -12,9 +12,10 @@ function waiting(milliseconds: number) {
 function isElementVisible(selector: string, waitingMilliseconds = 100) {
   return new Promise((resolve) => {
     setTimeout(async () => {
-      expect(await appWindow.isVisible(selector), `Confirm selector '${selector}' is visible`).toBe(
-        true
-      )
+      await expect(
+        appWindow.locator(selector).first(),
+        `Confirm selector '${selector}' is visible`
+      ).toBeVisible()
       resolve(true)
     }, waitingMilliseconds)
   })
@@ -43,14 +44,14 @@ test('Document element check', async () => {
 })
 
 test('Counter button click check', async () => {
-  await appWindow.click('#btn-counter', { clickCount: 10, delay: 50 })
+  await appWindow.getByTestId('btn-counter').click({ clickCount: 10, delay: 50 })
 
-  const counterValueElement = await appWindow.$('#counter-badge .v-badge__badge')
+  const counterValueElement = await appWindow
+    .getByTestId('counter-badge')
+    .getByRole('status')
+    .innerHTML()
 
-  expect(
-    await appWindow.evaluate((element) => element.innerHTML, counterValueElement),
-    'Confirm counter value is same'
-  ).toBe('10')
+  expect(counterValueElement).toBe('10')
 })
 
 test.afterAll(async () => {
