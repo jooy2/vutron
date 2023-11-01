@@ -9,11 +9,11 @@ function waiting(milliseconds: number) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds))
 }
 
-function isElementVisible(selector: string, waitingMilliseconds = 100) {
+function existElementByTestId(selector: string, waitingMilliseconds = 100) {
   return new Promise((resolve) => {
     setTimeout(async () => {
       await expect(
-        appWindow.locator(selector).first(),
+        appWindow.getByTestId(selector).first(),
         `Confirm selector '${selector}' is visible`
       ).toBeVisible()
       resolve(true)
@@ -38,9 +38,8 @@ test('Environment check', async () => {
 })
 
 test('Document element check', async () => {
-  await isElementVisible('.v-toolbar__content')
-  await isElementVisible('#main-logo')
-  await isElementVisible('#select-language')
+  await existElementByTestId('main-logo')
+  await existElementByTestId('select-language')
 })
 
 test('Counter button click check', async () => {

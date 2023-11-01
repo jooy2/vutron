@@ -49,7 +49,7 @@ const handleCountIncrease = (): void => {
     <v-row no-gutters align="center" class="text-center">
       <v-col cols="12" md="5">
         <img
-          id="main-logo"
+          data-testid="main-logo"
           alt="logo"
           draggable="false"
           class="ma-auto h-auto w-75"
@@ -59,9 +59,9 @@ const handleCountIncrease = (): void => {
       <v-col cols="12" md="7">
         <h2 class="my-4">{{ $t('desc.welcome-title') }}</h2>
         <p>{{ $t('desc.welcome-desc') }}</p>
-        <p class="my-4"
-          >App Version: <strong>{{ appVersion }}</strong></p
-        >
+        <p class="my-4">
+          App Version: <strong>{{ appVersion }}</strong>
+        </p>
         <v-row class="my-4">
           <v-col cols="3">
             <v-btn icon color="primary" @click="handleChangeTheme">
@@ -99,7 +99,7 @@ const handleCountIncrease = (): void => {
           </v-col>
           <v-col cols="12">
             <v-select
-              id="select-language"
+              data-testid="select-language"
               :model-value="locale"
               density="compact"
               :label="$t('menu.change-language')"
