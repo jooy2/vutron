@@ -5,10 +5,6 @@ import { test, expect } from '@playwright/test'
 let appWindow: Page
 let appElectron: ElectronApplication
 
-function waiting(milliseconds: number) {
-  return new Promise((resolve) => setTimeout(resolve, milliseconds))
-}
-
 function existElementByTestId(selector: string, waitingMilliseconds = 100) {
   return new Promise((resolve) => {
     setTimeout(async () => {
@@ -54,6 +50,6 @@ test('Counter button click check', async () => {
 })
 
 test.afterAll(async () => {
-  await waiting(2000)
+  await appWindow.waitForTimeout(2000)
   await appElectron.close()
 })
