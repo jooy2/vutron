@@ -23,6 +23,8 @@ export default {
       useTitleFromFileHeading: true,
       useTitleFromFrontmatter: true,
       sortMenusByFrontmatterOrder: true,
+      hyphenToSpace: true,
+      capitalizeEachWords: true,
       manualSortFileNameByPriority: [
         'installation-and-build',
         'project-structures',
