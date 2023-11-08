@@ -40,14 +40,14 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
     mainWindow.setAlwaysOnTop(false)
   })
 
+  // Initialize IPC Communication
+  IPCs.initialize(mainWindow)
+
   if (Constants.IS_DEV_ENV) {
     await mainWindow.loadURL(Constants.APP_INDEX_URL_DEV)
   } else {
     await mainWindow.loadFile(Constants.APP_INDEX_URL_PROD)
   }
-
-  // Initialize IPC Communication
-  IPCs.initialize(mainWindow)
 
   return mainWindow
 }
