@@ -12,12 +12,12 @@ app.on('ready', async () => {
   }
   macOSDisableDefaultMenuItem()
 
-  mainWindow = createMainWindow(mainWindow)
+  mainWindow = await createMainWindow(mainWindow)
 })
 
-app.on('activate', () => {
+app.on('activate', async () => {
   if (!mainWindow) {
-    mainWindow = createMainWindow(mainWindow)
+    mainWindow = await createMainWindow(mainWindow)
   }
 })
 
