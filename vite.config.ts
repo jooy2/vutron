@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import ElectronPlugin, { ElectronOptions } from 'vite-plugin-electron'
 import RendererPlugin from 'vite-plugin-electron-renderer'
 import EslintPlugin from 'vite-plugin-eslint'
@@ -12,7 +12,17 @@ import { builtinModules } from 'module'
 
 const isDevEnv = process.env.NODE_ENV === 'development'
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  process.env = {
+    ...(isDevEnv
+      ? {
+          ELECTRON_ENABLE_LOGGING: 'true'
+        }
+      : {}),
+    ...process.env,
+    ...loadEnv(mode, process.cwd())
+  }
+
   rmSync('dist', { recursive: true, force: true })
 
   const electronPluginConfigs: ElectronOptions[] = [

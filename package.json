@@ -15,11 +15,11 @@
     "url": "https://github.com/jooy2/vutron/issues"
   },
   "scripts": {
-    "dev": "cross-env ELECTRON_ENABLE_LOGGING=true vite",
+    "dev": "vite",
     "dev:debug": "vite -d",
     "dev:debug:force": "vite -d --force",
     "build": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js",
-    "build:pre": "npm run format:fix && vue-tsc --noEmit && cross-env NODE_ENV=production vite build",
+    "build:pre": "npm run format:fix && vue-tsc --noEmit && vite build",
     "build:all": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js -wml",
     "build:dir": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js --dir",
     "build:mac": "npm run build:pre && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --config=buildAssets/builder/config.js --mac",
@@ -48,7 +48,6 @@
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-vue": "^4.4.1",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
-    "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
     "electron": "^27.0.4",
     "electron-builder": "^24.6.4",
