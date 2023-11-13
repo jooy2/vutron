@@ -19,7 +19,7 @@
     "dev:debug": "vite -d",
     "dev:debug:force": "vite -d --force",
     "build": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js",
-    "build:pre": "npm run format:fix && vue-tsc --noEmit && vite build",
+    "build:pre": "npm run format:fix && vue-tsc --noEmit && cross-env NODE_ENV=production vite build",
     "build:all": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js -wml",
     "build:dir": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js --dir",
     "build:mac": "npm run build:pre && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --config=buildAssets/builder/config.js --mac",

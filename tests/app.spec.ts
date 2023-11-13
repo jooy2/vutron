@@ -19,7 +19,15 @@ function existElementByTestId(selector: string, waitingMilliseconds = 100) {
 
 test.beforeAll(async () => {
   // Open Electron app from build directory
-  appElectron = await electron.launch({ args: ['dist/main/index.js'] })
+  appElectron = await electron.launch({
+    args: ['dist/main/index.js'],
+    locale: 'en-US',
+    colorScheme: 'light',
+    env: {
+      ...process.env,
+      NODE_ENV: 'production'
+    }
+  })
   appWindow = await appElectron.firstWindow()
 
   await appWindow.waitForEvent('load')
