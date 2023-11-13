@@ -10,6 +10,8 @@ import { rmSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { builtinModules } from 'module'
 
+const isDevEnv = process.env.NODE_ENV === 'development'
+
 export default defineConfig(() => {
   rmSync('dist', { recursive: true, force: true })
 
@@ -30,6 +32,8 @@ export default defineConfig(() => {
     publicDir: resolve('./src/renderer/public'),
     clearScreen: false,
     build: {
+      sourcemap: isDevEnv,
+      minify: !isDevEnv,
       assetsDir: '', // See: https://github.com/electron-vite/electron-vite-vue/issues/287
       outDir: resolve('./dist')
     },
@@ -45,9 +49,9 @@ export default defineConfig(() => {
       // Docs: https://github.com/electron-vite/vite-plugin-electron
       ElectronPlugin([
         {
-          entry: ['src/main/index.ts', 'src/main/index.dev.ts'],
-          onstart: (options) => {
-            options.startup()
+          entry: 'src/main/index.ts',
+          onstart({ startup }) {
+            startup()
           },
           vite: {
             build: {
@@ -59,10 +63,20 @@ export default defineConfig(() => {
             }
           }
         },
+        isDevEnv
+          ? {
+              entry: 'src/main/index.dev.ts',
+              vite: {
+                build: {
+                  outDir: 'dist/main'
+                }
+              }
+            }
+          : {},
         {
-          entry: ['src/preload/index.ts'],
-          onstart: (options) => {
-            options.reload()
+          entry: 'src/preload/index.ts',
+          onstart({ reload }) {
+            reload()
           },
           vite: {
             build: {
