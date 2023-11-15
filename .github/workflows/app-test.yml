@@ -29,6 +29,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install xvfb
+        if: runner.os == 'ubuntu-latest'
+        run: |
+          apt install -y -q --no-install-recommends xvfb
+
       - name: Setup NodeJS ${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
@@ -50,5 +55,12 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm i
 
-      - name: Test module script
-        run: npm run test
+      - name: Test module script (Windows or macOS)
+        if: runner.os != 'ubuntu-latest'
+        run: |
+          npm run test
+
+      - name: Test module script (Linux)
+        if: runner.os == 'ubuntu-latest'
+        run: |
+          npm run test:linux
