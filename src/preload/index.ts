@@ -24,6 +24,7 @@ contextBridge.exposeInMainWorld('mainApi', {
       const result = await ipcRenderer.invoke.apply(null, [channel, ...data])
       return result
     }
+
     throw new Error(`Invoke failed: Unknown ipc channel name: ${channel}`)
   }
 })
