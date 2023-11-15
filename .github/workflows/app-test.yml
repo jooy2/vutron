@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install xvfb
-        if: runner.os == 'ubuntu-latest'
+        if: runner.os == 'Linux'
         run: |
           apt install -y -q --no-install-recommends xvfb
 
@@ -56,11 +56,11 @@ jobs:
         run: npm i
 
       - name: Test module script (Windows or macOS)
-        if: runner.os != 'ubuntu-latest'
+        if: runner.os != 'Linux'
         run: |
           npm run test
 
       - name: Test module script (Linux)
-        if: runner.os == 'ubuntu-latest'
+        if: runner.os == 'Linux'
         run: |
           npm run test:linux
