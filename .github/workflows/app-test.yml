@@ -35,7 +35,7 @@ jobs:
           sudo apt install -y -q --no-install-recommends xvfb
 
       - name: Setup NodeJS ${{ matrix.node_version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
           cache: npm
