@@ -10,7 +10,7 @@ on:
       - '!CODE_OF_CONDUCT.md'
       - '!docs/**'
       - '!.github/**'
-      - '.github/app-test.yml'
+      - '.github/workflows/app-test.yml'
   pull_request:
     branches: [master]
   workflow_dispatch:
