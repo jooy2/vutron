@@ -10,6 +10,7 @@ on:
       - '!CODE_OF_CONDUCT.md'
       - '!docs/**'
       - '!.github/**'
+      - '.github/workflows/app-test.yml'
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -35,7 +36,7 @@ jobs:
           sudo apt install -y -q --no-install-recommends xvfb
 
       - name: Setup NodeJS ${{ matrix.node_version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
           cache: npm
