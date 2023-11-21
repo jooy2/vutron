@@ -12,8 +12,8 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "vitepress": "^1.0.0-rc.24",
+    "vitepress": "^1.0.0-rc.29",
     "vitepress-sidebar": "^1.18.0",
-    "vue": "^3.3.7"
+    "vue": "^3.3.8"
   }
 }
