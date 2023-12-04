@@ -44,4 +44,4 @@
 
 ## 许可证
 
-版权所有 © 2022-2023 [Jooy2](https://jooy2.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)>，根据 MIT 许可证发布。
+版权所有 © 2022-2024 [Jooy2](https://jooy2.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)>，根据 MIT 许可证发布。
