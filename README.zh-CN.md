@@ -6,7 +6,7 @@
 
 快速启动模板，适用于 **[Vite](https://vitejs.dev)** + **[Vue 3](https://vuejs.org)** + **[Electron](https://www.electronjs.org)**
 
-[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE) ![编程语言使用情况](https://img.shields.io/github/languages/top/jooy2/vutron) ![github 仓库大小](https://img.shields.io/github/repo-size/jooy2/vutron) ![Stars（点赞数）](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![提交次数](https://img.shields.io/github/commit-activity/y/jooy2/vutron) ![代码行数](https://img.shields.io/tokei/lines/github/jooy2/vutron) [![Followers（关注者数）](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
+[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE) ![Stars（点赞数）](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![提交次数](https://img.shields.io/github/commit-activity/y/jooy2/vutron) [![Followers（关注者数）](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
 
 ![vutron-logo](.github/resources/vutron-sample.webp)
 
