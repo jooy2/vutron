@@ -1,9 +1,10 @@
 import { generateSidebar } from 'vitepress-sidebar'
 import { name, description, repository } from '../../../package.json'
+import { defineConfig } from 'vitepress'
 
 const capitalizeFirst = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
 
-export default {
+export default defineConfig({
   title: capitalizeFirst(name),
   description,
   outDir: '../dist',
@@ -33,4 +34,4 @@ export default {
     }),
     socialLinks: [{ icon: 'github', link: repository.url.replace('.git', '') }]
   }
-}
+})
