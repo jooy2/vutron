@@ -41,7 +41,7 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
   })
 
   // Initialize IPC Communication
-  IPCs.initialize(mainWindow)
+  IPCs.initialize()
 
   if (Constants.IS_DEV_ENV) {
     await mainWindow.loadURL(Constants.APP_INDEX_URL_DEV)

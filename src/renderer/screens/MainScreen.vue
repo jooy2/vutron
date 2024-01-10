@@ -17,11 +17,12 @@ onMounted((): void => {
   languages.value = availableLocales
 
   // Get application version from package.json version string (Using IPC communication)
-  window.mainApi.receive('msgReceivedVersion', (event: Event, version: string) => {
-    appVersion.value = version
-  })
-  window.mainApi.send('msgRequestGetVersion')
+  getApplicationVersionFromMainProcess()
 })
+
+const getApplicationVersionFromMainProcess = (): void => {
+  appVersion.value = window.mainApi.sendSync('msgRequestGetVersion')
+}
 
 const handleChangeTheme = (): void => {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'

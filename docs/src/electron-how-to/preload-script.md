@@ -13,8 +13,13 @@ Vutron's preload script is located in the `src/preload` folder. To create a new 
 
 When sending events from renderer to main, you access the `window.mainApi` object instead of `ipcRenderer.send`. The `mainApi` is the name you set in your Vutron template and can be changed.
 
-Here are the supported functions for mainApi: (To change and modify this, you need to modify `exposeInMainWorld` in `src/preload/index.ts`).
+Here are the supported functions for mainApi:
 
 - `send`: Send an event to main.
-- `receive`: A listener to receive events sent by main.
+- `sendSync`: Send an event to main. It can be used when receiving a return value. The UI may be frozen until the operation is complete.
+- `on`: A listener to receive events sent by main.
+- `once`: A listener to receive events sent by main. (Handle only one call)
+- `off`: Remove an event listener
 - `invoke`: Functions that can send events to main and receive data asynchronously.
+
+To change and modify this, you need to modify `exposeInMainWorld` in `src/preload/index.ts`.

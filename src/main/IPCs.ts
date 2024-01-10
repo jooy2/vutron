@@ -1,18 +1,18 @@
-import { BrowserWindow, ipcMain, shell } from 'electron'
+import { ipcMain, shell, IpcMainEvent } from 'electron'
 import Constants from './utils/Constants'
 
 /*
  * IPC Communications
  * */
 export default class IPCs {
-  static initialize(window: BrowserWindow): void {
+  static initialize(): void {
     // Get application version
-    ipcMain.on('msgRequestGetVersion', () => {
-      window.webContents.send('msgReceivedVersion', Constants.APP_VERSION)
+    ipcMain.on('msgRequestGetVersion', (event: IpcMainEvent) => {
+      event.returnValue = Constants.APP_VERSION
     })
 
     // Open url via web browser
-    ipcMain.on('msgOpenExternalLink', async (event, url: string) => {
+    ipcMain.on('msgOpenExternalLink', async (event: IpcMainEvent, url: string) => {
       await shell.openExternal(url)
     })
   }
