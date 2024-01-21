@@ -1,7 +1,6 @@
 import { app, WebContents, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
-import { macOSDisableDefaultMenuItem } from './utils/Menus'
 
 let mainWindow
 let errorWindow
@@ -10,7 +9,14 @@ app.on('ready', async () => {
   if (Constants.IS_DEV_ENV) {
     import('./index.dev')
   }
-  macOSDisableDefaultMenuItem()
+
+  // Disable special menus on macOS by uncommenting the following, if necessary
+  /*
+  if (Constants.IS_MAC) {
+    systemPreferences.setUserDefault('NSDisabledDictationMenuItem', 'boolean', true)
+    systemPreferences.setUserDefault('NSDisabledCharacterPaletteMenuItem', 'boolean', true)
+  }
+  */
 
   mainWindow = await createMainWindow(mainWindow)
 })
