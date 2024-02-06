@@ -65,6 +65,6 @@ order: 1
 ├─ playwright.config.ts - Playwright test rules configurations
 ├─ tsconfig.json - TypeScript configurations
 ├─ tsconfig.node.json - TypeScript configurations
-├─ vite.config.ts - Vite compiler build configurations
+├─ vite.config.mts - Vite compiler build configurations
 └─ README.md - Files used only on GitHub
 ```
