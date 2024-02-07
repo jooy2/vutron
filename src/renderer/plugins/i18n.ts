@@ -9,6 +9,7 @@ import ja from '@/renderer/locales/ja.json'
 import fr from '@/renderer/locales/fr.json'
 import ru from '@/renderer/locales/ru.json'
 import pt from '@/renderer/locales/pt.json'
+import nl from '@/renderer/locales/nl.json'
 import { getCurrentLocale } from '@/renderer/utils'
 
 export default createI18n({
@@ -26,6 +27,7 @@ export default createI18n({
     ja,
     fr,
     ru,
-    pt
+    pt,
+    nl
   }
 })
