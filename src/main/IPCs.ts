@@ -7,8 +7,8 @@ import Constants from './utils/Constants'
 export default class IPCs {
   static initialize(): void {
     // Get application version
-    ipcMain.on('msgRequestGetVersion', (event: IpcMainEvent) => {
-      event.returnValue = Constants.APP_VERSION
+    ipcMain.handle('msgRequestGetVersion', () => {
+      return Constants.APP_VERSION
     })
 
     // Open url via web browser

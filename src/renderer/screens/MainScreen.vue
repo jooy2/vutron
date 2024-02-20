@@ -21,7 +21,7 @@ onMounted((): void => {
 })
 
 const getApplicationVersionFromMainProcess = (): void => {
-  window.mainApi.invoke('msgRequestGetVersion').then((result: string) => appVersion.value = result)
+  window.mainApi.invoke('msgRequestGetVersion').then((result: string) => { appVersion.value = result })
 }
 
 const handleChangeTheme = (): void => {
