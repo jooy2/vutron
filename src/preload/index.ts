@@ -12,13 +12,6 @@ contextBridge.exposeInMainWorld('mainApi', {
       throw new Error(`Unknown ipc channel name: ${channel}`)
     }
   },
-  sendSync: (channel: string, ...data: any[]): any => {
-    if (mainAvailChannels.includes(channel)) {
-      return ipcRenderer.sendSync.apply(null, [channel, ...data])
-    }
-
-    throw new Error(`Unknown ipc channel name: ${channel}`)
-  },
   on: (channel: string, listener: (event: IpcRendererEvent, ...args: any[]) => void): void => {
     if (rendererAvailChannels.includes(channel)) {
       ipcRenderer.on(channel, listener)

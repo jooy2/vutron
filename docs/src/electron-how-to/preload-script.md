@@ -16,7 +16,6 @@ When sending events from renderer to main, you access the `window.mainApi` objec
 Here are the supported functions for mainApi:
 
 - `send`: Send an event to main.
-- `sendSync`: Send an event to main. It can be used when receiving a return value. The UI may be frozen until the operation is complete.
 - `on`: A listener to receive events sent by main.
 - `once`: A listener to receive events sent by main. (Handle only one call)
 - `off`: Remove an event listener
