@@ -22,7 +22,9 @@ onMounted((): void => {
 })
 
 const getApplicationVersionFromMainProcess = (): void => {
-  window.mainApi.invoke('msgRequestGetVersion').then((result: string) => { appVersion.value = result })
+  window.mainApi.invoke('msgRequestGetVersion').then((result: string) => {
+    appVersion.value = result
+  })
 }
 
 const handleChangeTheme = (): void => {
@@ -71,11 +73,11 @@ const handleOpenFile = async () => {
         <p class="my-4">
           App Version: <strong>{{ appVersion }}</strong>
         </p>
-          <p v-if="selectedFile !== ''">{{
-                  $t('desc.selected-file', {
-                    filePath: selectedFile
-                  })
-                }}</p>
+        <p v-if="selectedFile">{{
+          $t('desc.selected-file', {
+            filePath: selectedFile
+          })
+        }}</p>
         <v-row class="my-4">
           <v-col>
             <v-btn icon color="primary" @click="handleChangeTheme">
@@ -121,7 +123,7 @@ const handleOpenFile = async () => {
           </v-col>
           <v-col cols="12">
             <v-select
-data-testid="select-language"
+              data-testid="select-language"
               :model-value="locale"
               density="compact"
               :label="$t('menu.change-language')"
