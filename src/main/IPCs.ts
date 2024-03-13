@@ -21,8 +21,7 @@ export default class IPCs {
       const filters = []
       if (filter === 'text') {
         filters.push({ name: 'Text', extensions: ['txt', 'json'] })
-      }
-      if (filter === 'zip') {
+      } else if (filter === 'zip') {
         filters.push({ name: 'Zip', extensions: ['zip'] })
       }
       const dialogResult = await dialog.showOpenDialog({
