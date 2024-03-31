@@ -41,16 +41,16 @@
     "vue": "^3.4.21",
     "vue-i18n": "^9.10.2",
     "vue-router": "^4.3.0",
-    "vuetify": "^3.5.10"
+    "vuetify": "^3.5.13"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.1",
-    "@typescript-eslint/eslint-plugin": "^7.3.1",
-    "@typescript-eslint/parser": "^7.3.1",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "dotenv": "^16.4.5",
-    "electron": "^29.1.4",
+    "electron": "^29.1.6",
     "electron-builder": "^24.13.3",
     "electron-extension-installer": "^1.2.0",
     "eslint": "^8.57.0",
@@ -60,18 +60,18 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-vue": "^9.23.0",
+    "eslint-plugin-vue": "^9.24.0",
     "playwright": "^1.42.1",
     "prettier": "^3.2.5",
     "tree-kill": "^1.2.2",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.6",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
     "vite-plugin-electron": "^0.28.4",
     "vite-plugin-electron-renderer": "^0.14.5",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-vuetify": "^2.0.3",
     "vue-eslint-parser": "^9.4.2",
-    "vue-tsc": "^2.0.6"
+    "vue-tsc": "^2.0.7"
   },
   "overrides": {
     "vite-plugin-electron": {
