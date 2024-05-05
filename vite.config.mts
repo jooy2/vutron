@@ -32,6 +32,7 @@ export default defineConfig(({ mode }) => {
         startup()
       },
       vite: {
+        root: resolve('.'),
         build: {
           assetsDir: '.',
           outDir: 'dist/main',
@@ -47,6 +48,7 @@ export default defineConfig(({ mode }) => {
         reload()
       },
       vite: {
+        root: resolve('.'),
         build: {
           outDir: 'dist/preload'
         }
@@ -58,6 +60,7 @@ export default defineConfig(({ mode }) => {
     electronPluginConfigs.push({
       entry: 'src/main/index.dev.ts',
       vite: {
+        root: resolve('.'),
         build: {
           outDir: 'dist/main'
         }
