@@ -17,12 +17,11 @@ export default class IPCs {
     })
 
     // Open file
-    ipcMain.handle('msgOpenFile', async (event, filter: string) => {
+    ipcMain.handle('msgOpenFile', async (event: IpcMainEvent, filter: string) => {
       const filters = []
       if (filter === 'text') {
         filters.push({ name: 'Text', extensions: ['txt', 'json'] })
-      }
-      if (filter === 'zip') {
+      } else if (filter === 'zip') {
         filters.push({ name: 'Zip', extensions: ['zip'] })
       }
       const dialogResult = await dialog.showOpenDialog({

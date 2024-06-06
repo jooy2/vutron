@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node_version: ['18', '20']
+        node_version: ['18', '20', '22.1']
         os: [windows-latest, macos-latest, ubuntu-latest]
 
     steps:
@@ -43,7 +43,7 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: npm-cache
         with:
           path: |
