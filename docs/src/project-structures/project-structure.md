@@ -60,7 +60,7 @@ order: 1
 ├─ .prettierrc - Prettier rule configurations
 ├─ CODE_OF_CONDUCT.md - Files used only on GitHub
 ├─ LICENSE - Project license file
-├─ package.json - NodeJS package configurations
+├─ package.json - Node.js package configurations
 ├─ package-lock.json
 ├─ playwright.config.ts - Playwright test rules configurations
 ├─ tsconfig.json - TypeScript configurations

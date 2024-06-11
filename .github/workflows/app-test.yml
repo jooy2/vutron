@@ -18,7 +18,7 @@ on:
 jobs:
   app-test:
     runs-on: ${{ matrix.os }}
-    name: Test NodeJS ${{ matrix.node_version }} on ${{ matrix.os }}
+    name: Test Node.js ${{ matrix.node_version }} on ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -35,7 +35,7 @@ jobs:
         run: |
           sudo apt install -y -q --no-install-recommends xvfb
 
-      - name: Setup NodeJS ${{ matrix.node_version }}
+      - name: Setup Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
