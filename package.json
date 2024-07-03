@@ -1,5 +1,6 @@
 {
   "name": "vutron",
+  "appId": "com.vutron.vutron",
   "version": "1.0.0",
   "description": "Quick Start Templates for Vite + Vue 3 + Electron",
   "homepage": "https://vutron.jooy2.com",

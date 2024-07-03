@@ -1,9 +1,10 @@
 /* eslint-disable no-template-curly-in-string */
 const dotenv = require('dotenv')
+const packageJson = require('../../package.json')
 
 const baseConfig = {
-  productName: 'Vutron',
-  appId: 'com.vutron.vutron',
+  productName: packageJson.name,
+  appId: packageJson.appId,
   asar: true,
   extends: null,
   compression: 'maximum',
@@ -69,7 +70,7 @@ const baseConfig = {
     oneClick: true
   },
   linux: {
-    executableName: 'vutron',
+    executableName: packageJson.name.toLowerCase(),
     icon: 'buildAssets/icons',
     category: 'Utility',
     target: [
