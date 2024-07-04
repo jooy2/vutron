@@ -28,14 +28,6 @@ jobs:
         with:
           node-version: '22'
 
-      # copy and replace string index.md file
-#      - name: Copy and replace string index.md file
-#        run: cp ../README.md ./src/index.md
-#      - name: Copy image asset (logo)
-#        run: cp ../src/renderer/public/images/vutron-logo.webp ./src/public
-#      - name: Copy image asset (sample)
-#        run: cp ../.github/resources/vutron-sample.webp ./src/public
-
       # cache node_modules
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -51,20 +43,6 @@ jobs:
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
-
-#      - name: Find and Replace (logo)
-#        uses: jacobtomlinson/gha-find-replace@v3
-#        with:
-#          find: "src/renderer/public/images/vutron-logo.webp"
-#          replace: "public/vutron-logo.webp"
-#          regex: false
-#
-#      - name: Find and Replace (sample)
-#        uses: jacobtomlinson/gha-find-replace@v3
-#        with:
-#          find: ".github/resources/vutron-sample.webp"
-#          replace: "public/vutron-sample.webp"
-#          regex: false
 
       # run build script
       - name: Build VitePress site
