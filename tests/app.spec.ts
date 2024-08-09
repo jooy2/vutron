@@ -1,6 +1,7 @@
 import { Page, _electron as electron } from 'playwright'
 import { ElectronApplication } from 'playwright-core'
 import { test, expect } from '@playwright/test'
+import { main } from '../package.json'
 
 let appWindow: Page
 let appElectron: ElectronApplication
@@ -20,7 +21,15 @@ function existElementByTestId(selector: string, waitingMilliseconds = 100) {
 test.beforeAll(async () => {
   // Open Electron app from build directory
   appElectron = await electron.launch({
-    args: ['dist/main/index.js'],
+    args: [
+      main,
+      ...(process.env.CI === 'true' ? ['--no-sandbox'] : []),
+      '--enable-logging',
+      '--ignore-certificate-errors',
+      '--ignore-ssl-errors',
+      '--ignore-blocklist',
+      '--ignore-gpu-blocklist'
+    ],
     locale: 'en-US',
     colorScheme: 'light',
     env: {
