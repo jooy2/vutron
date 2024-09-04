@@ -51,7 +51,10 @@ order: 1
 │  │  ├─ index.html - Root static index loaded by Electron renderer process
 │  └─ └─ main.ts - Renderer process entry point
 ├─ tests/ - Application test configuration
-│  └─ app.spec.ts - Test file specification
+│  ├─ results/ - Where to save PlayWright test result files and screenshots
+│  ├─ specs/ - PlayWright test spec file
+│  ├─ fixtures.ts - Test common execution API
+│  └─ testUtil.ts - Test utilities
 ├─ .editorconfig - Editor recommended configuration file for IDE
 ├─ .eslintignore - List of files to be ignored by ESLint
 ├─ .eslintrc.json - ESLint rule configurations
@@ -60,7 +63,7 @@ order: 1
 ├─ .prettierrc - Prettier rule configurations
 ├─ CODE_OF_CONDUCT.md - Files used only on GitHub
 ├─ LICENSE - Project license file
-├─ package.json - NodeJS package configurations
+├─ package.json - Node.js package configurations
 ├─ package-lock.json
 ├─ playwright.config.ts - Playwright test rules configurations
 ├─ tsconfig.json - TypeScript configurations

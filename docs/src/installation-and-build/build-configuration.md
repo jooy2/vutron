@@ -40,7 +40,7 @@ $ npm run build:all
 
 `Multipass` configuration may be required for Linux builds. Learn more about `Multipass` through the following link: https://multipass.run
 
-To learn more about multiplatform builds, see the following articles: https://www.electron.build/multi-platform-build
+To learn more about multiplatform builds, see the following articles: https://electron.build/multi-platform-build
 
 ## Reduce bundle size by excluding development files
 

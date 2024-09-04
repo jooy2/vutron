@@ -34,9 +34,9 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 - ⚡️ Global state management through the Pinia store
 - ⚡️ Quick support through the GitHub community and official documentation
 
-## [Documentation (Getting Started)](https://vutron.jooy2.com/installation-and-build/getting-started)
+## [Documentation (Getting Started)](https://vutron.cdget.com/installation-and-build/getting-started)
 
-For complete documentation including installation instructions and basic usage, please refer to each item in the link below: https://vutron.jooy2.com/installation-and-build/getting-started
+For complete documentation including installation instructions and basic usage, please refer to each item in the link below: https://vutron.cdget.com/installation-and-build/getting-started
 
 ## Contribute
 
@@ -44,4 +44,4 @@ You can report issues on [GitHub Issue](https://github.com/jooy2/vutron/issues).
 
 ## License
 
-Copyright © 2022-2024 [Jooy2](https://jooy2.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)> Released under the MIT license.
+Copyright © 2022-2024 [CDGet](https://cdget.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)> Released under the MIT license.

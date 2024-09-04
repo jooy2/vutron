@@ -7,7 +7,17 @@
     "composite": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true
   },
-  "include": ["src/main", "src/preload", "package.json", "vite.config.mts", "buildAssets/builder"]
+  "include": [
+    "src/main",
+    "src/preload",
+    "package.json",
+    "vite.config.mts",
+    "buildAssets/builder",
+    "tests/**/*.ts",
+    "tests/**/*.mts",
+    "tests/**/*.spec.ts"
+  ]
 }

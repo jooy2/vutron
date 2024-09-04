@@ -36,7 +36,7 @@ const handleChangeLanguage = (val): void => {
 }
 
 const handleOpenDocument = async (): Promise<void> => {
-  await openExternal('https://vutron.jooy2.com')
+  await openExternal('https://vutron.cdget.com')
 }
 
 const handleOpenGitHub = async (): Promise<void> => {
