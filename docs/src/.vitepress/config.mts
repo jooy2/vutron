@@ -41,6 +41,7 @@ export default defineConfig({
           collapsed: false,
           useTitleFromFileHeading: true,
           useTitleFromFrontmatter: true,
+          useFolderTitleFromIndexFile: true,
           sortMenusByFrontmatterOrder: true,
           hyphenToSpace: true,
           capitalizeEachWords: true,

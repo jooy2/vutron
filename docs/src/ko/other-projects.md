@@ -1,6 +1,6 @@
 # 기타 프로젝트
 
-## React로 만든 전자 템플릿을 찾고 계신가요?
+## React로 만든 Electron 템플릿을 찾고 계신가요?
 
 Vite + React + Material-UI + Electron으로 구성된 'Retron' 프로젝트도 확인해 보세요.
 
