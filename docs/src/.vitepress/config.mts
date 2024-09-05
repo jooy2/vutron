@@ -5,7 +5,7 @@ import { generateI18nLocale, generateI18nSearch } from 'vitepress-i18n'
 
 const capitalizeFirst = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
 const defaultLocale: string = 'en'
-const editLinkPattern = 'https://github.com/jooy2/vutron/edit/master/docs/:path'
+const editLinkPattern = 'https://github.com/jooy2/vutron/edit/master/docs/src/:path'
 
 const defineSupportLocales = [
   { label: defaultLocale, translateLocale: defaultLocale },
