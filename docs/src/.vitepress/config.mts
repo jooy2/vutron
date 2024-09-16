@@ -62,14 +62,6 @@ export default defineConfig({
     defineLocales: defineSupportLocales,
     rootLocale: defaultLocale,
     editLinkPattern: editLinkPattern,
-    label: {
-      en: 'English',
-      ko: '한국어'
-    },
-    lang: {
-      en: 'en-US',
-      ko: 'ko-KR'
-    },
     description: {
       en: 'Vutron is a preconfigured template for developing Electron cross-platform desktop apps. It uses Vue 3 and allows you to build a fast development environment with little effort.',
       ko: 'Vutron은 Electron 크로스 플랫폼 데스크톱 앱 개발을 위해 미리 구성된 템플릿입니다. Vue 3을 사용하며 적은 노력으로 빠른 개발 환경을 구축할 수 있습니다.'
