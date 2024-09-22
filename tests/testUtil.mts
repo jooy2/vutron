@@ -1,11 +1,20 @@
+import { Page } from 'playwright'
+import { TestInfo } from 'playwright/test'
+
 export default class TestUtil {
-  constructor(page, testInfo, testScreenshotPath) {
+  _page: Page
+
+  _testInfo: TestInfo
+
+  _testScreenshotPath: string
+
+  constructor(page: Page, testInfo: TestInfo, testScreenshotPath: string) {
     this._page = page
     this._testInfo = testInfo
     this._testScreenshotPath = testScreenshotPath
   }
 
-  async captureScreenshot(pageInstance, screenshotName) {
+  async captureScreenshot(pageInstance: Page, screenshotName: string) {
     if (!pageInstance) {
       return
     }
@@ -19,13 +28,13 @@ export default class TestUtil {
     }
   }
 
-  async onTestError(error) {
+  async onTestError(error: Error) {
     const titleLists = [...this._testInfo.titlePath]
     titleLists.shift()
     const title = titleLists.join('-')
 
     await this.captureScreenshot(this._page, `${title}_${Date.now()}`)
 
-    return new Error(error)
+    return new Error(error.message)
   }
 }

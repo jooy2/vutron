@@ -1,11 +1,11 @@
 import * as base from '@playwright/test'
-import { _electron as electron } from 'playwright'
+import { _electron as electron, Page, ElectronApplication } from 'playwright'
 import { join } from 'path'
 import { main } from '../package.json'
 import TestUtil from './testUtil.mjs'
 
-let appElectron
-let page
+let appElectron: ElectronApplication
+let page: Page
 
 const __cwd = process.cwd()
 const __isCiProcess = process.env.CI === 'true'
@@ -52,7 +52,7 @@ export const beforeAll = async () => {
     }
   })
 
-  await base.expect(evaluateResult.packaged, 'app is not packaged').toBe(false)
+  base.expect(evaluateResult.packaged, 'app is not packaged').toBe(false)
 }
 
 export const afterAll = async () => {
