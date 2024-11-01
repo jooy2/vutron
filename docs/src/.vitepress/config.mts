@@ -1,12 +1,13 @@
-import { generateSidebar } from 'vitepress-sidebar'
+import { VitePressSidebarOptions, withSidebar } from 'vitepress-sidebar'
 import { name, repository, homepage } from '../../../package.json'
-import { defineConfig } from 'vitepress'
+import { defineConfig, UserConfig } from 'vitepress'
 import { withI18n } from 'vitepress-i18n'
+import { VitePressI18nOptions } from 'vitepress-i18n/dist/types'
 
 const capitalizeFirst = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
 const defaultLocale: string = 'en'
 
-const vitePressI18nConfigs = {
+const vitePressI18nConfigs: VitePressI18nOptions = {
   locales: [defaultLocale, 'ko'],
   rootLocale: defaultLocale,
   searchProvider: 'local',
@@ -34,7 +35,29 @@ const vitePressI18nConfigs = {
   }
 }
 
-const vitePressConfigs = {
+const vitePressSidebarConfigs: VitePressSidebarOptions = [
+  ...[defaultLocale, 'ko'].map((lang) => {
+    return {
+      collapsed: false,
+      useTitleFromFileHeading: true,
+      useTitleFromFrontmatter: true,
+      useFolderTitleFromIndexFile: true,
+      sortMenusByFrontmatterOrder: true,
+      hyphenToSpace: true,
+      capitalizeEachWords: true,
+      manualSortFileNameByPriority: [
+        'installation-and-build',
+        'project-structures',
+        'electron-how-to'
+      ],
+      documentRootPath: `/src/${lang}`,
+      resolvePath: defaultLocale === lang ? '/' : `/${lang}/`,
+      ...(defaultLocale === lang ? {} : { basePath: `/${lang}/` })
+    }
+  })
+]
+
+const vitePressConfigs: UserConfig = {
   title: capitalizeFirst(name),
   lastUpdated: true,
   outDir: '../dist',
@@ -55,29 +78,10 @@ const vitePressConfigs = {
     editLink: {
       pattern: 'https://github.com/jooy2/vutron/edit/master/docs/src/:path'
     },
-    sidebar: generateSidebar([
-      ...[defaultLocale, 'ko'].map((lang) => {
-        return {
-          collapsed: false,
-          useTitleFromFileHeading: true,
-          useTitleFromFrontmatter: true,
-          useFolderTitleFromIndexFile: true,
-          sortMenusByFrontmatterOrder: true,
-          hyphenToSpace: true,
-          capitalizeEachWords: true,
-          manualSortFileNameByPriority: [
-            'installation-and-build',
-            'project-structures',
-            'electron-how-to'
-          ],
-          documentRootPath: `/src/${lang}`,
-          resolvePath: defaultLocale === lang ? '/' : `/${lang}/`,
-          ...(defaultLocale === lang ? {} : { basePath: `/${lang}/` })
-        }
-      })
-    ]),
     socialLinks: [{ icon: 'github', link: repository.url.replace('.git', '') }]
   }
 }
 
-export default defineConfig(withI18n(vitePressConfigs, vitePressI18nConfigs))
+export default defineConfig(
+  withSidebar(withI18n(vitePressConfigs, vitePressI18nConfigs), vitePressSidebarConfigs)
+)
