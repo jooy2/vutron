@@ -6,9 +6,10 @@ import { VitePressI18nOptions } from 'vitepress-i18n/dist/types'
 
 const capitalizeFirst = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
 const defaultLocale: string = 'en'
+const supportLocales = [defaultLocale, 'ko']
 
 const vitePressI18nConfigs: VitePressI18nOptions = {
-  locales: [defaultLocale, 'ko'],
+  locales: supportLocales,
   rootLocale: defaultLocale,
   searchProvider: 'local',
   description: {
@@ -36,7 +37,7 @@ const vitePressI18nConfigs: VitePressI18nOptions = {
 }
 
 const vitePressSidebarConfigs: VitePressSidebarOptions = [
-  ...[defaultLocale, 'ko'].map((lang) => {
+  ...supportLocales.map((lang) => {
     return {
       collapsed: false,
       useTitleFromFileHeading: true,
