@@ -6,11 +6,11 @@
 
 Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vuejs.org)** + **[Electron](https://www.electronjs.org)**
 
-[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE) ![Stars](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![Commit Count](https://img.shields.io/github/commit-activity/y/jooy2/vutron) [![Followers](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
+[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/main/LICENSE) ![Stars](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![Commit Count](https://img.shields.io/github/commit-activity/y/jooy2/vutron) [![Followers](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
 
 ![vutron-logo](.github/resources/vutron-sample.webp)
 
-**English** · [한국어](https://github.com/jooy2/vutron/blob/master/README.ko-KR.md) · [简体中文](https://github.com/jooy2/vutron/blob/master/README.zh-CN.md)
+**English** · [한국어](https://github.com/jooy2/vutron/blob/main/README.ko-KR.md) · [简体中文](https://github.com/jooy2/vutron/blob/main/README.zh-CN.md)
 
 **Vutron** is a preconfigured template for developing `Electron` cross-platform desktop apps. It uses `Vue 3` and allows you to build a fast development environment with little effort.
 
@@ -38,10 +38,11 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 
 For complete documentation including installation instructions and basic usage, please refer to each item in the link below: https://vutron.cdget.com/installation-and-build/getting-started
 
-## Contribute
+## Contributing
 
-You can report issues on [GitHub Issue](https://github.com/jooy2/vutron/issues). You can also request a pull to fix bugs and add frequently used features.
+Anyone can contribute to the project by reporting new issues or submitting a pull request. For more information, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-Copyright © 2022-2024 [CDGet](https://cdget.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)> Released under the MIT license.
+Please see the [LICENSE](LICENSE) file for more information about project owners, usage rights, and more.
+

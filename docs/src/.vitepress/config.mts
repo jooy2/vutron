@@ -78,7 +78,7 @@ const vitePressConfigs: UserConfig = {
   themeConfig: {
     logo: { src: '/icon.png', width: 24, height: 24 },
     editLink: {
-      pattern: 'https://github.com/jooy2/vutron/edit/master/docs/src/:path'
+      pattern: 'https://github.com/jooy2/vutron/edit/main/docs/src/:path'
     },
     socialLinks: [{ icon: 'github', link: repository.url.replace('.git', '') }]
   }

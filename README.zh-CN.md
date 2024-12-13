@@ -6,11 +6,11 @@
 
 快速启动模板，适用于 **[Vite](https://vitejs.dev)** + **[Vue 3](https://vuejs.org)** + **[Electron](https://www.electronjs.org)**
 
-[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE) ![Stars（点赞数）](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![提交次数](https://img.shields.io/github/commit-activity/y/jooy2/vutron) [![Followers（关注者数）](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
+[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/main/LICENSE) ![Stars（点赞数）](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![提交次数](https://img.shields.io/github/commit-activity/y/jooy2/vutron) [![Followers（关注者数）](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
 
 ![vutron-logo](.github/resources/vutron-sample.webp)
 
-[English](https://github.com/jooy2/vutron/blob/master/README.md) · [한국어](https://github.com/jooy2/vutron/blob/master/README.ko-KR.md) · **简体中文**
+[English](https://github.com/jooy2/vutron/blob/main/README.md) · [한국어](https://github.com/jooy2/vutron/blob/main/README.ko-KR.md) · **简体中文**
 
 **Vutron** 是一个预配置的模板，用于开发 `Electron` 跨平台桌面应用。它使用 `Vue 3`，使您能够轻松构建快速的开发环境。
 
@@ -38,10 +38,10 @@
 
 完整的文档，包括安装说明和基本使用方法，请参阅以下链接的每个项目：https://vutron.cdget.com/installation-and-build/getting-started
 
-## 贡献
+## Contributing
 
-您可以在 [GitHub 问题页面](https://github.com/jooy2/vutron/issues) 上报告问题。您还可以请求拉取请求，修复错误并添加常用功能。
+任何人都可以通过报告新问题或提交拉取请求为项目做出贡献。更多信息，请参阅 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-## 许可证
+## License
 
-版权所有 © 2022-2024 [CDGet](https://cdget.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)>，根据 MIT 许可证发布。
+请参阅 [LICENSE](LICENSE) 文件，了解有关项目所有者、使用权等更多信息。

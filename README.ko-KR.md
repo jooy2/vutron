@@ -6,11 +6,11 @@
 
 쉽고 빠르게 시작하는 **[Vite](https://vitejs.dev)** + **[Vue 3](https://vuejs.org)** + **[Electron](https://www.electronjs.org)** 템플릿
 
-[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/master/LICENSE) ![Stars](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![Commit Count](https://img.shields.io/github/commit-activity/y/jooy2/vutron) [![Followers](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
+[![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jooy2/vutron/blob/main/LICENSE) ![Stars](https://img.shields.io/github/stars/jooy2/vutron?style=social) ![Commit Count](https://img.shields.io/github/commit-activity/y/jooy2/vutron) [![Followers](https://img.shields.io/github/followers/jooy2?style=social)](https://github.com/jooy2)
 
 ![vutron-logo](.github/resources/vutron-sample.webp)
 
-[English](https://github.com/jooy2/vutron/blob/master/README.md) · **한국어** · [简体中文](https://github.com/jooy2/vutron/blob/master/README.zh-CN.md)
+[English](https://github.com/jooy2/vutron/blob/main/README.md) · **한국어** · [简体中文](https://github.com/jooy2/vutron/blob/main/README.zh-CN.md)
 
 **Vutron** 템플릿은 `Electron`으로 사전 설정 된 크로스 플랫폼 데스크톱 앱입니다. 이 프로젝트는 `Vue 3`을 사용하여 적은 노력으로 빠른 빌드를 가능하게 해줍니다.
 
@@ -40,8 +40,8 @@
 
 ## 기여
 
-[GitHub Issue](https://github.com/jooy2/vutron/issues) 페이지를 통해 문제를 보고할 수 있습니다. 또한 자주 사용될 만한 기능이나 버그 수정에 대해 Pull Request를 보내주실 수 있습니다.
+누구나 새로운 이슈를 보고하거나 풀 리퀘스트를 제출하여 프로젝트에 기여할 수 있습니다. 자세한 내용은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참조하세요.
 
 ## 라이선스
 
-Copyright © 2022-2024 [CDGet](https://cdget.com) <[jooy2.contact@gmail.com](mailto:jooy2.contact@gmail.com)> Released under the MIT license.
+프로젝트 소유자, 사용 권한 등에 대한 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
