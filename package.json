@@ -61,7 +61,7 @@
     "eslint-plugin-import": "2.30.0",
     "eslint-plugin-n": "16.6.2",
     "eslint-plugin-promise": "6.4.0",
-    "eslint-plugin-vue": "9.28.0",
+    "eslint-plugin-vue": "9.32.0",
     "playwright": "^1.49.0",
     "prettier": "^3.4.2",
     "tree-kill": "^1.2.2",
