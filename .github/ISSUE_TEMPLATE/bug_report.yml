@@ -1,0 +1,38 @@
+name: 'Bug report'
+description: Report a bug in this project.
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before creating an issue, please read the following:
+
+        - Read the `README.md` file on the project page or the documentation file and compare your code to the intent of the project.
+        - Search to see if the same issue already exists, and keep the title concise and accurate so that it's easy for others to understand and search for.
+        - Please create a separate issue for each type of issue.
+        - For modular projects, make sure you're using the latest version of the module.
+        - Please be as detailed as possible and write in English so that we can handle your issue quickly.
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: |
+        For the issue you are experiencing, please describe in detail what you are seeing, the error message, and the impact of the issue. If you are able to reproduce the issue, please list the steps in order. You can attach an image or video if necessary.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: Describe how it should be handled when it's normal behavior or what needs to be fixed.
+    validations:
+  - type: input
+    attributes:
+      label: Your environment - System OS
+      description: Please describe the full range of OSes you are experiencing the issue with, preferably including the version.
+      placeholder: Windows 11, macOS 15.x, Linux Ubuntu 24.04, Android 15, iOS 16...
+    validations:
+  - type: input
+    attributes:
+      label: Your environment - Web Browser
+      description: If relevant, please describe the web browser you are currently using.
+      placeholder: Google Chrome, Microsoft Edge, Mozilla Firefox...
+    validations:
