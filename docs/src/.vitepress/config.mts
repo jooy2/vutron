@@ -1,13 +1,13 @@
 import { withSidebar } from 'vitepress-sidebar'
-import type { VitePressSidebarOptions } from 'vitepress-sidebar/types'
 import { name, repository, homepage } from '../../../package.json'
 import { defineConfig, UserConfig } from 'vitepress'
 import { withI18n } from 'vitepress-i18n'
+import type { VitePressSidebarOptions } from 'vitepress-sidebar/types'
 import type { VitePressI18nOptions } from 'vitepress-i18n/types'
 
 const capitalizeFirst = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
-const defaultLocale: string = 'en'
-const supportLocales = [defaultLocale, 'ko']
+const supportLocales = ['en', 'ko']
+const defaultLocale: string = supportLocales[0]
 
 const vitePressI18nConfigs: VitePressI18nOptions = {
   locales: supportLocales,
@@ -48,6 +48,7 @@ const vitePressSidebarConfigs: VitePressSidebarOptions = [
       hyphenToSpace: true,
       capitalizeEachWords: true,
       manualSortFileNameByPriority: [
+        'introduction.md',
         'installation-and-build',
         'project-structures',
         'electron-how-to'
