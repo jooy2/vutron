@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "compounds": [
+    {
+      "name": "Debug Run",
+      "configurations": [
+        "Debug App"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "",
+        "order": 1
+      },
+      "stopAll": true
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Debug App",
+      "request": "launch",
+      "type": "node",
+      "timeout": 60000,
+      "runtimeArgs": [
+        "run-script",
+        "dev"
+      ],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "npm",
+      "console": "integratedTerminal"
+    }
+  ]
+}

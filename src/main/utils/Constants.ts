@@ -1,5 +1,5 @@
 import { join, dirname } from 'path'
-import { name, version } from '../../../package.json'
+import { name, version, debug } from '../../../package.json'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -21,6 +21,6 @@ export default class Constants {
     preload: join(__dirname, '../preload/index.js')
   }
 
-  static APP_INDEX_URL_DEV = 'http://localhost:5173/index.html'
+  static APP_INDEX_URL_DEV = `${debug.env.VITE_DEV_SERVER_URL}/index.html`
   static APP_INDEX_URL_PROD = join(__dirname, '../index.html')
 }

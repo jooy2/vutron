@@ -15,6 +15,11 @@
   "bugs": {
     "url": "https://github.com/jooy2/vutron/issues"
   },
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://localhost:5173"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "dev:debug": "vite -d",
