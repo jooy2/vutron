@@ -1,4 +1,4 @@
-import { app, BrowserWindow, RenderProcessGoneDetails } from 'electron'
+import { app, BrowserWindow, Menu, RenderProcessGoneDetails, Tray } from 'electron'
 import Constants from './utils/Constants'
 import IPCs from './IPCs'
 
@@ -49,6 +49,8 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
     await mainWindow.loadFile(Constants.APP_INDEX_URL_PROD)
   }
 
+  createTray(mainWindow);
+
   return mainWindow
 }
 
@@ -91,4 +93,30 @@ export const createErrorWindow = async (
   })
 
   return errorWindow
+}
+
+function createTray(mainWindow) {
+  const tray = new Tray('buildAssets/icons/icon16.png');
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Show App',
+      click: () => {
+        mainWindow.show();
+      }
+    },
+    {
+      label: 'Hide App',
+      click: () => {
+        mainWindow.hide();
+      }
+    },
+    {
+      label: 'Exit',
+      click: () => {
+        app.quit();
+      }
+    }
+  ]);
+  tray.setToolTip('Vutron App');
+  tray.setContextMenu(contextMenu);
 }
