@@ -1,6 +1,21 @@
-import { app, BrowserWindow, Menu, RenderProcessGoneDetails, Tray } from 'electron'
+import { app, BrowserWindow,  RenderProcessGoneDetails, BrowserWindowConstructorOptions } from 'electron'
 import Constants from './utils/Constants'
 import IPCs from './IPCs'
+import { createTray, setWindowAutoHide, showWindow } from './tray.ts'
+
+const options = {
+  tray: true,
+  trayWindow: true,
+  width: Constants.IS_DEV_ENV ? 1500 : 1200,
+  height: 650,
+  trayOptions: {
+    menu: false,
+    tooltip: 'Vutron App',
+    margin: {x:0, y:0},
+    width: Constants.IS_DEV_ENV ? 1500 : 1200,
+    height: 650,
+  }
+}
 
 const exitApp = (mainWindow: BrowserWindow): void => {
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -10,15 +25,35 @@ const exitApp = (mainWindow: BrowserWindow): void => {
   app.exit()
 }
 
-export const createMainWindow = async (mainWindow: BrowserWindow): Promise<BrowserWindow> => {
-  mainWindow = new BrowserWindow({
+export const createMainWindow = async (): Promise<BrowserWindow> => {
+  let opt: BrowserWindowConstructorOptions = {
     title: Constants.APP_NAME,
     show: false,
-    width: Constants.IS_DEV_ENV ? 1500 : 1200,
-    height: 650,
+    width: options.width,
+    height: options.height,
     useContentSize: true,
-    webPreferences: Constants.DEFAULT_WEB_PREFERENCES
-  })
+    webPreferences: Constants.DEFAULT_WEB_PREFERENCES,
+    frame: !options.trayWindow,
+  }
+  if (options.trayWindow){
+    opt = {
+      ...opt,
+      width: options.trayOptions.width ,
+      height: options.trayOptions.height,
+      maxWidth: options.trayOptions.width,
+      maxHeight: options.trayOptions.height,
+      show: false,
+      frame: false,
+      fullscreenable: false,
+      resizable: false,
+      transparent: true,
+      alwaysOnTop: true,
+      webPreferences: {
+        backgroundThrottling: false
+      }
+    }
+  }
+  const mainWindow = new BrowserWindow(opt)
 
   mainWindow.setMenu(null)
 
@@ -33,12 +68,21 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
     }
   })
 
-  mainWindow.once('ready-to-show', (): void => {
-    mainWindow.setAlwaysOnTop(true)
-    mainWindow.show()
-    mainWindow.focus()
-    mainWindow.setAlwaysOnTop(false)
-  })
+  if (options.tray) {
+    createTray(mainWindow, options.trayOptions);
+  }
+
+  if (options.trayWindow) {
+    setWindowAutoHide(mainWindow);
+    // showWindow(mainWindow)
+  }else{
+    mainWindow.once('ready-to-show', (): void => {
+      mainWindow.setAlwaysOnTop(true)
+      mainWindow.show()
+      mainWindow.focus()
+      mainWindow.setAlwaysOnTop(false)
+    })
+  }
 
   // Initialize IPC Communication
   IPCs.initialize()
@@ -48,8 +92,6 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
   } else {
     await mainWindow.loadFile(Constants.APP_INDEX_URL_PROD)
   }
-
-  createTray(mainWindow);
 
   return mainWindow
 }
@@ -93,33 +135,4 @@ export const createErrorWindow = async (
   })
 
   return errorWindow
-}
-
-function createTray(mainWindow) {
-  const tray = new Tray('buildAssets/icons/icon16.png');
-  const contextMenu = Menu.buildFromTemplate([
-    {
-      label: 'Show App',
-      click: () => {
-        mainWindow.show();
-      }
-    },
-    {
-      label: 'Hide App',
-      click: () => {
-        mainWindow.hide();
-      }
-    },
-    {
-      label: 'Exit',
-      click: () => {
-        app.quit();
-      }
-    }
-  ]);
-  tray.on('double-click', function (event) {
-    mainWindow.show();
-  });
-  tray.setToolTip('Vutron App');
-  tray.setContextMenu(contextMenu);
 }
