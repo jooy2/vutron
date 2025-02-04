@@ -117,6 +117,9 @@ function createTray(mainWindow) {
       }
     }
   ]);
+  tray.on('double-click', function (event) {
+    mainWindow.show();
+  });
   tray.setToolTip('Vutron App');
   tray.setContextMenu(contextMenu);
 }
