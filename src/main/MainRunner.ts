@@ -1,6 +1,22 @@
-import { app, BrowserWindow, RenderProcessGoneDetails } from 'electron'
+import { app, BrowserWindow,  RenderProcessGoneDetails, BrowserWindowConstructorOptions } from 'electron'
 import Constants from './utils/Constants'
 import IPCs from './IPCs'
+import { createTray, setWindowAutoHide } from './tray.ts'
+import { moveToCurrentDesktop } from './desktop.ts'
+
+const options = {
+  tray: true,
+  trayWindow: true,
+  width: Constants.IS_DEV_ENV ? 1500 : 1200,
+  height: 650,
+  trayOptions: {
+    menu: false,
+    tooltip: 'Vutron App',
+    margin: {x:0, y:0},
+    width: Constants.IS_DEV_ENV ? 1500 : 1200,
+    height: 650,
+  }
+}
 
 const exitApp = (mainWindow: BrowserWindow): void => {
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -10,15 +26,37 @@ const exitApp = (mainWindow: BrowserWindow): void => {
   app.exit()
 }
 
-export const createMainWindow = async (mainWindow: BrowserWindow): Promise<BrowserWindow> => {
-  mainWindow = new BrowserWindow({
+export const createMainWindow = async (): Promise<BrowserWindow> => {
+  let opt: BrowserWindowConstructorOptions = {
     title: Constants.APP_NAME,
     show: false,
-    width: Constants.IS_DEV_ENV ? 1500 : 1200,
-    height: 650,
+    width: options.width,
+    height: options.height,
     useContentSize: true,
-    webPreferences: Constants.DEFAULT_WEB_PREFERENCES
-  })
+    webPreferences: Constants.DEFAULT_WEB_PREFERENCES,
+    frame: !options.trayWindow,
+  }
+  if (options.trayWindow){
+    opt = {
+      ...opt,
+      width: options.trayOptions.width ,
+      height: options.trayOptions.height,
+      maxWidth: options.trayOptions.width,
+      maxHeight: options.trayOptions.height,
+      show: false,
+      frame: false,
+      fullscreenable: false,
+      hiddenInMissionControl: true,
+      resizable: false,
+      transparent: true,
+      alwaysOnTop: true,
+      webPreferences: {
+        ...Constants.DEFAULT_WEB_PREFERENCES,
+        backgroundThrottling: false
+      }
+    }
+  }
+  const mainWindow = new BrowserWindow(opt)
 
   mainWindow.setMenu(null)
 
@@ -28,17 +66,28 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
   })
 
   mainWindow.webContents.on('did-frame-finish-load', (): void => {
-    if (Constants.IS_DEV_ENV) {
+    if (Constants.IS_DEV_ENV && Constants.IS_DEVTOOLS) {
       mainWindow.webContents.openDevTools()
     }
   })
 
-  mainWindow.once('ready-to-show', (): void => {
-    mainWindow.setAlwaysOnTop(true)
-    mainWindow.show()
-    mainWindow.focus()
-    mainWindow.setAlwaysOnTop(false)
-  })
+  if (options.tray) {
+    createTray(mainWindow, options.trayOptions);
+  }
+
+  if (options.trayWindow) {
+    setWindowAutoHide(mainWindow);
+    // showWindow(mainWindow)
+  }else{
+    mainWindow.once('ready-to-show', (): void => {
+      mainWindow.setAlwaysOnTop(true)
+      mainWindow.show()
+      mainWindow.focus()
+      mainWindow.setAlwaysOnTop(false)
+
+      // moveToCurrentDesktop(mainWindow)
+    })
+  }
 
   // Initialize IPC Communication
   IPCs.initialize()
