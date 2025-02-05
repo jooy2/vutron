@@ -1,6 +1,6 @@
-import { app, Menu, Tray, BaseWindow, BrowserWindow } from 'electron'
+import { app, screen, Menu, Tray, BaseWindow, BrowserWindow } from 'electron'
 import Constants from './utils/Constants.ts'
-const electron = require("electron");
+import { getDisplayNearestPoint } from './desktop.ts'
 
 // defaults
 // const width = 800;
@@ -103,48 +103,29 @@ export function alignWindow(window: BaseWindow) {
 }
 
 function calculateWindowPosition() {
-  const margin = trayOptions.margin;
+  // To detect proper desktop/workspace, find the display where the mouse cursor is
+  const currentDisplay = getDisplayNearestPoint();
+  console.log("currentDisplay.workArea=", currentDisplay.workArea);
+
+  const margin = {
+    x: trayOptions.margin.x, // + currentDisplay.workArea.width,
+    y: trayOptions.margin.y // + currentDisplay.workArea.height
+  };
   const b = trayOptions
 
-  const screenBounds = electron.screen.getPrimaryDisplay().size;
+  const screenBounds = screen.getPrimaryDisplay().size;
   const trayBounds = tray.getBounds();
-  // where is the icon on the screen?
-  let trayPos = 4; // 1:top-left 2:top-right 3:bottom-left 4.bottom-right
-  trayPos = trayBounds.y > screenBounds.height / 2 ? trayPos : trayPos / 2;
-  trayPos = trayBounds.x > screenBounds.width / 2 ? trayPos : trayPos - 1;
-  let x = 0;
-  let y = 0 ;
+  const bottom = trayBounds.y > screenBounds.height / 2 ;
+  const  x = Math.floor(trayBounds.x - b.width/2 - margin.x + trayBounds.width / 2);
+  const y = bottom ?
+    Math.floor(trayBounds.y - b.height - margin.y + trayBounds.height / 2)
+    :
+    Math.floor(trayBounds.y + margin.y + trayBounds.height / 2)
+  ;
 
-  // calculate the new window position
-  switch (trayPos) {
-    case 1: // for TOP - LEFT
-      x = Math.floor(trayBounds.x + margin.x + trayBounds.width / 2);
-      y = Math.floor(trayBounds.y + margin.y + trayBounds.height / 2);
-      break;
-
-    case 2: // for TOP - RIGHT
-      x = Math.floor(
-        trayBounds.x - b.width - margin.x + trayBounds.width / 2
-      );
-      y = Math.floor(trayBounds.y + margin.y + trayBounds.height / 2);
-      break;
-
-    case 3: // for BOTTOM - LEFT
-      x = Math.floor(trayBounds.x + margin.x + trayBounds.width / 2);
-      y = Math.floor(
-        trayBounds.y - b.height - margin.y + trayBounds.height / 2
-      );
-      break;
-
-    case 4: // for BOTTOM - RIGHT
-      x = Math.floor(
-        trayBounds.x - b.width - margin.x + trayBounds.width / 2
-      );
-      y = Math.floor(
-        trayBounds.y - b.height - margin.y + trayBounds.height / 2
-      );
-      break;
-  }
-
-  return { x, y };
+  // constraint into screen
+  return {
+    x: Math.max(0, Math.min(screenBounds.width - b.width, x)),
+    y: Math.max(0, Math.min(screenBounds.height - b.height, y))
+  };
 }

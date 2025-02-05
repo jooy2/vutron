@@ -1,7 +1,8 @@
 import { app, BrowserWindow,  RenderProcessGoneDetails, BrowserWindowConstructorOptions } from 'electron'
 import Constants from './utils/Constants'
 import IPCs from './IPCs'
-import { createTray, setWindowAutoHide, showWindow } from './tray.ts'
+import { createTray, setWindowAutoHide } from './tray.ts'
+import { moveToCurrentDesktop } from './desktop.ts'
 
 const options = {
   tray: true,
@@ -45,10 +46,12 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
       show: false,
       frame: false,
       fullscreenable: false,
+      hiddenInMissionControl: true,
       resizable: false,
       transparent: true,
       alwaysOnTop: true,
       webPreferences: {
+        ...Constants.DEFAULT_WEB_PREFERENCES,
         backgroundThrottling: false
       }
     }
@@ -63,7 +66,7 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
   })
 
   mainWindow.webContents.on('did-frame-finish-load', (): void => {
-    if (Constants.IS_DEV_ENV) {
+    if (Constants.IS_DEV_ENV && Constants.IS_DEVTOOLS) {
       mainWindow.webContents.openDevTools()
     }
   })
@@ -81,6 +84,8 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
       mainWindow.show()
       mainWindow.focus()
       mainWindow.setAlwaysOnTop(false)
+
+      // moveToCurrentDesktop(mainWindow)
     })
   }
 
