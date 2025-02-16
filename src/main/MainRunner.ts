@@ -5,7 +5,7 @@ import { createTray, setWindowAutoHide, showWindow } from './tray.ts'
 
 const options = {
   tray: true,
-  trayWindow: true,
+  trayWindow: false, // true, to use a tray floating window attached to top try icon
   width: Constants.IS_DEV_ENV ? 1500 : 1200,
   height: 650,
   trayOptions: {
