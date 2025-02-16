@@ -12,7 +12,8 @@ export default class Constants {
 
   static IS_DEV_ENV = process.env.NODE_ENV === 'development'
 
-  // required IS_DEV_ENV
+  // To show devtools at startup. It requires IS_DEV_ENV=true.
+  // Note: For debugging purpose, window won't be closed if click elsewhere, if devtools is open.
   static IS_DEVTOOLS = true
 
   static IS_MAC = process.platform === 'darwin'

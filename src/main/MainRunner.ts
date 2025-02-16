@@ -1,8 +1,7 @@
 import { app, BrowserWindow,  RenderProcessGoneDetails, BrowserWindowConstructorOptions } from 'electron'
 import Constants from './utils/Constants'
 import IPCs from './IPCs'
-import { createTray, setWindowAutoHide } from './tray.ts'
-import { moveToCurrentDesktop } from './desktop.ts'
+import { createTray, setWindowAutoHide, showWindow } from './tray.ts'
 
 const options = {
   tray: true,
@@ -13,8 +12,9 @@ const options = {
     menu: false,
     tooltip: 'Vutron App',
     margin: {x:0, y:0},
-    width: Constants.IS_DEV_ENV ? 1500 : 1200,
+    width: Constants.IS_DEV_ENV ? 800 : 600,
     height: 650,
+    showAtStartup: false
   }
 }
 
@@ -34,7 +34,7 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
     height: options.height,
     useContentSize: true,
     webPreferences: Constants.DEFAULT_WEB_PREFERENCES,
-    frame: !options.trayWindow,
+    frame: true
   }
   if (options.trayWindow){
     opt = {
@@ -72,20 +72,20 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
   })
 
   if (options.tray) {
-    createTray(mainWindow, options.trayOptions);
+    createTray(mainWindow, options.trayWindow, options.trayOptions);
   }
 
   if (options.trayWindow) {
     setWindowAutoHide(mainWindow);
-    // showWindow(mainWindow)
+    if (options.trayOptions?.showAtStartup){
+     showWindow(mainWindow)
+    }
   }else{
     mainWindow.once('ready-to-show', (): void => {
       mainWindow.setAlwaysOnTop(true)
       mainWindow.show()
       mainWindow.focus()
       mainWindow.setAlwaysOnTop(false)
-
-      // moveToCurrentDesktop(mainWindow)
     })
   }
 

@@ -2,11 +2,6 @@ import { app, screen, Menu, Tray, BaseWindow, BrowserWindow } from 'electron'
 import Constants from './utils/Constants.ts'
 import { getDisplayNearestPoint } from './desktop.ts'
 
-// defaults
-// const width = 800;
-// const height = 500;
-// const DEFAULT_MARGIN = {x: 0, y: 0} ;
-
 let tray;
 let trayOptions;
 const DEFAULT_OPTIONS = {
@@ -17,13 +12,14 @@ const DEFAULT_OPTIONS = {
   height: 650,
 }
 
-export function createTray(window: BaseWindow, options) {
+export function createTray(window: BaseWindow, trayWindow: boolean, options) {
   trayOptions = options || DEFAULT_OPTIONS;
+  trayOptions.trayWindow=trayWindow;
   tray = new Tray('buildAssets/icons/icon16.png');
 
-  tray.on('double-click', function (event) {
-    toggleWindow(window)
-  });
+  // tray.on('double-click', function (event) {
+  //   toggleWindow(window)
+  // });
   tray.on('right-click', function (event) {
     toggleWindow(window)
   });
@@ -92,6 +88,8 @@ export function showWindow(window: BaseWindow) {
 }
 
 export function alignWindow(window: BaseWindow) {
+  if (!trayOptions.trayWindow) return;
+
   const position = calculateWindowPosition();
   const b = window.getBounds()
   window.setBounds({
