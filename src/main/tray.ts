@@ -101,9 +101,9 @@ export function alignWindow(window: BaseWindow) {
 }
 
 function calculateWindowPosition() {
-  // To detect proper desktop/workspace, find the display where the mouse cursor is
-  const currentDisplay = getDisplayNearestPoint();
-  console.log("currentDisplay.workArea=", currentDisplay.workArea);
+  // // To detect proper desktop/workspace, find the display where the mouse cursor is
+  // const currentDisplay = getDisplayNearestPoint();
+  // console.log("currentDisplay.workArea=", currentDisplay.workArea);
 
   const margin = {
     x: trayOptions.margin.x, // + currentDisplay.workArea.width,
