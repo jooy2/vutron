@@ -1,29 +1,23 @@
-import { app, screen, Menu, Tray, BaseWindow, BrowserWindow } from 'electron'
+import { app, screen, Menu, Tray, BrowserWindow } from 'electron'
 import Constants from './utils/Constants.ts'
-import { getDisplayNearestPoint } from './desktop.ts'
-
 let tray;
 let trayOptions;
-const DEFAULT_OPTIONS = {
-  menu: false,
-  tooltip: 'Vutron App',
-  margin: {x:0, y:0},
-  width: Constants.IS_DEV_ENV ? 1500 : 1200,
-  height: 650,
-}
 
-export function createTray(window: BaseWindow, trayWindow: boolean, options) {
-  trayOptions = options || DEFAULT_OPTIONS;
-  trayOptions.trayWindow=trayWindow;
+export function createTray(window: BrowserWindow, options) {
+  trayOptions = options || Constants.DEFAULT_TRAY_OPTIONS;
+
   tray = new Tray('buildAssets/icons/icon16.png');
 
-  // tray.on('double-click', function (event) {
-  //   toggleWindow(window)
-  // });
+  tray.on('double-click', function (event) {
+    console.log('double-click')
+    toggleWindow(window)
+  });
   tray.on('right-click', function (event) {
+    console.log('right-click')
     toggleWindow(window)
   });
   tray.on('click', function (event) {
+    console.log('click')
     toggleWindow(window)
   });
   tray.setToolTip(trayOptions.tooltip);
@@ -60,34 +54,33 @@ export function createTray(window: BaseWindow, trayWindow: boolean, options) {
   return tray
 }
 
-export function setWindowAutoHide(window: BrowserWindow) {
+export function hideWindow(window: BrowserWindow) {
+  console.log('hide window');
   window.hide();
   window.on("blur", () => {
     // dont close if devtools
     if (!window.webContents.isDevToolsOpened()) {
       window.hide();
-      // ipcMain.emit("tray-window-hidden", { window: window, tray: tray });
     }
   });
 }
 
-export function toggleWindow(window: BaseWindow) {
+export function toggleWindow(window: BrowserWindow) {
   if (window.isVisible()) {
-    window.hide();
-    // ipcMain.emit("tray-window-hidden", { window: window, tray: tray });
-    return;
+    hideWindow(window);
+  }else{
+    showWindow(window);
   }
-
-  showWindow(window);
-  // ipcMain.emit("tray-window-visible", { window: window, tray: tray });
 }
 
-export function showWindow(window: BaseWindow) {
+export function showWindow(window: BrowserWindow) {
+  console.log('show window');
   window.show()
+
   alignWindow(window)
 }
 
-export function alignWindow(window: BaseWindow) {
+export function alignWindow(window: BrowserWindow) {
   if (!trayOptions.trayWindow) return;
 
   const position = calculateWindowPosition();
@@ -101,15 +94,8 @@ export function alignWindow(window: BaseWindow) {
 }
 
 function calculateWindowPosition() {
-  // // To detect proper desktop/workspace, find the display where the mouse cursor is
-  // const currentDisplay = getDisplayNearestPoint();
-  // console.log("currentDisplay.workArea=", currentDisplay.workArea);
-
-  const margin = {
-    x: trayOptions.margin.x, // + currentDisplay.workArea.width,
-    y: trayOptions.margin.y // + currentDisplay.workArea.height
-  };
-  const b = trayOptions
+  const margin = trayOptions.margin;
+  const b = trayOptions;
 
   const screenBounds = screen.getPrimaryDisplay().size;
   const trayBounds = tray.getBounds();

@@ -1,20 +1,15 @@
 import { app, BrowserWindow,  RenderProcessGoneDetails, BrowserWindowConstructorOptions } from 'electron'
-import Constants from './utils/Constants'
+import Constants, { TrayOptions } from './utils/Constants'
 import IPCs from './IPCs'
-import { createTray, setWindowAutoHide, showWindow } from './tray.ts'
+import { createTray, hideWindow, showWindow } from './tray.ts'
 
 const options = {
-  tray: true,
-  trayWindow: false, // true, to use a tray floating window attached to top try icon
   width: Constants.IS_DEV_ENV ? 1500 : 1200,
   height: 650,
-  trayOptions: {
-    menu: false,
-    tooltip: 'Vutron App',
-    margin: {x:0, y:0},
-    width: Constants.IS_DEV_ENV ? 800 : 600,
-    height: 650,
-    showAtStartup: false
+  tray: {
+    // all optional values from DEFAULT_TRAY_OPTIONS can de defined here
+    enabled: true,
+    trayWindow: false // true, to use a tray floating window attached to top try icon
   }
 }
 
@@ -36,13 +31,22 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
     webPreferences: Constants.DEFAULT_WEB_PREFERENCES,
     frame: true
   }
-  if (options.trayWindow){
+  const trayOptions: TrayOptions = (options.tray?.enabled) ? {
+      ...Constants.DEFAULT_TRAY_OPTIONS,
+      ...options.tray
+  }: {
+    ...Constants.DEFAULT_TRAY_OPTIONS,
+    enabled: false
+  }
+
+  // trayWindow requires tray.enabled=true
+  if (trayOptions.enabled && trayOptions.trayWindow){
     opt = {
       ...opt,
-      width: options.trayOptions.width ,
-      height: options.trayOptions.height,
-      maxWidth: options.trayOptions.width,
-      maxHeight: options.trayOptions.height,
+      width: options.width ,
+      height: options.height,
+      maxWidth: options.width,
+      maxHeight: options.height,
       show: false,
       frame: false,
       fullscreenable: false,
@@ -71,13 +75,13 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
     }
   })
 
-  if (options.tray) {
-    createTray(mainWindow, options.trayWindow, options.trayOptions);
+  if (trayOptions.enabled) {
+    createTray(mainWindow, trayOptions);
   }
 
-  if (options.trayWindow) {
-    setWindowAutoHide(mainWindow);
-    if (options.trayOptions?.showAtStartup){
+  if (trayOptions.enabled && trayOptions.trayWindow) {
+    hideWindow(mainWindow);
+    if (trayOptions.showAtStartup){
      showWindow(mainWindow)
     }
   }else{
