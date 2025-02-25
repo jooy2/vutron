@@ -1,25 +1,17 @@
 import { app, screen, Menu, Tray, BrowserWindow } from 'electron'
 import Constants from './utils/Constants.ts'
-let tray;
+import { debounce } from './utils/Util.ts'
+let tray
 let trayOptions;
 
 export function createTray(window: BrowserWindow, options) {
   trayOptions = options || Constants.DEFAULT_TRAY_OPTIONS;
+  // menu or trayWindow, you need to choose
+  if (trayOptions.trayWindow){
+    trayOptions.menu = false
+  }
 
   tray = new Tray('buildAssets/icons/icon16.png');
-
-  tray.on('double-click', function (event) {
-    console.log('double-click')
-    toggleWindow(window)
-  });
-  tray.on('right-click', function (event) {
-    console.log('right-click')
-    toggleWindow(window)
-  });
-  tray.on('click', function (event) {
-    console.log('click')
-    toggleWindow(window)
-  });
   tray.setToolTip(trayOptions.tooltip);
   if (trayOptions.menu) {
     const contextMenu = Menu.buildFromTemplate([
@@ -32,7 +24,7 @@ export function createTray(window: BrowserWindow, options) {
       {
         label: 'Hide App',
         click: () => {
-          window.hide()
+          hideWindow(window)
         }
       },
       {
@@ -45,6 +37,13 @@ export function createTray(window: BrowserWindow, options) {
     // tray icon only with classic window
     tray.setContextMenu(contextMenu)
   } else {
+    // handle click on tray icon
+    tray.on('right-click', function (event) {
+      debounce(() => toggleWindow(window));
+    });
+    tray.on('click', function (event) {
+      debounce(() => toggleWindow(window));
+    });
     // no menu for tray window
     window.setMenu(null)
     tray.setContextMenu(null)
@@ -55,8 +54,9 @@ export function createTray(window: BrowserWindow, options) {
 }
 
 export function hideWindow(window: BrowserWindow) {
-  console.log('hide window');
   window.hide();
+  // if (!trayOptions.trayWindow) return;
+  // hide window when click elsewhere on screen
   window.on("blur", () => {
     // dont close if devtools
     if (!window.webContents.isDevToolsOpened()) {
@@ -74,17 +74,15 @@ export function toggleWindow(window: BrowserWindow) {
 }
 
 export function showWindow(window: BrowserWindow) {
-  console.log('show window');
   window.show()
-
   alignWindow(window)
 }
 
 export function alignWindow(window: BrowserWindow) {
   if (!trayOptions.trayWindow) return;
 
-  const position = calculateWindowPosition();
   const b = window.getBounds()
+  const position = calculateWindowPosition(b);
   window.setBounds({
     width: b.width,
     height: b.height,
@@ -93,10 +91,8 @@ export function alignWindow(window: BrowserWindow) {
   });
 }
 
-function calculateWindowPosition() {
+function calculateWindowPosition(b) {
   const margin = trayOptions.margin;
-  const b = trayOptions;
-
   const screenBounds = screen.getPrimaryDisplay().size;
   const trayBounds = tray.getBounds();
   const bottom = trayBounds.y > screenBounds.height / 2 ;
