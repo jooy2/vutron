@@ -18,12 +18,12 @@ app.on('ready', async () => {
   }
   */
 
-  mainWindow = await createMainWindow(mainWindow)
+  mainWindow = await createMainWindow()
 })
 
 app.on('activate', async () => {
   if (!mainWindow) {
-    mainWindow = await createMainWindow(mainWindow)
+    mainWindow = await createMainWindow()
   }
 })
 

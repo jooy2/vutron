@@ -1,6 +1,18 @@
-import { app, BrowserWindow, RenderProcessGoneDetails } from 'electron'
-import Constants from './utils/Constants'
+import { app, BrowserWindow,  RenderProcessGoneDetails, BrowserWindowConstructorOptions } from 'electron'
+import Constants, { TrayOptions } from './utils/Constants'
 import IPCs from './IPCs'
+import { createTray, hideWindow, showWindow } from './tray.ts'
+
+const options = {
+  width: Constants.IS_DEV_ENV ? 1500 : 1200,
+  height: 650,
+  tray: {
+    // all optional values from DEFAULT_TRAY_OPTIONS can de defined here
+    enabled: true,
+    menu: false, // true, to use a tray menu ; false to toggle visibility on click on tray icon
+    trayWindow: false // true, to use a tray floating window attached to top try icon
+  }
+}
 
 const exitApp = (mainWindow: BrowserWindow): void => {
   if (mainWindow && !mainWindow.isDestroyed()) {
@@ -10,15 +22,46 @@ const exitApp = (mainWindow: BrowserWindow): void => {
   app.exit()
 }
 
-export const createMainWindow = async (mainWindow: BrowserWindow): Promise<BrowserWindow> => {
-  mainWindow = new BrowserWindow({
+export const createMainWindow = async (): Promise<BrowserWindow> => {
+  let opt: BrowserWindowConstructorOptions = {
     title: Constants.APP_NAME,
     show: false,
-    width: Constants.IS_DEV_ENV ? 1500 : 1200,
-    height: 650,
+    width: options.width,
+    height: options.height,
     useContentSize: true,
-    webPreferences: Constants.DEFAULT_WEB_PREFERENCES
-  })
+    webPreferences: Constants.DEFAULT_WEB_PREFERENCES,
+    frame: true
+  }
+  const trayOptions: TrayOptions = (options.tray?.enabled) ? {
+      ...Constants.DEFAULT_TRAY_OPTIONS,
+      ...options.tray
+  }: {
+    ...Constants.DEFAULT_TRAY_OPTIONS,
+    enabled: false
+  }
+
+  // trayWindow requires tray.enabled=true
+  if (trayOptions.enabled && trayOptions.trayWindow){
+    opt = {
+      ...opt,
+      width: options.width ,
+      height: options.height,
+      maxWidth: options.width,
+      maxHeight: options.height,
+      show: false,
+      frame: false,
+      fullscreenable: false,
+      hiddenInMissionControl: true,
+      resizable: false,
+      transparent: true,
+      alwaysOnTop: true,
+      webPreferences: {
+        ...Constants.DEFAULT_WEB_PREFERENCES,
+        backgroundThrottling: false
+      }
+    }
+  }
+  const mainWindow = new BrowserWindow(opt)
 
   mainWindow.setMenu(null)
 
@@ -28,17 +71,28 @@ export const createMainWindow = async (mainWindow: BrowserWindow): Promise<Brows
   })
 
   mainWindow.webContents.on('did-frame-finish-load', (): void => {
-    if (Constants.IS_DEV_ENV) {
+    if (Constants.IS_DEV_ENV && Constants.IS_DEVTOOLS) {
       mainWindow.webContents.openDevTools()
     }
   })
 
-  mainWindow.once('ready-to-show', (): void => {
-    mainWindow.setAlwaysOnTop(true)
-    mainWindow.show()
-    mainWindow.focus()
-    mainWindow.setAlwaysOnTop(false)
-  })
+  if (trayOptions.enabled) {
+    createTray(mainWindow, trayOptions);
+  }
+
+  if (trayOptions.enabled && trayOptions.trayWindow) {
+    hideWindow(mainWindow);
+    if (trayOptions.showAtStartup){
+     showWindow(mainWindow)
+    }
+  }else{
+    mainWindow.once('ready-to-show', (): void => {
+      mainWindow.setAlwaysOnTop(true)
+      mainWindow.show()
+      mainWindow.focus()
+      mainWindow.setAlwaysOnTop(false)
+    })
+  }
 
   // Initialize IPC Communication
   IPCs.initialize()
