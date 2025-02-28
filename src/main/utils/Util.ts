@@ -1,14 +1,12 @@
-
-export function debounce(func, timeout = 200){
-  let timer;
-  return function(...args) {
+export function debounce(func, timeout = 200) {
+  let timer
+  return (function (...args) {
     if (!timer) {
-      func.apply(this, args);
+      func.apply(this, args)
     }
-    clearTimeout(timer);
+    clearTimeout(timer)
     timer = setTimeout(() => {
-      timer = undefined;
-    }, timeout);
-  }();
+      timer = undefined
+    }, timeout)
+  })()
 }
-

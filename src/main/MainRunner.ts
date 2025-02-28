@@ -1,4 +1,9 @@
-import { app, BrowserWindow,  RenderProcessGoneDetails, BrowserWindowConstructorOptions } from 'electron'
+import {
+  app,
+  BrowserWindow,
+  RenderProcessGoneDetails,
+  BrowserWindowConstructorOptions
+} from 'electron'
 import Constants, { TrayOptions } from './utils/Constants'
 import IPCs from './IPCs'
 import { createTray, hideWindow, showWindow } from './tray.ts'
@@ -32,19 +37,21 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
     webPreferences: Constants.DEFAULT_WEB_PREFERENCES,
     frame: true
   }
-  const trayOptions: TrayOptions = (options.tray?.enabled) ? {
-      ...Constants.DEFAULT_TRAY_OPTIONS,
-      ...options.tray
-  }: {
-    ...Constants.DEFAULT_TRAY_OPTIONS,
-    enabled: false
-  }
+  const trayOptions: TrayOptions = options.tray?.enabled
+    ? {
+        ...Constants.DEFAULT_TRAY_OPTIONS,
+        ...options.tray
+      }
+    : {
+        ...Constants.DEFAULT_TRAY_OPTIONS,
+        enabled: false
+      }
 
   // trayWindow requires tray.enabled=true
-  if (trayOptions.enabled && trayOptions.trayWindow){
+  if (trayOptions.enabled && trayOptions.trayWindow) {
     opt = {
       ...opt,
-      width: options.width ,
+      width: options.width,
       height: options.height,
       maxWidth: options.width,
       maxHeight: options.height,
@@ -77,15 +84,15 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
   })
 
   if (trayOptions.enabled) {
-    createTray(mainWindow, trayOptions);
+    createTray(mainWindow, trayOptions)
   }
 
   if (trayOptions.enabled && trayOptions.trayWindow) {
-    hideWindow(mainWindow);
-    if (trayOptions.showAtStartup){
-     showWindow(mainWindow)
+    hideWindow(mainWindow)
+    if (trayOptions.showAtStartup) {
+      showWindow(mainWindow)
     }
-  }else{
+  } else {
     mainWindow.once('ready-to-show', (): void => {
       mainWindow.setAlwaysOnTop(true)
       mainWindow.show()
