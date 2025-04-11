@@ -6,7 +6,7 @@ import { useCounterStore } from '@/renderer/store/counter'
 import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 
-const { locale, availableLocales } = useI18n()
+const { t, locale, availableLocales } = useI18n()
 const { counterIncrease } = useCounterStore()
 const { counter } = storeToRefs(useCounterStore())
 const theme = useTheme()
@@ -68,13 +68,13 @@ const handleOpenFile = async () => {
         />
       </v-col>
       <v-col cols="12" md="7">
-        <h2 class="my-4">{{ $t('desc.welcome-title') }}</h2>
-        <p>{{ $t('desc.welcome-desc') }}</p>
+        <h2 class="my-4">{{ t('desc.welcome-title') }}</h2>
+        <p>{{ t('desc.welcome-desc') }}</p>
         <p class="my-4">
           App Version: <strong>{{ appVersion }}</strong>
         </p>
         <p v-if="selectedFile">{{
-          $t('desc.selected-file', {
+          t('desc.selected-file', {
             filePath: selectedFile
           })
         }}</p>
@@ -83,7 +83,7 @@ const handleOpenFile = async () => {
             <v-btn icon color="primary" @click="handleChangeTheme">
               <v-icon icon="mdi-brightness-6" />
               <v-tooltip activator="parent" location="bottom">
-                {{ $t('menu.change-theme') }}
+                {{ t('menu.change-theme') }}
               </v-tooltip>
             </v-btn>
           </v-col>
@@ -92,7 +92,7 @@ const handleOpenFile = async () => {
               <v-btn data-testid="btn-counter" icon color="primary" @click="handleCountIncrease">
                 <v-icon icon="mdi-plus-circle" />
                 <v-tooltip activator="parent" location="bottom">
-                  {{ $t('menu.increase-count') }}
+                  {{ t('menu.increase-count') }}
                 </v-tooltip>
               </v-btn>
             </v-badge>
@@ -101,7 +101,7 @@ const handleOpenFile = async () => {
             <v-btn icon color="primary" @click="handleOpenDocument">
               <v-icon icon="mdi-file-document" />
               <v-tooltip activator="parent" location="bottom">
-                {{ $t('menu.documentation') }}
+                {{ t('menu.documentation') }}
               </v-tooltip>
             </v-btn>
           </v-col>
@@ -109,7 +109,7 @@ const handleOpenFile = async () => {
             <v-btn icon color="primary" @click="handleOpenGitHub">
               <v-icon icon="mdi-github" />
               <v-tooltip activator="parent" location="bottom">
-                {{ $t('menu.github') }}
+                {{ t('menu.github') }}
               </v-tooltip>
             </v-btn>
           </v-col>
@@ -117,7 +117,7 @@ const handleOpenFile = async () => {
             <v-btn icon color="primary" @click="handleOpenFile">
               <v-icon icon="mdi-folder-open" />
               <v-tooltip activator="parent" location="bottom">
-                {{ $t('menu.open-file') }}
+                {{ t('menu.open-file') }}
               </v-tooltip>
             </v-btn>
           </v-col>
@@ -126,11 +126,11 @@ const handleOpenFile = async () => {
               data-testid="select-language"
               :model-value="locale"
               density="compact"
-              :label="$t('menu.change-language')"
+              :label="t('menu.change-language')"
               :items="languages"
               @update:model-value="handleChangeLanguage"
             >
-              {{ $t('menu.change-language') }}
+              {{ t('menu.change-language') }}
             </v-select>
           </v-col>
         </v-row>

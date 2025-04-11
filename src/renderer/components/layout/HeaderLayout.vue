@@ -1,9 +1,12 @@
 <script setup lang="tsx">
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 const router = useRouter()
 const route: any = useRoute()
 const titleKey: string = (route?.meta?.titleKey || 'title.main') as string
+
+const { t } = useI18n()
 
 const handleRoute = (path: string): void => {
   router.push(path)
@@ -15,7 +18,7 @@ const isCurrentRoute = (path: string): boolean => {
 </script>
 <template>
   <v-app-bar color="primary" density="compact">
-    <v-app-bar-title>{{ $t(titleKey) }}</v-app-bar-title>
+    <v-app-bar-title>{{ t(titleKey) }}</v-app-bar-title>
     <template #append>
       <v-btn
         prepend-icon="mdi-home"
@@ -23,7 +26,7 @@ const isCurrentRoute = (path: string): boolean => {
         :class="{ active: isCurrentRoute('/') }"
         @click="handleRoute('/')"
       >
-        {{ $t('title.main') }}
+        {{ t('title.main') }}
       </v-btn>
       <v-btn
         prepend-icon="mdi-fit-to-screen-outline"
@@ -31,7 +34,7 @@ const isCurrentRoute = (path: string): boolean => {
         :class="{ active: isCurrentRoute('/second') }"
         @click="handleRoute('/second')"
       >
-        {{ $t('title.second') }}
+        {{ t('title.second') }}
       </v-btn>
     </template>
   </v-app-bar>
