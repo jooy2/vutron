@@ -4,7 +4,7 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.min.css'
 
-import colors from 'vuetify/lib/util/colors.mjs'
+import colors from 'vuetify/lib/util/colors'
 
 export default createVuetify({
   locale: {
