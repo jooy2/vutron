@@ -23,7 +23,7 @@ export default class TestUtil {
       const screenshotPath = `${this._testScreenshotPath}/${screenshotName || `unknown_${Date.now()}`}.png`
 
       await pageInstance.screenshot({ path: screenshotPath })
-    } catch (error) {
+    } catch {
       // Do nothing
     }
   }

@@ -57,11 +57,11 @@ order: 1
 │  └─ testUtil.ts - Test utilities
 ├─ .editorconfig - Editor recommended configuration file for IDE
 ├─ .eslintignore - List of files to be ignored by ESLint
-├─ .eslintrc.json - ESLint rule configurations
 ├─ .gitignore - List of files to not upload to Git
 ├─ .prettierignore - List of files to disable Prettier file formatting
 ├─ .prettierrc - Prettier rule configurations
 ├─ CODE_OF_CONDUCT.md - Files used only on GitHub
+├─ eslint.config.ts - ESLint rule configurations
 ├─ LICENSE - Project license file
 ├─ package.json - Node.js package configurations
 ├─ package-lock.json

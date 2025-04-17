@@ -38,10 +38,10 @@ export function createTray(window: BrowserWindow, options) {
     tray.setContextMenu(contextMenu)
   } else {
     // handle click on tray icon
-    tray.on('right-click', function (event) {
+    tray.on('right-click', function () {
       debounce(() => toggleWindow(window))
     })
-    tray.on('click', function (event) {
+    tray.on('click', function () {
       debounce(() => toggleWindow(window))
     })
     // no menu for tray window

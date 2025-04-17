@@ -1,9 +1,0 @@
-node_modules/
-buildAssets/icons/
-dist/
-release/
-docs/
-
-.idea/
-.vscode/
-.github/

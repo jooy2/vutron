@@ -116,6 +116,7 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
 export const createErrorWindow = async (
   errorWindow: BrowserWindow,
   mainWindow: BrowserWindow,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   details?: RenderProcessGoneDetails
 ): Promise<BrowserWindow> => {
   if (!Constants.IS_DEV_ENV) {

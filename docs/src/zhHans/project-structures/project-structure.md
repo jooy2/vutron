@@ -57,11 +57,11 @@ order: 1
 │  └─ testUtil.ts - 测试实用程序
 ├─ .editorconfig - 编辑器推荐的IDE配置文件
 ├─ .eslintignore - ESLint忽略的文件列表
-├─ .eslintrc.json - ESLint规则配置
 ├─ .gitignore - 不上传到Git的文件列表
 ├─ .prettierignore - 要禁用的文件列表 更美观的文件格式
 ├─ .prettierrc - 更漂亮的规则配置
 ├─ CODE_OF_CONDUCT.md - 仅在GitHub上使用的文件
+├─ eslint.config.ts - ESLint规则配置
 ├─ LICENSE - 项目许可证文件
 ├─ package.json - Node.js 包配置
 ├─ package-lock.json

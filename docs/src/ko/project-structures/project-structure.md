@@ -57,11 +57,11 @@ order: 1
 │  └─ testUtil.ts - 테스트 유틸리티
 ├─ .editorconfig - IDE용 에디터 권장 구성 파일
 ├─ .eslintignore - ESLint에서 무시할 파일 목록
-├─ .eslintrc.json - ESLint 규칙 구성
 ├─ .gitignore - Git에 업로드하지 않을 파일 목록
 ├─ .prettierignore - Prettier 파일 서식을 비활성화할 파일 목록
 ├─ .prettierrc - Prettier 규칙 설정
 ├─ CODE_OF_CONDUCT.md - GitHub에서만 사용되는 파일
+├─ eslint.config.ts - ESLint 규칙 구성
 ├─ LICENSE - 프로젝트 라이선스 파일
 ├─ package.json - Node.js 패키지 구성
 ├─ package-lock.json
