@@ -59,7 +59,7 @@ export default pluginTypeScriptESLint.config(
       'vue/v-on-event-hyphenation': 'off',
       'vue/no-v-text-v-html-on-component': 'off',
       'vue/attribute-hyphenation': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn'
+      '@typescript-eslint/no-explicit-any': 'off'
     }
   },
   configPrettier
