@@ -13,7 +13,6 @@ import nl from '@/renderer/locales/nl.json'
 import { getCurrentLocale } from '@/renderer/utils'
 
 export default createI18n({
-  legacy: false,
   locale: getCurrentLocale(),
   fallbackLocale: 'en',
   globalInjection: true,
