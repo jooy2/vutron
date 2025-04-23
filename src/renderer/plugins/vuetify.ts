@@ -1,8 +1,7 @@
 import { createVuetify } from 'vuetify'
 import { ko, en, zhHans, zhHant, de, es, ja, fr, ru, pt, nl } from 'vuetify/locale'
-import { aliases, mdi } from 'vuetify/iconsets/mdi'
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import 'vuetify/styles'
-import '@mdi/font/css/materialdesignicons.min.css'
 
 import colors from 'vuetify/util/colors'
 

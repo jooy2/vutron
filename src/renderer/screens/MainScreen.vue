@@ -5,6 +5,7 @@ import { openExternal, openFile } from '@/renderer/utils'
 import { useCounterStore } from '@/renderer/store/counter'
 import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
+import { mdiBrightness6, mdiFileDocument, mdiFolderOpen, mdiGithub, mdiPlusCircle } from '@mdi/js'
 
 const { t, locale, availableLocales } = useI18n()
 const { counterIncrease } = useCounterStore()
@@ -81,7 +82,7 @@ const handleOpenFile = async () => {
         <v-row class="my-4">
           <v-col>
             <v-btn icon color="primary" @click="handleChangeTheme">
-              <v-icon icon="mdi-brightness-6" />
+              <v-icon :icon="mdiBrightness6" />
               <v-tooltip activator="parent" location="bottom">
                 {{ t('menu.change-theme') }}
               </v-tooltip>
@@ -90,7 +91,7 @@ const handleOpenFile = async () => {
           <v-col>
             <v-badge data-testid="counter-badge" color="blue" :content="counter">
               <v-btn data-testid="btn-counter" icon color="primary" @click="handleCountIncrease">
-                <v-icon icon="mdi-plus-circle" />
+                <v-icon :icon="mdiPlusCircle" />
                 <v-tooltip activator="parent" location="bottom">
                   {{ t('menu.increase-count') }}
                 </v-tooltip>
@@ -99,7 +100,7 @@ const handleOpenFile = async () => {
           </v-col>
           <v-col>
             <v-btn icon color="primary" @click="handleOpenDocument">
-              <v-icon icon="mdi-file-document" />
+              <v-icon :icon="mdiFileDocument" />
               <v-tooltip activator="parent" location="bottom">
                 {{ t('menu.documentation') }}
               </v-tooltip>
@@ -107,7 +108,7 @@ const handleOpenFile = async () => {
           </v-col>
           <v-col>
             <v-btn icon color="primary" @click="handleOpenGitHub">
-              <v-icon icon="mdi-github" />
+              <v-icon :icon="mdiGithub" />
               <v-tooltip activator="parent" location="bottom">
                 {{ t('menu.github') }}
               </v-tooltip>
@@ -115,7 +116,7 @@ const handleOpenFile = async () => {
           </v-col>
           <v-col>
             <v-btn icon color="primary" @click="handleOpenFile">
-              <v-icon icon="mdi-folder-open" />
+              <v-icon :icon="mdiFolderOpen" />
               <v-tooltip activator="parent" location="bottom">
                 {{ t('menu.open-file') }}
               </v-tooltip>

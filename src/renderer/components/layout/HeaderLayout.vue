@@ -1,6 +1,7 @@
 <script setup lang="tsx">
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { mdiFitToScreenOutline, mdiHome } from '@mdi/js'
 
 const router = useRouter()
 const route: any = useRoute()
@@ -21,7 +22,7 @@ const isCurrentRoute = (path: string): boolean => {
     <v-app-bar-title>{{ t(titleKey) }}</v-app-bar-title>
     <template #append>
       <v-btn
-        prepend-icon="mdi-home"
+        :prepend-icon="mdiHome"
         variant="text"
         :class="{ active: isCurrentRoute('/') }"
         @click="handleRoute('/')"
@@ -29,7 +30,7 @@ const isCurrentRoute = (path: string): boolean => {
         {{ t('title.main') }}
       </v-btn>
       <v-btn
-        prepend-icon="mdi-fit-to-screen-outline"
+        :prepend-icon="mdiFitToScreenOutline"
         variant="text"
         :class="{ active: isCurrentRoute('/second') }"
         @click="handleRoute('/second')"
