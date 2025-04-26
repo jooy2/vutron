@@ -33,8 +33,10 @@ export default defineConfig(({ mode }) => {
       },
       vite: {
         root: resolve('.'),
+        base: './',
         build: {
           assetsDir: '.',
+          publicDir: resolve('./src/public'),
           outDir: 'dist/main',
           rollupOptions: {
             external: ['electron', ...builtinModules]
@@ -82,7 +84,7 @@ export default defineConfig(({ mode }) => {
     },
     base: './',
     root: resolve('./src/renderer'),
-    publicDir: resolve('./src/renderer/public'),
+    publicDir: resolve('./src/public'),
     clearScreen: false,
     build: {
       sourcemap: isDevEnv,

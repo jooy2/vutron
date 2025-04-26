@@ -1,6 +1,7 @@
 import { app, screen, Menu, Tray, BrowserWindow } from 'electron'
 import Constants from './utils/Constants'
 import { debounce } from './utils/Util'
+import { join } from 'path'
 let tray
 let trayOptions
 
@@ -11,7 +12,7 @@ export function createTray(window: BrowserWindow, options) {
     trayOptions.menu = false
   }
 
-  tray = new Tray('buildAssets/icons/icon16.png')
+  tray = new Tray(join(Constants.PUBLIC_PATH, 'images/vutron-tray-icon.png'))
   tray.setToolTip(trayOptions.tooltip)
   if (trayOptions.menu) {
     const contextMenu = Menu.buildFromTemplate([

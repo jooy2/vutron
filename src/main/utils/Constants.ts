@@ -1,4 +1,4 @@
-import { join, dirname } from 'path'
+import { join, dirname, resolve } from 'path'
 import { name, version, debug } from '../../../package.json'
 import { fileURLToPath } from 'url'
 
@@ -20,6 +20,10 @@ export default class Constants {
   static APP_VERSION = version
 
   static IS_DEV_ENV = process.env.NODE_ENV === 'development'
+
+  static PUBLIC_PATH = Constants.IS_DEV_ENV
+    ? resolve(__dirname, '../../src/public')
+    : resolve(__dirname, '..')
 
   // To show devtools at startup. It requires IS_DEV_ENV=true.
   // Note: For debugging purpose, window won't be closed if click elsewhere, if devtools is open.
