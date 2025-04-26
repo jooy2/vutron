@@ -58,7 +58,7 @@ const handleOpenFile = async () => {
 
 <template>
   <v-container>
-    <v-row no-gutters align="center" class="text-center">
+    <v-row no-gutters class="text-center">
       <v-col cols="12" md="5">
         <img
           data-testid="main-logo"
