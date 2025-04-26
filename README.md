@@ -1,6 +1,6 @@
 <div align="center">
 
-![vutron-logo](src/renderer/public/images/vutron-logo.webp)
+![vutron-logo](src/public/images/vutron-logo.webp)
 
 ---
 
