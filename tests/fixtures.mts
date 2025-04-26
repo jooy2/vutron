@@ -64,6 +64,7 @@ export const test = base.test.extend({
   page: async ({}, use) => {
     await use(page)
   },
+  // @ts-ignore
   util: async ({ page }, use, testInfo) => {
     await use(new TestUtil(page, testInfo, __testScreenshotPath))
   }

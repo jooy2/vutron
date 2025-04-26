@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
+    "module": "Preserve",
+    "moduleDetection": "force",
     "jsx": "preserve",
-    "moduleResolution": "nodenext",
     "composite": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/main",

@@ -1,6 +1,6 @@
 import { app, screen, Menu, Tray, BrowserWindow } from 'electron'
-import Constants from './utils/Constants.ts'
-import { debounce } from './utils/Util.ts'
+import Constants from './utils/Constants'
+import { debounce } from './utils/Util'
 let tray
 let trayOptions
 

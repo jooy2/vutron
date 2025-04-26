@@ -6,7 +6,7 @@ import {
 } from 'electron'
 import Constants, { TrayOptions } from './utils/Constants'
 import IPCs from './IPCs'
-import { createTray, hideWindow, showWindow } from './tray.ts'
+import { createTray, hideWindow, showWindow } from './tray'
 
 const options = {
   width: Constants.IS_DEV_ENV ? 1500 : 1200,
