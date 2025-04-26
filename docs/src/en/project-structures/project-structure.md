@@ -33,13 +33,13 @@ order: 1
 │  │  └─ MainRunner.ts - Main process main window processing
 │  ├─ preload/ - Preload (Electron-Vue communication bridge) process source code
 │  │  └─ index.ts
+│  ├─ public/ - Main + Renderer static resources
+│  │  └─ images/
 │  ├─ renderer/ - Renderer (Vue) process source code
 │  │  ├─ components/ - Vue components collection
 │  │  │  └─ layout/ - Layout components
 │  │  ├─ locales/ - Vue i18n language resource file
 │  │  ├─ plugins/ - Vue plugin definition
-│  │  ├─ public/ - Vue static resources
-│  │  │  └─ images/
 │  │  ├─ router/ - Vue routing definition
 │  │  ├─ screens/ - Vue screen component
 │  │  │  └─ ErrorScreen.vue - Screen displayed when renderer process and routing errors occur

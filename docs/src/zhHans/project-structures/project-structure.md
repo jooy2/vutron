@@ -33,13 +33,13 @@ order: 1
 │  │  └─ MainRunner.ts - 主流程主窗口处理
 │  ├─ preload/ - 预加载（Electron-Vue通信桥）过程源代码
 │  │  └─ index.ts
+│  ├─ public/ - Main + Renderer静态资源
+│  │  └─ images/
 │  ├─ renderer/ - 渲染器（Vue）处理源代码
 │  │  ├─ components/ - Vue组件集合
 │  │  │  └─ layout/ - 布局组件
 │  │  ├─ locales/ - Vue i18n 语言资源文件
 │  │  ├─ plugins/ - Vue插件定义
-│  │  ├─ public/ - 静态资源视图
-│  │  │  └─ images/
 │  │  ├─ router/ - 视图路由定义
 │  │  ├─ screens/ - 屏幕组件
 │  │  │  └─ ErrorScreen.vue - 当渲染程序出现错误时，屏幕上会显示错误信息

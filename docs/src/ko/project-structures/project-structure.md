@@ -33,13 +33,13 @@ order: 1
 │  │  └─ MainRunner.ts - 메인 프로세스 메인 윈도우 프로세스
 │  ├─ preload/ - 프리로드 (Electron-Vue 커뮤니케이션 브릿지) 프로세스
 │  │  └─ index.ts
+│  ├─ public/ - Main + Renderer 정적 리소스
+│  │  └─ images/
 │  ├─ renderer/ - 렌더러 (Vue) 프로세스 소스 코드
 │  │  ├─ components/ - Vue 컴포넌트 콜렉션
 │  │  │  └─ layout/ - 레이아웃 컴포넌트
 │  │  ├─ locales/ - Vue i18n 언어 리소스 파일
 │  │  ├─ plugins/ - Vue 플러그인 정의
-│  │  ├─ public/ - Vue 정적 리소스
-│  │  │  └─ images/
 │  │  ├─ router/ - Vue 라우팅 정의
 │  │  ├─ screens/ - Vue 화면 컴포넌트
 │  │  │  └─ ErrorScreen.vue - 렌더링 프로세스 및 라우팅 오류 발생 시 표시되는 화면
