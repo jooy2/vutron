@@ -3,7 +3,7 @@ import { test, expect, beforeAll, afterAll } from '../fixtures.mjs'
 test.beforeAll(beforeAll)
 test.afterAll(afterAll)
 
-// @ts-ignore
+// @ts-expect-error: `util` is not using types in playwright
 test('Document element check', async ({ page, util }) => {
   try {
     await expect(
@@ -21,7 +21,7 @@ test('Document element check', async ({ page, util }) => {
   }
 })
 
-// @ts-ignore
+// @ts-expect-error: `util` is not using types in playwright
 test('Counter button click check', async ({ page, util }) => {
   try {
     await page.getByTestId('btn-counter').click({ clickCount: 10, delay: 50 })

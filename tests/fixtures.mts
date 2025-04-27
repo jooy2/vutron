@@ -64,7 +64,7 @@ export const test = base.test.extend({
   page: async ({}, use) => {
     await use(page)
   },
-  // @ts-ignore
+  // @ts-expect-error: `util` is not using types in playwright
   util: async ({ page }, use, testInfo) => {
     await use(new TestUtil(page, testInfo, __testScreenshotPath))
   }
