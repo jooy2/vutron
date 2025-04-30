@@ -3,13 +3,13 @@ import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
 import { openExternal, openFile } from '@/renderer/utils'
 import { useCounterStore } from '@/renderer/store/counter'
-import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 import { mdiBrightness6, mdiFileDocument, mdiFolderOpen, mdiGithub, mdiPlusCircle } from '@mdi/js'
+import { storeToRefs } from 'pinia'
 
 const { t, locale, availableLocales } = useI18n()
-const { counterIncrease } = useCounterStore()
-const { counter } = storeToRefs(useCounterStore())
+const { increaseCount } = useCounterStore()
+const { count } = storeToRefs(useCounterStore())
 const theme = useTheme()
 const languages = ref(['en'])
 const appVersion = ref('Unknown')
@@ -45,7 +45,7 @@ const handleOpenGitHub = async (): Promise<void> => {
 }
 
 const handleCountIncrease = (): void => {
-  counterIncrease(1)
+  increaseCount(1)
 }
 
 const handleOpenFile = async () => {
@@ -89,7 +89,7 @@ const handleOpenFile = async () => {
             </v-btn>
           </v-col>
           <v-col>
-            <v-badge data-testid="counter-badge" color="blue" :content="counter">
+            <v-badge data-testid="counter-badge" color="blue" :content="count">
               <v-btn data-testid="btn-counter" icon color="primary" @click="handleCountIncrease">
                 <v-icon :icon="mdiPlusCircle" />
                 <v-tooltip activator="parent" location="bottom">
