@@ -2,9 +2,11 @@
   "version": "1.0.0",
   "compounds": [
     {
-      "name": "Debug Run",
+      "name": "Debug Everything",
       "configurations": [
-        "Debug App"
+        "Launch App",
+        "Attach to Main Process",
+        "Attach to Renderer Process"
       ],
       "presentation": {
         "hidden": false,
@@ -16,7 +18,7 @@
   ],
   "configurations": [
     {
-      "name": "Debug App",
+      "name": "Launch App",
       "request": "launch",
       "type": "node",
       "timeout": 60000,
@@ -26,7 +28,36 @@
       ],
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": "npm",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "env": {
+        "REMOTE_DEBUGGING_PORT": "9229"
+      },
+      "outputCapture": "std",
+      "sourceMaps": true,
+    },
+    {
+      "name": "Attach to Main Process",
+      "type": "node",
+      "request": "attach",
+      "port": 9228,
+      "restart": false,
+      "timeout": 10000,
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "outputCapture": "std",
+      "env": {
+        "REMOTE_DEBUGGING_PORT": "9228"
+      }
+    },
+    {
+      "name": "Attach to Renderer Process",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9229,
+      "webRoot": "${workspaceFolder}/src/renderer",
+      "timeout": 30000,
+
     }
   ]
 }

@@ -29,14 +29,16 @@ export default defineConfig(({ mode }) => {
     {
       entry: 'src/main/index.ts',
       onstart({ startup }) {
-        startup()
+        const debugArgs = ['.', '--inspect=9228', '--remote-debugging-port=9229']
+        startup(debugArgs)
       },
       vite: {
         root: resolve('.'),
         base: './',
+        publicDir: resolve('./src/public'),
         build: {
+          sourcemap: true,
           assetsDir: '.',
-          publicDir: resolve('./src/public'),
           outDir: 'dist/main',
           rollupOptions: {
             external: ['electron', ...builtinModules]
