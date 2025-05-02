@@ -58,13 +58,13 @@ const handleOpenFile = async () => {
 
 <template>
   <v-container>
-    <v-row no-gutters class="text-center">
+    <v-row no-gutters class="text-center align-center">
       <v-col cols="12" md="5">
         <img
           data-testid="main-logo"
           alt="logo"
           draggable="false"
-          class="ma-auto h-auto w-75"
+          class="ma-auto h-auto w-sm-50 w-md-100"
           src="/images/vutron-logo.webp"
         />
       </v-col>
