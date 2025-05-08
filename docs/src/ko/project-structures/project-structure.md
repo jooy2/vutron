@@ -66,6 +66,8 @@ order: 1
 ├─ package.json - Node.js 패키지 구성
 ├─ package-lock.json
 ├─ playwright.config.ts - Playwright 테스트 규칙 구성
+├─ pnpm-lock.yaml - PNPM 관련 파일
+├─ pnpm-workspace.yaml - PNPM 관련 파일
 ├─ tsconfig.json - TypeScript 설정
 ├─ tsconfig.node.json - TypeScript 설정
 ├─ vite.config.mts - Vite 컴파일러 빌드 설정

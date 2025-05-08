@@ -66,6 +66,8 @@ order: 1
 ├─ package.json - Node.js 包配置
 ├─ package-lock.json
 ├─ playwright.config.ts - 编剧测试规则配置
+├─ pnpm-lock.yaml - PNPM 相关文件
+├─ pnpm-workspace.yaml - PNPM 相关文件
 ├─ tsconfig.json - TypeScript配置
 ├─ tsconfig.node.json - TypeScript配置
 ├─ vite.config.mts - Vite编译器构建配置

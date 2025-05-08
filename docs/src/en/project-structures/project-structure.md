@@ -66,6 +66,8 @@ order: 1
 ├─ package.json - Node.js package configurations
 ├─ package-lock.json
 ├─ playwright.config.ts - Playwright test rules configurations
+├─ pnpm-lock.yaml - PNPM Related Files
+├─ pnpm-workspace.yaml - PNPM Related Files
 ├─ tsconfig.json - TypeScript configurations
 ├─ tsconfig.node.json - TypeScript configurations
 ├─ vite.config.mts - Vite compiler build configurations

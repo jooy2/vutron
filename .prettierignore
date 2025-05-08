@@ -1,5 +1,6 @@
 # Lock files
 *-lock.json
+*-lock.yaml
 
 # IDEs
 .idea/
