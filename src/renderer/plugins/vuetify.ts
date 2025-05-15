@@ -11,6 +11,16 @@ export default createVuetify({
     locale: 'en',
     fallback: 'en'
   },
+  defaults: {
+    VBtn: {
+      style: [
+        {
+          // Do not force capitalization of a button text
+          textTransform: 'none'
+        }
+      ]
+    }
+  },
   icons: {
     defaultSet: 'mdi',
     aliases,

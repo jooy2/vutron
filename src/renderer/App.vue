@@ -18,8 +18,4 @@ body {
   width: 100%;
   height: 100%;
 }
-/* Do not force capitalization of button text */
-.v-btn {
-  text-transform: unset !important;
-}
 </style>
