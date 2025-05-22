@@ -6,11 +6,12 @@ import parserTypeScript from '@typescript-eslint/parser'
 import pluginVue from 'eslint-plugin-vue'
 import pluginNode from 'eslint-plugin-n'
 import pluginImport from 'eslint-plugin-import'
-import configPrettier from 'eslint-config-prettier'
+import pluginPrettier from 'eslint-plugin-prettier/recommended'
 
 import globals from 'globals'
 
 export default pluginTypeScriptESLint.config(
+  pluginPrettier,
   pluginJs.configs.recommended,
   pluginTypeScriptESLint.configs.recommended,
   pluginImport.flatConfigs.electron,
@@ -61,6 +62,5 @@ export default pluginTypeScriptESLint.config(
       'vue/attribute-hyphenation': 'off',
       '@typescript-eslint/no-explicit-any': 'off'
     }
-  },
-  configPrettier
+  }
 )
