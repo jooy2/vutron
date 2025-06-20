@@ -1,7 +1,7 @@
 import { app, screen, Menu, Tray, BrowserWindow } from 'electron'
 import Constants from './utils/Constants'
-import { debounce } from './utils/Util'
 import { join } from 'path'
+import { debounce } from 'qsu'
 let tray
 let trayOptions
 
@@ -40,10 +40,10 @@ export function createTray(window: BrowserWindow, options) {
   } else {
     // handle click on tray icon
     tray.on('right-click', function () {
-      debounce(() => toggleWindow(window))
+      debounce(() => toggleWindow(window), 200)
     })
     tray.on('click', function () {
-      debounce(() => toggleWindow(window))
+      debounce(() => toggleWindow(window), 200)
     })
     // no menu for tray window
     window.setMenu(null)
