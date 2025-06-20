@@ -12,6 +12,8 @@
   "insertPragma": false,
   "requirePragma": false,
   "proseWrap": "never",
+  "singleAttributePerLine": true,
   "htmlWhitespaceSensitivity": "strict",
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "printWidth": 80
 }

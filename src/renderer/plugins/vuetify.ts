@@ -1,5 +1,17 @@
 import { createVuetify } from 'vuetify'
-import { ko, en, zhHans, zhHant, de, es, ja, fr, ru, pt, nl } from 'vuetify/locale'
+import {
+  ko,
+  en,
+  zhHans,
+  zhHant,
+  de,
+  es,
+  ja,
+  fr,
+  ru,
+  pt,
+  nl
+} from 'vuetify/locale'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import 'vuetify/styles'
 

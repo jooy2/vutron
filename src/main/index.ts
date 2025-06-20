@@ -38,7 +38,11 @@ app.on('window-all-closed', () => {
 
 app.on(
   'render-process-gone',
-  (event: Event, webContents: WebContents, details: RenderProcessGoneDetails) => {
+  (
+    event: Event,
+    webContents: WebContents,
+    details: RenderProcessGoneDetails
+  ) => {
     errorWindow = createErrorWindow(errorWindow, mainWindow, details)
   }
 )

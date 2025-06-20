@@ -60,6 +60,17 @@ export default pluginTypeScriptESLint.config(
       'vue/v-on-event-hyphenation': 'off',
       'vue/no-v-text-v-html-on-component': 'off',
       'vue/attribute-hyphenation': 'off',
+      'vue/max-attributes-per-line': [
+        'error',
+        {
+          singleline: {
+            max: 1
+          },
+          multiline: {
+            max: 1
+          }
+        }
+      ],
       '@typescript-eslint/no-explicit-any': 'off'
     }
   }

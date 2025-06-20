@@ -18,7 +18,10 @@ const isCurrentRoute = (path: string): boolean => {
 }
 </script>
 <template>
-  <v-app-bar color="primary" density="compact">
+  <v-app-bar
+    color="primary"
+    density="compact"
+  >
     <v-app-bar-title>{{ t(titleKey) }}</v-app-bar-title>
     <template #append>
       <v-btn

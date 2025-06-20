@@ -97,7 +97,9 @@ function calculateWindowPosition(b) {
   const screenBounds = screen.getPrimaryDisplay().size
   const trayBounds = tray.getBounds()
   const bottom = trayBounds.y > screenBounds.height / 2
-  const x = Math.floor(trayBounds.x - b.width / 2 - margin.x + trayBounds.width / 2)
+  const x = Math.floor(
+    trayBounds.x - b.width / 2 - margin.x + trayBounds.width / 2
+  )
   const y = bottom
     ? Math.floor(trayBounds.y - b.height - margin.y + trayBounds.height / 2)
     : Math.floor(trayBounds.y + margin.y + trayBounds.height / 2)

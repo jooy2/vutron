@@ -39,18 +39,20 @@ export const beforeAll = async () => {
   page.on('console', console.log)
   page.on('pageerror', console.log)
 
-  const evaluateResult = await appElectron.evaluate(async ({ app, BrowserWindow }) => {
-    const currentWindow = BrowserWindow.getFocusedWindow()
+  const evaluateResult = await appElectron.evaluate(
+    async ({ app, BrowserWindow }) => {
+      const currentWindow = BrowserWindow.getFocusedWindow()
 
-    // Fix window position for testing
-    currentWindow.setPosition(50, 50)
-    currentWindow.setSize(1080, 560)
+      // Fix window position for testing
+      currentWindow.setPosition(50, 50)
+      currentWindow.setSize(1080, 560)
 
-    return {
-      packaged: app.isPackaged,
-      dataPath: app.getPath('userData')
+      return {
+        packaged: app.isPackaged,
+        dataPath: app.getPath('userData')
+      }
     }
-  })
+  )
 
   base.expect(evaluateResult.packaged, 'app is not packaged').toBe(false)
 }

@@ -32,8 +32,8 @@ order: 3
 
 Used only for contributing to project documentation. Must be run from the `docs` directory location.
 
-| Script Name | Description                                                        |
-| ----------- | ------------------------------------------------------------------ |
-| `dev`       | Start the local document server. (For development)                 |
-| `build`     | Build a local document server. Used only for GitHub page builders. |
-| `serve`     | Start the local document server.                                   |
+| Script Name | Description |
+| --- | --- |
+| `dev` | Start the local document server. (For development) |
+| `build` | Build a local document server. Used only for GitHub page builders. |
+| `serve` | Start the local document server. |

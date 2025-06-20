@@ -5,7 +5,8 @@ import { withI18n } from 'vitepress-i18n'
 import type { VitePressSidebarOptions } from 'vitepress-sidebar/types'
 import type { VitePressI18nOptions } from 'vitepress-i18n/types'
 
-const capitalizeFirst = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
+const capitalizeFirst = (str: string): string =>
+  str.charAt(0).toUpperCase() + str.slice(1)
 const supportLocales = ['en', 'ko', 'zhHans']
 const defaultLocale: string = supportLocales[0]
 
@@ -96,5 +97,8 @@ const vitePressConfigs: UserConfig = {
 }
 
 export default defineConfig(
-  withSidebar(withI18n(vitePressConfigs, vitePressI18nConfigs), vitePressSidebarConfigs)
+  withSidebar(
+    withI18n(vitePressConfigs, vitePressI18nConfigs),
+    vitePressSidebarConfigs
+  )
 )

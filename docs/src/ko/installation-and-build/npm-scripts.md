@@ -32,8 +32,8 @@ order: 3
 
 프로젝트 문서에 기여하는 경우에만 사용됩니다. `docs` 디렉토리 위치에서 실행해야 합니다.
 
-| Script Name | Description                                                        |
-| ----------- | ------------------------------------------------------------------ |
-| `dev`       | Start the local document server. (For development)                 |
-| `build`     | Build a local document server. Used only for GitHub page builders. |
-| `serve`     | Start the local document server.                                   |
+| Script Name | Description |
+| --- | --- |
+| `dev` | Start the local document server. (For development) |
+| `build` | Build a local document server. Used only for GitHub page builders. |
+| `serve` | Start the local document server. |
