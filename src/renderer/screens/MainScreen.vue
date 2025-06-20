@@ -77,7 +77,7 @@ const handleOpenFile = async () => {
           alt="logo"
           draggable="false"
           class="ma-auto h-auto w-sm-50 w-md-100"
-          src="/images/vutron-logo.webp"
+          src="images/vutron-logo.webp"
         />
       </v-col>
       <v-col
