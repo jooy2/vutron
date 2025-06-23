@@ -78,7 +78,7 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
   })
 
   mainWindow.webContents.on('did-frame-finish-load', (): void => {
-    if (Constants.IS_DEV_ENV && Constants.IS_DEVTOOLS) {
+    if (Constants.IS_DEV_ENV && Constants.FEAT_OPEN_DEV_TOOLS_AT_START) {
       mainWindow.webContents.openDevTools()
     }
   })

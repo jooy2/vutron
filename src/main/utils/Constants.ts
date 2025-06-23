@@ -14,6 +14,21 @@ export interface TrayOptions {
 }
 
 export default class Constants {
+  /* ------------------------------------------------------
+   * Vutron app feature list
+   *
+   * This template includes examples so you can try out several Electron features.
+   * To remove them from your project, you'll need to disable the features below, or find and delete the related code.
+   * ------------------------------------------------------ */
+  static FEAT_APP_LOGGER = true
+
+  // To show devtools at startup. It requires IS_DEV_ENV=true.
+  // Note: For debugging purpose, window won't be closed if click elsewhere, if devtools is open.
+  static FEAT_OPEN_DEV_TOOLS_AT_START = true
+  /* ------------------------------------------------------
+   * END OF FEATURES
+   * ------------------------------------------------------ */
+
   // Display app name (uppercase first letter)
   static APP_NAME = name.charAt(0).toUpperCase() + name.slice(1)
 
@@ -24,10 +39,6 @@ export default class Constants {
   static PUBLIC_PATH = Constants.IS_DEV_ENV
     ? resolve(__dirname, '../../src/public')
     : resolve(__dirname, '..')
-
-  // To show devtools at startup. It requires IS_DEV_ENV=true.
-  // Note: For debugging purpose, window won't be closed if click elsewhere, if devtools is open.
-  static IS_DEVTOOLS = true
 
   static IS_MAC = process.platform === 'darwin'
 
