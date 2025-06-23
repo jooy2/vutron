@@ -1,4 +1,9 @@
+import log from 'electron-log/renderer'
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron'
+
+// Initialize renderer logger
+log.transports.console.level = 'silly'
+log.transports.console.format = '{h}:{i}:{s}.{ms} {text}'
 
 // Whitelist of valid channels used for IPC communication (Send message from Renderer to Main)
 const mainAvailChannels: string[] = [
