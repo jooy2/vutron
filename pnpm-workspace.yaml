@@ -1,5 +1,5 @@
 packages:
-  - ./dist
+  - .
 onlyBuiltDependencies:
   - electron
   - electron-winstaller
