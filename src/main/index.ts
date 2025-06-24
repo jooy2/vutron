@@ -1,9 +1,22 @@
 import { app, WebContents, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
+import log from 'electron-log/main'
 
 let mainWindow
 let errorWindow
+
+const initializeMainLogger = () => {
+  log.initialize({
+    includeFutureSessions: false,
+    preload: true
+  })
+
+  log.transports.file.level = 'silly'
+  log.transports.file.format = '[{y}{m}{d} {h}:{i}:{s}.{ms}|{level}]{text}'
+  log.transports.console.format = '{h}:{i}:{s}.{ms} {text}'
+  log.transports.console.level = 'silly'
+}
 
 app.on('ready', async () => {
   if (Constants.IS_DEV_ENV) {
@@ -17,6 +30,7 @@ app.on('ready', async () => {
     systemPreferences.setUserDefault('NSDisabledCharacterPaletteMenuItem', 'boolean', true)
   }
   */
+  initializeMainLogger()
 
   mainWindow = await createMainWindow()
 })

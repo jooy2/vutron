@@ -20,8 +20,6 @@ export default class Constants {
    * This template includes examples so you can try out several Electron features.
    * To remove them from your project, you'll need to disable the features below, or find and delete the related code.
    * ------------------------------------------------------ */
-  static FEAT_APP_LOGGER = true
-
   // To show devtools at startup. It requires IS_DEV_ENV=true.
   // Note: For debugging purpose, window won't be closed if click elsewhere, if devtools is open.
   static FEAT_OPEN_DEV_TOOLS_AT_START = true
