@@ -18,7 +18,7 @@ contextBridge.exposeInMainWorld('mainApi', {
     if (mainAvailChannels.includes(channel)) {
       ipcRenderer.send.apply(null, [channel, ...data])
       if (process.env.NODE_ENV === 'development') {
-        console.log({ type: 'send', channel, request: data })
+        log.silly(`[IPC_SEND::${channel}]`, { request: data })
       }
     } else {
       throw new Error(`Unknown ipc channel name: ${channel}`)
@@ -58,7 +58,10 @@ contextBridge.exposeInMainWorld('mainApi', {
     if (mainAvailChannels.includes(channel)) {
       const result = await ipcRenderer.invoke.apply(null, [channel, ...data])
       if (process.env.NODE_ENV === 'development') {
-        console.log({ type: 'invoke', channel, request: data, result })
+        log.silly(`[IPC_INVOKE::${channel}]`, {
+          request: data,
+          result
+        })
       }
       return result
     }

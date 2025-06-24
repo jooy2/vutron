@@ -7,6 +7,7 @@ import {
 import Constants, { TrayOptions } from './utils/Constants'
 import IPCs from './IPCs'
 import { createTray, hideWindow, showWindow } from './tray'
+import log from 'electron-log/main'
 
 const options = {
   width: Constants.IS_DEV_ENV ? 1500 : 1200,
@@ -28,6 +29,8 @@ const exitApp = (mainWindow: BrowserWindow): void => {
 }
 
 export const createMainWindow = async (): Promise<BrowserWindow> => {
+  log.silly('Creating new window...')
+
   let opt: BrowserWindowConstructorOptions = {
     title: Constants.APP_NAME,
     show: false,

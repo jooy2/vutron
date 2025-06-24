@@ -16,6 +16,8 @@ const initializeMainLogger = () => {
   log.transports.file.format = '[{y}{m}{d} {h}:{i}:{s}.{ms}|{level}]{text}'
   log.transports.console.format = '{h}:{i}:{s}.{ms} {text}'
   log.transports.console.level = 'silly'
+
+  log.silly('App is ready')
 }
 
 app.on('ready', async () => {
