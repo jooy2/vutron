@@ -57,6 +57,9 @@ importers:
       electron-extension-installer:
         specifier: ^1.2.0
         version: 1.2.0
+      electron-log:
+        specifier: ^5.4.1
+        version: 5.4.1
       eslint:
         specifier: ^9.29.0
         version: 9.29.0(jiti@2.4.2)
@@ -1440,6 +1443,10 @@ packages:
 
   electron-extension-installer@1.2.0:
     resolution: {integrity: sha512-NrGe64uN4D3+TqbGVwVvLaegXL5oe7/ccTl4fjNl60w+dSNbSXin4CJ1cuMNEXkYyADcF1ITlEm0nDWTnPzPkQ==}
+
+  electron-log@5.4.1:
+    resolution: {integrity: sha512-QvisA18Z++8E3Th0zmhUelys9dEv7aIeXJlbFw3UrxCc8H9qSRW0j8/ooTef/EtHui8tVmbKSL+EIQzP9GoRLg==}
+    engines: {node: '>= 14'}
 
   electron-publish@26.0.13:
     resolution: {integrity: sha512-O5hfHSwli5cegQ4JS3Dp0dZcheex6UCRE/qYyRQvhB6DhSwojiwTnAGEuQCJXc8K8Zxz2lku5Du3VwYHf8d5Lw==}
@@ -4803,6 +4810,8 @@ snapshots:
       fs-jetpack: 5.1.0
       jszip: 3.10.1
       rimraf: 5.0.10
+
+  electron-log@5.4.1: {}
 
   electron-publish@26.0.13:
     dependencies:

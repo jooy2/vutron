@@ -60,6 +60,7 @@
     "electron": "^36.5.0",
     "electron-builder": "^26.0.14",
     "electron-extension-installer": "^1.2.0",
+    "electron-log": "^5.4.1",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
