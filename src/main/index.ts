@@ -2,6 +2,7 @@ import { app, WebContents, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
 import log from 'electron-log/main'
+import { join } from 'path'
 
 let mainWindow
 let errorWindow
@@ -12,12 +13,16 @@ const initializeMainLogger = () => {
     preload: true
   })
 
+  const appLogFilePath = join(app.getPath('userData'), 'logs', 'applog.log')
+
+  log.transports.file.resolvePathFn = () =>
+    join(app.getPath('userData'), 'logs', 'applog.log')
   log.transports.file.level = 'silly'
   log.transports.file.format = '[{y}{m}{d} {h}:{i}:{s}.{ms}|{level}]{text}'
   log.transports.console.format = '{h}:{i}:{s}.{ms} {text}'
   log.transports.console.level = 'silly'
 
-  log.silly('App is ready')
+  log.silly(`Start logging... (Path: ${appLogFilePath}) App is ready.`)
 }
 
 app.on('ready', async () => {
