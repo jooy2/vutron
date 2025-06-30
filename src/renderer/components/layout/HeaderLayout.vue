@@ -16,6 +16,23 @@ const handleRoute = (path: string): void => {
 const isCurrentRoute = (path: string): boolean => {
   return path === route.path
 }
+
+const headerMenus: {
+  icon: string
+  text: string
+  path: string
+}[] = [
+  {
+    icon: mdiHome,
+    text: 'title.main',
+    path: '/'
+  },
+  {
+    icon: mdiFitToScreenOutline,
+    text: 'title.second',
+    path: '/second'
+  }
+]
 </script>
 <template>
   <v-app-bar
@@ -25,20 +42,14 @@ const isCurrentRoute = (path: string): boolean => {
     <v-app-bar-title>{{ t(titleKey) }}</v-app-bar-title>
     <template #append>
       <v-btn
-        :prepend-icon="mdiHome"
+        v-for="menu in headerMenus"
+        :key="menu.path"
+        :prepend-icon="menu.icon"
         variant="text"
-        :class="{ active: isCurrentRoute('/') }"
-        @click="handleRoute('/')"
+        :class="{ active: isCurrentRoute(menu.path) }"
+        @click="handleRoute(menu.path)"
       >
-        {{ t('title.main') }}
-      </v-btn>
-      <v-btn
-        :prepend-icon="mdiFitToScreenOutline"
-        variant="text"
-        :class="{ active: isCurrentRoute('/second') }"
-        @click="handleRoute('/second')"
-      >
-        {{ t('title.second') }}
+        {{ t(menu.text) }}
       </v-btn>
     </template>
   </v-app-bar>
