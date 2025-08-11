@@ -49,7 +49,7 @@ order: 1
 │  │  ├─ utils/ - 렌더러 프로세스 유틸리티
 │  │  ├─ App.vue - Vue 앱 루트 컴포넌트
 │  │  ├─ index.html - Electron 렌더러 프로세스에 의해 로드된 루트 정적 인덱스
-│  └─ └─ main.ts - 렌더러 프로세스 엔트리 포인트Renderer process entry point
+│  └─ └─ main.ts - 렌더러 프로세스 엔트리 포인트
 ├─ tests/ - 애플리케이션 테스트 구성
 │  ├─ results/ - PlayWright 테스트 결과 파일 및 스크린샷 저장 위치
 │  ├─ specs/ - PlayWright 테스트 사양 파일
