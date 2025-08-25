@@ -10,7 +10,7 @@ order: 2
 - [Electron](https://www.electronjs.org)
 - [Electron Builder](https://www.electron.build)
 
-## 개발 도움말 도구
+## 개발 도움 도구
 
 - [TypeScript](https://www.typescriptlang.org)
 - [ESLint](https://eslint.org)
