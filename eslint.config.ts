@@ -1,4 +1,4 @@
-import { globalIgnores } from 'eslint/config'
+import { defineConfig, globalIgnores } from 'eslint/config'
 import pluginJs from '@eslint/js'
 import pluginTypeScriptESLint from 'typescript-eslint'
 import parserVue from 'vue-eslint-parser'
@@ -10,7 +10,7 @@ import pluginPrettier from 'eslint-plugin-prettier/recommended'
 
 import globals from 'globals'
 
-export default pluginTypeScriptESLint.config(
+export default defineConfig(
   pluginPrettier,
   pluginJs.configs.recommended,
   pluginTypeScriptESLint.configs.recommended,
