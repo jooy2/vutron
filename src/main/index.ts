@@ -25,6 +25,19 @@ const initializeMainLogger = () => {
   log.silly(`Start logging... (Path: ${appLogFilePath}) App is ready.`)
 }
 
+const installDevTron = async () => {
+  if (!Constants.IS_DEV_ENV) {
+    return
+  }
+
+  try {
+    const { devtron } = await import('@electron/devtron')
+    await devtron.install()
+  } catch {
+    // Do nothing
+  }
+}
+
 app.on('ready', async () => {
   if (Constants.IS_DEV_ENV) {
     import('./index.dev')
@@ -38,6 +51,8 @@ app.on('ready', async () => {
   }
   */
   initializeMainLogger()
+
+  await installDevTron()
 
   mainWindow = await createMainWindow()
 })

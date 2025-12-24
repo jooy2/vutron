@@ -50,6 +50,7 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@electron/devtron": "^2.1.1",
     "@eslint/js": "^9.39.2",
     "@mdi/js": "^7.4.47",
     "@playwright/test": "^1.57.0",
