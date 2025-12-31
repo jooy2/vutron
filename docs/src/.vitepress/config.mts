@@ -48,7 +48,7 @@ const vitePressI18nConfigs: VitePressI18nOptions = {
   }
 }
 
-const vitePressSidebarConfigs: VitePressSidebarOptions = [
+const vitePressSidebarConfigs: VitePressSidebarOptions[] = [
   ...supportLocales.map((lang) => {
     return {
       collapsed: false,
