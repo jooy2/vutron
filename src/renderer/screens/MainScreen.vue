@@ -21,13 +21,6 @@ const languages = ref(['en'])
 const appVersion = ref('Unknown')
 const selectedFile = ref('')
 
-onMounted((): void => {
-  languages.value = availableLocales
-
-  // Get application version from package.json version string (Using IPC communication)
-  getApplicationVersionFromMainProcess()
-})
-
 const getApplicationVersionFromMainProcess = (): void => {
   window.mainApi.invoke('msgRequestGetVersion').then((result: string) => {
     appVersion.value = result
@@ -60,6 +53,13 @@ const handleOpenFile = async () => {
     selectedFile.value = dialogResult.filePaths[0]
   }
 }
+
+onMounted((): void => {
+  languages.value = availableLocales
+
+  // Get application version from package.json version string (Using IPC communication)
+  getApplicationVersionFromMainProcess()
+})
 </script>
 
 <template>
