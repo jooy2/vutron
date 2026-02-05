@@ -16,6 +16,7 @@ export default createI18n({
   locale: getCurrentLocale(),
   fallbackLocale: 'en',
   globalInjection: true,
+  silentTranslationWarn: process.env.NODE_ENV !== 'development',
   messages: {
     en,
     ko,
