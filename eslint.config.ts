@@ -10,7 +10,7 @@ import pluginPrettier from 'eslint-plugin-prettier/recommended'
 
 import globals from 'globals'
 
-export default defineConfig(
+export default defineConfig([
   pluginPrettier,
   pluginJs.configs.recommended,
   pluginTypeScriptESLint.configs.recommended,
@@ -40,7 +40,6 @@ export default defineConfig(
       parser: parserVue,
       parserOptions: {
         parser: parserTypeScript,
-        ecmaVersion: 2022,
         ecmaFeatures: {
           jsx: true
         },
@@ -82,4 +81,4 @@ export default defineConfig(
       '@typescript-eslint/no-explicit-any': 'off'
     }
   }
-)
+])
