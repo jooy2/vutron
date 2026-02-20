@@ -1,5 +1,5 @@
-import { MainScreen } from '@/renderer/screens'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import MainScreen from '@/renderer/screens/MainScreen.vue'
 
 export default createRouter({
   history: createWebHashHistory(),
