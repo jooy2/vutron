@@ -56,7 +56,6 @@ order: 1
 │  ├─ fixtures.ts - 测试公共执行API
 │  └─ testUtil.ts - 测试实用程序
 ├─ .editorconfig - 编辑器推荐的IDE配置文件
-├─ .eslintignore - ESLint忽略的文件列表
 ├─ .gitignore - 不上传到Git的文件列表
 ├─ .prettierignore - 要禁用的文件列表 更美观的文件格式
 ├─ .prettierrc - 更漂亮的规则配置

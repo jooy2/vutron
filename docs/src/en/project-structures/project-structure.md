@@ -56,7 +56,6 @@ order: 1
 │  ├─ fixtures.ts - Test common execution API
 │  └─ testUtil.ts - Test utilities
 ├─ .editorconfig - Editor recommended configuration file for IDE
-├─ .eslintignore - List of files to be ignored by ESLint
 ├─ .gitignore - List of files to not upload to Git
 ├─ .prettierignore - List of files to disable Prettier file formatting
 ├─ .prettierrc - Prettier rule configurations
