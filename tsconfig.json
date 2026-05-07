@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist",
     "target": "esnext",
     "module": "Preserve",
@@ -17,7 +16,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
+    "rootDir": "./src/renderer"
   },
   "include": ["src/*.ts", "src/*.d.ts", "src/renderer"],
   "references": [
