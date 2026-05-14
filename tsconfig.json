@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["node"],
     "outDir": "./dist",
     "target": "esnext",
     "module": "Preserve",
