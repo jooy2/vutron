@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
     ...loadEnv(mode, process.cwd())
   }
 
-  rmSync('dist', { recursive: true, force: true })
+  rmSync(resolve(projectRoot, 'dist'), { recursive: true, force: true })
 
   const electronPluginConfigs: ElectronSimpleOptions = {
     main: {
