@@ -14,6 +14,10 @@ node_modules/
 .idea/
 *.iml
 
+# AI
+.claude/worktree
+.claude/*.local.json
+
 # Visual Studio Code IDE
 .vscode/*
 !.vscode/settings.json
@@ -63,3 +67,5 @@ tests/results/
 npm-debug.log
 npm-debug.log.*
 vite-plugin-electron.log
+*.tsbuildinfo
+.eslintcache

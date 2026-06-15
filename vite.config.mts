@@ -1,8 +1,7 @@
 import { fileURLToPath } from 'url'
 import { defineConfig, loadEnv } from 'vite'
-import ElectronPlugin, { ElectronOptions } from 'vite-plugin-electron'
-import RendererPlugin from 'vite-plugin-electron-renderer'
-import EslintPlugin from 'vite-plugin-eslint'
+import electron, { ElectronSimpleOptions } from 'vite-plugin-electron/simple'
+import EslintPlugin from '@nabla/vite-plugin-eslint'
 import VuetifyPlugin from 'vite-plugin-vuetify'
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import Vue from '@vitejs/plugin-vue'
@@ -11,6 +10,7 @@ import { resolve, dirname } from 'path'
 import { builtinModules } from 'module'
 
 const isDevEnv = process.env.NODE_ENV === 'development'
+const projectRoot = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig(({ mode }) => {
   process.env = {
@@ -25,55 +25,39 @@ export default defineConfig(({ mode }) => {
 
   rmSync('dist', { recursive: true, force: true })
 
-  const electronPluginConfigs: ElectronOptions[] = [
-    {
-      entry: 'src/main/index.ts',
+  const electronPluginConfigs: ElectronSimpleOptions = {
+    main: {
+      entry: resolve(projectRoot, 'src/main/index.ts'),
       onstart({ startup }) {
         const debugArgs = [
           '.',
           '--inspect=9228',
           '--remote-debugging-port=9229'
         ]
-        startup(debugArgs)
+        startup(debugArgs, { cwd: projectRoot })
       },
       vite: {
-        root: resolve('.'),
+        root: resolve(projectRoot),
         base: './',
-        publicDir: resolve('./src/public'),
+        publicDir: resolve(projectRoot, './src/public'),
         build: {
           sourcemap: true,
           assetsDir: '.',
-          outDir: 'dist/main',
-          rollupOptions: {
+          outDir: resolve(projectRoot, 'dist/main'),
+          rolldownOptions: {
             external: ['electron', ...builtinModules]
           }
         }
       }
     },
-    {
-      entry: 'src/preload/index.ts',
-      onstart({ reload }) {
-        reload()
-      },
+    preload: {
+      input: resolve(projectRoot, 'src/preload/index.ts'),
       vite: {
-        root: resolve('.'),
         build: {
-          outDir: 'dist/preload'
+          outDir: resolve(projectRoot, 'dist/preload')
         }
       }
     }
-  ]
-
-  if (isDevEnv) {
-    electronPluginConfigs.push({
-      entry: 'src/main/index.dev.ts',
-      vite: {
-        root: resolve('.'),
-        build: {
-          outDir: 'dist/main'
-        }
-      }
-    })
   }
 
   return {
@@ -85,17 +69,17 @@ export default defineConfig(({ mode }) => {
     resolve: {
       extensions: ['.mjs', '.js', '.ts', '.vue', '.json', '.scss'],
       alias: {
-        '@': resolve(dirname(fileURLToPath(import.meta.url)), 'src')
+        '@': resolve(projectRoot, 'src')
       }
     },
     base: './',
-    root: resolve('./src/renderer'),
-    publicDir: resolve('./src/public'),
+    root: resolve(projectRoot, 'src/renderer'),
+    publicDir: resolve(projectRoot, 'src/public'),
     clearScreen: false,
     build: {
       sourcemap: isDevEnv,
       minify: !isDevEnv,
-      outDir: resolve('./dist')
+      outDir: resolve(projectRoot, 'dist')
     },
     plugins: [
       Vue(),
@@ -104,11 +88,10 @@ export default defineConfig(({ mode }) => {
       VuetifyPlugin({
         autoImport: true
       }),
-      // Docs: https://github.com/gxmari007/vite-plugin-eslint
+      // Docs: https://github.com/nabla/vite-plugin-eslint
       EslintPlugin(),
       // Docs: https://github.com/electron-vite/vite-plugin-electron
-      ElectronPlugin(electronPluginConfigs),
-      RendererPlugin()
+      electron(electronPluginConfigs)
     ]
   }
 })
