@@ -7,19 +7,10 @@ import Constants, { TrayOptions } from './utils/Constants'
 import { createTray, destroyTray, hideWindow, showWindow } from './tray'
 import log from 'electron-log/main'
 
-const options = {
-  width: Constants.IS_DEV_ENV ? 1500 : 1200,
-  height: 650,
-  tray: {
-    // all optional values from DEFAULT_TRAY_OPTIONS can de defined here
-    enabled: true,
-    menu: false, // true, to use a tray menu ; false to toggle visibility on click on tray icon
-    trayWindow: false // true, to use a tray floating window attached to top try icon
-  }
-}
-
 export const createMainWindow = async (): Promise<BrowserWindow> => {
   log.silly('Creating new window...')
+
+  const options = Constants.DEFAULT_WINDOW_OPTIONS
 
   let opt: BrowserWindowConstructorOptions = {
     title: Constants.APP_NAME,

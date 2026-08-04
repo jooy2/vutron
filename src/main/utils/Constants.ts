@@ -13,6 +13,12 @@ export interface TrayOptions {
   showAtStartup: boolean
 }
 
+export interface WindowOptions {
+  width: number
+  height: number
+  tray: Partial<TrayOptions>
+}
+
 export default class Constants {
   /* ------------------------------------------------------
    * Vutron app feature list
@@ -54,6 +60,20 @@ export default class Constants {
     tooltip: 'Vutron App',
     margin: { x: 0, y: 0 },
     showAtStartup: false
+  }
+
+  // Main window settings. Any tray value left out here falls back to
+  // `DEFAULT_TRAY_OPTIONS` above.
+  static DEFAULT_WINDOW_OPTIONS: WindowOptions = {
+    width: Constants.IS_DEV_ENV ? 1500 : 1200,
+    height: 650,
+    tray: {
+      enabled: true,
+      // true, to use a tray menu ; false to toggle visibility on click on tray icon
+      menu: false,
+      // true, to use a tray floating window attached to top tray icon
+      trayWindow: false
+    }
   }
 
   static APP_INDEX_URL_DEV = `${debug.env.VITE_DEV_SERVER_URL}/index.html`
