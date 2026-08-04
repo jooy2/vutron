@@ -2,7 +2,7 @@
 
 > Vutron is a preconfigured template for developing Electron cross-platform desktop apps. It uses Vite + Vue 3 + Electron, and allows you to build a fast development environment with little effort.
 
-Vutron ships with hot-reload development, cross-platform builds via electron-builder, TypeScript, automated Playwright testing, i18n (vue-i18n), dark/light themes, a basic layout manager, and global state management with Pinia. The renderer uses Vuetify as its design framework.
+Vutron ships with hot-reload development, cross-platform builds via electron-builder, TypeScript, automated Playwright testing, i18n (vue-i18n), dark/light themes, a basic layout manager, a tray icon, and global state management with Pinia. The renderer uses Vuetify as its design framework, and runs with context isolation, whitelisted IPC channels, a content security policy and navigation guards enabled by default.
 
 - Repository: https://github.com/jooy2/vutron (MIT license)
 - Create a new project: `npm init vutron`
@@ -21,7 +21,8 @@ Vutron ships with hot-reload development, cross-platform builds via electron-bui
 - [Project Structure](https://vutron.cdget.com/project-structures/project-structure): Annotated directory tree of every folder and configuration file in the template.
 - [Pre-configured Components](https://vutron.cdget.com/project-structures/pre-configured-components): The frameworks and tools bundled in the template (Vite, Electron, Electron Builder, TypeScript, ESLint, Prettier, Vue, Vue-i18n, Vue-router, Pinia, Vuetify, Playwright).
 - [Main vs Renderer Process](https://vutron.cdget.com/electron-how-to/main-and-renderer-process): How the two Electron processes are split, why Node.js APIs are unavailable in the renderer, and how to enable `nodeIntegration`.
-- [Preload Script](https://vutron.cdget.com/electron-how-to/preload-script): Whitelisting IPC channels (`mainAvailChannels`, `rendererAvailChannels`) and using the `window.mainApi` API (`send`, `on`, `once`, `off`, `invoke`).
+- [Preload Script](https://vutron.cdget.com/electron-how-to/preload-script): Whitelisting IPC channels (`mainSendChannels`, `mainInvokeChannels`, `rendererAvailChannels`) and using the `window.mainApi` API (`send`, `on`, `once`, `off`, `invoke`).
+- [Tray Icon](https://vutron.cdget.com/electron-how-to/tray-icon): Configuring the tray through `DEFAULT_WINDOW_OPTIONS.tray`, the context-menu and floating tray-window modes, and how to remove the feature.
 
 ## Optional
 

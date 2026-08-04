@@ -28,8 +28,11 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 - ⚡️ TypeScript support
 - ⚡️ Multilingual support
 - ⚡️ Support for themes (dark & light)
-- ⚡️ Basic layout manager
+- ⚡️ Basic layout manager built on Vuetify
 - ⚡️ Global state management through the Pinia store
+- ⚡️ Tray icon, with an optional floating tray window
+- ⚡️ Native file dialog and external link examples over IPC
+- ⚡️ Secure by default: context isolation, channel whitelists, CSP and navigation guards
 - ⚡️ Quick support through the GitHub community and official documentation
 
 ## [Documentation (Getting Started)](https://vutron.cdget.com/installation-and-build/getting-started)
