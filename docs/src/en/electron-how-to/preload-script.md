@@ -8,8 +8,11 @@ For compatibility and security with the latest version of Electron, we do not re
 
 Vutron's preload script is located in the `src/preload` folder. To create a new IPC communication channel, add the channel name to the following variable to whitelist it for communication.
 
-- `mainAvailChannels`: Send an event from main to renderer. (`window.mainApi.send('channelName')`)
-- `rendererAvailChannels`: Send an event from renderer to main. (`mainWindow.webContents.send('channelName')`)
+- `mainSendChannels`: Send an event from renderer to main without waiting for a reply. Handled with `ipcMain.on` in the main process. (`window.mainApi.send('channelName')`)
+- `mainInvokeChannels`: Send an event from renderer to main and await its result. Handled with `ipcMain.handle` in the main process. (`window.mainApi.invoke('channelName')`)
+- `rendererAvailChannels`: Send an event from main to renderer. (`mainWindow.webContents.send('channelName')`)
+
+`send` and `invoke` use separate whitelists on purpose, so that a channel can only be used the way its handler was written.
 
 When sending events from renderer to main, you access the `window.mainApi` object instead of `ipcRenderer.send`. The `mainApi` is the name you set in your Vutron template and can be changed.
 

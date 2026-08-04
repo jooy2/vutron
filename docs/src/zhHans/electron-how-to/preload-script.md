@@ -8,8 +8,11 @@ Electron.js中的预加载脚本是一个安全区域，用于主进程和渲染
 
 Vutron的预加载脚本位于`src/preload`文件夹中。要创建新的IPC通信通道，请将通道名称添加到以下变量中，将其列入通信白名单。
 
-- `mainAvailChannels`: 从主程序发送事件到渲染程序。 (`window.mainApi.send('channelName')`)
-- `rendererAvailChannels`: 将事件从渲染器发送到主程序。 (`mainWindow.webContents.send('channelName')`)
+- `mainSendChannels`: 从渲染进程向主进程发送事件，不等待回复。在主进程中使用 `ipcMain.on` 处理。 (`window.mainApi.send('channelName')`)
+- `mainInvokeChannels`: 从渲染进程向主进程发送事件并等待结果。在主进程中使用 `ipcMain.handle` 处理。 (`window.mainApi.invoke('channelName')`)
+- `rendererAvailChannels`: 从主进程向渲染进程发送事件。 (`mainWindow.webContents.send('channelName')`)
+
+`send` 和 `invoke` 特意使用了各自独立的白名单，因此每个通道只能按照其处理程序的编写方式使用。
 
 当从渲染器向主程序发送事件时，应访问`window.mainApi`对象，而不是`ipcRenderer.send`。`mainApi`是您在自己的Vutron模板中设置的名称，可以更改。
 

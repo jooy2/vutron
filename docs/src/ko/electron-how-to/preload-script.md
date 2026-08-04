@@ -8,8 +8,11 @@ Electron.js의 프리로드 스크립트는 메인 프로세스와 렌더러 프
 
 Vutron의 프리로드 스크립트는 `src/preload` 폴더에 있습니다. 새 IPC 통신 채널을 생성하려면 다음 변수에 채널 이름을 추가하여 통신을 허용하도록 화이트리스트에 추가합니다.
 
-- `mainAvailChannels`: 메인에서 렌더러로 이벤트를 전송합니다. (`window.mainApi.send('channelName')`)
-- `rendererAvailChannels`: 렌더러에서 메인으로 이벤트를 전송합니다. (`mainWindow.webContents.send('channelName')`)
+- `mainSendChannels`: 렌더러에서 메인으로 응답을 기다리지 않고 이벤트를 전송합니다. 메인 프로세스에서는 `ipcMain.on`으로 처리합니다. (`window.mainApi.send('channelName')`)
+- `mainInvokeChannels`: 렌더러에서 메인으로 이벤트를 전송하고 결과를 기다립니다. 메인 프로세스에서는 `ipcMain.handle`로 처리합니다. (`window.mainApi.invoke('channelName')`)
+- `rendererAvailChannels`: 메인에서 렌더러로 이벤트를 전송합니다. (`mainWindow.webContents.send('channelName')`)
+
+`send`와 `invoke`의 화이트리스트를 분리해 두었기 때문에, 각 채널은 핸들러가 작성된 방식으로만 사용할 수 있습니다.
 
 렌더러에서 메인으로 이벤트를 전송할 때는 `ipcRenderer.send` 대신 `window.mainApi` 객체에 액세스합니다. `mainApi`는 Vutron 템플릿에서 설정한 이름이며 변경할 수 있습니다.
 
