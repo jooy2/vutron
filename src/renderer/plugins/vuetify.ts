@@ -16,7 +16,7 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import 'vuetify/styles'
 
 import colors from 'vuetify/util/colors'
-import { getCurrentLocale } from '@/renderer/utils'
+import { FALLBACK_LOCALE, getCurrentLocale } from '@/renderer/utils'
 
 export default createVuetify({
   // Keep this in sync with `plugins/i18n.ts`. Vuetify has its own locale for
@@ -24,7 +24,7 @@ export default createVuetify({
   locale: {
     messages: { ko, en, zhHans, zhHant, de, es, ja, fr, ru, pt, nl },
     locale: getCurrentLocale(),
-    fallback: 'en'
+    fallback: FALLBACK_LOCALE
   },
   defaults: {
     VBtn: {
