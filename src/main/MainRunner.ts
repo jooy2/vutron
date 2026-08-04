@@ -4,7 +4,6 @@ import {
   BrowserWindowConstructorOptions
 } from 'electron'
 import Constants, { TrayOptions } from './utils/Constants'
-import IPCs from './IPCs'
 import { createTray, destroyTray, hideWindow, showWindow } from './tray'
 import log from 'electron-log/main'
 
@@ -95,9 +94,6 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
       mainWindow.setAlwaysOnTop(false)
     })
   }
-
-  // Initialize IPC Communication
-  IPCs.initialize()
 
   if (Constants.IS_DEV_ENV) {
     await mainWindow.loadURL(Constants.APP_INDEX_URL_DEV)

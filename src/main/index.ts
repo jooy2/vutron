@@ -1,6 +1,7 @@
 import { app, WebContents, RenderProcessGoneDetails } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
+import IPCs from './IPCs'
 import log from 'electron-log/main'
 import { join } from 'path'
 
@@ -53,6 +54,10 @@ app.on('ready', async () => {
   initializeMainLogger()
 
   await installDevTron()
+
+  // Initialize IPC Communication. `ipcMain.handle` throws when the same channel
+  // is registered twice, so this must not live in the window factory.
+  IPCs.initialize()
 
   mainWindow = await createMainWindow()
 })
