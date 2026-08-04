@@ -39,12 +39,13 @@ export function createTray(window: BrowserWindow, options) {
     tray.setContextMenu(contextMenu)
   } else {
     // handle click on tray icon
-    tray.on('right-click', function () {
-      debounce(() => toggleWindow(window), 200)
-    })
-    tray.on('click', function () {
-      debounce(() => toggleWindow(window), 200)
-    })
+    // `debounce` returns a debounced function, so it must be created once and
+    // reused as the listener. Calling it inside the handler only builds a new
+    // function on every event and never invokes it.
+    const handleTrayClick = debounce(() => toggleWindow(window), 200)
+
+    tray.on('right-click', handleTrayClick)
+    tray.on('click', handleTrayClick)
     // no menu for tray window
     window.setMenu(null)
     tray.setContextMenu(null)
