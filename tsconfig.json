@@ -6,7 +6,6 @@
     "module": "Preserve",
     "moduleDetection": "force",
     "jsx": "preserve",
-    "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "resolveJsonModule": true,

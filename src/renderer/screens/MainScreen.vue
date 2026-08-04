@@ -32,7 +32,7 @@ const handleChangeTheme = (): void => {
   theme.change(theme.global.current.value.dark ? 'light' : 'dark')
 }
 
-const handleChangeLanguage = (val): void => {
+const handleChangeLanguage = (val: string): void => {
   locale.value = val
   // Vuetify keeps a separate locale for its built-in component strings, so it
   // has to be switched together with `vue-i18n`.
