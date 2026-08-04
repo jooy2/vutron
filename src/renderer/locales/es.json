@@ -3,7 +3,8 @@
     "welcome-title": "Hola Vutron! Todo está listo.",
     "welcome-desc": "Ahora puede escribir aplicaciones web multiplataforma. Vea sus cambios en tiempo real y cree en múltiples plataformas con un solo comando. Si aún no está familiarizado con él, puede obtener ayuda en la página de documentación a continuación o ejecutar un código de ejemplo preescrito.",
     "second-desc": "¡Se ha movido a la segunda pantalla! ¡Aquí no hay nada!",
-    "selected-file": "Archivo seleccionado: {filePath}."
+    "selected-file": "Archivo seleccionado: {filePath}.",
+    "error-desc": "La aplicación encontró un problema inesperado. Reinicie la aplicación."
   },
   "title": {
     "main": "Pantalla Principal",
