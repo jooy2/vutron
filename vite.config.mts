@@ -41,7 +41,9 @@ export default defineConfig(({ mode }) => {
         base: './',
         publicDir: resolve(projectRoot, './src/public'),
         build: {
-          sourcemap: true,
+          // Matches the renderer. Shipping main process sourcemaps would put
+          // the original sources inside the packaged app.
+          sourcemap: isDevEnv,
           assetsDir: '.',
           outDir: resolve(projectRoot, 'dist/main'),
           rolldownOptions: {
