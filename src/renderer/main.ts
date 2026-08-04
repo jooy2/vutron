@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import log from 'electron-log/renderer'
 
 import App from '@/renderer/App.vue'
 import router from '@/renderer/router'
@@ -10,6 +11,16 @@ import pinia from '@/renderer/plugins/pinia'
 // preload script that actually exposes it.
 
 const app = createApp(App)
+
+// Vue swallows errors thrown inside components by default, which makes them
+// invisible in a packaged app. Route them to the shared log file instead.
+app.config.errorHandler = (err, instance, info): void => {
+  log.error(`Unhandled error in ${info}:`, err)
+}
+
+window.addEventListener('unhandledrejection', (event): void => {
+  log.error('Unhandled promise rejection:', event.reason)
+})
 
 app.use(vuetify).use(i18n).use(router).use(pinia)
 
