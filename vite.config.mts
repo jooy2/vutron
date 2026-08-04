@@ -9,10 +9,13 @@ import { rmSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { builtinModules } from 'module'
 
-const isDevEnv = process.env.NODE_ENV === 'development'
 const projectRoot = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig(({ mode }) => {
+  // `mode` is what Vite resolved for this run. `process.env.NODE_ENV` is not
+  // guaranteed to be set yet while this config file is being evaluated.
+  const isDevEnv = mode === 'development'
+
   process.env = {
     ...(isDevEnv
       ? {
