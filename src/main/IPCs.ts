@@ -1,5 +1,7 @@
 import { ipcMain, shell, IpcMainEvent, dialog } from 'electron'
 import Constants from './utils/Constants'
+import { isAllowedExternalUrl } from './utils/security'
+import log from 'electron-log/main'
 
 /*
  * IPC Communications
@@ -15,6 +17,14 @@ export default class IPCs {
     ipcMain.on(
       'msgOpenExternalLink',
       async (event: IpcMainEvent, url: string) => {
+        // Without this check the renderer could hand the OS any scheme it
+        // likes (`file:`, `smb:`, custom app handlers), not just a web link.
+        if (!isAllowedExternalUrl(url)) {
+          log.warn(`Blocked external link with an unsupported protocol: ${url}`)
+
+          return
+        }
+
         await shell.openExternal(url)
       }
     )
