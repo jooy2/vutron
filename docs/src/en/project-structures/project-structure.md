@@ -10,27 +10,29 @@ order: 1
 │  └─ ISSUE_TEMPLATE/
 │  └─ resources/ - GitHub resources used for README.md, etc.
 │  └─ workflows/ - GitHub workflows definition
-│  └─ dependabot.yml
 │  └─ FUNDING.yml
 ├─ .vscode - Common project configuration files used by Visual Studio Code IDE
 ├─ buildAssets/ - Package resource (icon, logo, etc.) file used for Electron build
 │  └─ builder/
-│  │  │  └─ config.ts - `electron-builder` dynamic configuration file
+│  │  │  └─ config.js - `electron-builder` dynamic configuration file
 │  └─ icons/
 ├─ dist/ - Output directory used to build the package
 ├─ docs/ - Project documents (optionally enabled)
-│  └─ .vitepress/
+│  └─ src/
+│  │  └─ .vitepress/
 │  │  │  └─ config.mts - VitePress configuration file used for document hosting
-│  └─ public/ - Root resource directory for VitePress documentation pages
+│  │  └─ public/ - Root resource directory for VitePress documentation pages
 ├─ node_modules/
 ├─ src/
 │  ├─ main/ - Main (Electron) process source code
 │  │  ├─ utils/ - Main process utilities
 │  │  │  └─ Constants.ts - Main global definition
-│  │  │  └─ Menus.ts - Main global menu definition
+│  │  │  └─ security.ts - Navigation and external link guards
 │  │  └─ index.ts - Main process entry point
+│  │  └─ index.dev.ts - Development-only setup, stripped from packaged builds
 │  │  └─ IPCs.ts - Main process ipc handlers definition
 │  │  └─ MainRunner.ts - Main process main window processing
+│  │  └─ tray.ts - Tray icon and tray window handling
 │  ├─ preload/ - Preload (Electron-Vue communication bridge) process source code
 │  │  └─ index.ts
 │  ├─ public/ - Main + Renderer static resources
@@ -49,17 +51,21 @@ order: 1
 │  │  ├─ utils/ - Renderer process utilities
 │  │  ├─ App.vue - Vue app's root component
 │  │  ├─ index.html - Root static index loaded by Electron renderer process
-│  └─ └─ main.ts - Renderer process entry point
+│  │  └─ main.ts - Renderer process entry point
+│  ├─ mainApi.d.ts - Type of the `window.mainApi` bridge exposed by the preload
+│  └─ vue-shim.d.ts - Type declaration for `*.vue` imports
 ├─ tests/ - Application test configuration
 │  ├─ results/ - Where to save PlayWright test result files and screenshots
 │  ├─ specs/ - PlayWright test spec file
-│  ├─ fixtures.ts - Test common execution API
-│  └─ testUtil.ts - Test utilities
+│  ├─ fixtures.mts - Test common execution API
+│  └─ testUtil.mts - Test utilities
 ├─ .editorconfig - Editor recommended configuration file for IDE
 ├─ .gitignore - List of files to not upload to Git
+├─ .nvmrc - Node.js version used for development
 ├─ .prettierignore - List of files to disable Prettier file formatting
 ├─ .prettierrc - Prettier rule configurations
 ├─ CODE_OF_CONDUCT.md - Files used only on GitHub
+├─ CONTRIBUTING.md - Contribution guide, used only on GitHub
 ├─ eslint.config.ts - ESLint rule configurations
 ├─ LICENSE - Project license file
 ├─ package.json - Node.js package configurations
@@ -67,8 +73,9 @@ order: 1
 ├─ playwright.config.ts - Playwright test rules configurations
 ├─ pnpm-lock.yaml - PNPM Related Files
 ├─ pnpm-workspace.yaml - PNPM Related Files
-├─ tsconfig.json - TypeScript configurations
-├─ tsconfig.node.json - TypeScript configurations
+├─ SECURITY.md - Security policy, used only on GitHub
+├─ tsconfig.json - TypeScript configurations (renderer)
+├─ tsconfig.node.json - TypeScript configurations (main, preload, tests)
 ├─ vite.config.mts - Vite compiler build configurations
 └─ README.md - Files used only on GitHub
 ```

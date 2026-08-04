@@ -10,27 +10,29 @@ order: 1
 │  └─ ISSUE_TEMPLATE/
 │  └─ resources/ - 用于自述文件（README.md）等的GitHub资源。
 │  └─ workflows/ - GitHub工作流程定义
-│  └─ dependabot.yml
 │  └─ FUNDING.yml
 ├─ .vscode - Visual Studio Code IDE使用的通用项目配置文件
 ├─ buildAssets/ - 用于Electron构建的资源包（图标、徽标等）文件
 │  └─ builder/
-│  │  │  └─ config.ts - `electron-builder`动态配置文件
+│  │  │  └─ config.js - `electron-builder`动态配置文件
 │  └─ icons/
 ├─ dist/ - 用于生成软件包的输出目录
 ├─ docs/ - 项目文件（可选）
-│  └─ .vitepress/
+│  └─ src/
+│  │  └─ .vitepress/
 │  │  │  └─ config.mts - 用于文档托管的VitePress配置文件
-│  └─ public/ - VitePress文档页面的根目录
+│  │  └─ public/ - VitePress文档页面的根目录
 ├─ node_modules/
 ├─ src/
 │  ├─ main/ - 主（电子）处理源代码
 │  │  ├─ utils/ - 主要工艺设备
 │  │  │  └─ Constants.ts - 全球主要定义
-│  │  │  └─ Menus.ts - 全球主菜单定义
+│  │  │  └─ security.ts - 导航与外部链接防护
 │  │  └─ index.ts - 主要流程入口
+│  │  └─ index.dev.ts - 仅用于开发环境的配置，打包构建时会被排除
 │  │  └─ IPCs.ts - 主要流程 ipc 处理程序定义
 │  │  └─ MainRunner.ts - 主流程主窗口处理
+│  │  └─ tray.ts - 托盘图标与托盘窗口处理
 │  ├─ preload/ - 预加载（Electron-Vue通信桥）过程源代码
 │  │  └─ index.ts
 │  ├─ public/ - Main + Renderer静态资源
@@ -49,17 +51,21 @@ order: 1
 │  │  ├─ utils/ - 渲染器进程实用程序
 │  │  ├─ App.vue - Vue应用程序的根组件
 │  │  ├─ index.html - 由电子渲染器进程加载的根静态索引
-│  └─ └─ main.ts - 渲染器进程入口点
+│  │  └─ main.ts - 渲染器进程入口点
+│  ├─ mainApi.d.ts - 预加载脚本暴露的 `window.mainApi` 桥接类型
+│  └─ vue-shim.d.ts - `*.vue` 导入的类型声明
 ├─ tests/ - 应用程序测试配置
 │  ├─ results/ - PlayWright测试结果文件和屏幕截图的保存位置
 │  ├─ specs/ - PlayWright测试规格文件
-│  ├─ fixtures.ts - 测试公共执行API
-│  └─ testUtil.ts - 测试实用程序
+│  ├─ fixtures.mts - 测试公共执行API
+│  └─ testUtil.mts - 测试实用程序
 ├─ .editorconfig - 编辑器推荐的IDE配置文件
 ├─ .gitignore - 不上传到Git的文件列表
+├─ .nvmrc - 开发所使用的 Node.js 版本
 ├─ .prettierignore - 要禁用的文件列表 更美观的文件格式
 ├─ .prettierrc - 更漂亮的规则配置
 ├─ CODE_OF_CONDUCT.md - 仅在GitHub上使用的文件
+├─ CONTRIBUTING.md - 贡献指南，仅在GitHub上使用的文件
 ├─ eslint.config.ts - ESLint规则配置
 ├─ LICENSE - 项目许可证文件
 ├─ package.json - Node.js 包配置
@@ -67,8 +73,9 @@ order: 1
 ├─ playwright.config.ts - 编剧测试规则配置
 ├─ pnpm-lock.yaml - PNPM 相关文件
 ├─ pnpm-workspace.yaml - PNPM 相关文件
-├─ tsconfig.json - TypeScript配置
-├─ tsconfig.node.json - TypeScript配置
+├─ SECURITY.md - 安全策略，仅在GitHub上使用的文件
+├─ tsconfig.json - TypeScript配置（渲染器）
+├─ tsconfig.node.json - TypeScript配置（主进程、预加载、测试）
 ├─ vite.config.mts - Vite编译器构建配置
 └─ README.md - 仅在GitHub上使用的文件
 ```

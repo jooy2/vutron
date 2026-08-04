@@ -10,27 +10,29 @@ order: 1
 │  └─ ISSUE_TEMPLATE/
 │  └─ resources/ - README.md 등에 사용되는 GitHub 리소스
 │  └─ workflows/ - GitHub 워크플로우 정의
-│  └─ dependabot.yml
 │  └─ FUNDING.yml
 ├─ .vscode - Visual Studio Code IDE에서 사용하는 일반적인 프로젝트 구성 파일
 ├─ buildAssets/ - Electron 빌드에 사용되는 패키지 리소스(아이콘, 로고 등) 파일
 │  └─ builder/
-│  │  │  └─ config.ts - `electron-builder` 동적 구성 파일
+│  │  │  └─ config.js - `electron-builder` 동적 구성 파일
 │  └─ icons/
 ├─ dist/ - 패키지 빌드에 사용되는 출력 디렉토리
 ├─ docs/ - 프로젝트 문서(선택적으로 활성화)
-│  └─ .vitepress/
+│  └─ src/
+│  │  └─ .vitepress/
 │  │  │  └─ config.mts - 문서 호스팅에 사용되는 VitePress 구성 파일
-│  └─ public/ - VitePress 문서 페이지의 루트 리소스 디렉토리
+│  │  └─ public/ - VitePress 문서 페이지의 루트 리소스 디렉토리
 ├─ node_modules/
 ├─ src/
 │  ├─ main/ - 메인(Electron) 프로세스 소스 코드
 │  │  ├─ utils/ - 메인 프로세스 유틸리티
 │  │  │  └─ Constants.ts - 메인 글로벌 정의
-│  │  │  └─ Menus.ts - 메인 글로벌 메뉴 정의
+│  │  │  └─ security.ts - 네비게이션 및 외부 링크 가드
 │  │  └─ index.ts - 메인 프로세스 진입점
+│  │  └─ index.dev.ts - 개발 환경 전용 설정, 패키징 빌드에서는 제외됨
 │  │  └─ IPCs.ts - 메인 프로세스 IPC 핸들러 정의
 │  │  └─ MainRunner.ts - 메인 프로세스 메인 윈도우 프로세스
+│  │  └─ tray.ts - 트레이 아이콘 및 트레이 윈도우 처리
 │  ├─ preload/ - 프리로드 (Electron-Vue 커뮤니케이션 브릿지) 프로세스
 │  │  └─ index.ts
 │  ├─ public/ - Main + Renderer 정적 리소스
@@ -49,17 +51,21 @@ order: 1
 │  │  ├─ utils/ - 렌더러 프로세스 유틸리티
 │  │  ├─ App.vue - Vue 앱 루트 컴포넌트
 │  │  ├─ index.html - Electron 렌더러 프로세스에 의해 로드된 루트 정적 인덱스
-│  └─ └─ main.ts - 렌더러 프로세스 엔트리 포인트
+│  │  └─ main.ts - 렌더러 프로세스 엔트리 포인트
+│  ├─ mainApi.d.ts - 프리로드가 노출하는 `window.mainApi` 브릿지의 타입
+│  └─ vue-shim.d.ts - `*.vue` 임포트를 위한 타입 선언
 ├─ tests/ - 애플리케이션 테스트 구성
 │  ├─ results/ - PlayWright 테스트 결과 파일 및 스크린샷 저장 위치
 │  ├─ specs/ - PlayWright 테스트 사양 파일
-│  ├─ fixtures.ts - 공통 실행 API 테스트
-│  └─ testUtil.ts - 테스트 유틸리티
+│  ├─ fixtures.mts - 공통 실행 API 테스트
+│  └─ testUtil.mts - 테스트 유틸리티
 ├─ .editorconfig - IDE용 에디터 권장 구성 파일
 ├─ .gitignore - Git에 업로드하지 않을 파일 목록
+├─ .nvmrc - 개발에 사용하는 Node.js 버전
 ├─ .prettierignore - Prettier 파일 서식을 비활성화할 파일 목록
 ├─ .prettierrc - Prettier 규칙 설정
 ├─ CODE_OF_CONDUCT.md - GitHub에서만 사용되는 파일
+├─ CONTRIBUTING.md - 기여 가이드, GitHub에서만 사용되는 파일
 ├─ eslint.config.ts - ESLint 규칙 구성
 ├─ LICENSE - 프로젝트 라이선스 파일
 ├─ package.json - Node.js 패키지 구성
@@ -67,8 +73,9 @@ order: 1
 ├─ playwright.config.ts - Playwright 테스트 규칙 구성
 ├─ pnpm-lock.yaml - PNPM 관련 파일
 ├─ pnpm-workspace.yaml - PNPM 관련 파일
-├─ tsconfig.json - TypeScript 설정
-├─ tsconfig.node.json - TypeScript 설정
+├─ SECURITY.md - 보안 정책, GitHub에서만 사용되는 파일
+├─ tsconfig.json - TypeScript 설정 (렌더러)
+├─ tsconfig.node.json - TypeScript 설정 (메인, 프리로드, 테스트)
 ├─ vite.config.mts - Vite 컴파일러 빌드 설정
 └─ README.md - GitHub에서만 사용되는 파일
 ```
