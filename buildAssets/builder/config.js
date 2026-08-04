@@ -93,13 +93,14 @@ const baseConfig = {
 dotenv.config()
 
 baseConfig.copyright = `ⓒ ${new Date().getFullYear()} $\{author}`
+/*
+  Files to include in the build. Entries prefixed with `!` are excluded again.
+  Note that Vite emits the dev-only entry with a content hash
+  (`index.dev-<hash>.js`), so the exclusion has to be a glob.
+*/
 baseConfig.files = [
-  /* A list of files not to be included in the build. */
-  /*
-    (Required) The files and folders listed below should not be included in the build.
-  */
   'dist/**/*',
-  '!dist/main/index.dev.js',
+  '!dist/main/index.dev*.js',
   '!docs/**/*',
   '!tests/**/*',
   '!release/**/*'
