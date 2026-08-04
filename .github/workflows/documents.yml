@@ -23,26 +23,19 @@ jobs:
           # fetch all commits to get last updated time or other git log info
           fetch-depth: 0
 
+      # Caches the npm download cache (~/.npm), scoped to the docs lockfile.
+      # Do not cache `node_modules` here: the key would collide with app-test,
+      # which installs only the root dependencies, and `npm install` would then
+      # be skipped while `docs/node_modules` is missing.
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '26'
+          cache: npm
+          cache-dependency-path: docs/package-lock.json
 
-      # cache node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v5
-        id: npm-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      # install dependencies if the cache did not hit
       - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install
+        run: npm ci
 
       # run build script
       - name: Build VitePress site
