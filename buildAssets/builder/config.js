@@ -21,8 +21,10 @@ const baseConfig = {
     type: 'distribution',
     target: [
       {
+        // `universal` bundles both of these into one much larger artifact.
+        // Add it here if a single download matters more than size.
         target: 'dmg',
-        arch: ['x64', 'arm64', 'universal']
+        arch: ['x64', 'arm64']
       }
     ]
   },
@@ -44,11 +46,9 @@ const baseConfig = {
   },
   win: {
     icon: 'buildAssets/icons/icon.ico',
+    // `appx` is omitted on purpose: it needs Store publisher details and a
+    // signing certificate, so it fails out of the box. Add it once those exist.
     target: [
-      {
-        target: 'appx',
-        arch: 'x64'
-      },
       {
         target: 'zip',
         arch: 'x64'
