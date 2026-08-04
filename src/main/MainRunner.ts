@@ -23,8 +23,8 @@ const options = {
 const exitApp = (mainWindow: BrowserWindow): void => {
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.hide()
+    mainWindow.destroy()
   }
-  mainWindow.destroy()
   app.exit()
 }
 
