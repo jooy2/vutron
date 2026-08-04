@@ -1,4 +1,10 @@
-import { ipcMain, shell, IpcMainEvent, dialog } from 'electron'
+import {
+  ipcMain,
+  shell,
+  IpcMainEvent,
+  IpcMainInvokeEvent,
+  dialog
+} from 'electron'
 import Constants from './utils/Constants'
 import { isAllowedExternalUrl } from './utils/security'
 import log from 'electron-log/main'
@@ -32,7 +38,7 @@ export default class IPCs {
     // Open file
     ipcMain.handle(
       'msgOpenFile',
-      async (event: IpcMainEvent, filter: string) => {
+      async (event: IpcMainInvokeEvent, filter: string) => {
         const filters = []
         if (filter === 'text') {
           filters.push({ name: 'Text', extensions: ['txt', 'json'] })

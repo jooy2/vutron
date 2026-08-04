@@ -1,12 +1,12 @@
-import { app, WebContents, RenderProcessGoneDetails } from 'electron'
+import { app, BrowserWindow } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
 import IPCs from './IPCs'
 import log from 'electron-log/main'
 import { join } from 'path'
 
-let mainWindow
-let errorWindow
+let mainWindow: BrowserWindow | null = null
+let errorWindow: BrowserWindow | null = null
 
 const initializeMainLogger = () => {
   log.initialize({
@@ -79,16 +79,11 @@ app.on('window-all-closed', () => {
   }
 })
 
-app.on(
-  'render-process-gone',
-  async (
-    event: Event,
-    webContents: WebContents,
-    details: RenderProcessGoneDetails
-  ) => {
-    errorWindow = await createErrorWindow(errorWindow, mainWindow, details)
-  }
-)
+// Parameter types are inferred from the Electron overload. Annotating `event`
+// as the DOM `Event` here made the whole listener miss its overload.
+app.on('render-process-gone', async (event, webContents, details) => {
+  errorWindow = await createErrorWindow(errorWindow, mainWindow, details)
+})
 
 process.on('uncaughtException', async (error: Error) => {
   log.error(`Uncaught exception: ${error?.stack ?? error}`)

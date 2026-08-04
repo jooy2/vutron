@@ -1,19 +1,24 @@
-import { app, screen, Menu, Tray, BrowserWindow } from 'electron'
-import Constants from './utils/Constants'
+import { app, screen, Menu, Tray, BrowserWindow, Rectangle } from 'electron'
+import Constants, { TrayOptions } from './utils/Constants'
 import { join } from 'path'
 import { debounce } from 'qsu'
-let tray
-let trayOptions
 
-export function createTray(window: BrowserWindow, options) {
+let tray: Tray | null = null
+let trayOptions: TrayOptions = Constants.DEFAULT_TRAY_OPTIONS
+
+export function createTray(window: BrowserWindow, options?: TrayOptions): Tray {
   trayOptions = options || Constants.DEFAULT_TRAY_OPTIONS
   // menu or trayWindow, you need to choose
   if (trayOptions.trayWindow) {
     trayOptions.menu = false
   }
 
-  tray = new Tray(join(Constants.PUBLIC_PATH, 'images/vutron-tray-icon.png'))
-  tray.setToolTip(trayOptions.tooltip)
+  const currentTray = new Tray(
+    join(Constants.PUBLIC_PATH, 'images/vutron-tray-icon.png')
+  )
+
+  tray = currentTray
+  currentTray.setToolTip(trayOptions.tooltip)
   if (trayOptions.menu) {
     const contextMenu = Menu.buildFromTemplate([
       {
@@ -36,7 +41,7 @@ export function createTray(window: BrowserWindow, options) {
       }
     ])
     // tray icon only with classic window
-    tray.setContextMenu(contextMenu)
+    currentTray.setContextMenu(contextMenu)
   } else {
     // handle click on tray icon
     // `debounce` returns a debounced function, so it must be created once and
@@ -44,11 +49,11 @@ export function createTray(window: BrowserWindow, options) {
     // function on every event and never invokes it.
     const handleTrayClick = debounce(() => toggleWindow(window), 200)
 
-    tray.on('right-click', handleTrayClick)
-    tray.on('click', handleTrayClick)
+    currentTray.on('right-click', handleTrayClick)
+    currentTray.on('click', handleTrayClick)
     // no menu for tray window
     window.setMenu(null)
-    tray.setContextMenu(null)
+    currentTray.setContextMenu(null)
   }
   // A floating tray window hides when clicking elsewhere on screen. Registered
   // once here, because registering it inside `hideWindow` would stack up a new
@@ -63,19 +68,20 @@ export function createTray(window: BrowserWindow, options) {
   }
   // align at startup
   alignWindow(window)
-  return tray
+
+  return currentTray
 }
 
-export function destroyTray() {
+export function destroyTray(): void {
   tray?.destroy()
   tray = null
 }
 
-export function hideWindow(window: BrowserWindow) {
+export function hideWindow(window: BrowserWindow): void {
   window.hide()
 }
 
-export function toggleWindow(window: BrowserWindow) {
+export function toggleWindow(window: BrowserWindow): void {
   if (window.isVisible()) {
     hideWindow(window)
   } else {
@@ -83,16 +89,16 @@ export function toggleWindow(window: BrowserWindow) {
   }
 }
 
-export function showWindow(window: BrowserWindow) {
+export function showWindow(window: BrowserWindow): void {
   window.show()
   alignWindow(window)
 }
 
-export function alignWindow(window: BrowserWindow) {
-  if (!trayOptions.trayWindow) return
+export function alignWindow(window: BrowserWindow): void {
+  if (!trayOptions.trayWindow || !tray) return
 
   const b = window.getBounds()
-  const position = calculateWindowPosition(b)
+  const position = calculateWindowPosition(b, tray.getBounds())
   window.setBounds({
     width: b.width,
     height: b.height,
@@ -101,10 +107,12 @@ export function alignWindow(window: BrowserWindow) {
   })
 }
 
-function calculateWindowPosition(b) {
+function calculateWindowPosition(
+  b: Rectangle,
+  trayBounds: Rectangle
+): { x: number; y: number } {
   const margin = trayOptions.margin
   const screenBounds = screen.getPrimaryDisplay().size
-  const trayBounds = tray.getBounds()
   const bottom = trayBounds.y > screenBounds.height / 2
   const x = Math.floor(
     trayBounds.x - b.width / 2 - margin.x + trayBounds.width / 2
