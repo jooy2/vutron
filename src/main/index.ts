@@ -67,6 +67,8 @@ app.on('window-all-closed', () => {
   mainWindow = null
   errorWindow = null
 
+  // On macOS an app is expected to stay alive until the user quits it
+  // explicitly, so the window is recreated by the `activate` handler instead.
   if (!Constants.IS_MAC) {
     app.quit()
   }

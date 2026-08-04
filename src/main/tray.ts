@@ -66,6 +66,11 @@ export function createTray(window: BrowserWindow, options) {
   return tray
 }
 
+export function destroyTray() {
+  tray?.destroy()
+  tray = null
+}
+
 export function hideWindow(window: BrowserWindow) {
   window.hide()
 }

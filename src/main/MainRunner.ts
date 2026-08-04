@@ -1,12 +1,11 @@
 import {
-  app,
   BrowserWindow,
   RenderProcessGoneDetails,
   BrowserWindowConstructorOptions
 } from 'electron'
 import Constants, { TrayOptions } from './utils/Constants'
 import IPCs from './IPCs'
-import { createTray, hideWindow, showWindow } from './tray'
+import { createTray, destroyTray, hideWindow, showWindow } from './tray'
 import log from 'electron-log/main'
 
 const options = {
@@ -18,14 +17,6 @@ const options = {
     menu: false, // true, to use a tray menu ; false to toggle visibility on click on tray icon
     trayWindow: false // true, to use a tray floating window attached to top try icon
   }
-}
-
-const exitApp = (mainWindow: BrowserWindow): void => {
-  if (mainWindow && !mainWindow.isDestroyed()) {
-    mainWindow.hide()
-    mainWindow.destroy()
-  }
-  app.exit()
 }
 
 export const createMainWindow = async (): Promise<BrowserWindow> => {
@@ -75,9 +66,10 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
 
   mainWindow.setMenu(null)
 
-  mainWindow.on('close', (event: Event): void => {
-    event.preventDefault()
-    exitApp(mainWindow)
+  // The tray is bound to this window, so it has to go away with it. Otherwise
+  // clicking the tray icon would reach into an already destroyed window.
+  mainWindow.on('closed', (): void => {
+    destroyTray()
   })
 
   mainWindow.webContents.on('did-frame-finish-load', (): void => {
