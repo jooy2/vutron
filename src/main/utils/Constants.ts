@@ -1,6 +1,7 @@
 import { join, dirname, resolve } from 'path'
 import { name, version, debug } from '../../../package.json'
 import { fileURLToPath } from 'url'
+import type { WebPreferences } from 'electron'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -46,10 +47,14 @@ export default class Constants {
 
   static IS_MAC = process.platform === 'darwin'
 
-  static DEFAULT_WEB_PREFERENCES = {
+  // Typed so that options removed from Electron (such as the former
+  // `enableRemoteModule`) fail the build instead of sitting here doing nothing.
+  static DEFAULT_WEB_PREFERENCES: WebPreferences = {
     nodeIntegration: false,
     contextIsolation: true,
-    enableRemoteModule: false,
+    // Already the default while `nodeIntegration` is off, kept explicit so it
+    // is not lost when these preferences are edited.
+    sandbox: true,
     preload: join(__dirname, '../preload/index.js')
   }
 
