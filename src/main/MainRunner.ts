@@ -5,6 +5,7 @@ import {
 } from 'electron'
 import Constants, { TrayOptions } from './utils/Constants'
 import { createTray, destroyTray, hideWindow, showWindow } from './tray'
+import { registerWindowSecurity } from './utils/security'
 import log from 'electron-log/main'
 
 export const createMainWindow = async (): Promise<BrowserWindow> => {
@@ -55,6 +56,7 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
   const mainWindow = new BrowserWindow(opt)
 
   mainWindow.setMenu(null)
+  registerWindowSecurity(mainWindow)
 
   // The tray is bound to this window, so it has to go away with it. Otherwise
   // clicking the tray icon would reach into an already destroyed window.
@@ -126,6 +128,7 @@ export const createErrorWindow = async (
   })
 
   errorWindow.setMenu(null)
+  registerWindowSecurity(errorWindow)
 
   if (Constants.IS_DEV_ENV) {
     await errorWindow.loadURL(`${Constants.APP_INDEX_URL_DEV}#/error`)
