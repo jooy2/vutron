@@ -119,9 +119,14 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
 export const createErrorWindow = async (
   currentErrorWindow: BrowserWindow | null,
   mainWindow: BrowserWindow | null,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   details?: RenderProcessGoneDetails
 ): Promise<BrowserWindow> => {
+  log.error(
+    details
+      ? `Renderer process gone. (reason: ${details.reason}, exitCode: ${details.exitCode})`
+      : 'Showing error window.'
+  )
+
   // Reuse the window that is already on screen. Without this guard, a crash
   // loop or repeated uncaught exceptions would stack error windows endlessly.
   if (currentErrorWindow && !currentErrorWindow.isDestroyed()) {

@@ -83,6 +83,8 @@ app.on(
   }
 )
 
-process.on('uncaughtException', async () => {
+process.on('uncaughtException', async (error: Error) => {
+  log.error(`Uncaught exception: ${error?.stack ?? error}`)
+
   errorWindow = await createErrorWindow(errorWindow, mainWindow)
 })
