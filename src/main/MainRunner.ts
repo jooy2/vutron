@@ -117,16 +117,24 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
 }
 
 export const createErrorWindow = async (
-  errorWindow: BrowserWindow,
-  mainWindow: BrowserWindow,
+  currentErrorWindow: BrowserWindow | null,
+  mainWindow: BrowserWindow | null,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   details?: RenderProcessGoneDetails
 ): Promise<BrowserWindow> => {
+  // Reuse the window that is already on screen. Without this guard, a crash
+  // loop or repeated uncaught exceptions would stack error windows endlessly.
+  if (currentErrorWindow && !currentErrorWindow.isDestroyed()) {
+    currentErrorWindow.focus()
+
+    return currentErrorWindow
+  }
+
   if (!Constants.IS_DEV_ENV) {
     mainWindow?.hide()
   }
 
-  errorWindow = new BrowserWindow({
+  const errorWindow = new BrowserWindow({
     title: Constants.APP_NAME,
     show: false,
     resizable: Constants.IS_DEV_ENV,
@@ -141,7 +149,7 @@ export const createErrorWindow = async (
     await errorWindow.loadFile(Constants.APP_INDEX_URL_PROD, { hash: 'error' })
   }
 
-  errorWindow.on('ready-to-show', (): void => {
+  errorWindow.once('ready-to-show', (): void => {
     if (!Constants.IS_DEV_ENV && mainWindow && !mainWindow.isDestroyed()) {
       mainWindow.destroy()
     }

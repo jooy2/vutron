@@ -74,15 +74,15 @@ app.on('window-all-closed', () => {
 
 app.on(
   'render-process-gone',
-  (
+  async (
     event: Event,
     webContents: WebContents,
     details: RenderProcessGoneDetails
   ) => {
-    errorWindow = createErrorWindow(errorWindow, mainWindow, details)
+    errorWindow = await createErrorWindow(errorWindow, mainWindow, details)
   }
 )
 
-process.on('uncaughtException', () => {
-  errorWindow = createErrorWindow(errorWindow, mainWindow)
+process.on('uncaughtException', async () => {
+  errorWindow = await createErrorWindow(errorWindow, mainWindow)
 })
