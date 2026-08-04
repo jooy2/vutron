@@ -21,6 +21,7 @@ order: 3
 | `build:mac` | 为macOS构建预配置软件包 |
 | `build:linux` | 为Linux构建预配置软件包 |
 | `build:win` | 为Windows构建预配置软件包 |
+| `typecheck` | 对渲染进程以及主进程、预加载进程进行类型检查。 |
 | `lint` | ESLint代码检查。它不会修改代码。 |
 | `lint:fix` | ESLint代码检查。使用自动修复功能修复代码。 |
 | `format` | 更漂亮的代码检查。它不会修改代码。 |

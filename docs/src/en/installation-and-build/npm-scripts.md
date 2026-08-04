@@ -21,6 +21,7 @@ order: 3
 | `build:mac` | Build preconfigured packages for macOS |
 | `build:linux` | Build preconfigured packages for Linux |
 | `build:win` | Build preconfigured packages for Windows |
+| `typecheck` | Type-check the renderer, then the main and preload processes. |
 | `lint` | ESLint code inspection. It does not modify the code. |
 | `lint:fix` | ESLint code inspection. Use auto-fix to fix your code. |
 | `format` | Prettier code inspection. It does not modify the code. |
