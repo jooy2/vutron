@@ -19,6 +19,7 @@
   "include": [
     "src/main",
     "src/preload",
+    "src/*.d.ts",
     "package.json",
     "eslint.config.ts",
     "vite.config.mts",

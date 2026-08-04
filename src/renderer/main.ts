@@ -6,12 +6,8 @@ import vuetify from '@/renderer/plugins/vuetify'
 import i18n from '@/renderer/plugins/i18n'
 import pinia from '@/renderer/plugins/pinia'
 
-// Add API key defined in contextBridge to window object type
-declare global {
-  interface Window {
-    mainApi?: any
-  }
-}
+// The `window.mainApi` type is declared in `src/mainApi.d.ts`, shared with the
+// preload script that actually exposes it.
 
 const app = createApp(App)
 

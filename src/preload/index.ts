@@ -1,5 +1,6 @@
 import log from 'electron-log/renderer'
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron'
+import type { MainApi } from '../mainApi'
 
 // Initialize renderer logger
 log.transports.console.level = 'silly'
@@ -16,7 +17,8 @@ const mainInvokeChannels: string[] = ['msgRequestGetVersion', 'msgOpenFile']
 // Main -> Renderer. Sent with `mainWindow.webContents.send`.
 const rendererAvailChannels: string[] = []
 
-contextBridge.exposeInMainWorld('mainApi', {
+// Typed against `MainApi` so the bridge and its renderer-side type stay in sync
+const mainApi: MainApi = {
   send: (channel: string, ...data: any[]): void => {
     if (mainSendChannels.includes(channel)) {
       ipcRenderer.send.apply(null, [channel, ...data])
@@ -70,4 +72,6 @@ contextBridge.exposeInMainWorld('mainApi', {
 
     throw new Error(`Unknown ipc channel name: ${channel}`)
   }
-})
+}
+
+contextBridge.exposeInMainWorld('mainApi', mainApi)
