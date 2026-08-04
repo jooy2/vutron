@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from 'vuetify'
+import { useLocale, useTheme } from 'vuetify'
 import { openExternal, openFile } from '@/renderer/utils'
 import { useCounterStore } from '@/renderer/store/counter'
 import { onMounted, ref } from 'vue'
@@ -17,6 +17,7 @@ const { t, locale, availableLocales } = useI18n()
 const { increaseCount } = useCounterStore()
 const { count } = storeToRefs(useCounterStore())
 const theme = useTheme()
+const vuetifyLocale = useLocale()
 const languages = ref(['en'])
 const appVersion = ref('Unknown')
 const selectedFile = ref('')
@@ -33,6 +34,9 @@ const handleChangeTheme = (): void => {
 
 const handleChangeLanguage = (val): void => {
   locale.value = val
+  // Vuetify keeps a separate locale for its built-in component strings, so it
+  // has to be switched together with `vue-i18n`.
+  vuetifyLocale.current.value = val
 }
 
 const handleOpenDocument = async (): Promise<void> => {
