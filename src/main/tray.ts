@@ -50,6 +50,17 @@ export function createTray(window: BrowserWindow, options) {
     window.setMenu(null)
     tray.setContextMenu(null)
   }
+  // A floating tray window hides when clicking elsewhere on screen. Registered
+  // once here, because registering it inside `hideWindow` would stack up a new
+  // listener on every show/hide cycle.
+  if (trayOptions.trayWindow) {
+    window.on('blur', () => {
+      // dont close if devtools
+      if (!window.webContents.isDevToolsOpened()) {
+        window.hide()
+      }
+    })
+  }
   // align at startup
   alignWindow(window)
   return tray
@@ -57,14 +68,6 @@ export function createTray(window: BrowserWindow, options) {
 
 export function hideWindow(window: BrowserWindow) {
   window.hide()
-  // if (!trayOptions.trayWindow) return;
-  // hide window when click elsewhere on screen
-  window.on('blur', () => {
-    // dont close if devtools
-    if (!window.webContents.isDevToolsOpened()) {
-      window.hide()
-    }
-  })
 }
 
 export function toggleWindow(window: BrowserWindow) {
