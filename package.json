@@ -26,7 +26,7 @@
     "dev:debug:force": "vite -d --force",
     "build": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js",
     "typecheck": "vue-tsc --noEmit && vue-tsc --noEmit -p tsconfig.node.json",
-    "build:pre": "npm run format:fix && npm run typecheck && vite build",
+    "build:pre": "npm run format && npm run typecheck && vite build",
     "build:all": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js -wml",
     "build:dir": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js --dir",
     "build:mac": "npm run build:pre && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --config=buildAssets/builder/config.js --mac",
@@ -34,7 +34,7 @@
     "build:win": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js --windows",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "npx prettier .",
+    "format": "npx prettier . --check",
     "format:fix": "npx prettier . --write",
     "test": "npm run build:pre && playwright test",
     "test:linux": "npm run build:pre && xvfb-run --auto-servernum --server-args='-screen 0, 1280x960x24' -- playwright test"
