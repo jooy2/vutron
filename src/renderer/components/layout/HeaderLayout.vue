@@ -2,10 +2,15 @@
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { mdiFitToScreenOutline, mdiHome } from '@mdi/js'
+import { computed } from 'vue'
 
 const router = useRouter()
-const route: any = useRoute()
-const titleKey: string = (route?.meta?.titleKey || 'title.main') as string
+const route = useRoute()
+// This layout is not recreated on navigation, so the title has to be a
+// computed value. Reading `route.meta` once would pin it to the first screen.
+const titleKey = computed<string>(
+  () => (route.meta?.titleKey as string) || 'title.main'
+)
 
 const { t } = useI18n()
 
