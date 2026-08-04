@@ -6,7 +6,7 @@ Vutron ships with hot-reload development, cross-platform builds via electron-bui
 
 - Repository: https://github.com/jooy2/vutron (MIT license)
 - Create a new project: `npm init vutron`
-- Requires Node.js >= 20
+- Requires Node.js >= 22
 - Source layout: `src/main` (Electron main process), `src/preload` (IPC bridge), `src/renderer` (Vue app)
 - Documentation is available in English (default), Korean (`/ko/`), and Simplified Chinese (`/zhHans/`)
 
