@@ -16,8 +16,7 @@ const initializeMainLogger = () => {
 
   const appLogFilePath = join(app.getPath('userData'), 'logs', 'applog.log')
 
-  log.transports.file.resolvePathFn = () =>
-    join(app.getPath('userData'), 'logs', 'applog.log')
+  log.transports.file.resolvePathFn = () => appLogFilePath
   log.transports.file.level = 'silly'
   log.transports.file.format = '[{y}{m}{d} {h}:{i}:{s}.{ms}|{level}]{text}'
   log.transports.console.format = '{h}:{i}:{s}.{ms} {text}'

@@ -39,12 +39,12 @@ const handleChangeLanguage = (val: string): void => {
   vuetifyLocale.current.value = val
 }
 
-const handleOpenDocument = async (): Promise<void> => {
-  await openExternal('https://vutron.cdget.com')
+const handleOpenDocument = (): void => {
+  openExternal('https://vutron.cdget.com')
 }
 
-const handleOpenGitHub = async (): Promise<void> => {
-  await openExternal('https://github.com/jooy2/vutron')
+const handleOpenGitHub = (): void => {
+  openExternal('https://github.com/jooy2/vutron')
 }
 
 const handleCountIncrease = (): void => {

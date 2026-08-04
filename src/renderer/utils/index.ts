@@ -54,10 +54,11 @@ export function getCurrentLocale(): string {
   return FALLBACK_LOCALE
 }
 
-export async function openExternal(url: string): Promise<void> {
-  await window.mainApi.send('msgOpenExternalLink', url)
+// `send` is fire and forget, there is nothing to await here
+export function openExternal(url: string): void {
+  window.mainApi.send('msgOpenExternalLink', url)
 }
 
-export async function openFile(type: string): Promise<any> {
+export function openFile(type: string): Promise<any> {
   return window.mainApi.invoke('msgOpenFile', type)
 }
