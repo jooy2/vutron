@@ -1,0 +1,34 @@
+# Vutron
+
+> Vutron is a preconfigured template for developing Electron cross-platform desktop apps. It uses Vite + Vue 3 + Electron, and allows you to build a fast development environment with little effort.
+
+Vutron ships with hot-reload development, cross-platform builds via electron-builder, TypeScript, automated Playwright testing, i18n (vue-i18n), dark/light themes, a basic layout manager, a tray icon, multi window support, and global state management with Pinia. The renderer uses Vuetify as its design framework, and runs with context isolation, whitelisted IPC channels, a content security policy and navigation guards enabled by default.
+
+- Repository: https://github.com/jooy2/vutron (MIT license)
+- Create a new project: `npm init vutron`
+- Requires Node.js >= 22
+- Source layout: `src/main` (Electron main process), `src/preload` (IPC bridge), `src/renderer` (Vue app)
+- Documentation is available in English (default), Korean (`/ko/`), and Simplified Chinese (`/zhHans/`)
+
+## Docs
+
+- [Introduction](https://vutron.cdget.com/introduction): What Vutron is, its advantages, and the full feature list.
+- [Getting Started](https://vutron.cdget.com/installation-and-build/getting-started): Cloning the template (`npm init vutron`, GitHub template, or git clone), installing dependencies, and running the dev server on port 5173.
+- [Build Configurations](https://vutron.cdget.com/installation-and-build/build-configuration): Per-platform build commands, multi-platform builds, reducing bundle size, and native Node module setup.
+- [NPM Scripts](https://vutron.cdget.com/installation-and-build/npm-scripts): Reference table for every `npm run` script in the project and in the docs folder.
+- [Automated Testing](https://vutron.cdget.com/installation-and-build/automated-testing): Running Playwright tests for the Electron app, and where specs and results live.
+- [Manage Local Documentation](https://vutron.cdget.com/installation-and-build/install-local-documentation): Running this VitePress documentation site locally from the `docs` folder.
+- [Project Structure](https://vutron.cdget.com/project-structures/project-structure): Annotated directory tree of every folder and configuration file in the template.
+- [Pre-configured Components](https://vutron.cdget.com/project-structures/pre-configured-components): The frameworks and tools bundled in the template (Vite, Electron, Electron Builder, TypeScript, ESLint, Prettier, Vue, Vue-i18n, Vue-router, Pinia, Vuetify, Playwright).
+- [Main vs Renderer Process](https://vutron.cdget.com/electron-how-to/main-and-renderer-process): How the two Electron processes are split, why Node.js APIs are unavailable in the renderer, and how to enable `nodeIntegration`.
+- [Preload Script](https://vutron.cdget.com/electron-how-to/preload-script): Whitelisting IPC channels (`mainSendChannels`, `mainInvokeChannels`, `rendererAvailChannels`) and using the `window.mainApi` API (`send`, `on`, `once`, `off`, `invoke`).
+- [Tray Icon](https://vutron.cdget.com/electron-how-to/tray-icon): Configuring the tray through `DEFAULT_WINDOW_OPTIONS.tray`, the context-menu and floating tray-window modes, and how to remove the feature.
+- [Multi Window](https://vutron.cdget.com/electron-how-to/multi-window): Opening extra windows with `WindowManager`, the `FEAT_MULTI_WINDOW` switch and `DEFAULT_CHILD_WINDOW_OPTIONS`, and the renderer helpers (`openWindow`, `closeCurrentWindow`, `getWindowInfo`, `onWindowsUpdated`).
+
+## Optional
+
+- [Other Projects](https://vutron.cdget.com/other-projects): Retron (Vite + React + Material-UI + Electron) and the deprecated Webpack 5 version of Vutron.
+- [Korean documentation](https://vutron.cdget.com/ko/introduction): Same documentation set translated into Korean.
+- [Simplified Chinese documentation](https://vutron.cdget.com/zhHans/introduction): Same documentation set translated into Simplified Chinese.
+- [Contributing guide](https://github.com/jooy2/vutron/blob/main/CONTRIBUTING.md): How to report issues and submit pull requests.
+- [Issue tracker](https://github.com/jooy2/vutron/issues): Bug reports and feature requests.
