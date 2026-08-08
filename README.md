@@ -33,6 +33,7 @@ Quick Start Templates for **[Vite](https://vitejs.dev)** + **[Vue 3](https://vue
 - ⚡️ Tray icon, with an optional floating tray window
 - ⚡️ Multi window support through a window manager, switched by a single constant
 - ⚡️ Native file dialog and external link examples over IPC
+- ⚡️ Shared `src/common` folder for what both processes need, kept process-agnostic by lint rules
 - ⚡️ Secure by default: context isolation, channel whitelists, CSP and navigation guards
 - ⚡️ Quick support through the GitHub community and official documentation
 

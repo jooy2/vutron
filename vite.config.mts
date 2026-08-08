@@ -43,6 +43,13 @@ export default defineConfig(({ mode }) => {
         root: resolve(projectRoot),
         base: './',
         publicDir: resolve(projectRoot, './src/public'),
+        // The alias is declared per build. Each Electron process is bundled on
+        // its own, so the one below for the renderer does not reach this one.
+        resolve: {
+          alias: {
+            '@': resolve(projectRoot, 'src')
+          }
+        },
         build: {
           // Matches the renderer. Shipping main process sourcemaps would put
           // the original sources inside the packaged app.
@@ -58,6 +65,11 @@ export default defineConfig(({ mode }) => {
     preload: {
       input: resolve(projectRoot, 'src/preload/index.ts'),
       vite: {
+        resolve: {
+          alias: {
+            '@': resolve(projectRoot, 'src')
+          }
+        },
         build: {
           outDir: resolve(projectRoot, 'dist/preload')
         }
@@ -71,6 +83,8 @@ export default defineConfig(({ mode }) => {
       __VUE_I18N_LEGACY_API__: false,
       __INTLIFY_PROD_DEVTOOLS__: false
     },
+    // Renderer alias. `src/common` sits outside the renderer `root` below, so
+    // it is reached through `@` rather than a relative path out of the root.
     resolve: {
       extensions: ['.mjs', '.js', '.ts', '.vue', '.json', '.scss'],
       alias: {

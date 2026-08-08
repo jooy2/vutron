@@ -4,7 +4,6 @@
     "module": "Preserve",
     "moduleDetection": "force",
     "jsx": "preserve",
-    "composite": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -17,6 +16,7 @@
     }
   },
   "include": [
+    "src/common",
     "src/main",
     "src/preload",
     "src/*.d.ts",

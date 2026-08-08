@@ -24,6 +24,9 @@ order: 1
 │  │  └─ public/ - Root resource directory for VitePress documentation pages
 ├─ node_modules/
 ├─ src/
+│  ├─ common/ - Code shared by the main and renderer processes
+│  │  └─ ipc.ts - IPC channel names and payload types
+│  │  └─ locales.ts - Supported languages and language tag matching
 │  ├─ main/ - Main (Electron) process source code
 │  │  ├─ utils/ - Main process utilities
 │  │  │  └─ Constants.ts - Main global definition
@@ -75,8 +78,8 @@ order: 1
 ├─ pnpm-lock.yaml - PNPM Related Files
 ├─ pnpm-workspace.yaml - PNPM Related Files
 ├─ SECURITY.md - Security policy, used only on GitHub
-├─ tsconfig.json - TypeScript configurations (renderer)
-├─ tsconfig.node.json - TypeScript configurations (main, preload, tests)
+├─ tsconfig.json - TypeScript configurations (renderer, common)
+├─ tsconfig.node.json - TypeScript configurations (main, preload, common, tests)
 ├─ vite.config.mts - Vite compiler build configurations
 └─ README.md - Files used only on GitHub
 ```

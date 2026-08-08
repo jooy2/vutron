@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useLocale, useTheme } from 'vuetify'
 import {
+  getAppVersion,
   getWindowInfo,
   onWindowsUpdated,
   openExternal,
@@ -34,7 +35,7 @@ const childWindowCount = ref(0)
 let unsubscribeWindowsUpdated: (() => void) | null = null
 
 const getApplicationVersionFromMainProcess = (): void => {
-  window.mainApi.invoke('msgRequestGetVersion').then((result: string) => {
+  getAppVersion().then((result: string) => {
     appVersion.value = result
   })
 }

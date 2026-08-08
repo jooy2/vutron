@@ -24,6 +24,9 @@ order: 1
 │  │  └─ public/ - VitePress文档页面的根目录
 ├─ node_modules/
 ├─ src/
+│  ├─ common/ - 主进程与渲染器进程共用的代码
+│  │  └─ ipc.ts - IPC 通道名称与传输数据的类型
+│  │  └─ locales.ts - 支持的语言列表与语言标签匹配
 │  ├─ main/ - 主（电子）处理源代码
 │  │  ├─ utils/ - 主要工艺设备
 │  │  │  └─ Constants.ts - 全球主要定义
@@ -75,8 +78,8 @@ order: 1
 ├─ pnpm-lock.yaml - PNPM 相关文件
 ├─ pnpm-workspace.yaml - PNPM 相关文件
 ├─ SECURITY.md - 安全策略，仅在GitHub上使用的文件
-├─ tsconfig.json - TypeScript配置（渲染器）
-├─ tsconfig.node.json - TypeScript配置（主进程、预加载、测试）
+├─ tsconfig.json - TypeScript配置（渲染器、公共）
+├─ tsconfig.node.json - TypeScript配置（主进程、预加载、公共、测试）
 ├─ vite.config.mts - Vite编译器构建配置
 └─ README.md - 仅在GitHub上使用的文件
 ```

@@ -10,7 +10,8 @@ import fr from '@/renderer/locales/fr.json'
 import ru from '@/renderer/locales/ru.json'
 import pt from '@/renderer/locales/pt.json'
 import nl from '@/renderer/locales/nl.json'
-import { FALLBACK_LOCALE, getCurrentLocale } from '@/renderer/utils'
+import { FALLBACK_LOCALE } from '@/common/locales'
+import { getCurrentLocale } from '@/renderer/utils'
 
 export default createI18n({
   locale: getCurrentLocale(),
@@ -18,7 +19,7 @@ export default createI18n({
   globalInjection: true,
   silentTranslationWarn: process.env.NODE_ENV !== 'development',
   // When adding a language here, also add its key to `SUPPORTED_LOCALES`
-  // in `renderer/utils` so that it can be auto-detected at startup.
+  // in `common/locales` so that it can be auto-detected at startup.
   messages: {
     en,
     ko,

@@ -17,12 +17,7 @@
       "@/*": ["./src/*"]
     },
     "lib": ["esnext", "dom"],
-    "rootDir": "./src/renderer"
+    "rootDir": "./src"
   },
-  "include": ["src/*.ts", "src/*.d.ts", "src/renderer"],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  "include": ["src/*.ts", "src/*.d.ts", "src/common", "src/renderer"]
 }

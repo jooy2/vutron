@@ -24,6 +24,9 @@ order: 1
 │  │  └─ public/ - VitePress 문서 페이지의 루트 리소스 디렉토리
 ├─ node_modules/
 ├─ src/
+│  ├─ common/ - 메인과 렌더러 프로세스가 함께 사용하는 코드
+│  │  └─ ipc.ts - IPC 채널 이름과 주고받는 데이터의 타입
+│  │  └─ locales.ts - 지원 언어 목록과 언어 태그 매칭
 │  ├─ main/ - 메인(Electron) 프로세스 소스 코드
 │  │  ├─ utils/ - 메인 프로세스 유틸리티
 │  │  │  └─ Constants.ts - 메인 글로벌 정의
@@ -75,8 +78,8 @@ order: 1
 ├─ pnpm-lock.yaml - PNPM 관련 파일
 ├─ pnpm-workspace.yaml - PNPM 관련 파일
 ├─ SECURITY.md - 보안 정책, GitHub에서만 사용되는 파일
-├─ tsconfig.json - TypeScript 설정 (렌더러)
-├─ tsconfig.node.json - TypeScript 설정 (메인, 프리로드, 테스트)
+├─ tsconfig.json - TypeScript 설정 (렌더러, 공통)
+├─ tsconfig.node.json - TypeScript 설정 (메인, 프리로드, 공통, 테스트)
 ├─ vite.config.mts - Vite 컴파일러 빌드 설정
 └─ README.md - GitHub에서만 사용되는 파일
 ```

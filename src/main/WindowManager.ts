@@ -1,6 +1,7 @@
 import { BrowserWindow, screen } from 'electron'
 import Constants from './utils/Constants'
 import { isAllowedWindowPath, registerWindowSecurity } from './utils/security'
+import { RENDERER_AVAIL_CHANNELS } from '@/common/ipc'
 import log from 'electron-log/main'
 
 /*
@@ -185,7 +186,10 @@ export default class WindowManager {
 
     for (const window of BrowserWindow.getAllWindows()) {
       if (!window.isDestroyed()) {
-        window.webContents.send('msgWindowsUpdated', windowIds)
+        window.webContents.send(
+          RENDERER_AVAIL_CHANNELS.windowsUpdated,
+          windowIds
+        )
       }
     }
   }
