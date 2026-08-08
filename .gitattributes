@@ -1,0 +1,10 @@
+# Check every text file out with LF, whatever the platform. Git for Windows
+# defaults to `core.autocrlf=true`, and the CRLF it produces fails the
+# `endOfLine: "lf"` rule that `prettier --check` enforces in `build:pre`.
+* text=auto eol=lf
+
+# Assets Git must never rewrite
+*.icns binary
+*.ico binary
+*.png binary
+*.webp binary
