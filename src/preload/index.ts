@@ -13,9 +13,15 @@ log.transports.console.format = '{h}:{i}:{s}.{ms} {text}'
 // Renderer -> Main, no reply. Handled with `ipcMain.on`.
 const mainSendChannels: string[] = ['msgOpenExternalLink']
 // Renderer -> Main, awaits a reply. Handled with `ipcMain.handle`.
-const mainInvokeChannels: string[] = ['msgRequestGetVersion', 'msgOpenFile']
+const mainInvokeChannels: string[] = [
+  'msgRequestGetVersion',
+  'msgOpenFile',
+  'msgOpenWindow',
+  'msgCloseWindow',
+  'msgRequestWindowInfo'
+]
 // Main -> Renderer. Sent with `mainWindow.webContents.send`.
-const rendererAvailChannels: string[] = []
+const rendererAvailChannels: string[] = ['msgWindowsUpdated']
 
 // Typed against `MainApi` so the bridge and its renderer-side type stay in sync
 const mainApi: MainApi = {

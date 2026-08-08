@@ -19,6 +19,7 @@
 - ⚡️ Basic layout manager built on Vuetify
 - ⚡️ Global state management through the Pinia store
 - ⚡️ Tray icon, with an optional floating tray window
+- ⚡️ Multi window support through a window manager, switched by a single constant
 - ⚡️ Native file dialog and external link examples over IPC
 - ⚡️ Secure by default: context isolation, channel whitelists, CSP and navigation guards
 - ⚡️ Quick support through the GitHub community and official documentation

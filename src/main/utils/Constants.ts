@@ -20,6 +20,14 @@ export interface WindowOptions {
   tray: Partial<TrayOptions>
 }
 
+export interface ChildWindowOptions {
+  width: number
+  height: number
+  maxWindows: number
+  cascadeOffset: { x: number; y: number }
+  allowDuplicatePath: boolean
+}
+
 export default class Constants {
   /* ------------------------------------------------------
    * Vutron app feature list
@@ -30,6 +38,10 @@ export default class Constants {
   // To show devtools at startup. It requires IS_DEV_ENV=true.
   // Note: For debugging purpose, window won't be closed if click elsewhere, if devtools is open.
   static FEAT_OPEN_DEV_TOOLS_AT_START = true
+  // To let the renderer open extra windows on top of the main window through
+  // `WindowManager`. Set it to `false` and every open request is refused,
+  // whatever `DEFAULT_CHILD_WINDOW_OPTIONS` says.
+  static FEAT_MULTI_WINDOW = true
   /* ------------------------------------------------------
    * END OF FEATURES
    * ------------------------------------------------------ */
@@ -79,6 +91,20 @@ export default class Constants {
       // true, to use a tray floating window attached to top tray icon
       trayWindow: false
     }
+  }
+
+  // Windows opened at runtime by `WindowManager`. Only used while
+  // `FEAT_MULTI_WINDOW` is enabled.
+  static DEFAULT_CHILD_WINDOW_OPTIONS: ChildWindowOptions = {
+    width: 800,
+    height: 600,
+    // Upper bound on windows open at the same time, the main window aside.
+    maxWindows: 5,
+    // Each window is placed down and to the right of the one that opened it.
+    cascadeOffset: { x: 32, y: 32 },
+    // false, to focus the window already showing a route instead of opening
+    // a second one for the same path
+    allowDuplicatePath: true
   }
 
   static APP_INDEX_URL_DEV = `${debug.env.VITE_DEV_SERVER_URL}/index.html`

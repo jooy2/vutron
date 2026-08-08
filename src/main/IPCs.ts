@@ -1,11 +1,13 @@
 import {
   ipcMain,
   shell,
+  BrowserWindow,
   IpcMainEvent,
   IpcMainInvokeEvent,
   dialog
 } from 'electron'
 import Constants from './utils/Constants'
+import WindowManager from './WindowManager'
 import { isAllowedExternalUrl } from './utils/security'
 import log from 'electron-log/main'
 
@@ -52,5 +54,37 @@ export default class IPCs {
         return dialogResult
       }
     )
+
+    // Open a new window on the given renderer route. Returns the window id, or
+    // `null` when the request was refused (feature off, limit reached, bad route)
+    ipcMain.handle(
+      'msgOpenWindow',
+      async (event: IpcMainInvokeEvent, path: string) => {
+        const childWindow = await WindowManager.open(
+          path,
+          BrowserWindow.fromWebContents(event.sender)
+        )
+
+        return childWindow?.id ?? null
+      }
+    )
+
+    // Close the window the request came from. Only windows owned by
+    // `WindowManager` are closed, so a shared component cannot shut the app down
+    // by calling this from the main window.
+    ipcMain.handle('msgCloseWindow', (event: IpcMainInvokeEvent) => {
+      return WindowManager.close(BrowserWindow.fromWebContents(event.sender))
+    })
+
+    // State a freshly loaded window needs before the first `msgWindowsUpdated`
+    // broadcast reaches it
+    ipcMain.handle('msgRequestWindowInfo', (event: IpcMainInvokeEvent) => {
+      const senderWindow = BrowserWindow.fromWebContents(event.sender)
+
+      return {
+        isChildWindow: WindowManager.isChildWindow(senderWindow),
+        childWindowIds: WindowManager.getIds()
+      }
+    })
   }
 }

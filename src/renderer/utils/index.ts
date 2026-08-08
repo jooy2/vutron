@@ -62,3 +62,35 @@ export function openExternal(url: string): void {
 export function openFile(type: string): Promise<any> {
   return window.mainApi.invoke('msgOpenFile', type)
 }
+
+export interface WindowInfo {
+  // Whether the current window was opened on top of the main window
+  isChildWindow: boolean
+  // Ids of the child windows open right now, the main window aside
+  childWindowIds: number[]
+}
+
+// Opens a router path in its own window. Resolves with the new window id, or
+// `null` when the main process refused the request.
+export function openWindow(path: string): Promise<number | null> {
+  return window.mainApi.invoke('msgOpenWindow', path)
+}
+
+// Resolves with `false` when called from the main window, which is never closed
+// this way
+export function closeCurrentWindow(): Promise<boolean> {
+  return window.mainApi.invoke('msgCloseWindow')
+}
+
+export function getWindowInfo(): Promise<WindowInfo> {
+  return window.mainApi.invoke('msgRequestWindowInfo')
+}
+
+// Returns the unsubscribe function, call it before the component goes away
+export function onWindowsUpdated(
+  listener: (childWindowIds: number[]) => void
+): () => void {
+  return window.mainApi.on('msgWindowsUpdated', (_event, childWindowIds) =>
+    listener(childWindowIds)
+  )
+}

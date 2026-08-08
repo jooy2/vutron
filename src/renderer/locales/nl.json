@@ -3,6 +3,7 @@
     "welcome-title": "Hallo Vutron! Alles is klaar.",
     "welcome-desc": "U kunt nu platformonafhankelijke webapplicaties schrijven. Bekijk wijzigingen in realtime en bouw met één opdracht naar meerdere platforms. Als u hiermee nog niet bekend bent, kunt u hulp krijgen via de onderstaande documentatiepagina, of een vooraf geschreven voorbeeldcode uitvoeren.",
     "second-desc": "U bent naar het tweede scherm gegaan! Hier is niks!",
+    "child-window-desc": "Dit scherm draait in een eigen venster.",
     "selected-file": "Geselecteerde bestand: {filePath}.",
     "error-desc": "De applicatie is een onverwacht probleem tegengekomen. Start de app opnieuw op."
   },
@@ -17,6 +18,8 @@
     "increase-count": "Één stap optellen",
     "documentation": "Documentatie",
     "github": "Broncode",
-    "open-file": "Open een bestand"
+    "open-file": "Open een bestand",
+    "open-window": "Een nieuw venster openen",
+    "close-window": "Dit venster sluiten"
   }
 }

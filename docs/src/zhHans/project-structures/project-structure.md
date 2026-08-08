@@ -33,6 +33,7 @@ order: 1
 │  │  └─ IPCs.ts - 主要流程 ipc 处理程序定义
 │  │  └─ MainRunner.ts - 主流程主窗口处理
 │  │  └─ tray.ts - 托盘图标与托盘窗口处理
+│  │  └─ WindowManager.ts - 主窗口之上打开的窗口管理
 │  ├─ preload/ - 预加载（Electron-Vue通信桥）过程源代码
 │  │  └─ index.ts
 │  ├─ public/ - Main + Renderer静态资源

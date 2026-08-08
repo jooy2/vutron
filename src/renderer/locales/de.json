@@ -3,6 +3,7 @@
     "welcome-title": "Hallo Vutron! Alles ist bereit.",
     "welcome-desc": "Sie können jetzt plattformübergreifende Webanwendungen schreiben. Sehen Sie Ihre Änderungen in Echtzeit und erstellen Sie mit einem einzigen Befehl auf mehreren Plattformen. Wenn Sie damit noch nicht vertraut sind, können Sie Hilfe von der Dokumentationsseite unten erhalten oder vorgefertigten Beispielcode ausführen.",
     "second-desc": "Auf den zweiten Bildschirm verschoben! Hier gibt es keine!",
+    "child-window-desc": "Dieser Bildschirm läuft in einem eigenen Fenster.",
     "selected-file": "Ausgewählte Datei: {filePath}.",
     "error-desc": "In der Anwendung ist ein unerwartetes Problem aufgetreten. Bitte starten Sie die App neu."
   },
@@ -17,6 +18,8 @@
     "increase-count": "Zählerstand um 1 erhöhen",
     "documentation": "dokumentieren",
     "github": "Quellcode",
-    "open-file": "Öffnen Sie eine Textdatei"
+    "open-file": "Öffnen Sie eine Textdatei",
+    "open-window": "Neues Fenster öffnen",
+    "close-window": "Dieses Fenster schließen"
   }
 }

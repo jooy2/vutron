@@ -33,6 +33,7 @@ order: 1
 │  │  └─ IPCs.ts - 메인 프로세스 IPC 핸들러 정의
 │  │  └─ MainRunner.ts - 메인 프로세스 메인 윈도우 프로세스
 │  │  └─ tray.ts - 트레이 아이콘 및 트레이 윈도우 처리
+│  │  └─ WindowManager.ts - 메인 윈도우 위로 열리는 창 관리
 │  ├─ preload/ - 프리로드 (Electron-Vue 커뮤니케이션 브릿지) 프로세스
 │  │  └─ index.ts
 │  ├─ public/ - Main + Renderer 정적 리소스

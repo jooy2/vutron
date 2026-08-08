@@ -6,6 +6,7 @@ import {
 import Constants, { TrayOptions } from './utils/Constants'
 import { createTray, destroyTray, hideWindow, showWindow } from './tray'
 import { registerWindowSecurity } from './utils/security'
+import WindowManager from './WindowManager'
 import log from 'electron-log/main'
 
 export const createMainWindow = async (): Promise<BrowserWindow> => {
@@ -60,8 +61,11 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
 
   // The tray is bound to this window, so it has to go away with it. Otherwise
   // clicking the tray icon would reach into an already destroyed window.
+  // Child windows go too, so that closing the main window really ends the app
+  // instead of leaving windows behind with no way back to it.
   mainWindow.on('closed', (): void => {
     destroyTray()
+    WindowManager.closeAll()
   })
 
   mainWindow.webContents.on('did-frame-finish-load', (): void => {

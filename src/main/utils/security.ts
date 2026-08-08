@@ -19,6 +19,14 @@ export const isAllowedExternalUrl = (url: string): boolean => {
   }
 }
 
+// Routes that a new window may be opened on. The renderer picks the path, so it
+// is kept to a plain hash route: no protocol, no host, no `..` traversal that
+// could escape the bundled index and reach another file.
+const ALLOWED_WINDOW_PATH = /^\/[\w\-/]*$/
+
+export const isAllowedWindowPath = (path: string): boolean =>
+  ALLOWED_WINDOW_PATH.test(path)
+
 const isInternalUrl = (url: string): boolean => {
   try {
     const target = new URL(url)

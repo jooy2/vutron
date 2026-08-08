@@ -33,6 +33,7 @@ order: 1
 │  │  └─ IPCs.ts - Main process ipc handlers definition
 │  │  └─ MainRunner.ts - Main process main window processing
 │  │  └─ tray.ts - Tray icon and tray window handling
+│  │  └─ WindowManager.ts - Windows opened on top of the main window
 │  ├─ preload/ - Preload (Electron-Vue communication bridge) process source code
 │  │  └─ index.ts
 │  ├─ public/ - Main + Renderer static resources

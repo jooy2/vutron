@@ -1,11 +1,18 @@
 <script setup lang="tsx">
 import { useI18n } from 'vue-i18n'
 import { useLocale, useTheme } from 'vuetify'
-import { openExternal, openFile } from '@/renderer/utils'
+import {
+  getWindowInfo,
+  onWindowsUpdated,
+  openExternal,
+  openFile,
+  openWindow
+} from '@/renderer/utils'
 import { useCounterStore } from '@/renderer/store/counter'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import {
   mdiBrightness6,
+  mdiDockWindow,
   mdiFileDocument,
   mdiFolderOpen,
   mdiGithub,
@@ -21,6 +28,10 @@ const vuetifyLocale = useLocale()
 const languages = ref(['en'])
 const appVersion = ref('Unknown')
 const selectedFile = ref('')
+const childWindowCount = ref(0)
+// The listener lives in the main process, so it has to be dropped by hand when
+// this screen goes away
+let unsubscribeWindowsUpdated: (() => void) | null = null
 
 const getApplicationVersionFromMainProcess = (): void => {
   window.mainApi.invoke('msgRequestGetVersion').then((result: string) => {
@@ -58,11 +69,34 @@ const handleOpenFile = async () => {
   }
 }
 
+// Opens the second screen in its own window. The main process answers with
+// `null` when multi window is disabled or the window limit is reached.
+const handleOpenWindow = async (): Promise<void> => {
+  await openWindow('/second')
+}
+
+const watchChildWindows = async (): Promise<void> => {
+  const windowInfo = await getWindowInfo()
+
+  childWindowCount.value = windowInfo.childWindowIds.length
+
+  unsubscribeWindowsUpdated = onWindowsUpdated((childWindowIds): void => {
+    childWindowCount.value = childWindowIds.length
+  })
+}
+
 onMounted((): void => {
   languages.value = availableLocales
 
   // Get application version from package.json version string (Using IPC communication)
   getApplicationVersionFromMainProcess()
+
+  // Keep the badge in sync with the windows the main process has open
+  watchChildWindows()
+})
+
+onUnmounted((): void => {
+  unsubscribeWindowsUpdated?.()
 })
 </script>
 
@@ -169,6 +203,28 @@ onMounted((): void => {
                 {{ t('menu.github') }}
               </v-tooltip>
             </v-btn>
+          </v-col>
+          <v-col>
+            <v-badge
+              data-testid="window-badge"
+              color="blue"
+              :content="childWindowCount"
+            >
+              <v-btn
+                data-testid="btn-open-window"
+                icon
+                color="primary"
+                @click="handleOpenWindow"
+              >
+                <v-icon :icon="mdiDockWindow" />
+                <v-tooltip
+                  activator="parent"
+                  location="bottom"
+                >
+                  {{ t('menu.open-window') }}
+                </v-tooltip>
+              </v-btn>
+            </v-badge>
           </v-col>
           <v-col>
             <v-btn
