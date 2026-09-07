@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useLocale, useTheme } from 'vuetify'
 import {

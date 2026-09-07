@@ -3,7 +3,6 @@ import { defineConfig, loadEnv } from 'vite'
 import electron, { ElectronSimpleOptions } from 'vite-plugin-electron/simple'
 import EslintPlugin from '@nabla/vite-plugin-eslint'
 import VuetifyPlugin from 'vite-plugin-vuetify'
-import VueJsx from '@vitejs/plugin-vue-jsx'
 import Vue from '@vitejs/plugin-vue'
 import { rmSync } from 'fs'
 import { resolve, dirname } from 'path'
@@ -102,7 +101,6 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       Vue(),
-      VueJsx(),
       // Docs: https://github.com/vuetifyjs/vuetify-loader
       VuetifyPlugin({
         autoImport: true

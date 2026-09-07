@@ -52,7 +52,6 @@
     "@types/node": "^24.13.3",
     "@typescript-eslint/parser": "^8.69.0",
     "@vitejs/plugin-vue": "^6.0.8",
-    "@vitejs/plugin-vue-jsx": "^5.1.6",
     "dotenv": "^17.4.2",
     "electron": "^44.2.0",
     "electron-builder": "^26.15.3",

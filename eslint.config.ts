@@ -92,9 +92,6 @@ export default defineConfig([
       parser: parserVue,
       parserOptions: {
         parser: parserTypeScript,
-        ecmaFeatures: {
-          jsx: true
-        },
         requireConfigFile: false
       }
     },
