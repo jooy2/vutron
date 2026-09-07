@@ -4,11 +4,15 @@ import electron, { ElectronSimpleOptions } from 'vite-plugin-electron/simple'
 import EslintPlugin from '@nabla/vite-plugin-eslint'
 import VuetifyPlugin from 'vite-plugin-vuetify'
 import Vue from '@vitejs/plugin-vue'
-import { rmSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { builtinModules } from 'module'
 
 const projectRoot = dirname(fileURLToPath(import.meta.url))
+
+// Each Electron process is bundled on its own, so every build needs its own
+// copy of the alias. `src/common` also sits outside the renderer `root` below
+// and is reached through `@` rather than a relative path out of that root.
+const sourceAlias = { '@': resolve(projectRoot, 'src') }
 
 export default defineConfig(({ mode }) => {
   // `mode` is what Vite resolved for this run. `process.env.NODE_ENV` is not
@@ -25,8 +29,6 @@ export default defineConfig(({ mode }) => {
     ...loadEnv(mode, process.cwd())
   }
 
-  rmSync(resolve(projectRoot, 'dist'), { recursive: true, force: true })
-
   const electronPluginConfigs: ElectronSimpleOptions = {
     main: {
       entry: resolve(projectRoot, 'src/main/index.ts'),
@@ -41,13 +43,12 @@ export default defineConfig(({ mode }) => {
       vite: {
         root: resolve(projectRoot),
         base: './',
-        publicDir: resolve(projectRoot, './src/public'),
-        // The alias is declared per build. Each Electron process is bundled on
-        // its own, so the one below for the renderer does not reach this one.
+        // The renderer build already copies `src/public` to `dist`, which is
+        // where `Constants.PUBLIC_PATH` points. Copying it again would leave a
+        // second unused set of assets under `dist/main`.
+        publicDir: false,
         resolve: {
-          alias: {
-            '@': resolve(projectRoot, 'src')
-          }
+          alias: sourceAlias
         },
         build: {
           // Matches the renderer. Shipping main process sourcemaps would put
@@ -65,9 +66,7 @@ export default defineConfig(({ mode }) => {
       input: resolve(projectRoot, 'src/preload/index.ts'),
       vite: {
         resolve: {
-          alias: {
-            '@': resolve(projectRoot, 'src')
-          }
+          alias: sourceAlias
         },
         build: {
           outDir: resolve(projectRoot, 'dist/preload')
@@ -82,13 +81,9 @@ export default defineConfig(({ mode }) => {
       __VUE_I18N_LEGACY_API__: false,
       __INTLIFY_PROD_DEVTOOLS__: false
     },
-    // Renderer alias. `src/common` sits outside the renderer `root` below, so
-    // it is reached through `@` rather than a relative path out of the root.
     resolve: {
       extensions: ['.mjs', '.js', '.ts', '.vue', '.json', '.scss'],
-      alias: {
-        '@': resolve(projectRoot, 'src')
-      }
+      alias: sourceAlias
     },
     base: './',
     root: resolve(projectRoot, 'src/renderer'),
@@ -97,7 +92,11 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: isDevEnv,
       minify: !isDevEnv,
-      outDir: resolve(projectRoot, 'dist')
+      outDir: resolve(projectRoot, 'dist'),
+      // `dist` sits outside the renderer `root`, so Vite skips the cleanup
+      // unless it is asked for. The renderer builds before the main and the
+      // preload process, so this cannot wipe what those two just wrote.
+      emptyOutDir: true
     },
     plugins: [
       Vue(),
@@ -106,6 +105,8 @@ export default defineConfig(({ mode }) => {
         autoImport: true
       }),
       // Docs: https://github.com/nabla/vite-plugin-eslint
+      // The plugin declares `apply: 'serve'`, so it lints on the dev server
+      // only. `build:pre` runs `npm run lint` to cover the build.
       EslintPlugin(),
       // Docs: https://github.com/electron-vite/vite-plugin-electron
       electron(electronPluginConfigs)
