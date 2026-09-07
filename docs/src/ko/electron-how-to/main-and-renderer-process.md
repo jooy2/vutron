@@ -37,12 +37,8 @@ import { MAIN_INVOKE_CHANNELS } from '@/common/ipc'
 
 ### 렌더러에서 Node.js를 실행하는 방법은 무엇인가요?
 
-보안 문제를 건너뛰고 렌더러에서 Node.js 스크립트를 사용하려면 `vite.config.ts` 파일에서 `nodeIntegration`을 `true`로 설정해야 합니다.
+권장하지 않습니다. 렌더러는 `src/main/utils/Constants.ts`의 `DEFAULT_WEB_PREFERENCES`에서 `nodeIntegration: false`, `contextIsolation: true`, `sandbox: true`로 실행되며, 이 세 가지가 Electron이 권장하는 기본값입니다. Node.js가 필요한 작업은 메인 프로세스에 두고 IPC로 결과만 주고받으세요. `src/main/IPCs.ts`의 `msgOpenFile`이 파일 대화상자를 메인 프로세스에서 열고 결과만 넘기는 예시입니다.
 
-```javascript
-rendererPlugin({
-  nodeIntegration: true
-})
-```
+그래도 렌더러에서 직접 Node.js를 써야 한다면 `vite-plugin-electron-renderer`를 설치해 Vite가 Node.js 내장 모듈을 번들할 수 있게 하고, `DEFAULT_WEB_PREFERENCES`에서 `sandbox`와 `contextIsolation`을 끈 뒤 `nodeIntegration`을 켜야 합니다. 이렇게 하면 렌더러가 로드하는 모든 코드가 사용자의 파일 시스템에 접근할 수 있게 되므로, 화면에 표시하는 외부 콘텐츠가 하나라도 있다면 선택하지 마세요.
 
-이에 대한 자세한 내용은 다음 문서를 참조하세요: https://github.com/electron-vite/vite-plugin-electron-renderer
+자세한 내용은 다음 문서를 참고하세요: https://www.electronjs.org/docs/latest/tutorial/security

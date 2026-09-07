@@ -37,12 +37,8 @@ import { MAIN_INVOKE_CHANNELS } from '@/common/ipc'
 
 ### 如何在渲染器上运行Node.js？
 
-如果您想跳过安全问题并在渲染器中使用 Node.js 脚本，需要在 `vite.config.ts` 文件中将 `nodeIntegration` 设置为 `true`。
+不建议这样做。渲染器以 `nodeIntegration: false`、`contextIsolation: true` 和 `sandbox: true` 运行，这三项在 `src/main/utils/Constants.ts` 的 `DEFAULT_WEB_PREFERENCES` 中设置，也是 Electron 推荐的默认值。请把需要 Node.js 的工作放在主进程，通过 IPC 传回结果。`src/main/IPCs.ts` 中的 `msgOpenFile` 就是这样一个例子：文件对话框在主进程中打开，只有结果会跨过桥接。
 
-```javascript
-rendererPlugin({
-  nodeIntegration: true
-})
-```
+如果确实需要在渲染器中使用 Node.js，请安装 `vite-plugin-electron-renderer` 让 Vite 能够打包 Node.js 内置模块，然后在 `DEFAULT_WEB_PREFERENCES` 中关闭 `sandbox` 和 `contextIsolation` 并开启 `nodeIntegration`。这样一来，渲染器加载的所有代码都能访问用户的文件系统，因此只要应用会显示任何非自己编写的内容，就不要选择这条路。
 
-欲了解更多信息，请参阅以下文章: https://github.com/electron-vite/vite-plugin-electron-renderer
+更多信息请参阅以下文档: https://www.electronjs.org/docs/latest/tutorial/security

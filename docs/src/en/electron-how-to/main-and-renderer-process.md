@@ -37,12 +37,8 @@ Two things to keep in mind when adding your own:
 
 ### How to run Node.js on a renderer?
 
-If you want to skip the security issues and use Node.js scripts in your renderer, you need to set `nodeIntegration` to `true` in your `vite.config.ts` file.
+This is not recommended. The renderer runs with `nodeIntegration: false`, `contextIsolation: true` and `sandbox: true`, set in `DEFAULT_WEB_PREFERENCES` in `src/main/utils/Constants.ts`, which are the defaults Electron recommends. Keep the work that needs Node.js in the main process and pass the result over IPC. `msgOpenFile` in `src/main/IPCs.ts` is an example: the file dialog opens in the main process and only its result crosses the bridge.
 
-```javascript
-rendererPlugin({
-  nodeIntegration: true
-})
-```
+If you still need Node.js in the renderer, install `vite-plugin-electron-renderer` so that Vite can bundle Node.js builtins, then turn `sandbox` and `contextIsolation` off in `DEFAULT_WEB_PREFERENCES` and `nodeIntegration` on. Every piece of code the renderer loads then reaches the user's file system, so do not take this route if the app shows any content it did not author.
 
-For more information on this, see the following articles: https://github.com/electron-vite/vite-plugin-electron-renderer
+For more information, see the following document: https://www.electronjs.org/docs/latest/tutorial/security
