@@ -50,7 +50,6 @@
     "@nabla/vite-plugin-eslint": "^3.0.1",
     "@playwright/test": "^1.63.0",
     "@types/node": "^24.13.3",
-    "@typescript-eslint/parser": "^8.69.0",
     "@vitejs/plugin-vue": "^6.0.8",
     "dotenv": "^17.4.2",
     "electron": "^44.2.0",

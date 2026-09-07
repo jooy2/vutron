@@ -2,7 +2,6 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import pluginJs from '@eslint/js'
 import pluginTypeScriptESLint from 'typescript-eslint'
 import parserVue from 'vue-eslint-parser'
-import parserTypeScript from '@typescript-eslint/parser'
 import pluginVue from 'eslint-plugin-vue'
 import pluginNode from 'eslint-plugin-n'
 import pluginImport from 'eslint-plugin-import'
@@ -91,7 +90,7 @@ export default defineConfig([
       },
       parser: parserVue,
       parserOptions: {
-        parser: parserTypeScript,
+        parser: pluginTypeScriptESLint.parser,
         requireConfigFile: false
       }
     },

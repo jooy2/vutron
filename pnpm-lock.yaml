@@ -26,9 +26,6 @@ importers:
       '@types/node':
         specifier: ^24.13.3
         version: 24.13.3
-      '@typescript-eslint/parser':
-        specifier: ^8.69.0
-        version: 8.69.0(eslint@9.39.2(jiti@2.7.0))(typescript@6.0.3)
       '@vitejs/plugin-vue':
         specifier: ^6.0.8
         version: 6.0.8(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0))(vue@3.5.42(typescript@6.0.3))
