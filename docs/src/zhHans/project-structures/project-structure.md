@@ -30,6 +30,7 @@ order: 1
 │  ├─ main/ - 主（电子）处理源代码
 │  │  ├─ utils/ - 主要工艺设备
 │  │  │  └─ Constants.ts - 全球主要定义
+│  │  │  └─ devTools.ts - 开发环境下 DevTools 的打开时机
 │  │  │  └─ ipc.ts - 按通道契约类型化的 IPC 注册辅助函数
 │  │  │  └─ security.ts - 导航与外部链接防护
 │  │  └─ index.ts - 主要流程入口

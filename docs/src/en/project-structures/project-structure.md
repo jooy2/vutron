@@ -30,6 +30,7 @@ order: 1
 │  ├─ main/ - Main (Electron) process source code
 │  │  ├─ utils/ - Main process utilities
 │  │  │  └─ Constants.ts - Main global definition
+│  │  │  └─ devTools.ts - When DevTools opens in a development build
 │  │  │  └─ ipc.ts - IPC registration helpers typed against the channel contracts
 │  │  │  └─ security.ts - Navigation and external link guards
 │  │  └─ index.ts - Main process entry point

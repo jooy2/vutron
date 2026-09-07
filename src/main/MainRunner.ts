@@ -6,6 +6,7 @@ import {
 import Constants, { TrayOptions } from './utils/Constants'
 import { createTray, destroyTray, hideWindow, showWindow } from './tray'
 import { registerWindowSecurity } from './utils/security'
+import { openDevToolsAtStart } from './utils/devTools'
 import WindowManager from './WindowManager'
 import log from 'electron-log/main'
 
@@ -68,11 +69,7 @@ export const createMainWindow = async (): Promise<BrowserWindow> => {
     WindowManager.closeAll()
   })
 
-  mainWindow.webContents.on('did-frame-finish-load', (): void => {
-    if (Constants.IS_DEV_ENV && Constants.FEAT_OPEN_DEV_TOOLS_AT_START) {
-      mainWindow.webContents.openDevTools()
-    }
-  })
+  openDevToolsAtStart(mainWindow)
 
   if (trayOptions.enabled) {
     createTray(mainWindow, trayOptions)
@@ -133,6 +130,7 @@ export const createErrorWindow = async (
 
   errorWindow.setMenu(null)
   registerWindowSecurity(errorWindow)
+  openDevToolsAtStart(errorWindow, true)
 
   if (Constants.IS_DEV_ENV) {
     await errorWindow.loadURL(`${Constants.APP_INDEX_URL_DEV}#/error`)
@@ -146,12 +144,6 @@ export const createErrorWindow = async (
     }
     errorWindow.show()
     errorWindow.focus()
-  })
-
-  errorWindow.webContents.on('did-frame-finish-load', (): void => {
-    if (Constants.IS_DEV_ENV) {
-      errorWindow.webContents.openDevTools()
-    }
   })
 
   return errorWindow

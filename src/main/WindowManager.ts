@@ -2,6 +2,7 @@ import { BrowserWindow, screen } from 'electron'
 import Constants from './utils/Constants'
 import { isAllowedWindowPath, registerWindowSecurity } from './utils/security'
 import { sendToWindow } from './utils/ipc'
+import { openDevToolsAtStart } from './utils/devTools'
 import { RENDERER_AVAIL_CHANNELS } from '@/common/ipc'
 import log from 'electron-log/main'
 
@@ -90,11 +91,7 @@ export default class WindowManager {
       childWindow.focus()
     })
 
-    childWindow.webContents.on('did-frame-finish-load', (): void => {
-      if (Constants.IS_DEV_ENV && Constants.FEAT_OPEN_DEV_TOOLS_AT_START) {
-        childWindow.webContents.openDevTools()
-      }
-    })
+    openDevToolsAtStart(childWindow)
 
     if (Constants.IS_DEV_ENV) {
       await childWindow.loadURL(`${Constants.APP_INDEX_URL_DEV}#${path}`)
