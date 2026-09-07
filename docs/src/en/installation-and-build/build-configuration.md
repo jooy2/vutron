@@ -42,11 +42,21 @@ $ npm run build:all
 
 To learn more about multiplatform builds, see the following articles: https://electron.build/multi-platform-build
 
-## Reduce bundle size by excluding development files
+## Reduce bundle size
 
-You can exclude files you don't need at build time by adding a file pattern to the files property of `buildAssets/builder/config.ts`. This will save bundle capacity.
+### Keep bundled libraries in `devDependencies`
 
-Below is an unnecessary `node_modules` file pattern that can further save bundles. Depending on the project, using the rules below may cause problems, so please review it before using.
+`electron-builder` copies every package listed in `dependencies` into `app.asar`, regardless of the `files` patterns in `config.js`. Vite already bundles libraries such as `vue`, `pinia` and `vue-router` into `dist`, so listing them under `dependencies` ships a second copy that nothing loads.
+
+Vutron therefore keeps every bundled library in `devDependencies`. On this template that takes `app.asar` from 22.8MB down to 0.93MB.
+
+Only packages Vite cannot bundle belong in `dependencies`: native Node.js modules that ship a `.node` binary, and packages that read their own file paths at runtime.
+
+### Exclude files you do not need
+
+You can exclude files you do not need at build time by adding a file pattern to the `files` property of `buildAssets/builder/config.js`.
+
+Below are patterns that strip further files out of `node_modules`, for the cases where `dependencies` cannot be avoided. Depending on the project, using the rules below may cause problems, so please review them before using.
 
 ```json
 [

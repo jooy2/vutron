@@ -42,11 +42,21 @@ Linux 构建可能需要 "Multipass" 配置。通过以下链接了解有关 `Mu
 
 要了解有关多平台构建的更多信息，请参阅以下文章： https://electron.build/multi-platform-build
 
-## 通过排除开发文件减少软件包大小
+## 减小软件包大小
 
-您可以通过在 `buildAssets/builder/config.ts` 的 files 属性中添加文件模式，在构建时排除不需要的文件。这将节省捆绑包的容量。
+### 将被打包的库放在 `devDependencies` 中
 
-下面是一个不必要的 `node_modules` 文件模式，可以进一步节省捆绑包。根据项目情况，使用下面的规则可能会导致问题，因此请在使用前进行审查。
+`electron-builder` 会把 `dependencies` 中列出的每个包都复制到 `app.asar`，这与 `config.js` 的 `files` 模式无关。而 Vite 已经把 `vue`、`pinia`、`vue-router` 这类库打包进了 `dist`，所以把它们放在 `dependencies` 中，只会让软件包中多出一份从不加载的副本。
+
+因此 Vutron 把所有被打包的库都放在 `devDependencies` 中。在本模板上，这使 `app.asar` 从 22.8MB 减少到 0.93MB。
+
+只有 Vite 无法打包的包才应该放进 `dependencies`：附带 `.node` 二进制文件的原生 Node.js 模块，以及在运行时读取自身文件路径的包。
+
+### 排除不需要的文件
+
+您可以通过在 `buildAssets/builder/config.js` 的 `files` 属性中添加文件模式，在构建时排除不需要的文件。
+
+下面是在无法避免使用 `dependencies` 时，可以从 `node_modules` 中进一步剔除文件的模式示例。根据项目情况，使用下面的规则可能会导致问题，因此请在使用前进行审查。
 
 ```json
 [

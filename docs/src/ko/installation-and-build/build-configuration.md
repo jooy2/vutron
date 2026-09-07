@@ -42,11 +42,21 @@ Linux 빌드에는 `multipass` 구성이 필요할 수 있습니다. 다음 링�
 
 멀티플랫폼 빌드에 대해 자세히 알아보려면 다음 문서를 참조하세요: https://electron.build/multi-platform-build
 
-## 개발 파일을 제외하여 번들 크기 줄이기
+## 번들 크기 줄이기
 
-빌드 시점에 필요하지 않은 파일은 `buildAssets/builder/config.ts`의 파일 속성에 파일 패턴을 추가하여 제외할 수 있습니다. 이렇게 하면 번들 용량을 절약할 수 있습니다.
+### 번들에 포함되는 라이브러리는 `devDependencies`에 둡니다
 
-아래는 불필요한 `node_modules` 파일 패턴으로 번들을 추가로 절약할 수 있는 예시입니다. 프로젝트에 따라 아래 규칙을 사용하면 문제가 발생할 수 있으므로 사용 전에 검토하시기 바랍니다.
+`electron-builder`는 `config.js`의 `files` 패턴과 별개로 `dependencies`에 적힌 패키지를 통째로 `app.asar`에 넣습니다. 그런데 Vite가 이미 `vue`, `pinia`, `vue-router` 같은 라이브러리를 `dist`로 번들하기 때문에, 이들을 `dependencies`에 두면 실행에 쓰이지 않는 사본이 패키지에 한 번 더 들어갑니다.
+
+Vutron은 그래서 번들되는 라이브러리를 모두 `devDependencies`에 둡니다. 이 템플릿 기준으로 `app.asar`이 22.8MB에서 0.93MB로 줄어듭니다.
+
+`dependencies`에 넣어야 하는 것은 Vite가 번들할 수 없는 패키지뿐입니다. 네이티브 노드 모듈(`.node` 바이너리를 쓰는 모듈)과, 자기 파일 경로를 런타임에 직접 읽는 패키지가 여기에 해당합니다.
+
+### 필요 없는 파일 제외하기
+
+빌드 시점에 필요하지 않은 파일은 `buildAssets/builder/config.js`의 `files` 속성에 파일 패턴을 추가하여 제외할 수 있습니다.
+
+아래는 `dependencies`를 쓸 수밖에 없을 때 `node_modules`에서 추가로 걷어낼 수 있는 패턴의 예시입니다. 프로젝트에 따라 아래 규칙을 사용하면 문제가 발생할 수 있으므로 사용 전에 검토하시기 바랍니다.
 
 ```json
 [
