@@ -13,6 +13,12 @@ test('Document element check', async ({ page, util }) => {
       page.getByTestId('select-language').first(),
       `Confirm language selector is visible`
     ).toBeVisible()
+    // The messages are compiled at build time, so a broken compile shows up
+    // as a missing string rather than as an error
+    await expect(
+      page.getByText('Hello Vutron! Everything is ready.'),
+      `Confirm the translated title is rendered`
+    ).toBeVisible()
 
     await util.captureScreenshot(page, 'result')
   } catch (error) {
