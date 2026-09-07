@@ -25,24 +25,21 @@ const initializeMainLogger = () => {
   log.silly(`Start logging... (Path: ${appLogFilePath}) App is ready.`)
 }
 
-const installDevTron = async () => {
+// `src/main/index.dev` is loaded through a dynamic import so that the
+// development extensions and the packages behind them are split into a chunk
+// of their own, which `buildAssets/builder/config.js` then leaves out of the
+// package.
+const installDevTools = async (): Promise<void> => {
   if (!Constants.IS_DEV_ENV) {
     return
   }
 
-  try {
-    const { devtron } = await import('@electron/devtron')
-    await devtron.install()
-  } catch {
-    // Do nothing
-  }
+  const { installDevTools: install } = await import('./index.dev')
+
+  await install()
 }
 
 app.on('ready', async () => {
-  if (Constants.IS_DEV_ENV) {
-    import('./index.dev')
-  }
-
   // Disable special menus on macOS by uncommenting the following, if necessary
   /*
   if (Constants.IS_MAC) {
@@ -52,13 +49,18 @@ app.on('ready', async () => {
   */
   initializeMainLogger()
 
-  await installDevTron()
+  // Started before the window so that the panels are registered by the time
+  // DevTools opens, and awaited only afterwards: downloading an extension on
+  // the first run must not hold up the first paint.
+  const devToolsInstalled = installDevTools()
 
   // Initialize IPC Communication. `ipcMain.handle` throws when the same channel
   // is registered twice, so this must not live in the window factory.
   IPCs.initialize()
 
   mainWindow = await createMainWindow()
+
+  await devToolsInstalled
 })
 
 app.on('activate', async () => {
