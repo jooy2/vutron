@@ -49,6 +49,6 @@ export function onWindowsUpdated(
 ): () => void {
   return window.mainApi.on(
     RENDERER_AVAIL_CHANNELS.windowsUpdated,
-    (_event, childWindowIds) => listener(childWindowIds)
+    (childWindowIds) => listener(childWindowIds)
   )
 }

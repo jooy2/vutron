@@ -1,11 +1,15 @@
-import type { IpcRendererEvent } from 'electron'
 import type {
   MainInvokeChannel,
   MainSendChannel,
   RendererAvailChannel
 } from '@/common/ipc'
 
-type IpcListener = (event: IpcRendererEvent, ...args: any[]) => void
+/*
+ * A listener for a main process broadcast. It is given the payload only. The
+ * `IpcRendererEvent` stays in the preload script, because its `sender` is the
+ * whole `ipcRenderer` and would hand the renderer every channel there is.
+ * */
+export type MainApiListener = (...args: any[]) => void
 
 /*
  * Shape of the bridge that `src/preload` exposes on `window` through
@@ -20,9 +24,9 @@ export interface MainApi {
   // Fire and forget
   send: (channel: MainSendChannel, ...data: any[]) => void
   // Listen for a main process broadcast, returns an unsubscribe fn
-  on: (channel: RendererAvailChannel, listener: IpcListener) => () => void
-  once: (channel: RendererAvailChannel, listener: IpcListener) => () => void
-  off: (channel: RendererAvailChannel, listener: IpcListener) => void
+  on: (channel: RendererAvailChannel, listener: MainApiListener) => () => void
+  once: (channel: RendererAvailChannel, listener: MainApiListener) => () => void
+  off: (channel: RendererAvailChannel, listener: MainApiListener) => void
   // Request/response
   invoke: <T = any>(channel: MainInvokeChannel, ...data: any[]) => Promise<T>
 }

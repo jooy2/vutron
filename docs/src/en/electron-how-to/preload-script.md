@@ -24,4 +24,17 @@ Here are the supported functions for mainApi:
 - `off`: Remove an event listener
 - `invoke`: Functions that can send events to main and receive data asynchronously.
 
+A listener passed to `on` or `once` is given only the values that `webContents.send` was called with. Electron's `IpcRendererEvent` stays in the preload script: its `sender` is the whole `ipcRenderer`, and handing that to the renderer would let it use any channel it likes, past the whitelists above.
+
+```ts
+const unsubscribe = window.mainApi.on('msgWindowsUpdated', (windowIds) => {
+  console.log(windowIds)
+})
+
+// Call this once the listener is no longer needed
+unsubscribe()
+```
+
+`on` and `once` return a function that removes the listener. Call it from `onUnmounted` when a component registered the listener: the listener lives in the main process and is not dropped when the screen goes away. Passing the same listener to `off` works too.
+
 To change and modify this, you need to modify `exposeInMainWorld` in `src/preload/index.ts`.

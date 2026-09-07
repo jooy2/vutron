@@ -59,12 +59,26 @@ export const afterAll = async () => {
   await appElectron.close()
 }
 
-export const test = base.test.extend({
+/*
+ * Fixtures on top of the ones Playwright provides. Declaring them here is what
+ * lets a spec destructure `electronApp` and `util` with types rather than a
+ * `@ts-expect-error` on every test.
+ * */
+export interface TestFixtures {
+  // The Electron main process, for tests that have to act on it directly
+  electronApp: ElectronApplication
+  util: TestUtil
+}
+
+export const test = base.test.extend<TestFixtures>({
   // eslint-disable-next-line no-empty-pattern
   page: async ({}, use) => {
     await use(page)
   },
-  // @ts-expect-error: `util` is not using types in playwright
+  // eslint-disable-next-line no-empty-pattern
+  electronApp: async ({}, use) => {
+    await use(appElectron)
+  },
   util: async ({ page }, use, testInfo) => {
     await use(new TestUtil(page, testInfo, __testScreenshotPath))
   }

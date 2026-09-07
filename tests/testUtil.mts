@@ -28,13 +28,16 @@ export default class TestUtil {
     }
   }
 
-  async onTestError(error: Error) {
+  // A caught value is `unknown`, so what is thrown is not necessarily an
+  // `Error`. Playwright needs one, and its message is what ends up in the
+  // report.
+  async onTestError(error: unknown) {
     const titleLists = [...this._testInfo.titlePath]
     titleLists.shift()
     const title = titleLists.join('-')
 
     await this.captureScreenshot(this._page, `${title}_${Date.now()}`)
 
-    return new Error(error.message)
+    return new Error(error instanceof Error ? error.message : String(error))
   }
 }

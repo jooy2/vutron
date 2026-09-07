@@ -24,4 +24,17 @@ Vutron的预加载脚本位于`src/preload`文件夹中。要创建新的IPC通�
 - `off`: 移除事件监听器
 - `invoke`: 可异步发送事件和接收数据的功能。
 
+传给 `on` 或 `once` 的监听器只会收到调用 `webContents.send` 时传入的值。Electron 的 `IpcRendererEvent` 会留在预加载脚本中：它的 `sender` 是整个 `ipcRenderer`，把它交给渲染器就等于绕过上面的白名单，让渲染器可以使用任意通道。
+
+```ts
+const unsubscribe = window.mainApi.on('msgWindowsUpdated', (windowIds) => {
+  console.log(windowIds)
+})
+
+// 不再需要该监听器时调用
+unsubscribe()
+```
+
+`on` 和 `once` 会返回一个用于移除监听器的函数。如果监听器是在组件中注册的，请在 `onUnmounted` 中调用它：监听器位于主进程，不会随着界面消失而被清理。把同一个监听器传给 `off` 也可以。
+
 要更改和修改此设置，您需要修改 `src/preload/index.ts` 中的 `exposeInMainWorld`。

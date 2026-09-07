@@ -24,4 +24,17 @@ Vutron의 프리로드 스크립트는 `src/preload` 폴더에 있습니다. 새
 - `off`: 이벤트 리스너를 제거합니다.
 - `invoke`: 메인에 이벤트를 보내고 비동기적으로 데이터를 수신할 수 있는 함수입니다.
 
+`on`과 `once`의 리스너는 `webContents.send`로 넘긴 값만 받습니다. Electron의 `IpcRendererEvent`는 프리로드 스크립트에 남습니다. 이 객체의 `sender`가 `ipcRenderer` 전체라서, 렌더러에 그대로 넘기면 위의 화이트리스트를 지나쳐 아무 채널이나 사용할 수 있게 되기 때문입니다.
+
+```ts
+const unsubscribe = window.mainApi.on('msgWindowsUpdated', (windowIds) => {
+  console.log(windowIds)
+})
+
+// 리스너가 더 필요 없어지면 호출합니다
+unsubscribe()
+```
+
+`on`과 `once`는 리스너를 해제하는 함수를 돌려줍니다. 컴포넌트에서 등록했다면 `onUnmounted`에서 이 함수를 호출하세요. 리스너는 메인 프로세스에 남아 있어서, 화면이 사라져도 저절로 정리되지 않습니다. 같은 리스너를 `off`에 넘겨도 됩니다.
+
 이를 변경하고 수정하려면 `src/preload/index.ts`에서 `exposeInMainWorld`를 수정해야 합니다.
