@@ -39,7 +39,42 @@ const installDevTools = async (): Promise<void> => {
   await install()
 }
 
+/*
+ * Held for as long as this process is the only instance. The lock is keyed by
+ * the user data directory, so a second launch is turned away before it can
+ * open a window on the same logs, cache and settings.
+ * */
+const hasSingleInstanceLock =
+  !Constants.FEAT_SINGLE_INSTANCE || app.requestSingleInstanceLock()
+
+if (!hasSingleInstanceLock) {
+  app.quit()
+}
+
+app.on('second-instance', (): void => {
+  if (!mainWindow || mainWindow.isDestroyed()) {
+    return
+  }
+
+  if (mainWindow.isMinimized()) {
+    mainWindow.restore()
+  }
+
+  // The window may be hidden rather than minimized while the tray owns it.
+  if (!mainWindow.isVisible()) {
+    mainWindow.show()
+  }
+
+  mainWindow.focus()
+})
+
 app.on('ready', async () => {
+  // `app.quit()` above only takes effect on the next turn of the event loop,
+  // so this handler can still run in the instance that lost the lock.
+  if (!hasSingleInstanceLock) {
+    return
+  }
+
   // Disable special menus on macOS by uncommenting the following, if necessary
   /*
   if (Constants.IS_MAC) {

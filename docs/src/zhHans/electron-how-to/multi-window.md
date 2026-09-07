@@ -72,6 +72,18 @@ const unsubscribe = onWindowsUpdated((childWindowIds) => {
 | `msgRequestWindowInfo` | invoke | 返回调用窗口的 `{ isChildWindow, childWindowIds }`。 |
 | `msgWindowsUpdated` | on | 每当窗口打开或关闭时，将当前的窗口 id 列表广播给所有窗口。 |
 
+## 只运行一个实例
+
+第二次启动应用时，新进程不会打开窗口而是直接退出，并把已经打开的窗口带到前台。日志、缓存和设置都位于同一个用户数据目录中，这样可以避免两个进程同时写入相同的文件。
+
+如果您的应用需要同时运行多份，可以在 `src/main/utils/Constants.ts` 中用 `FEAT_SINGLE_INSTANCE` 关闭它。
+
+```typescript
+static FEAT_SINGLE_INSTANCE = true
+```
+
+开发时请注意，该锁是按用户数据目录持有的。在 `npm run dev` 运行期间执行 `npm run test`，测试进程会拿不到锁而立即退出。
+
 ## 注意事项
 
 窗口所要打开的路由来自渲染进程，因此在使用前会由 `src/main/utils/security.ts` 校验，仅接受形如 `/second` 的普通哈希路由。新窗口沿用与主窗口相同的 `webPreferences` 和导航防护，因此上下文隔离与外部链接处理对所有窗口同样生效。

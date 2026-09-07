@@ -72,6 +72,18 @@ Windows are addressed by router path, and every window loads the same Vue app at
 | `msgRequestWindowInfo` | invoke | Returns `{ isChildWindow, childWindowIds }` for the calling window. |
 | `msgWindowsUpdated` | on | Broadcast to every window with the current window ids whenever one opens or closes. |
 
+## Running a single instance
+
+Launching the app a second time quits the new process without opening a window and brings the window that is already up to the front. Logs, cache and settings all live in one user data directory, so this keeps two processes from writing the same files at once.
+
+Turn it off with `FEAT_SINGLE_INSTANCE` in `src/main/utils/Constants.ts` if your app is meant to run several copies side by side.
+
+```typescript
+static FEAT_SINGLE_INSTANCE = true
+```
+
+Note while developing that the lock is held per user data directory. Running `npm run test` while `npm run dev` is up leaves the test process without the lock, so it quits straight away.
+
 ## Notes
 
 The route a window opens on comes from the renderer, so it is validated in `src/main/utils/security.ts` before use, and only plain hash routes such as `/second` are accepted. New windows get the same `webPreferences` and navigation guards as the main window, so context isolation and the external link handling apply to all of them.

@@ -38,6 +38,11 @@ export default class Constants {
   // To show devtools at startup. It requires IS_DEV_ENV=true.
   // Note: For debugging purpose, window won't be closed if click elsewhere, if devtools is open.
   static FEAT_OPEN_DEV_TOOLS_AT_START = true
+  // To allow one instance of the app at a time. A second launch surfaces the
+  // window of the first and quits, rather than opening its own on the same
+  // user data directory. Turn it off for an app that is meant to run several
+  // copies side by side.
+  static FEAT_SINGLE_INSTANCE = true
   // To let the renderer open extra windows on top of the main window through
   // `WindowManager`. Set it to `false` and every open request is refused,
   // whatever `DEFAULT_CHILD_WINDOW_OPTIONS` says.

@@ -72,6 +72,18 @@ const unsubscribe = onWindowsUpdated((childWindowIds) => {
 | `msgRequestWindowInfo` | invoke | 호출한 창에 대한 `{ isChildWindow, childWindowIds }`를 반환합니다. |
 | `msgWindowsUpdated` | on | 창이 열리거나 닫힐 때마다 현재 창 id 목록을 모든 창으로 전달합니다. |
 
+## 하나의 인스턴스만 실행하기
+
+앱을 두 번 실행하면 두 번째 프로세스는 창을 열지 않고 종료하며, 이미 떠 있는 창이 앞으로 나옵니다. 로그와 캐시, 설정이 모두 같은 사용자 데이터 디렉터리에 있기 때문에, 두 프로세스가 같은 파일을 동시에 쓰는 상황을 막습니다.
+
+`src/main/utils/Constants.ts`의 `FEAT_SINGLE_INSTANCE`로 끌 수 있습니다. 여러 벌을 나란히 띄워야 하는 앱이라면 `false`로 두세요.
+
+```typescript
+static FEAT_SINGLE_INSTANCE = true
+```
+
+개발 중에는 이 잠금이 사용자 데이터 디렉터리 단위로 걸린다는 점을 기억하세요. `npm run dev`가 떠 있는 상태에서 `npm run test`를 실행하면 테스트용 프로세스가 잠금을 얻지 못하고 바로 종료합니다.
+
 ## 참고
 
 창을 열 경로는 렌더러에서 넘어오므로, 사용하기 전에 `src/main/utils/security.ts`에서 검사하며 `/second`와 같은 단순한 해시 라우트만 허용합니다. 새 창에는 메인 윈도우와 동일한 `webPreferences`와 네비게이션 가드가 적용되므로, 컨텍스트 격리와 외부 링크 처리가 모든 창에 그대로 유지됩니다.
