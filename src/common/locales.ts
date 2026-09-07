@@ -7,9 +7,17 @@
  * that both sides can call it, see `src/common/ipc.ts` for what may live here.
  * */
 
-// Locale keys bundled in `renderer/locales`. Keep this in sync with the
-// `messages` map in `renderer/plugins/i18n.ts` when adding a new language.
-export const SUPPORTED_LOCALES: string[] = [
+/*
+ * The languages the app ships. Each key is the name of a file in
+ * `renderer/locales`, which is where `renderer/plugins/i18n.ts` picks the
+ * messages up: adding a language is this list plus the matching JSON file.
+ *
+ * Vuetify has its own strings for the text inside its components, and those
+ * cannot be found by name, so `renderer/plugins/vuetify.ts` imports them one by
+ * one. That map is typed against this list, so a language added here without
+ * its Vuetify locale fails the build.
+ * */
+export const SUPPORTED_LOCALES = [
   'en',
   'ko',
   'zhHans',
@@ -21,14 +29,19 @@ export const SUPPORTED_LOCALES: string[] = [
   'ru',
   'pt',
   'nl'
-]
+] as const
 
-export const FALLBACK_LOCALE = 'en'
+export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
+
+export const FALLBACK_LOCALE: SupportedLocale = 'en'
+
+const isSupportedLocale = (value: string): value is SupportedLocale =>
+  (SUPPORTED_LOCALES as readonly string[]).includes(value)
 
 // BCP 47 tags (`en-US`, `zh-Hans-CN`) do not map to the locale keys one-to-one.
 // Chinese in particular is split by script rather than by region, so it cannot
 // be derived from the tag alone.
-const LOCALE_ALIASES: Record<string, string> = {
+const LOCALE_ALIASES: Record<string, SupportedLocale> = {
   zh: 'zhHans',
   'zh-cn': 'zhHans',
   'zh-sg': 'zhHans',
@@ -45,7 +58,7 @@ const LOCALE_ALIASES: Record<string, string> = {
  * caller: `navigator.language` in the renderer, `app.getLocale()` in the main
  * process.
  * */
-export function resolveLocale(languageTag?: string | null): string {
+export function resolveLocale(languageTag?: string | null): SupportedLocale {
   const language = languageTag?.toLowerCase()
 
   if (!language) {
@@ -61,7 +74,7 @@ export function resolveLocale(languageTag?: string | null): string {
       return LOCALE_ALIASES[candidate]
     }
 
-    if (SUPPORTED_LOCALES.includes(candidate)) {
+    if (isSupportedLocale(candidate)) {
       return candidate
     }
   }

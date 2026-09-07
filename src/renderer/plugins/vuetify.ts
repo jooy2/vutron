@@ -16,14 +16,34 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import 'vuetify/styles'
 
 import colors from 'vuetify/util/colors'
-import { FALLBACK_LOCALE } from '@/common/locales'
+import { FALLBACK_LOCALE, type SupportedLocale } from '@/common/locales'
 import { getCurrentLocale } from '@/renderer/utils'
 
+/*
+ * Vuetify has its own strings for the text inside its components, and it does
+ * not follow `vue-i18n`. They are named exports, so unlike the message files in
+ * `plugins/i18n.ts` they cannot be picked up by a glob and have to be listed.
+ *
+ * Typing the map against `SupportedLocale` is what keeps the two in step: a
+ * language added to `SUPPORTED_LOCALES` and forgotten here fails the build.
+ * */
+const messages: Record<SupportedLocale, typeof en> = {
+  ko,
+  en,
+  zhHans,
+  zhHant,
+  de,
+  es,
+  ja,
+  fr,
+  ru,
+  pt,
+  nl
+}
+
 export default createVuetify({
-  // Keep this in sync with `plugins/i18n.ts`. Vuetify has its own locale for
-  // the strings built into its components, and it does not follow `vue-i18n`.
   locale: {
-    messages: { ko, en, zhHans, zhHant, de, es, ja, fr, ru, pt, nl },
+    messages,
     locale: getCurrentLocale(),
     fallback: FALLBACK_LOCALE
   },

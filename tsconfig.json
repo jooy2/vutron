@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "outDir": "./dist",
     "target": "esnext",
     "module": "Preserve",

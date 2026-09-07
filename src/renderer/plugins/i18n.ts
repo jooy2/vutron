@@ -1,36 +1,38 @@
-import { createI18n } from 'vue-i18n'
-import en from '@/renderer/locales/en.json'
-import ko from '@/renderer/locales/ko.json'
-import zhHans from '@/renderer/locales/zh-hans.json'
-import zhHant from '@/renderer/locales/zh-hant.json'
-import de from '@/renderer/locales/de.json'
-import es from '@/renderer/locales/es.json'
-import ja from '@/renderer/locales/ja.json'
-import fr from '@/renderer/locales/fr.json'
-import ru from '@/renderer/locales/ru.json'
-import pt from '@/renderer/locales/pt.json'
-import nl from '@/renderer/locales/nl.json'
-import { FALLBACK_LOCALE } from '@/common/locales'
+import {
+  createI18n,
+  type LocaleMessageValue,
+  type VueMessageType
+} from 'vue-i18n'
+
+// `vue-i18n` re-exports the value type but not the record it sits in
+type LocaleMessages = Record<string, LocaleMessageValue<VueMessageType>>
+import { FALLBACK_LOCALE, type SupportedLocale } from '@/common/locales'
 import { getCurrentLocale } from '@/renderer/utils'
+
+/*
+ * Every JSON file in `renderer/locales` is registered under its own file name,
+ * so adding a language means adding the file and its key to
+ * `SUPPORTED_LOCALES`. Nothing here has to be edited.
+ *
+ * `eager` puts them in the main chunk. The eleven together are a few kilobytes,
+ * less than what fetching one on demand would cost.
+ * */
+const localeModules = import.meta.glob<{ default: LocaleMessages }>(
+  '@/renderer/locales/*.json',
+  { eager: true }
+)
+
+const messages = Object.fromEntries(
+  Object.entries(localeModules).map(([path, localeModule]) => [
+    /([^/]+)\.json$/.exec(path)?.[1],
+    localeModule.default
+  ])
+) as Record<SupportedLocale, LocaleMessages>
 
 export default createI18n({
   locale: getCurrentLocale(),
   fallbackLocale: FALLBACK_LOCALE,
   globalInjection: true,
   silentTranslationWarn: process.env.NODE_ENV !== 'development',
-  // When adding a language here, also add its key to `SUPPORTED_LOCALES`
-  // in `common/locales` so that it can be auto-detected at startup.
-  messages: {
-    en,
-    ko,
-    zhHans,
-    zhHant,
-    de,
-    es,
-    ja,
-    fr,
-    ru,
-    pt,
-    nl
-  }
+  messages
 })
