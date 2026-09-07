@@ -1,7 +1,10 @@
 import type {
   MainInvokeChannel,
+  MainInvokeContracts,
   MainSendChannel,
-  RendererAvailChannel
+  MainSendPayloads,
+  RendererAvailChannel,
+  RendererEventPayloads
 } from '@/common/ipc'
 
 /*
@@ -9,7 +12,9 @@ import type {
  * `IpcRendererEvent` stays in the preload script, because its `sender` is the
  * whole `ipcRenderer` and would hand the renderer every channel there is.
  * */
-export type MainApiListener = (...args: any[]) => void
+export type MainApiListener<C extends RendererAvailChannel> = (
+  ...args: RendererEventPayloads[C]
+) => void
 
 /*
  * Shape of the bridge that `src/preload` exposes on `window` through
@@ -17,18 +22,34 @@ export type MainApiListener = (...args: any[]) => void
  * implementation and the renderer call sites cannot drift apart.
  *
  * Channels are typed against the lists in `src/common/ipc`, which is what the
- * preload checks against at runtime too. A channel that is not on the list is
- * a build error rather than a thrown error once the app is running.
+ * preload checks against at runtime too, and so are the arguments and the
+ * reply of each one. A call that does not match its handler is a build error
+ * rather than a value that turns out wrong once the app is running.
  * */
 export interface MainApi {
   // Fire and forget
-  send: (channel: MainSendChannel, ...data: any[]) => void
+  send: <C extends MainSendChannel>(
+    channel: C,
+    ...data: MainSendPayloads[C]
+  ) => void
   // Listen for a main process broadcast, returns an unsubscribe fn
-  on: (channel: RendererAvailChannel, listener: MainApiListener) => () => void
-  once: (channel: RendererAvailChannel, listener: MainApiListener) => () => void
-  off: (channel: RendererAvailChannel, listener: MainApiListener) => void
+  on: <C extends RendererAvailChannel>(
+    channel: C,
+    listener: MainApiListener<C>
+  ) => () => void
+  once: <C extends RendererAvailChannel>(
+    channel: C,
+    listener: MainApiListener<C>
+  ) => () => void
+  off: <C extends RendererAvailChannel>(
+    channel: C,
+    listener: MainApiListener<C>
+  ) => void
   // Request/response
-  invoke: <T = any>(channel: MainInvokeChannel, ...data: any[]) => Promise<T>
+  invoke: <C extends MainInvokeChannel>(
+    channel: C,
+    ...data: MainInvokeContracts[C]['args']
+  ) => Promise<MainInvokeContracts[C]['result']>
 }
 
 declare global {

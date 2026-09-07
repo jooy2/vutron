@@ -30,6 +30,7 @@ order: 1
 │  ├─ main/ - 메인(Electron) 프로세스 소스 코드
 │  │  ├─ utils/ - 메인 프로세스 유틸리티
 │  │  │  └─ Constants.ts - 메인 글로벌 정의
+│  │  │  └─ ipc.ts - 채널 계약이 적용된 IPC 등록 도우미
 │  │  │  └─ security.ts - 네비게이션 및 외부 링크 가드
 │  │  └─ index.ts - 메인 프로세스 진입점
 │  │  └─ index.dev.ts - 개발 환경 전용 설정, 패키징 빌드에서는 제외됨

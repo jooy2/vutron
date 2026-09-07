@@ -14,6 +14,18 @@ Vutron의 프리로드 스크립트는 `src/preload` 폴더에 있습니다. 새
 
 `send`와 `invoke`의 화이트리스트를 분리해 두었기 때문에, 각 채널은 핸들러가 작성된 방식으로만 사용할 수 있습니다.
 
+채널을 추가할 때는 `src/common/ipc.ts`의 `MainSendPayloads`, `MainInvokeContracts`, `RendererEventPayloads`에도 그 채널이 무엇을 주고받는지 적습니다. 이름만 추가하면 빌드가 실패합니다. 메인 프로세스에서는 `ipcMain`을 직접 부르는 대신 `src/main/utils/ipc.ts`의 `handleInvoke`, `handleSend`, `sendToWindow`를 사용하세요. 이 계약이 렌더러의 호출부와 메인 프로세스의 핸들러 양쪽에 적용됩니다.
+
+```ts
+// src/common/ipc.ts
+export interface MainInvokeContracts {
+  [MAIN_INVOKE_CHANNELS.openFile]: {
+    args: [filter: string]
+    result: OpenFileResult
+  }
+}
+```
+
 렌더러에서 메인으로 이벤트를 전송할 때는 `ipcRenderer.send` 대신 `window.mainApi` 객체에 액세스합니다. `mainApi`는 Vutron 템플릿에서 설정한 이름이며 변경할 수 있습니다.
 
 다음은 mainApi에서 지원되는 함수입니다:

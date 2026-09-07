@@ -54,3 +54,40 @@ export interface WindowInfo {
 // Payload of `msgOpenFile`. The dialog runs in the main process, its result
 // crosses the bridge as a plain object.
 export type OpenFileResult = OpenDialogReturnValue
+
+/*
+ * What travels on each channel.
+ *
+ * The channel name alone only says that a channel exists. These three maps say
+ * what it carries, so a call site is checked against the handler on the other
+ * side instead of against `any`. Adding a channel above without adding it here
+ * is a build error, which is the point.
+ *
+ * Every value has to survive the structured clone that IPC puts it through:
+ * plain data only, no class instances, no functions.
+ * */
+
+// Arguments of `mainApi.send`, received by the `ipcMain.on` handler
+export interface MainSendPayloads {
+  [MAIN_SEND_CHANNELS.openExternalLink]: [url: string]
+}
+
+// Arguments and reply of `mainApi.invoke`, answered by `ipcMain.handle`
+export interface MainInvokeContracts {
+  [MAIN_INVOKE_CHANNELS.requestGetVersion]: { args: []; result: string }
+  [MAIN_INVOKE_CHANNELS.openFile]: {
+    args: [filter: string]
+    result: OpenFileResult
+  }
+  [MAIN_INVOKE_CHANNELS.openWindow]: {
+    args: [path: string]
+    result: number | null
+  }
+  [MAIN_INVOKE_CHANNELS.closeWindow]: { args: []; result: boolean }
+  [MAIN_INVOKE_CHANNELS.requestWindowInfo]: { args: []; result: WindowInfo }
+}
+
+// Arguments of `webContents.send`, received by a `mainApi.on` listener
+export interface RendererEventPayloads {
+  [RENDERER_AVAIL_CHANNELS.windowsUpdated]: [childWindowIds: number[]]
+}

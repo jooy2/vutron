@@ -1,6 +1,6 @@
 import log from 'electron-log/renderer'
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron'
-import type { MainApi, MainApiListener } from '@/mainApi'
+import type { MainApi } from '@/mainApi'
 import {
   MAIN_INVOKE_CHANNELS,
   MAIN_SEND_CHANNELS,
@@ -32,6 +32,11 @@ const assertChannel = (channel: string, allowed: readonly string[]): void => {
 
 type IpcRendererListener = (event: IpcRendererEvent, ...args: any[]) => void
 
+// The registry below holds listeners for every channel at once, so it is keyed
+// by the loosest shape any of them can take. `MainApi` is what checks a call
+// site against the channel it names.
+type AnyListener = (...args: any[]) => void
+
 /*
  * `ipcRenderer` is handed a wrapper instead of the renderer listener itself, so
  * that the `IpcRendererEvent` never crosses the bridge. Its `sender` is the
@@ -45,14 +50,11 @@ type IpcRendererListener = (event: IpcRendererEvent, ...args: any[]) => void
  * are stacked: `ipcRenderer.off` drops the most recently added match, and so
  * does `pop`.
  * */
-const wrappers = new WeakMap<
-  MainApiListener,
-  Map<string, IpcRendererListener[]>
->()
+const wrappers = new WeakMap<AnyListener, Map<string, IpcRendererListener[]>>()
 
 const rememberWrapper = (
   channel: string,
-  listener: MainApiListener,
+  listener: AnyListener,
   wrapper: IpcRendererListener
 ): void => {
   let byChannel = wrappers.get(listener)
@@ -67,56 +69,57 @@ const rememberWrapper = (
 
 const forgetWrapper = (
   channel: string,
-  listener: MainApiListener
+  listener: AnyListener
 ): IpcRendererListener | undefined => {
   return wrappers.get(listener)?.get(channel)?.pop()
 }
 
 // Typed against `MainApi` so the bridge and its renderer-side type stay in sync
 const mainApi: MainApi = {
-  send: (channel: string, ...data: any[]): void => {
+  send: (channel, ...data): void => {
     assertChannel(channel, mainSendChannels)
     ipcRenderer.send(channel, ...data)
   },
-  on: (channel: string, listener: MainApiListener): (() => void) => {
+  on: (channel, listener): (() => void) => {
     assertChannel(channel, rendererAvailChannels)
 
-    const wrapper: IpcRendererListener = (_event, ...args) => listener(...args)
+    const wrapper: IpcRendererListener = (_event, ...args) =>
+      (listener as AnyListener)(...args)
 
-    rememberWrapper(channel, listener, wrapper)
+    rememberWrapper(channel, listener as AnyListener, wrapper)
     ipcRenderer.on(channel, wrapper)
 
     return () => {
-      forgetWrapper(channel, listener)
+      forgetWrapper(channel, listener as AnyListener)
       ipcRenderer.off(channel, wrapper)
     }
   },
-  once: (channel: string, listener: MainApiListener): (() => void) => {
+  once: (channel, listener): (() => void) => {
     assertChannel(channel, rendererAvailChannels)
 
     const wrapper: IpcRendererListener = (_event, ...args) => {
-      forgetWrapper(channel, listener)
-      listener(...args)
+      forgetWrapper(channel, listener as AnyListener)
+      ;(listener as AnyListener)(...args)
     }
 
-    rememberWrapper(channel, listener, wrapper)
+    rememberWrapper(channel, listener as AnyListener, wrapper)
     ipcRenderer.once(channel, wrapper)
 
     return () => {
-      forgetWrapper(channel, listener)
+      forgetWrapper(channel, listener as AnyListener)
       ipcRenderer.off(channel, wrapper)
     }
   },
-  off: (channel: string, listener: MainApiListener): void => {
+  off: (channel, listener): void => {
     assertChannel(channel, rendererAvailChannels)
 
-    const wrapper = forgetWrapper(channel, listener)
+    const wrapper = forgetWrapper(channel, listener as AnyListener)
 
     if (wrapper) {
       ipcRenderer.off(channel, wrapper)
     }
   },
-  invoke: (channel: string, ...data: any[]): Promise<any> => {
+  invoke: (channel, ...data) => {
     assertChannel(channel, mainInvokeChannels)
 
     return ipcRenderer.invoke(channel, ...data)

@@ -30,6 +30,7 @@ order: 1
 │  ├─ main/ - 主（电子）处理源代码
 │  │  ├─ utils/ - 主要工艺设备
 │  │  │  └─ Constants.ts - 全球主要定义
+│  │  │  └─ ipc.ts - 按通道契约类型化的 IPC 注册辅助函数
 │  │  │  └─ security.ts - 导航与外部链接防护
 │  │  └─ index.ts - 主要流程入口
 │  │  └─ index.dev.ts - 仅用于开发环境的配置，打包构建时会被排除

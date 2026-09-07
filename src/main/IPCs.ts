@@ -1,33 +1,33 @@
 import {
-  ipcMain,
   shell,
+  dialog,
   BrowserWindow,
   IpcMainEvent,
-  IpcMainInvokeEvent,
-  dialog
+  IpcMainInvokeEvent
 } from 'electron'
 import Constants from './utils/Constants'
 import WindowManager from './WindowManager'
 import { isAllowedExternalUrl } from './utils/security'
-import {
-  MAIN_INVOKE_CHANNELS,
-  MAIN_SEND_CHANNELS,
-  type WindowInfo
-} from '@/common/ipc'
+import { handleInvoke, handleSend } from './utils/ipc'
+import { MAIN_INVOKE_CHANNELS, MAIN_SEND_CHANNELS } from '@/common/ipc'
 import log from 'electron-log/main'
 
 /*
  * IPC Communications
+ *
+ * Every channel is registered through the helpers in `utils/ipc`, so the
+ * arguments and the reply are checked against the contract the renderer calls
+ * with. See `src/common/ipc.ts`.
  * */
 export default class IPCs {
   static initialize(): void {
     // Get application version
-    ipcMain.handle(MAIN_INVOKE_CHANNELS.requestGetVersion, () => {
+    handleInvoke(MAIN_INVOKE_CHANNELS.requestGetVersion, () => {
       return Constants.APP_VERSION
     })
 
     // Open url via web browser
-    ipcMain.on(
+    handleSend(
       MAIN_SEND_CHANNELS.openExternalLink,
       async (event: IpcMainEvent, url: string) => {
         // Without this check the renderer could hand the OS any scheme it
@@ -43,7 +43,7 @@ export default class IPCs {
     )
 
     // Open file
-    ipcMain.handle(
+    handleInvoke(
       MAIN_INVOKE_CHANNELS.openFile,
       async (event: IpcMainInvokeEvent, filter: string) => {
         const filters = []
@@ -62,7 +62,7 @@ export default class IPCs {
 
     // Open a new window on the given renderer route. Returns the window id, or
     // `null` when the request was refused (feature off, limit reached, bad route)
-    ipcMain.handle(
+    handleInvoke(
       MAIN_INVOKE_CHANNELS.openWindow,
       async (event: IpcMainInvokeEvent, path: string) => {
         const childWindow = await WindowManager.open(
@@ -77,7 +77,7 @@ export default class IPCs {
     // Close the window the request came from. Only windows owned by
     // `WindowManager` are closed, so a shared component cannot shut the app down
     // by calling this from the main window.
-    ipcMain.handle(
+    handleInvoke(
       MAIN_INVOKE_CHANNELS.closeWindow,
       (event: IpcMainInvokeEvent) => {
         return WindowManager.close(BrowserWindow.fromWebContents(event.sender))
@@ -86,9 +86,9 @@ export default class IPCs {
 
     // State a freshly loaded window needs before the first `msgWindowsUpdated`
     // broadcast reaches it
-    ipcMain.handle(
+    handleInvoke(
       MAIN_INVOKE_CHANNELS.requestWindowInfo,
-      (event: IpcMainInvokeEvent): WindowInfo => {
+      (event: IpcMainInvokeEvent) => {
         const senderWindow = BrowserWindow.fromWebContents(event.sender)
 
         return {

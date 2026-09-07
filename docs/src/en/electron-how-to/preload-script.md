@@ -14,6 +14,18 @@ Vutron's preload script is located in the `src/preload` folder. To create a new 
 
 `send` and `invoke` use separate whitelists on purpose, so that a channel can only be used the way its handler was written.
 
+When you add a channel, say what it carries in `MainSendPayloads`, `MainInvokeContracts` or `RendererEventPayloads` in `src/common/ipc.ts`. Adding the name alone fails the build. In the main process, register it through `handleInvoke`, `handleSend` or `sendToWindow` from `src/main/utils/ipc.ts` rather than calling `ipcMain` directly. The same contract then types both the renderer call site and the main process handler.
+
+```ts
+// src/common/ipc.ts
+export interface MainInvokeContracts {
+  [MAIN_INVOKE_CHANNELS.openFile]: {
+    args: [filter: string]
+    result: OpenFileResult
+  }
+}
+```
+
 When sending events from renderer to main, you access the `window.mainApi` object instead of `ipcRenderer.send`. The `mainApi` is the name you set in your Vutron template and can be changed.
 
 Here are the supported functions for mainApi:

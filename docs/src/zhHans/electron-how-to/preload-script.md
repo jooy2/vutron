@@ -14,6 +14,18 @@ Vutron的预加载脚本位于`src/preload`文件夹中。要创建新的IPC通�
 
 `send` 和 `invoke` 特意使用了各自独立的白名单，因此每个通道只能按照其处理程序的编写方式使用。
 
+添加通道时，请同时在 `src/common/ipc.ts` 的 `MainSendPayloads`、`MainInvokeContracts` 或 `RendererEventPayloads` 中写明它传递的内容。只添加名称会导致构建失败。在主进程中，请使用 `src/main/utils/ipc.ts` 的 `handleInvoke`、`handleSend` 或 `sendToWindow` 注册，而不要直接调用 `ipcMain`。同一份契约会同时约束渲染器的调用处和主进程的处理函数。
+
+```ts
+// src/common/ipc.ts
+export interface MainInvokeContracts {
+  [MAIN_INVOKE_CHANNELS.openFile]: {
+    args: [filter: string]
+    result: OpenFileResult
+  }
+}
+```
+
 当从渲染器向主程序发送事件时，应访问`window.mainApi`对象，而不是`ipcRenderer.send`。`mainApi`是您在自己的Vutron模板中设置的名称，可以更改。
 
 以下是mainApi支持的功能:
