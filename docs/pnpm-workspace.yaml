@@ -1,2 +1,4 @@
 onlyBuiltDependencies:
   - esbuild
+overrides:
+  vitepress-sidebar>qsu: 1.21.0
